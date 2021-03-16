@@ -559,8 +559,6 @@ int main(int argc, char** argv)
 	
 	// SDL_Rect grid_cursor_ghost = {grid_cursor.x, grid_cursor.y, grid_cell_size, grid_cell_size};
 
-	points_centre[plateau_x*plateau_y];
-
 	SDL_Point pts_2D[plateau_x*plateau_y];
 
 	SDL_Cursor * cursor;
