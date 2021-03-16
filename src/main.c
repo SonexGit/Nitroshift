@@ -663,12 +663,12 @@ int main(int argc, char** argv)
 				SDL_SetRenderDrawColor(ren, 255, 0, 0, 127);
 				// SDL_RenderFillRect(ren, &grid_cursor_ghost);
 				SDL_RenderCopy(ren, texture_mouse_hover, NULL, &grid_cursor_ghost);
-				printf("je suis devenu hover\n");
+				// printf("je suis devenu hover\n");
 				SDL_SetCursor(cursor_hover);
 			}
 			else {
-				printf("je suis devenu normal\n");
-				SDL_SetCursor(cursor_hover);
+				// printf("je suis devenu normal\n");
+				SDL_SetCursor(cursor);
 			}
         }
 
