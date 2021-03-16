@@ -69,13 +69,12 @@ int lpcc_done = 0;
 		FINI - Objectif 3.5 : Mettre les tiles dans une feuille (atlas) et les découper pour optimiser/récupérer des FPS
 	FINI - Objectif 4 : Gérer les collisions sur certaines cases
 		FINI - Objectif 4.1 : Enlever le mouse_hover si une case est solide
-		- Objectif 4.5 : La dernière colonne du plateau ne fonctionne pas avec le hover, à résoudre.
+		FINI - Objectif 4.5 : La dernière colonne du plateau ne fonctionne pas avec le hover, à résoudre.
 	- Objectif 5 : Optimiser un maximum
 		- Objectif 5.5 : Faire en sorte que le jeu s'adapte à toutes les tailles de fenêtre
 	- Objectif 6 : Implémenter les personnages avec les programmes annexes
 
 	Problème 1 : Le mouse_hover bug (le curseur change pas de forme)
-	DERNIERE CHOSE FAITE : mis en comm tous les curseur et le tableau des solides montre un bug (sur le terminal)...
 */
 
 SDL_Point Coord2DToIso(SDL_Point point) {
@@ -319,15 +318,15 @@ void fileListPoints(SDL_Point pts[], SDL_Point pc[]) {
 	fclose(fichier);
 }
 
-void lien_pc_cases(SDL_Point pc[], cell_T plat[plateau_y - 1][plateau_x - 1]) {
+void lien_pc_cases(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 	int h = 0;
 	int i = 0;
 	int j = 0;
 	while(j < plateau_y) {
 		for(i; h < plateau_x; i++) {
 			plat[j][h].pc = pc[i];
-			printf("plateau[%i][%i].pc = pc[%i] (x : %i, y : %i)\n", j, h, i, pc[i].x, pc[i].y);
-			printf("plateau[%i][%i].pc = x : %i, y : %i\n", j, h, plat[j][h].pc.x, plat[j][h].pc.y);
+			// printf("plateau[%i][%i].pc = pc[%i] (x : %i, y : %i)\n", j, h, i, pc[i].x, pc[i].y);
+			// printf("plateau[%i][%i].pc = x : %i, y : %i\n", j, h, plat[j][h].pc.x, plat[j][h].pc.y);
 			h++;
 		}
 		h=0;
@@ -335,7 +334,7 @@ void lien_pc_cases(SDL_Point pc[], cell_T plat[plateau_y - 1][plateau_x - 1]) {
 	}
 }
 
-int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y - 1][plateau_x - 1], int* x, int* y) {
+int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int* y) {
 	int h = 0;
 	int i = 0;
 	int j = 0;
@@ -347,7 +346,7 @@ int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y - 1][plateau_x - 1], int
 			if (plat[j][h].pc.x == pc.x && plat[j][h].pc.y == pc.y) {
 				*x = h;
 				*y = j;
-				printf("TROUVÉE : plateau[%i][%i].pc = pc[%i]\n", j, h, i);
+				// printf("TROUVÉE : plateau[%i][%i].pc = pc[%i]\n", j, h, i);
 				return 0;
 			}
 			h++;
@@ -465,7 +464,7 @@ void free_texture_cases() {
 	}
 }
 
-void init_cases_solide(int num_carte, cell_T plat[plateau_y - 1][plateau_x - 1]) {
+void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	FILE * fichier_texture;
 
 	int longueur = snprintf(NULL, 0, "%d", num_carte);
@@ -527,7 +526,7 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y - 1][plateau_x - 1])
 	fclose(fichier_texture);
 }
 
-void test(SDL_Point pc[], cell_T plat[plateau_y - 1][plateau_x - 1]) {
+void test(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 	printf("==== TEST ====");
 	int h = 0;
 	int i = 0;
@@ -556,7 +555,7 @@ int main(int argc, char** argv)
 	SDL_RenderSetLogicalSize(ren, screen_w, screen_h);
 
 	// Plateau
-	cell_T plateau[plateau_y - 1][plateau_x - 1];
+	cell_T plateau[plateau_y][plateau_x];
 	
 	// SDL_Rect grid_cursor_ghost = {grid_cursor.x, grid_cursor.y, grid_cell_size, grid_cell_size};
 
@@ -627,7 +626,7 @@ int main(int argc, char** argv)
 		if (!lpcc_done) lien_pc_cases(points_centre, plateau);
 		lpcc_done = 1;
 
-		test(points_centre, plateau);
+		// test(points_centre, plateau);
 
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
 		// SDL_RenderDrawPoints(ren, points_centre, plateau_x*plateau_y);
