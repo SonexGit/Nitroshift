@@ -18,8 +18,8 @@ const int grid_cell_size = (900 / (plateau_x+1));
 const int grid_cell_size_iso_x = 80; // à modifier, pas "dynamique", +30 en x par point suivant
 const int grid_cell_size_iso_y = 40; // à modifier, pas "dynamique", +15 en y par point suivant
 
-SDL_Rect grid_cursor;
-SDL_Rect grid_cursor_ghost;
+// SDL_Rect grid_cursor;
+// SDL_Rect grid_cursor_ghost;
 
 /* Déclaration de l'activité du curseur */
 SDL_bool mouse_active = SDL_FALSE;
@@ -36,13 +36,7 @@ SDL_Point pc_2D[plateau_x*plateau_y];
 
 SDL_Point souris;
 
-SDL_Rect grid_cursor = {
-	.x = (plateau_x - 1) / 2 * grid_cell_size,
-	.y = (plateau_y - 1) / 2 * grid_cell_size,
-	.w = grid_cell_size,
-	.h = grid_cell_size,
-};
-
+SDL_Rect grid_cursor = {(plateau_x - 1) / 2 * grid_cell_size, (plateau_y - 1) / 2 * grid_cell_size, grid_cell_size, grid_cell_size};
 SDL_Rect grid_cursor_ghost = {0, 0, grid_cell_size_iso_x, grid_cell_size_iso_y};
 
 int total_wheel_down = 0, total_wheel_up = 0;
@@ -190,7 +184,7 @@ void init_points_2D(SDL_Point points_2D[]) {
 	int i = 0;
 	int j = 0;
 	while(j < (plateau_y + 1)) {
-		for(i; h < plateau_x+1; i++) {
+		for (; h < plateau_x+1; i++) {
 			// points_2D[i].x = (h * (650 / (plateau_x+1)));
 			// points_2D[i].y = (j * (650 / (plateau_y+1)));
 			points_2D[i].x = (h * 40);
@@ -208,14 +202,13 @@ void dessiner_grille(SDL_Point points[]) {
 	int h = 0;
 	int i = 0;
 	int j = 0;
-	int checker_hori, checker_vert;
-	int temp_point_x, temp_point_y;
+	// int checker_hori;
 
 	/* Dessine les 4 coins d'une cellule du plateau */
 
 	while(j < (plateau_y+1)) {
-		checker_hori = j * (plateau_x+1);
-		for(i; h < plateau_x+1; i++) {
+		// checker_hori = j * (plateau_x+1);
+		for(; h < plateau_x+1; i++) {
 			/*
 			if (i > 0 && i != checker_hori) {
 					// Dessine les lignes horizontales du plateau, en prenant en compte le passage à une nouvelle ligne
@@ -323,7 +316,7 @@ void lien_pc_cases(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 	int i = 0;
 	int j = 0;
 	while(j < plateau_y) {
-		for(i; h < plateau_x; i++) {
+		for(; h < plateau_x; i++) {
 			plat[j][h].pc = pc[i];
 			// printf("plateau[%i][%i].pc = pc[%i] (x : %i, y : %i)\n", j, h, i, pc[i].x, pc[i].y);
 			// printf("plateau[%i][%i].pc = x : %i, y : %i\n", j, h, plat[j][h].pc.x, plat[j][h].pc.y);
@@ -341,7 +334,7 @@ int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int
 	// printf("plat[7][13] = x : %i, y : %i\n", plat[7][13].pc.x, plat[7][13].pc.y);
 	// printf("plat[7][14] = x : %i, y : %i\n", plat[7][14].pc.x, plat[7][14].pc.y);
 	while(j < plateau_y) {
-		for(i; h < plateau_x; i++) {
+		for(; h < plateau_x; i++) {
 			// printf("plat[%i][%i] = x : %i, y : %i\npc       = x : %i, y: %i\n", j, h, plat[j][h].pc.x, plat[j][h].pc.y, pc.x, pc.y);
 			if (plat[j][h].pc.x == pc.x && plat[j][h].pc.y == pc.y) {
 				*x = h;
@@ -354,6 +347,7 @@ int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int
 		h=0;
 		j++;
 	}
+	return 0;
 }
 
 void init_texture_cases(int num_carte, SDL_Point pc[]) {
@@ -376,7 +370,6 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 
 	const char * delim = " \t\r\n\v\f";
 	char * curseur;
-	int check = 0;
 
 	char * repertoire = "../data/tiles/tiles.png";
 
@@ -455,7 +448,7 @@ void free_texture_cases() {
 	int i = 0;
 	int j = 0;
 	while(j < (plateau_y)) {
-		for(i; h < plateau_x; i++) {
+		for(; h < plateau_x; i++) {
 			SDL_DestroyTexture(textures_plateau); // si ça crash dans cette fonction en général c'est parce que le i va jusqu'a 224 mais s'il n'y a pas 225 textures...
 			h++;
 		}
@@ -484,7 +477,6 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 
 	const char * delim = " \t\r\n\v\f";
 	char * curseur;
-	int check = 0;
 
 	int first_load_file = 0;
 
@@ -532,7 +524,7 @@ void test(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 	int i = 0;
 	int j = 0;
 	while(j < plateau_y) {
-		for(i; h < plateau_x; i++) {
+		for(; h < plateau_x; i++) {
 			printf("plateau[%i][%i].pc = pc[%i] (x : %i, y : %i)\n", j, h, i, pc[i].x, pc[i].y);
 			printf("plateau[%i][%i].pc = x : %i, y : %i\n", j, h, plat[j][h].pc.x, plat[j][h].pc.y);
 			h++;
@@ -544,6 +536,7 @@ void test(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 
 int main(int argc, char** argv)
 {
+	
 	rendering();
 
 	SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
@@ -691,4 +684,5 @@ int main(int argc, char** argv)
 	SDL_FreeCursor(cursor);
 	SDL_FreeCursor(cursor_hover);
 	stopRendering();
+	return 0;
 }
