@@ -47,9 +47,10 @@ SDL_Rect tiles[tiles_row*tiles_col];
 int save;
 
 // Pour faire qu'une fois certaines fonctions dans la boucle while (1) du main (c'est du test)
-int ip2d_done = 0;
-int ipc_done = 0;
-int lpcc_done = 0;
+SDL_bool ip2d_done = SDL_FALSE;
+SDL_bool ipc_done = SDL_FALSE;
+SDL_bool lpcc_done = SDL_FALSE;
+SDL_bool flp_done = SDL_FALSE;
 
 /*
 	FINI - Objectif 1 : Placer un point au centre de chaque case pour pouvoir savoir sur quelle case le curseur se trouvera
@@ -346,6 +347,21 @@ int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int
 	return 0;
 }
 
+void init_tiles() {
+	int h = 0, i = 0, j = 0;
+	while (j < tiles_col) {
+		for (; h < tiles_row; i++) {
+			tiles[i].x = h * 80;
+			tiles[i].y = j * 40;
+			tiles[i].w = 80;
+			tiles[i].h = 40; 
+			h++;
+		}
+		h=0;
+		j++;
+	}
+}
+
 void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	FILE * fichier_texture;
 
@@ -377,26 +393,7 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	surface_test = IMG_Load(repertoire);
 	textures_plateau = SDL_CreateTextureFromSurface(ren, surface_test);
 
-	// à rendre dynamique
-	tiles[0].x = 0;
-	tiles[0].y = 0;
-	tiles[0].w = 80;
-	tiles[0].h = 40;
-
-	tiles[1].x = 80;
-	tiles[1].y = 0;
-	tiles[1].w = 80;
-	tiles[1].h = 40;
-
-	tiles[2].x = 160;
-	tiles[2].y = 0;
-	tiles[2].w = 80;
-	tiles[2].h = 40;
-
-	tiles[3].x = 240;
-	tiles[3].y = 0;
-	tiles[3].w = 80;
-	tiles[3].h = 40;
+	init_tiles();
 
 	int pos_x, pos_y, img_w, img_h;
 	int pos_tiles;
@@ -444,7 +441,7 @@ void free_texture_cases() {
 	int i = 0;
 	int j = 0;
 	while(j < (plateau_y)) {
-		for(; h < plateau_x; i++) {
+		for (; h < plateau_x; i++) {
 			SDL_DestroyTexture(textures_plateau); // si ça crash dans cette fonction en général c'est parce que le i va jusqu'a 224 mais s'il n'y a pas 225 textures...
 			h++;
 		}
@@ -579,30 +576,24 @@ int main(int argc, char** argv)
 
 		SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
 
-		/* Dessine la grille (carré 4:3 dans 16:9) */
-
+		// Dessine la grille (carré 4:3 dans 16:9)
 		dessiner_grille(points);
 		if (!ip2d_done) init_points_2D(pts_2D);
-		ip2d_done = 1;
+		ip2d_done = SDL_TRUE;
 
-		/* Dessine les points en coins de chaque cellule */
-		// SDL_RenderDrawPoints(ren, points, total_points);
-		// SDL_RenderDrawPoints(ren, pts_2D, total_points);
-
-		/* Dessine le centre de chaque cellule (isométrique et cartésienne) à travers des points centre */
+		// Dessine le centre de chaque cellule (isométrique et cartésienne) à travers des points centre
 		if (!ipc_done) init_point_centre(points_centre, points);
 		if (!ipc_done) init_point_centre(pc_2D, pts_2D);
-		ipc_done = 1;
+		ipc_done = SDL_TRUE;
 		
 		if (!lpcc_done) lien_pc_cases(points_centre, plateau);
-		lpcc_done = 1;
-
-		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
-		// SDL_RenderDrawPoints(ren, points_centre, plateau_x*plateau_y);
-		// SDL_RenderDrawPoints(ren, pc_2D, plateau_x*plateau_y);
+		lpcc_done = SDL_TRUE;
 
 		// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
-		fileListPoints(points, points_centre);
+		if (!flp_done) fileListPoints(points, points_centre);
+		flp_done = SDL_TRUE;
+
+		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
 
 		// On initialise les textures de toutes les cases de la carte 1 (premier argument), le deuxième est une constante cependant
 		init_texture_cases(1, points_centre);
@@ -610,17 +601,6 @@ int main(int argc, char** argv)
 		trouver_case_pc(points_centre[save], plateau, &pc_x, &pc_y);
 
 		init_cases_solide(1, plateau);
-
-		/*
-		for (int i = 0; i < plateau_x; i++) {
-			for (int j = 0; j < plateau_y; j++) {
-				printf("plat[%i][%i] = pc x : %i, pc y : %i\n", i, j, plateau[i][j].pc.x, plateau[i][j].pc.y);
-			}
-			printf("\n");
-		}
-		*/
-
-		// printf("pc_x : %i, pc_y : %i", pc_x, pc_y);
 
 		if (plateau[pc_y][pc_x].solide >= 1) {
 			// SDL_Delay(10);
