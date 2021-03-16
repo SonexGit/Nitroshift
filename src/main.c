@@ -18,9 +18,6 @@ const int grid_cell_size = (900 / (plateau_x+1));
 const int grid_cell_size_iso_x = 80; // à modifier, pas "dynamique", +30 en x par point suivant
 const int grid_cell_size_iso_y = 40; // à modifier, pas "dynamique", +15 en y par point suivant
 
-// SDL_Rect grid_cursor;
-// SDL_Rect grid_cursor_ghost;
-
 /* Déclaration de l'activité du curseur */
 SDL_bool mouse_active = SDL_FALSE;
 SDL_bool mouse_hover = SDL_FALSE;
@@ -64,11 +61,10 @@ int lpcc_done = 0;
 	FINI - Objectif 4 : Gérer les collisions sur certaines cases
 		FINI - Objectif 4.1 : Enlever le mouse_hover si une case est solide
 		FINI - Objectif 4.5 : La dernière colonne du plateau ne fonctionne pas avec le hover, à résoudre.
+
 	- Objectif 5 : Optimiser un maximum
 		- Objectif 5.5 : Faire en sorte que le jeu s'adapte à toutes les tailles de fenêtre
 	- Objectif 6 : Implémenter les personnages avec les programmes annexes
-
-	Problème 1 : Le mouse_hover bug (le curseur change pas de forme)
 */
 
 SDL_Point Coord2DToIso(SDL_Point point) {
@@ -376,7 +372,7 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	int first_load_file = 0;
 
 	int x, y;
-	int i;
+	int i = 0;
 
 	surface_test = IMG_Load(repertoire);
 	textures_plateau = SDL_CreateTextureFromSurface(ren, surface_test);
@@ -404,7 +400,7 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 
 	int pos_x, pos_y, img_w, img_h;
 	int pos_tiles;
-	while (fgets(buffer, n, fichier_texture)) {
+	while (fgets(buffer, n, fichier_texture) && i < n) {
 
 		if(first_load_file == 0) {
 			x=0, y=0, i=0;
@@ -436,7 +432,7 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 		curseur = strtok(NULL, delim);
 		i++;
 	}
-	
+
 	free(num_carte_string);
 	free(repertoire_cartes);
 	free(buffer);
@@ -481,11 +477,11 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	int first_load_file = 0;
 
 	int x, y;
-	int i;
+	int i = 0;
 
 	int isSolid = 0;
 
-	while (fgets(buffer, n, fichier_texture)) {
+	while (fgets(buffer, n, fichier_texture) && i < n) {
 		if(first_load_file == 0) {
 			x=0, y=0, i=0;
 			first_load_file = 1;
@@ -516,22 +512,6 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	free(repertoire_cartes);
 	free(buffer);
 	fclose(fichier_texture);
-}
-
-void test(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
-	printf("==== TEST ====");
-	int h = 0;
-	int i = 0;
-	int j = 0;
-	while(j < plateau_y) {
-		for(; h < plateau_x; i++) {
-			printf("plateau[%i][%i].pc = pc[%i] (x : %i, y : %i)\n", j, h, i, pc[i].x, pc[i].y);
-			printf("plateau[%i][%i].pc = x : %i, y : %i\n", j, h, plat[j][h].pc.x, plat[j][h].pc.y);
-			h++;
-		}
-		h=0;
-		j++;
-	}
 }
 
 int main(int argc, char** argv)
@@ -616,8 +596,6 @@ int main(int argc, char** argv)
 		
 		if (!lpcc_done) lien_pc_cases(points_centre, plateau);
 		lpcc_done = 1;
-
-		// test(points_centre, plateau);
 
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
 		// SDL_RenderDrawPoints(ren, points_centre, plateau_x*plateau_y);
