@@ -26,7 +26,7 @@ SDL_bool mouse_solide = SDL_FALSE;
 
 int total_points = ((plateau_x + 1) * plateau_y) + (plateau_y + 1);
 
-SDL_Point points[plateau_x*plateau_y];
+SDL_Point points[plateau_x*plateau_y + plateau_y];
 
 SDL_Point points_centre[plateau_x*plateau_y];
 SDL_Point pc_2D[plateau_x*plateau_y];
@@ -255,9 +255,9 @@ void init_point_centre(SDL_Point pc[], SDL_Point pts[]) {
 		prev = actuel - (plateau_x + 2);
 		if (prev != check) {
 			// printf("Prev : %i\n", prev);
-			// printf("pc[%i] = %i, %i\npts[%i] : %i, %i et pts[%i] : %i, %i\n", i, pc[i].x, pc[i].y,prev, pts[prev].x, pts[prev].y, actuel, pts[actuel].x, pts[actuel].y);
 			pc[i].x = pts[prev].x + ((pts[actuel].x - pts[prev].x) / 2);
 			pc[i].y = pts[prev].y + ((pts[actuel].y - pts[prev].y) / 2);
+			// printf("pc[%i] = %i, %i\npts[%i] : %i, %i et pts[%i] : %i, %i\n", i, pc[i].x, pc[i].y,prev, pts[prev].x, pts[prev].y, actuel, pts[actuel].x, pts[actuel].y);
 			actuel++;
 		}
 		else {
@@ -366,7 +366,7 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	FILE * fichier_texture;
 
 	int longueur = snprintf(NULL, 0, "%d", num_carte);
-	char * num_carte_string = malloc(longueur + 1);
+	char * num_carte_string = malloc(sizeof(int) * longueur);
 	snprintf(num_carte_string, longueur + 1, "%d", num_carte);
 	char * repertoire_cartes = malloc(sizeof(char) * 36);
 	strcpy(repertoire_cartes, "../data/cartes/textures_carte");

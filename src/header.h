@@ -1,3 +1,6 @@
+#ifndef HEADER_H_
+#define HEADER_H_
+
 // Taille du plateau
 #define plateau_x 15
 #define plateau_y 15
@@ -13,3 +16,5 @@ typedef struct cell_S {
 	int solide;
 	SDL_Point pc; // Quel point centre pour cette cellule ?
 } cell_T;
+
+#endif // HEADER_H_
