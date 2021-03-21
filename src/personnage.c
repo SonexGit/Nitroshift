@@ -109,8 +109,7 @@ void dessiner_personnage(personnage p, int case_x, int case_y, cell_T plat[plate
 	surface_perso = IMG_Load("../data/personnages/personnageTest.png");
 	texture_perso = SDL_CreateTextureFromSurface(ren, surface_perso);
 
-	v1.positionX = 14;
-	v1.positionY = 0;
+	
 
 	int pos_x, pos_y, img_w, img_h;
 	img_w = surface_perso->w;
