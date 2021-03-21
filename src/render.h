@@ -1,6 +1,12 @@
 #ifndef RENDER_H_
 #define RENDER_H_
 
+#define SCREEN_ORIGINAL_WIDTH 1600
+#define SCREEN_ORIGINAL_HEIGHT 900
+
+#define SCREEN_WIDTH 1600
+#define SCREEN_HEIGHT 900
+
 SDL_Window *win;
 SDL_Renderer *ren;
 

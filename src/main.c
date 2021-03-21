@@ -10,7 +10,6 @@
 #include "header.h"
 #include "render.h"
 
-// extern SDL_Renderer *ren;
 int screen_w, screen_h;
 
 const int grid_cell_size = (900 / (plateau_x+1));
@@ -23,6 +22,9 @@ SDL_bool mouse_active = SDL_FALSE;
 SDL_bool mouse_hover = SDL_FALSE;
 SDL_bool mouse_toofar = SDL_FALSE;
 SDL_bool mouse_solide = SDL_FALSE;
+
+// Déclaration de l'activité de la fenêtre
+SDL_bool resizing = SDL_FALSE;
 
 int total_points = ((plateau_x + 1) * plateau_y) + (plateau_y + 1);
 
@@ -71,7 +73,7 @@ SDL_bool flp_done = SDL_FALSE;
 SDL_Point Coord2DToIso(SDL_Point point) {
 	int temp_x = point.x - point.y;
 	int temp_y = (point.x + point.y) * 0.5;
-	temp_x = floor((screen_w / 2) + temp_x);
+	temp_x = floor((SCREEN_ORIGINAL_WIDTH / 2) + temp_x);
 	temp_y = floor(60 + temp_y);
 	point.x = temp_x;
 	point.y = temp_y;
@@ -79,7 +81,7 @@ SDL_Point Coord2DToIso(SDL_Point point) {
 }
 
 SDL_Point CoordIsoTo2D(SDL_Point point) {
-	int temp_x = ceil(point.x - (screen_w / 2));
+	int temp_x = ceil(point.x - (SCREEN_ORIGINAL_WIDTH / 2));
 	int temp_y = ceil(point.y - 60);
 	temp_x = (2 * temp_y + temp_x) * 0.5;
 	temp_y = (2 * temp_y - temp_x);
@@ -170,6 +172,9 @@ size_t handle_keys() {
 					mouse_hover = SDL_TRUE;
 				else if (event.window.event == SDL_WINDOWEVENT_LEAVE && mouse_hover)
 					mouse_hover = SDL_FALSE;
+				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+					
+				}
 				break;
 		}
 	}
@@ -511,18 +516,16 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	fclose(fichier_texture);
 }
 
-int main(int argc, char** argv)
-{
-	
+int main(int argc, char** argv) {
 	rendering();
 
-	SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
+	// Permet à la fenêtre de s'adapter à n'importe quelle taille
+	SDL_RenderSetLogicalSize(ren, SCREEN_ORIGINAL_WIDTH, SCREEN_ORIGINAL_HEIGHT);
+	SDL_SetWindowSize(win, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	// Récuperer taille de la fenêtre
 	SDL_GetWindowSize(win, &screen_w, &screen_h);
-
-	// Permet de à la fenêtre de s'adapter à n'importe quelle taille
-	SDL_RenderSetLogicalSize(ren, screen_w, screen_h);
+	printf("%i", screen_w);
 
 	// Plateau
 	cell_T plateau[plateau_y][plateau_x];

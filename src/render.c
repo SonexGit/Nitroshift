@@ -16,7 +16,7 @@ int rendering()
 		return EXIT_FAILURE;
 	}
 
-	win = SDL_CreateWindow("Nitroshift", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1600, 900, SDL_WINDOW_SHOWN);
+	win = SDL_CreateWindow("Nitroshift", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 	if (win == NULL)
 	{
 		fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
@@ -35,9 +35,10 @@ int rendering()
 		return EXIT_FAILURE;
 	}
 
-	// Ajouté récemment, peut-être que ça ne sert à rien ?
-	// C'est pour filtrer le rendu au pixel le plus proche (lorsqu'on zoom notamment)
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
+	// Ajoute la possibilité de mettre de la transparence à travers les couleurs RGBa
+	SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
+	// Mettre 0 pour au plus proche, 1 pour de l'AA
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
 	return EXIT_SUCCESS;
 }
