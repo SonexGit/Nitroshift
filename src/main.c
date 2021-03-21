@@ -109,28 +109,26 @@ size_t handle_keys() {
 				return 1;
 				break;
 			case SDL_KEYDOWN:
-				 if(event.key.keysym.sym){
-					 if(event.key.keysym.sym == SDLK_UP){
-
-									 v1.positionX--;
-
-					 }
-					 if(event.key.keysym.sym == SDLK_RIGHT){
-										v1.positionY--;
-
-					 }
-					 if(event.key.keysym.sym == SDLK_DOWN){
-
-										v1.positionX++;
-
-					 }
-					 if(event.key.keysym.sym == SDLK_LEFT){
-										v1.positionY++;
-
+				if (event.key.keysym.sym)
+				{
+					if (event.key.keysym.sym == SDLK_UP)
+					{
+						v1.positionY--;
 					}
-								break;
-					 }
-					 break;
+					if (event.key.keysym.sym == SDLK_RIGHT)
+					{
+						v1.positionX++;
+					}
+					if (event.key.keysym.sym == SDLK_DOWN)
+					{
+						v1.positionY++;
+					}
+					if (event.key.keysym.sym == SDLK_LEFT)
+					{
+						v1.positionX--;
+					}
+				}
+				break;
 
 			case SDL_MOUSEWHEEL:
 				if (event.wheel.y > 0) {
@@ -586,8 +584,8 @@ int main(int argc, char** argv) {
 
 	// Pour voir si case solide
 	int pc_x, pc_y;
-	v1.positionX = 14;
-	v1.positionY = 0;
+	v1.positionX = 7;
+	v1.positionY = 7;
 	while (1) {
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
 		SDL_RenderClear(ren);
