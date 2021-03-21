@@ -9,13 +9,11 @@
 
 #include "header.h"
 #include "render.h"
+#include "personnage.h"
 
 int screen_w, screen_h;
 
 const int grid_cell_size = (900 / (plateau_x+1));
-
-const int grid_cell_size_iso_x = 80; // à modifier, pas "dynamique", +30 en x par point suivant
-const int grid_cell_size_iso_y = 40; // à modifier, pas "dynamique", +15 en y par point suivant
 
 /* Déclaration de l'activité du curseur */
 SDL_bool mouse_active = SDL_FALSE;
@@ -68,6 +66,8 @@ SDL_bool flp_done = SDL_FALSE;
 	- Objectif 5 : Optimiser un maximum
 		- Objectif 5.5 : Faire en sorte que le jeu s'adapte à toutes les tailles de fenêtre
 	- Objectif 6 : Implémenter les personnages avec les programmes annexes
+
+	- Problème : la première ligne de solidité bug ?
 */
 
 SDL_Point Coord2DToIso(SDL_Point point) {
@@ -525,7 +525,6 @@ int main(int argc, char** argv) {
 
 	// Récuperer taille de la fenêtre
 	SDL_GetWindowSize(win, &screen_w, &screen_h);
-	printf("%i", screen_w);
 
 	// Plateau
 	cell_T plateau[plateau_y][plateau_x];
@@ -633,7 +632,14 @@ int main(int argc, char** argv) {
 			}
         }
 
+		// ==============================================
+		// Dessin des personnages (joueur)
+		// ==============================================
+
+		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau);
+
 		SDL_RenderPresent(ren);
+		free_personnage_c();
 		free_texture_cases();
 		SDL_Delay(10);
 	}
