@@ -517,6 +517,7 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 
 		if (isSolid == 1) {
 			plat[y][x].solide = 1;
+			plateau[y][x].solide = 1;
 			// printf("plat[%i][%i].solide = %i\n", y, x, plat[y][x].solide);
 		}
 
@@ -585,6 +586,7 @@ int main(int argc, char** argv) {
 	// Pour voir si case solide
 	int pc_x, pc_y;
 	
+	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
 	v1.positionX = 7;
 	v1.positionY = 7;
 	v1.pm = 3;

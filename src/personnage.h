@@ -81,6 +81,7 @@ void affichagePersonnage(personnage p);
 
 void init_textures_personnage();
 void dessiner_personnage(personnage p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
+void free_personnage_c();
 void deplacements_personnage(int direction);
 
 #endif
