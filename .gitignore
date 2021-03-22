@@ -4,3 +4,4 @@ src/main.o
 src/nitroshift.exe
 points.txt
 .vscode/settings.json
+*.o
