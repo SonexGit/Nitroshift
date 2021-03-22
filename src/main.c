@@ -123,18 +123,42 @@ size_t handle_keys() {
 					{
 						v1.positionX++;
 						sprite = STAND_RIGHT;
+						if(v1.positionY == 0 && v1.positionX==14){
+						}
+						else if(v1.positionY == 0 ){
+						}
+						else{
+							v1.positionY--;
+						}
 					}
+					if (event.key.keysym.sym == SDLK_RIGHT)
+					{
+						if(v1.positionX == 14){
+						}
+						else{
+							v1.positionX++;
+					}
+				}
 					if (event.key.keysym.sym == SDLK_DOWN)
 					{
 						v1.positionY++;
 						sprite = STAND_DOWN;
+						if( v1.positionY==14){
+						}
+						else{
+							v1.positionY++;
+						}
 					}
 					if (event.key.keysym.sym == SDLK_LEFT)
 					{
+						if(v1.positionX == 0){
+						}
+						else{
 						v1.positionX--;
 						sprite = STAND_LEFT;
 					}
 				}
+			}
 				break;
 
 			case SDL_MOUSEWHEEL:
