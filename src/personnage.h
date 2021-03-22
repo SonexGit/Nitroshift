@@ -1,6 +1,8 @@
 #ifndef _PERSONNAGE_H_
 #define _PERSONNAGE_H_
 
+#include "header.h"
+
 /* Structure du personnage */
 typedef struct personnage_S {
     char * pseudo;
@@ -52,15 +54,27 @@ typedef struct acces_D {
 /* Liste des accès */
 acces a1;
 
+// Définition des sprites
+#define perso_row 4 // Combien de textures par ligne ?
+#define perso_col 1 // Combien de textures par colonne ?
+
 // Déclarations
 SDL_Surface * surface_perso;
 SDL_Texture * texture_perso;
+SDL_Rect src_perso[perso_row*perso_col];
 SDL_Rect dest_perso;
+
+#define STAND_LEFT 0
+#define STAND_UP 1
+#define STAND_RIGHT 2
+#define STAND_DOWN 3
 
 /* Fonction(s) utilisée(s) */
 void creationPersonnage(personnage * p);
 void creationAcces();
 void affichagePersonnage(personnage p);
-void dessiner_personnage();
+
+void init_textures_personnage();
+void dessiner_personnage(personnage p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
 
 #endif

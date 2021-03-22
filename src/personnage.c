@@ -104,24 +104,40 @@ void affichagePersonnage(personnage p){
     printf("Defense : %d\n", p.defense);
 }
 
-// Dessiner le personnage sur le plateau
-void dessiner_personnage(personnage p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x]) {
+// Textures du personnage
+void init_textures_personnage() {
 	surface_perso = IMG_Load("../data/personnages/personnageTest.png");
 	texture_perso = SDL_CreateTextureFromSurface(ren, surface_perso);
 
-	
+	int i = 0, j = 0, k = 0;
 
+	while (i < perso_col) {
+		for(; j < perso_row; j++) {
+			src_perso[j].w = 30;
+			src_perso[j].h = 80;
+			src_perso[j].x = j * src_perso[j].w;
+			src_perso[j].y = i * src_perso[j].h;
+			k++;
+		}
+		k = 0;
+		i++;
+	}
+}
+
+// Dessiner le personnage sur le plateau
+void dessiner_personnage(personnage p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
+	
 	int pos_x, pos_y, img_w, img_h;
 	img_w = surface_perso->w;
 	img_h = surface_perso->h;
-	pos_x = plat[v1.positionY][v1.positionX].pc.x - (img_w / 2);
+	pos_x = plat[v1.positionY][v1.positionX].pc.x - (img_w / (perso_row * 2));
 	pos_y = plat[v1.positionY][v1.positionX].pc.y - img_h + 5;
 	dest_perso.x = pos_x;
 	dest_perso.y = pos_y;
-	dest_perso.w = img_w;
-	dest_perso.h = img_h;
+	dest_perso.w = img_w / perso_row;
+	dest_perso.h = img_h / perso_col;
 
-	SDL_RenderCopy(ren, texture_perso, NULL, &dest_perso);
+	SDL_RenderCopy(ren, texture_perso, &src_perso[sprite], &dest_perso);
 }
 
 // Free général du fichier personnage.c

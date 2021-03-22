@@ -52,6 +52,9 @@ SDL_bool ipc_done = SDL_FALSE;
 SDL_bool lpcc_done = SDL_FALSE;
 SDL_bool flp_done = SDL_FALSE;
 
+/* Personnage */
+int sprite;
+
 /*
 	FINI - Objectif 1 : Placer un point au centre de chaque case pour pouvoir savoir sur quelle case le curseur se trouvera
 		FINI - Objectif 1.5 : Lier les cases à la matrice du plateau
@@ -114,18 +117,22 @@ size_t handle_keys() {
 					if (event.key.keysym.sym == SDLK_UP)
 					{
 						v1.positionY--;
+						sprite = STAND_UP;
 					}
 					if (event.key.keysym.sym == SDLK_RIGHT)
 					{
 						v1.positionX++;
+						sprite = STAND_RIGHT;
 					}
 					if (event.key.keysym.sym == SDLK_DOWN)
 					{
 						v1.positionY++;
+						sprite = STAND_DOWN;
 					}
 					if (event.key.keysym.sym == SDLK_LEFT)
 					{
 						v1.positionX--;
+						sprite = STAND_LEFT;
 					}
 				}
 				break;
@@ -584,8 +591,10 @@ int main(int argc, char** argv) {
 
 	// Pour voir si case solide
 	int pc_x, pc_y;
+	
 	v1.positionX = 7;
 	v1.positionY = 7;
+
 	while (1) {
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
 		SDL_RenderClear(ren);
@@ -658,7 +667,8 @@ int main(int argc, char** argv) {
 		// Dessin des personnages (joueur)
 		// ==============================================
 
-		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau);
+		init_textures_personnage();
+		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau, sprite);
 
 		SDL_RenderPresent(ren);
 		free_personnage_c();
