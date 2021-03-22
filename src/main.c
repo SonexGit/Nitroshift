@@ -587,6 +587,7 @@ int main(int argc, char** argv) {
 	
 	v1.positionX = 7;
 	v1.positionY = 7;
+	v1.pm = 3;
 
 	while (1) {
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);

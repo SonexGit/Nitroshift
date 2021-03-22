@@ -149,27 +149,36 @@ void free_personnage_c() {
 // Déplacements du personnage
 
 void deplacements_personnage(int direction) {
-	switch (direction) {
-		case UP:
-			sprite = STAND_UP;
-			if (v1.positionY == 0 && v1.positionX == 14);
-			else if (v1.positionY == 0);
-			else v1.positionY--;
-			break;
-		case RIGHT:
-			sprite = STAND_RIGHT;
-			if (v1.positionX == 14);
-			else v1.positionX++;
-			break;
-		case DOWN:
-			sprite = STAND_DOWN;
-			if (v1.positionY == 14);
-			else v1.positionY++;
-			break;
-		case LEFT:
-			sprite = STAND_LEFT;
-			if (v1.positionX == 0);
-			else v1.positionX--;
-			break;
+	if (v1.pm > 0) {
+		switch (direction) {
+			case UP:
+				sprite = STAND_UP;
+				if (v1.positionY == 0 && v1.positionX == 14);
+				else if (v1.positionY == 0);
+				else v1.positionY--;
+				v1.pm--;
+				break;
+			case RIGHT:
+				sprite = STAND_RIGHT;
+				if (v1.positionX == 14);
+				else v1.positionX++;
+				v1.pm--;
+				break;
+			case DOWN:
+				sprite = STAND_DOWN;
+				if (v1.positionY == 14);
+				else v1.positionY++;
+				v1.pm--;
+				break;
+			case LEFT:
+				sprite = STAND_LEFT;
+				if (v1.positionX == 0);
+				else v1.positionX--;
+				v1.pm--;
+				break;
+		}
+	}
+	else {
+		printf("v1 n'a plus de pm\n");
 	}
 }
