@@ -52,9 +52,6 @@ SDL_bool ipc_done = SDL_FALSE;
 SDL_bool lpcc_done = SDL_FALSE;
 SDL_bool flp_done = SDL_FALSE;
 
-/* Personnage */
-int sprite;
-
 /*
 	FINI - Objectif 1 : Placer un point au centre de chaque case pour pouvoir savoir sur quelle case le curseur se trouvera
 		FINI - Objectif 1.5 : Lier les cases à la matrice du plateau
@@ -116,28 +113,19 @@ size_t handle_keys() {
 				{
 					if (event.key.keysym.sym == SDLK_UP)
 					{
-						sprite = STAND_UP;
-						if (v1.positionY == 0 && v1.positionX == 14);
-						else if (v1.positionY == 0);
-						else v1.positionY--;
+						deplacements_personnage(UP);
 					}
 					if (event.key.keysym.sym == SDLK_RIGHT)
 					{
-						sprite = STAND_RIGHT;
-						if (v1.positionX == 14);
-						else v1.positionX++;
+						deplacements_personnage(RIGHT);
 					}
 					if (event.key.keysym.sym == SDLK_DOWN)
 					{
-						sprite = STAND_DOWN;
-						if (v1.positionY == 14);
-						else v1.positionY++;
+						deplacements_personnage(DOWN);
 					}
 					if (event.key.keysym.sym == SDLK_LEFT)
 					{
-						sprite = STAND_LEFT;
-						if (v1.positionX == 0);
-						else v1.positionX--;
+						deplacements_personnage(LEFT);
 					}
 				}
 				break;

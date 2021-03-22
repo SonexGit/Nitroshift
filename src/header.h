@@ -23,4 +23,7 @@ typedef struct cell_S {
 
 cell_T plateau[plateau_y][plateau_x];
 
+// Texture du personnage
+int sprite;
+
 #endif // HEADER_H_

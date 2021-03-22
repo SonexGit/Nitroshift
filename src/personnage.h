@@ -64,6 +64,11 @@ SDL_Texture * texture_perso;
 SDL_Rect src_perso[perso_row*perso_col];
 SDL_Rect dest_perso;
 
+#define LEFT 0
+#define UP 1
+#define RIGHT 2
+#define DOWN 3
+
 #define STAND_LEFT 0
 #define STAND_UP 1
 #define STAND_RIGHT 2
@@ -76,5 +81,6 @@ void affichagePersonnage(personnage p);
 
 void init_textures_personnage();
 void dessiner_personnage(personnage p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
+void deplacements_personnage(int direction);
 
 #endif

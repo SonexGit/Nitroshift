@@ -145,3 +145,31 @@ void free_personnage_c() {
 	SDL_DestroyTexture(surface_perso);
 	SDL_FreeSurface(surface_perso);
 }
+
+// Déplacements du personnage
+
+void deplacements_personnage(int direction) {
+	switch (direction) {
+		case UP:
+			sprite = STAND_UP;
+			if (v1.positionY == 0 && v1.positionX == 14);
+			else if (v1.positionY == 0);
+			else v1.positionY--;
+			break;
+		case RIGHT:
+			sprite = STAND_RIGHT;
+			if (v1.positionX == 14);
+			else v1.positionX++;
+			break;
+		case DOWN:
+			sprite = STAND_DOWN;
+			if (v1.positionY == 14);
+			else v1.positionY++;
+			break;
+		case LEFT:
+			sprite = STAND_LEFT;
+			if (v1.positionX == 0);
+			else v1.positionX--;
+			break;
+	}
+}
