@@ -18,6 +18,7 @@ typedef struct cell_S {
 	float x;
 	float y;
 	int solide;
+	int profondeur; // 0 = le plus loin de "nous"
 	SDL_Point pc; // Quel point centre pour cette cellule ?
 } cell_T;
 

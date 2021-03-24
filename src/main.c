@@ -9,7 +9,7 @@
 
 #include "header.h"
 #include "render.h"
-#include "personnage.h"
+#include "entite.h"
 
 int screen_w, screen_h;
 
@@ -538,6 +538,41 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	fclose(fichier_texture);
 }
 
+void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
+	/*
+	for (int i = 0; i < plateau_x; i++) {
+        for (int j = 0; j < plateau_y; j++) {
+            plat[i][j].profondeur = 0;
+        }
+    }
+	int case_x, case_y, profondeur;
+	plat[0][0].profondeur = 0;
+	for (case_x = 1, case_y = 0, profondeur = 1; profondeur < plateau_x; profondeur++) {
+		case_x = profondeur;
+		while (case_x >= 0) {
+			printf("case_x : %d, case_y : %d, profondeur : %d\n", case_x, case_y, profondeur);
+			plat[case_y][case_x].profondeur = profondeur;
+			printf("p[%i][%i].profondeur = %i\n", case_y, case_x, plat[case_y][case_x].profondeur);
+			case_x--;
+			case_y++;
+		}
+		case_y = 0;
+	}
+	plat[plateau_y-1][plateau_x-1].profondeur = (plateau_y*2-1);
+	for (case_x = plateau_x-1, case_y = plateau_y-1, profondeur = plateau_y*2-3; profondeur > plateau_x; profondeur--) {
+		case_x = profondeur - (plateau_x-1);
+		case_y = 14;
+		while (case_y >= profondeur) {
+			printf("case_x : %d, case_y : %d, profondeur : %d\n", case_x, case_y, profondeur);
+			plat[case_y][case_x].profondeur = profondeur;
+			printf("p[%i][%i].profondeur = %i\n", case_y, case_x, plat[case_y][case_x].profondeur);
+			case_x++;
+			case_y--;
+		}
+	}
+	*/
+}
+
 int main(int argc, char** argv) {
 	rendering();
 
@@ -567,14 +602,15 @@ int main(int argc, char** argv) {
 			// plateau[5][6].solide = 1;
         }
     }
-	/*
+
+	init_cases_profondeur(plateau);
+	printf("AIE : p[0][0].prof = %i\n", plateau[3][1].profondeur);
 	for (int i = 0; i < plateau_x; i++) {
 		for (int j = 0; j < plateau_y; j++) {
-			printf("%d ", plateau[i][j].solide);
+			printf("%d ", plateau[i][j].profondeur);
 		}
 		printf("\n");
 	}
-	*/
 
 	SDL_Surface * surface_mouse_hover = IMG_Load("../data/tiles/mouse_hover.png");
 	SDL_Texture * texture_mouse_hover = SDL_CreateTextureFromSurface(ren, surface_mouse_hover);
@@ -585,11 +621,11 @@ int main(int argc, char** argv) {
 
 	// Pour voir si case solide
 	int pc_x, pc_y;
-	
+
 	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
-	v1.positionX = 7;
-	v1.positionY = 7;
-	v1.pm = 3;
+	v1.positionX = 3;
+	v1.positionY = 3;
+	v1.pm = 100;
 
 	while (1) {
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
@@ -666,8 +702,13 @@ int main(int argc, char** argv) {
 		init_textures_personnage();
 		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau, sprite);
 
+		init_textures_ennemis();
+		dessiner_ennemi(e1, 2, 2, plateau, 0);
+		dessiner_ennemi(e2, 2, 3, plateau, 0);
+
 		SDL_RenderPresent(ren);
 		free_personnage_c();
+		free_ennemi_c();
 		free_texture_cases();
 		SDL_Delay(10);
 	}
