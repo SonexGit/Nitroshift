@@ -46,29 +46,11 @@ SDL_Rect tiles[tiles_row*tiles_col];
 
 int save;
 
-// Pour faire qu'une fois certaines fonctions dans la boucle while (1) du main (c'est du test)
-SDL_bool ip2d_done = SDL_FALSE;
-SDL_bool ipc_done = SDL_FALSE;
-SDL_bool lpcc_done = SDL_FALSE;
-SDL_bool flp_done = SDL_FALSE;
-
-/*
-	FINI - Objectif 1 : Placer un point au centre de chaque case pour pouvoir savoir sur quelle case le curseur se trouvera
-		FINI - Objectif 1.5 : Lier les cases à la matrice du plateau
-	FINI - Objectif 2 : Prendre la position de la souris, trouver dans quelle case elle se trouve et la mettre en surbrillance
-		FINI (à revoir) - Objectif 2.5 : Si trop distant d'une case, quand on est en dehors du plateau, enlever le mouse_hover
-	FINI - Objectif 3 : Essayer d'afficher quelque chose dans l'une des cases (une texture quoi)
-		FINI - Objectif 3.5 : Mettre les tiles dans une feuille (atlas) et les découper pour optimiser/récupérer des FPS
-	FINI - Objectif 4 : Gérer les collisions sur certaines cases
-		FINI - Objectif 4.1 : Enlever le mouse_hover si une case est solide
-		FINI - Objectif 4.5 : La dernière colonne du plateau ne fonctionne pas avec le hover, à résoudre.
-
-	- Objectif 5 : Optimiser un maximum
-		- Objectif 5.5 : Faire en sorte que le jeu s'adapte à toutes les tailles de fenêtre
-	- Objectif 6 : Implémenter les personnages avec les programmes annexes
-
-	- Problème : la première ligne de solidité bug ?
-*/
+// *********************************
+//
+// Fonctions
+//
+// *********************************
 
 SDL_Point Coord2DToIso(SDL_Point point) {
 	int temp_x = point.x - point.y;
@@ -539,7 +521,6 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 }
 
 void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
-	/*
 	for (int i = 0; i < plateau_x; i++) {
         for (int j = 0; j < plateau_y; j++) {
             plat[i][j].profondeur = 0;
@@ -550,67 +531,78 @@ void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
 	for (case_x = 1, case_y = 0, profondeur = 1; profondeur < plateau_x; profondeur++) {
 		case_x = profondeur;
 		while (case_x >= 0) {
-			printf("case_x : %d, case_y : %d, profondeur : %d\n", case_x, case_y, profondeur);
+			// printf("case_x : %d, case_y : %d, profondeur : %d\n", case_x, case_y, profondeur);
 			plat[case_y][case_x].profondeur = profondeur;
-			printf("p[%i][%i].profondeur = %i\n", case_y, case_x, plat[case_y][case_x].profondeur);
+			// printf("p[%i][%i].profondeur = %i\n", case_y, case_x, plat[case_y][case_x].profondeur);
 			case_x--;
 			case_y++;
 		}
 		case_y = 0;
 	}
 	plat[plateau_y-1][plateau_x-1].profondeur = (plateau_y*2-1);
-	for (case_x = plateau_x-1, case_y = plateau_y-1, profondeur = plateau_y*2-3; profondeur > plateau_x; profondeur--) {
-		case_x = profondeur - (plateau_x-1);
-		case_y = 14;
-		while (case_y >= profondeur) {
-			printf("case_x : %d, case_y : %d, profondeur : %d\n", case_x, case_y, profondeur);
+	for (case_x = plateau_x-1, case_y = 0, profondeur = plateau_y; profondeur < plateau_x*2-1; profondeur++) {
+		case_x = plateau_x - 1;
+		case_y++;
+		while (case_y <= 14) {
+			// printf("case_x : %d, case_y : %d, profondeur : %d\n", case_x, case_y, profondeur);
 			plat[case_y][case_x].profondeur = profondeur;
-			printf("p[%i][%i].profondeur = %i\n", case_y, case_x, plat[case_y][case_x].profondeur);
-			case_x++;
-			case_y--;
+			// printf("p[%i][%i].profondeur = %i\n", case_y, case_x, plat[case_y][case_x].profondeur);
+			case_x--;
+			case_y++;
 		}
+		case_y = case_x + 1;
 	}
-	*/
 }
 
-int main(int argc, char** argv) {
-	rendering();
+void init_id_entite_plateau(cell_T plat[plateau_y][plateau_x]) {
+	for (int i = 0; i < plateau_y; i++) {
+		for (int j = 0; j < plateau_x; j++) {
+			plat[i][j].e.id = 0;
+		}
+	}
+}
 
-	// Permet à la fenêtre de s'adapter à n'importe quelle taille
-	SDL_RenderSetLogicalSize(ren, SCREEN_ORIGINAL_WIDTH, SCREEN_ORIGINAL_HEIGHT);
-	SDL_SetWindowSize(win, SCREEN_WIDTH, SCREEN_HEIGHT);
+void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
+	for (int i = 0; i < plateau_y; i++) {
+		for (int j = 0; j < plateau_x; j++) {
+			if (plat[i][j].e.id != 0) dessiner_entite(plat[i][j].e, plat[i][j].e.positionX, plat[i][j].e.positionY, plat, sprite);
+		}
+	}
+}
 
-	// Récuperer taille de la fenêtre
-	SDL_GetWindowSize(win, &screen_w, &screen_h);
+void init_combat(int num_combat) {
+	switch (num_combat) {
+		case 1:
+			v1.positionX = 3;
+			v1.positionY = 3;
+			v1.pm = 100;
+			v1.equipe = ALLIES;
+			v1.id = 1;
+			v1.nom = "Héros";
 
+			e1.positionX = 2;
+			e1.positionY = 2;
+			e1.equipe = ENNEMIS;
+			e1.id = 101;
+			e1.nom = "Moustique";
+
+			e2.positionX = 1;
+			e2.positionY = 1;
+			e2.equipe = ENNEMIS;
+			e2.id = 102;
+			e2.nom = "Bot";
+			break;
+	}
+}
+
+int affichagePlateau() {
 	// Plateau
 	cell_T plateau[plateau_y][plateau_x];
-	
-	// SDL_Rect grid_cursor_ghost = {grid_cursor.x, grid_cursor.y, grid_cell_size, grid_cell_size};
-
-	SDL_Point pts_2D[plateau_x*plateau_y];
 
 	SDL_Cursor * cursor;
 	cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
 	SDL_Cursor * cursor_hover;
 	cursor_hover = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
-
-	// Met toutes les cases non solides et voir toutes les cases solides/pas solides sur le terminal
-	for (int i = 0; i < plateau_x; i++) {
-        for (int j = 0; j < plateau_y; j++) {
-            plateau[i][j].solide = 0;
-			// plateau[5][6].solide = 1;
-        }
-    }
-
-	init_cases_profondeur(plateau);
-	printf("AIE : p[0][0].prof = %i\n", plateau[3][1].profondeur);
-	for (int i = 0; i < plateau_x; i++) {
-		for (int j = 0; j < plateau_y; j++) {
-			printf("%d ", plateau[i][j].profondeur);
-		}
-		printf("\n");
-	}
 
 	SDL_Surface * surface_mouse_hover = IMG_Load("../data/tiles/mouse_hover.png");
 	SDL_Texture * texture_mouse_hover = SDL_CreateTextureFromSurface(ren, surface_mouse_hover);
@@ -619,44 +611,57 @@ int main(int argc, char** argv) {
 	SDL_Surface * icon = IMG_Load("../data/icon.png");
 	SDL_SetWindowIcon(win, icon);
 
+	// Met toutes les cases non solides
+	for (int i = 0; i < plateau_x; i++) {
+        for (int j = 0; j < plateau_y; j++) {
+            plateau[i][j].solide = 0;
+			// plateau[5][6].solide = 1;
+        }
+    }
+
 	// Pour voir si case solide
 	int pc_x, pc_y;
 
+	init_cases_profondeur(plateau);
+	for (int i = 0; i < plateau_x; i++) {
+		for (int j = 0; j < plateau_y; j++) {
+			printf("%d ", plateau[i][j].profondeur);
+		}
+		printf("\n");
+	}
+
 	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
-	v1.positionX = 3;
-	v1.positionY = 3;
-	v1.pm = 100;
+	init_combat(1);
+
+	// ==============================================
+	// Initialisation du plateau
+	// ==============================================
+
+	SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
+
+	// Dessine la grille (carré 4:3 dans 16:9)
+	dessiner_grille(points);
+	init_points_2D(pts_2D);
+
+	// Dessine le centre de chaque cellule (isométrique et cartésienne) à travers des points centre
+	init_point_centre(points_centre, points);
+	init_point_centre(pc_2D, pts_2D);
+
+	lien_pc_cases(points_centre, plateau);
+
+	// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
+	fileListPoints(points, points_centre);
+
+	init_cases_solide(1, plateau);
 
 	while (1) {
-		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
-		SDL_RenderClear(ren);
 
 		if (handle_keys() == 1) {
 			break;
 		}
 
-		// ==============================================
-		// Dessin du plateau
-		// ==============================================
-
-		SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
-
-		// Dessine la grille (carré 4:3 dans 16:9)
-		dessiner_grille(points);
-		if (!ip2d_done) init_points_2D(pts_2D);
-		ip2d_done = SDL_TRUE;
-
-		// Dessine le centre de chaque cellule (isométrique et cartésienne) à travers des points centre
-		if (!ipc_done) init_point_centre(points_centre, points);
-		if (!ipc_done) init_point_centre(pc_2D, pts_2D);
-		ipc_done = SDL_TRUE;
-		
-		if (!lpcc_done) lien_pc_cases(points_centre, plateau);
-		lpcc_done = SDL_TRUE;
-
-		// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
-		if (!flp_done) fileListPoints(points, points_centre);
-		flp_done = SDL_TRUE;
+		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
+		SDL_RenderClear(ren);
 
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
 
@@ -664,8 +669,6 @@ int main(int argc, char** argv) {
 		init_texture_cases(1, points_centre);
 
 		trouver_case_pc(points_centre[save], plateau, &pc_x, &pc_y);
-
-		init_cases_solide(1, plateau);
 
 		if (plateau[pc_y][pc_x].solide >= 1) {
 			// SDL_Delay(10);
@@ -700,11 +703,20 @@ int main(int argc, char** argv) {
 		// ==============================================
 
 		init_textures_personnage();
-		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau, sprite);
-
 		init_textures_ennemis();
+
+		/*
+		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau, sprite);
 		dessiner_ennemi(e1, 2, 2, plateau, 0);
 		dessiner_ennemi(e2, 2, 3, plateau, 0);
+		*/
+		
+		init_id_entite_plateau(plateau);
+		plateau[v1.positionY][v1.positionX].e = v1;
+		plateau[e1.positionY][e1.positionX].e = e1;
+		plateau[e2.positionY][e2.positionX].e = e2;
+		
+		affichage_entites(plateau);
 
 		SDL_RenderPresent(ren);
 		free_personnage_c();
@@ -719,6 +731,21 @@ int main(int argc, char** argv) {
 	SDL_FreeSurface(surface_test);
 	SDL_FreeCursor(cursor);
 	SDL_FreeCursor(cursor_hover);
+	return 0;
+}
+
+int main(int argc, char** argv) {
+	rendering();
+
+	// Récuperer taille de la fenêtre
+	SDL_GetWindowSize(win, &screen_w, &screen_h);
+	
+	isCombat = 1;
+
+	while (isCombat == 1) {
+		isCombat = affichagePlateau();
+	}
+
 	stopRendering();
 	return 0;
 }

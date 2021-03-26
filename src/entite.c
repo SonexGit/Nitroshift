@@ -2,6 +2,7 @@
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -130,12 +131,11 @@ void init_textures_personnage() {
 
 // Dessiner le personnage sur le plateau
 void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
-	
 	int pos_x, pos_y, img_w, img_h;
 	img_w = p.surface->w;
 	img_h = p.surface->h;
-	pos_x = plat[v1.positionY][v1.positionX].pc.x - (img_w / (perso_row * 2));
-	pos_y = plat[v1.positionY][v1.positionX].pc.y - img_h + 5;
+	pos_x = plat[case_y][case_x].pc.x - (img_w / (perso_row * 2));
+	pos_y = plat[case_y][case_x].pc.y - img_h + 5;
 	dest_perso.x = pos_x;
 	dest_perso.y = pos_y;
 	dest_perso.w = img_w / perso_row;
@@ -504,7 +504,7 @@ void init_textures_ennemis() {
 	while (i < ennemi_col) {
 		for(; j < ennemi_row; j++) {
 			src_ennemi[j].w = 40;
-			src_ennemi[j].h = 40;
+			src_ennemi[j].h = 80;
 			src_ennemi[j].x = j * src_ennemi[j].w;
 			src_ennemi[j].y = i * src_ennemi[j].h;
 			k++;
@@ -534,4 +534,18 @@ void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 void free_ennemi_c() {
 	SDL_DestroyTexture(e1.texture);
 	SDL_FreeSurface(e1.surface);
+}
+
+// Entités
+
+void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
+	if (e.equipe == ALLIES) {
+		dessiner_personnage(e, case_x, case_y, plat, sprite);
+	}
+	else if (e.equipe == ENNEMIS) {
+		dessiner_ennemi(e, case_x, case_y, plat, 0); // il faudra remplacer 0 à un moment
+	}
+	else {
+		// Ne rien faire
+	}
 }
