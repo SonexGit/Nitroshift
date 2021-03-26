@@ -152,6 +152,15 @@ void free_personnage_c() {
 
 // Déplacements du personnage
 void deplacements_personnage(int direction) {
+	/*
+	printf("AVANT DEPLACEMENTS\n");
+	for (int i = 0; i < plateau_x; i++) {
+		for (int j = 0; j < plateau_y; j++) {
+			printf("%d ", plateau[i][j].solide);
+		}
+		printf("\n");
+	}
+	*/
 	if (v1.pm > 0) {
 		switch (direction) {
 			case UP:
@@ -159,7 +168,11 @@ void deplacements_personnage(int direction) {
 				if (!plateau[v1.positionY-1][v1.positionX].solide) {
 					if (v1.positionY == 0 && v1.positionX == 14);
 					else if (v1.positionY == 0);
-					else v1.positionY--;
+					else {
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionY--;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					}
 					v1.pm--;
 				}
 				break;
@@ -167,7 +180,11 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_RIGHT;
 				if (!plateau[v1.positionY][v1.positionX+1].solide) {
 					if (v1.positionX == 14);
-					else v1.positionX++;
+					else {
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionX++;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					}
 					v1.pm--;
 				}
 				break;
@@ -175,7 +192,11 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_DOWN;
 				if (!plateau[v1.positionY+1][v1.positionX].solide) {
 					if (v1.positionY == 14);
-					else v1.positionY++;
+					else { 
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionY++;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					}
 					v1.pm--;
 				}
 				break;
@@ -183,7 +204,11 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_LEFT;
 				if (!plateau[v1.positionY][v1.positionX-1].solide) {
 					if (v1.positionX == 0);
-					else v1.positionX--;
+					else {
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionX--;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					} 
 					v1.pm--;
 				}
 				break;
@@ -192,6 +217,15 @@ void deplacements_personnage(int direction) {
 	else {
 		printf("v1 n'a plus de pm\n");
 	}
+	/*
+	printf("APRES DEPLACEMENTS\n");
+	for (int i = 0; i < plateau_x; i++) {
+		for (int j = 0; j < plateau_y; j++) {
+			printf("%d ", plateau[i][j].solide);
+		}
+		printf("\n");
+	}
+	*/
 }
 
 // ==============================================

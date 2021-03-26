@@ -202,7 +202,7 @@ void init_points_2D(SDL_Point points_2D[]) {
 	}
 }
 
-void dessiner_grille(SDL_Point points[]) {
+void init_points(SDL_Point points[]) {
 
 	int h = 0;
 	int i = 0;
@@ -459,6 +459,15 @@ void free_texture_cases() {
 }
 
 void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
+	// Met toutes les cases non solides
+	for (int a = 0; a < plateau_x; a++) {
+        for (int b = 0; b < plateau_y; b++) {
+			plat[a][b].solide = 0;
+            plateau[a][b].solide = 0;
+			// plateau[5][6].solide = 1;
+        }
+    }
+
 	FILE * fichier_texture;
 
 	int longueur = snprintf(NULL, 0, "%d", num_carte);
@@ -518,6 +527,15 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	free(repertoire_cartes);
 	free(buffer);
 	fclose(fichier_texture);
+
+	for (int a = 0; a < plateau_y; a++) {
+		for (int b = 0; b < plateau_x; b++) {
+			if (plat[a][b].e.id != 0) {
+				plat[a][b].solide = 1;
+				plateau[a][b].solide = 1;
+			}
+		}
+	}
 }
 
 void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
@@ -611,14 +629,6 @@ int affichagePlateau() {
 	SDL_Surface * icon = IMG_Load("../data/icon.png");
 	SDL_SetWindowIcon(win, icon);
 
-	// Met toutes les cases non solides
-	for (int i = 0; i < plateau_x; i++) {
-        for (int j = 0; j < plateau_y; j++) {
-            plateau[i][j].solide = 0;
-			// plateau[5][6].solide = 1;
-        }
-    }
-
 	// Pour voir si case solide
 	int pc_x, pc_y;
 
@@ -640,7 +650,7 @@ int affichagePlateau() {
 	SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
 
 	// Dessine la grille (carré 4:3 dans 16:9)
-	dessiner_grille(points);
+	init_points(points);
 	init_points_2D(pts_2D);
 
 	// Dessine le centre de chaque cellule (isométrique et cartésienne) à travers des points centre
@@ -652,7 +662,8 @@ int affichagePlateau() {
 	// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
 	fileListPoints(points, points_centre);
 
-	init_cases_solide(1, plateau);
+	// Pour que le personnage s'affiche dès le départ, on initialise sur une valeur correct sprite
+	sprite = 0;
 
 	while (1) {
 
@@ -710,6 +721,8 @@ int affichagePlateau() {
 		dessiner_ennemi(e1, 2, 2, plateau, 0);
 		dessiner_ennemi(e2, 2, 3, plateau, 0);
 		*/
+
+		init_cases_solide(1, plateau);
 		
 		init_id_entite_plateau(plateau);
 		plateau[v1.positionY][v1.positionX].e = v1;
