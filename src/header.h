@@ -27,4 +27,9 @@ cell_T plateau[plateau_y][plateau_x];
 // Texture du personnage
 int sprite;
 
+// Utile
+
+#define VRAI 1
+#define FAUX 0
+
 #endif // HEADER_H_

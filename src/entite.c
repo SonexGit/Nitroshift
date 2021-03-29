@@ -16,14 +16,22 @@
 /* Création du personnage */
 void creationPersonnage(entite * p){
     
+    /*
     printf("Veuillez saisir le nom du personnage : ");
     scanf("%s", p->nom);
+    */
 
+    p->nom = "Leo";
+
+    /*
     do{
         printf("Veuillez saisir la classe du personnage (DPS, Tank, Sniper, Healer) : ");
         scanf("%s", p->classe);
     }while(!(strcmp(p->classe,"DPS") == 0 || strcmp(p->classe,"Tank") == 0 || strcmp(p->classe,"Sniper") == 0 || strcmp(p->classe,"Healer") == 0));
+    */
+    p->classe = "DPS";
 
+    p->ID = 1;
     p->niveau = 1;
     p->paMax = 6;
     p->pmMax = 3;
@@ -202,29 +210,32 @@ void deplacements_personnage(int direction) {
 void creationEnnemi(){
     
     e1.nom = "Ennemi1";
-    
+
+    e1.ID = 101;    
     e1.niveau = 1;
     e1.hpMax = 200;
     e1.nitroMax = 300;
     e1.paMax = 6;
     e1.pmMax = 3;
-    e1.initiative = 2000;
+    e1.initiative = 200;
     e1.attaque = 70;
     e1.defense = 50;
 
     e2.nom = "Ennemi2";
     
+    e2.ID = 102;  
     e2.niveau = 1;
     e2.hpMax = 200;
     e2.nitroMax = 300;
     e2.paMax = 6;
     e2.pmMax = 3;
-    e2.initiative = 10;
+    e2.initiative = 100;
     e2.attaque = 70;
     e2.defense = 50;
 
     e3.nom = "Ennemi3";
     
+    e3.ID = 201;
     e3.niveau = 1;
     e3.hpMax = 200;
     e3.nitroMax = 300;
@@ -236,6 +247,7 @@ void creationEnnemi(){
 
     e4.nom = "Ennemi4";
     
+    e4.ID = 202;
     e4.niveau = 1;
     e4.hpMax = 200;
     e4.nitroMax = 300;
@@ -247,6 +259,7 @@ void creationEnnemi(){
 
     e5.nom = "Ennemi5";
     
+    e5.ID = 301;
     e5.niveau = 1;
     e5.hpMax = 200;
     e5.nitroMax = 300;
@@ -258,6 +271,7 @@ void creationEnnemi(){
 
     e6.nom = "Ennemi6";
     
+    e6.ID = 302;
     e6.niveau = 1;
     e6.hpMax = 200;
     e6.nitroMax = 300;
@@ -269,6 +283,7 @@ void creationEnnemi(){
 
     e7.nom = "Ennemi7";
     
+    e7.ID = 401;
     e7.niveau = 1;
     e7.hpMax = 200;
     e7.nitroMax = 300;
@@ -280,6 +295,7 @@ void creationEnnemi(){
 
     e8.nom = "Ennemi8";
     
+    e8.ID = 402;
     e8.niveau = 1;
     e8.hpMax = 200;
     e8.nitroMax = 300;
@@ -291,6 +307,7 @@ void creationEnnemi(){
 
     e9.nom = "Ennemi9";
     
+    e9.ID = 501;
     e9.niveau = 1;
     e9.hpMax = 200;
     e9.nitroMax = 300;
@@ -302,6 +319,7 @@ void creationEnnemi(){
 
     e10.nom = "Ennemi10";
     
+    e10.ID = 502;
     e10.niveau = 1;
     e10.hpMax = 200;
     e10.nitroMax = 300;
@@ -311,118 +329,9 @@ void creationEnnemi(){
     e10.attaque = 70;
     e10.defense = 50;
 
-    e11.nom = "Ennemi11";
-    
-    e11.niveau = 1;
-    e11.hpMax = 200;
-    e11.nitroMax = 300;
-    e11.paMax = 6;
-    e11.pmMax = 3;
-    e11.initiative = 100;
-    e11.attaque = 70;
-    e11.defense = 50;
-
-    e12.nom = "Ennemi12";
-    
-    e12.niveau = 1;
-    e12.hpMax = 200;
-    e12.nitroMax = 300;
-    e12.paMax = 6;
-    e12.pmMax = 3;
-    e12.initiative = 100;
-    e12.attaque = 70;
-    e12.defense = 50;
-
-    e13.nom = "Ennemi13";
-    
-    e13.niveau = 1;
-    e13.hpMax = 200;
-    e13.nitroMax = 300;
-    e13.paMax = 6;
-    e13.pmMax = 3;
-    e13.initiative = 100;
-    e13.attaque = 70;
-    e13.defense = 50;
-
-    e14.nom = "Ennemi14";
-    
-    e14.niveau = 1;
-    e14.hpMax = 200;
-    e14.nitroMax = 300;
-    e14.paMax = 6;
-    e14.pmMax = 3;
-    e14.initiative = 100;
-    e14.attaque = 70;
-    e14.defense = 50;
-
-    e15.nom = "Ennemi15";
-    
-    e15.niveau = 1;
-    e15.hpMax = 200;
-    e15.nitroMax = 300;
-    e15.paMax = 6;
-    e15.pmMax = 3;
-    e15.initiative = 100;
-    e15.attaque = 70;
-    e15.defense = 50;
-
-    e16.nom = "Ennemi16";
-    
-    e16.niveau = 1;
-    e16.hpMax = 200;
-    e16.nitroMax = 300;
-    e16.paMax = 6;
-    e16.pmMax = 3;
-    e16.initiative = 100;
-    e16.attaque = 70;
-    e16.defense = 50;
-
-    e17.nom = "Ennemi17";
-    
-    e17.niveau = 1;
-    e17.hpMax = 200;
-    e17.nitroMax = 300;
-    e17.paMax = 6;
-    e17.pmMax = 3;
-    e17.initiative = 100;
-    e17.attaque = 70;
-    e17.defense = 50;
-
-    e18.nom = "Ennemi18";
-    
-    e18.niveau = 1;
-    e18.hpMax = 200;
-    e18.nitroMax = 300;
-    e18.paMax = 6;
-    e18.pmMax = 3;
-    e18.initiative = 100;
-    e18.attaque = 70;
-    e18.defense = 50;
-
-    e19.nom = "Ennemi19";
-    
-    e19.niveau = 1;
-    e19.hpMax = 200;
-    e19.nitroMax = 300;
-    e19.paMax = 6;
-    e19.pmMax = 3;
-    e19.initiative = 100;
-    e19.attaque = 70;
-    e19.defense = 50;
-
-    e20.nom = "Ennemi20";
-    
-    e20.niveau = 1;
-    e20.hpMax = 200;
-    e20.nitroMax = 300;
-    e20.paMax = 6;
-    e20.pmMax = 3;
-    e20.initiative = 100;
-    e20.attaque = 70;
-    e20.defense = 50;
-
     b1.nom = "Boss1";
     
+    b1.ID = 100;
     b1.niveau = 1;
     b1.hpMax = 200;
     b1.nitroMax = 300;
@@ -434,6 +343,7 @@ void creationEnnemi(){
 
     b2.nom = "Boss2";
     
+    b2.ID = 200;
     b2.niveau = 1;
     b2.hpMax = 200;
     b2.nitroMax = 300;
@@ -445,6 +355,7 @@ void creationEnnemi(){
 
     b3.nom = "Boss3";
     
+    b3.ID = 300;
     b3.niveau = 1;
     b3.hpMax = 200;
     b3.nitroMax = 300;
@@ -456,6 +367,7 @@ void creationEnnemi(){
 
     b4.nom = "Boss4";
     
+    b4.ID = 400;
     b4.niveau = 1;
     b4.hpMax = 200;
     b4.nitroMax = 300;
@@ -467,6 +379,7 @@ void creationEnnemi(){
 
     b5.nom = "Boss5";
     
+    b5.ID = 500;
     b5.niveau = 1;
     b5.hpMax = 200;
     b5.nitroMax = 300;
