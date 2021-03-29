@@ -11,6 +11,8 @@
 #include "render.h"
 #include "entite.h"
 #include "sorts.h"
+#include "initialisation.h"
+#include "combat.h"
 
 int screen_w, screen_h;
 
@@ -598,31 +600,6 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
-void init_combat(int num_combat) {
-	switch (num_combat) {
-		case 1:
-			v1.positionX = 3;
-			v1.positionY = 3;
-			v1.pm = 100;
-			v1.equipe = ALLIES;
-			v1.id = 1;
-			v1.nom = "Héros";
-
-			e1.positionX = 2;
-			e1.positionY = 2;
-			e1.equipe = ENNEMIS;
-			e1.id = 101;
-			e1.nom = "Moustique";
-
-			e2.positionX = 1;
-			e2.positionY = 1;
-			e2.equipe = ENNEMIS;
-			e2.id = 102;
-			e2.nom = "Bot";
-			break;
-	}
-}
-
 int affichagePlateau() {
 	// Plateau
 	cell_T plateau[plateau_y][plateau_x];
@@ -650,8 +627,24 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
+	creationEnnemi();
 	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
-	init_combat(1);
+	e1.equipe = ENNEMIS;
+	e1.pm = 3;
+	e1.initiative = 1000;
+	e1.nom = "Moustique";
+
+	e2.equipe = ENNEMIS;
+	e2.pm = 3;
+	e2.initiative = 2000;
+	e2.nom = "Bot";
+
+	v1.equipe = ALLIES;
+	v1.pm = 100;
+	v1.initiative = 5000;
+	v1.nom = "Héro";
+	v1.id = 1;
+	initCombat(1);
 
 	// ==============================================
 	// Initialisation du plateau
