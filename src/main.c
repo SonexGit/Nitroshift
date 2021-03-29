@@ -10,6 +10,7 @@
 #include "header.h"
 #include "render.h"
 #include "entite.h"
+#include "sorts.h"
 
 int screen_w, screen_h;
 
@@ -111,7 +112,16 @@ size_t handle_keys() {
 					}
 				}
 				break;
-
+			case SDL_MOUSEBUTTONDOWN:
+				if (event.button.button == SDL_BUTTON_LEFT)
+				{
+					for(int i = 0; i < 1; i++) {
+						if (event.button.x >= liste_sorts[i].x && event.button.x <= liste_sorts[i].x+liste_sorts[i].w && event.button.y >= liste_sorts[i].y && event.button.y <= liste_sorts[i].y+liste_sorts[i].h) {
+							lancement_sort(&v1, 7, 12, sorts[0]);
+						}
+					}
+				}
+				break;
 			case SDL_MOUSEWHEEL:
 				if (event.wheel.y > 0) {
 					SDL_RenderGetScale(ren, &scale_x, &scale_y);
@@ -730,6 +740,8 @@ int affichagePlateau() {
 		plateau[e2.positionY][e2.positionX].e = e2;
 		
 		affichage_entites(plateau);
+
+		affichage_sorts();
 
 		SDL_RenderPresent(ren);
 		free_personnage_c();
