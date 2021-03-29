@@ -58,29 +58,6 @@ SDL_Rect dest_ennemi;
 #define ALLIES 0
 #define ENNEMIS 1
 
-typedef struct entite_S {
-	char * nom;
-	char * classe;
-	int niveau;
-	int hp;
-	int hpMax;
-	int nitro;
-	int nitroMax;
-	int pa;
-	int paMax;
-	int pm;
-	int pmMax;
-	int initiative;
-	int attaque;
-	int defense;
-	int positionX;
-	int positionY;
-	int profondeur; // 0 = le plus loin de "nous"
-	int equipe; // ALLIES ou ENNEMIS
-	SDL_Surface * surface;
-	SDL_Texture * texture;
-} entite;
-
 // Joueurs
 entite v1;
 
@@ -140,5 +117,8 @@ void affichageEnnemi(entite e);
 void init_textures_ennemis();
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
 void free_ennemi_c();
+
+// Entités
+void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
 
 #endif // _ENTITE_H_

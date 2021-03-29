@@ -2,6 +2,7 @@
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -138,12 +139,11 @@ void init_textures_personnage() {
 
 // Dessiner le personnage sur le plateau
 void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
-	
 	int pos_x, pos_y, img_w, img_h;
 	img_w = p.surface->w;
 	img_h = p.surface->h;
-	pos_x = plat[v1.positionY][v1.positionX].pc.x - (img_w / (perso_row * 2));
-	pos_y = plat[v1.positionY][v1.positionX].pc.y - img_h + 5;
+	pos_x = plat[case_y][case_x].pc.x - (img_w / (perso_row * 2));
+	pos_y = plat[case_y][case_x].pc.y - img_h + 5;
 	dest_perso.x = pos_x;
 	dest_perso.y = pos_y;
 	dest_perso.w = img_w / perso_row;
@@ -160,6 +160,15 @@ void free_personnage_c() {
 
 // Déplacements du personnage
 void deplacements_personnage(int direction) {
+	/*
+	printf("AVANT DEPLACEMENTS\n");
+	for (int i = 0; i < plateau_x; i++) {
+		for (int j = 0; j < plateau_y; j++) {
+			printf("%d ", plateau[i][j].solide);
+		}
+		printf("\n");
+	}
+	*/
 	if (v1.pm > 0) {
 		switch (direction) {
 			case UP:
@@ -167,7 +176,11 @@ void deplacements_personnage(int direction) {
 				if (!plateau[v1.positionY-1][v1.positionX].solide) {
 					if (v1.positionY == 0 && v1.positionX == 14);
 					else if (v1.positionY == 0);
-					else v1.positionY--;
+					else {
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionY--;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					}
 					v1.pm--;
 				}
 				break;
@@ -175,7 +188,11 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_RIGHT;
 				if (!plateau[v1.positionY][v1.positionX+1].solide) {
 					if (v1.positionX == 14);
-					else v1.positionX++;
+					else {
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionX++;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					}
 					v1.pm--;
 				}
 				break;
@@ -183,7 +200,11 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_DOWN;
 				if (!plateau[v1.positionY+1][v1.positionX].solide) {
 					if (v1.positionY == 14);
-					else v1.positionY++;
+					else { 
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionY++;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					}
 					v1.pm--;
 				}
 				break;
@@ -191,7 +212,11 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_LEFT;
 				if (!plateau[v1.positionY][v1.positionX-1].solide) {
 					if (v1.positionX == 0);
-					else v1.positionX--;
+					else {
+						plateau[v1.positionY][v1.positionX].solide = 0;
+						v1.positionX--;
+						plateau[v1.positionY][v1.positionX].solide = 1;
+					} 
 					v1.pm--;
 				}
 				break;
@@ -200,6 +225,15 @@ void deplacements_personnage(int direction) {
 	else {
 		printf("v1 n'a plus de pm\n");
 	}
+	/*
+	printf("APRES DEPLACEMENTS\n");
+	for (int i = 0; i < plateau_x; i++) {
+		for (int j = 0; j < plateau_y; j++) {
+			printf("%d ", plateau[i][j].solide);
+		}
+		printf("\n");
+	}
+	*/
 }
 
 // ==============================================
@@ -417,7 +451,7 @@ void init_textures_ennemis() {
 	while (i < ennemi_col) {
 		for(; j < ennemi_row; j++) {
 			src_ennemi[j].w = 40;
-			src_ennemi[j].h = 40;
+			src_ennemi[j].h = 80;
 			src_ennemi[j].x = j * src_ennemi[j].w;
 			src_ennemi[j].y = i * src_ennemi[j].h;
 			k++;
@@ -447,4 +481,18 @@ void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 void free_ennemi_c() {
 	SDL_DestroyTexture(e1.texture);
 	SDL_FreeSurface(e1.surface);
+}
+
+// Entités
+
+void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
+	if (e.equipe == ALLIES) {
+		dessiner_personnage(e, case_x, case_y, plat, sprite);
+	}
+	else if (e.equipe == ENNEMIS) {
+		dessiner_ennemi(e, case_x, case_y, plat, 0); // il faudra remplacer 0 à un moment
+	}
+	else {
+		// Ne rien faire
+	}
 }

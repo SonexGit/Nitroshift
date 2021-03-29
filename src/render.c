@@ -39,6 +39,9 @@ int rendering()
 	SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
 	// Mettre 0 pour au plus proche, 1 pour de l'AA
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
+	// Permet à la fenêtre de s'adapter à n'importe quelle taille
+	SDL_RenderSetLogicalSize(ren, SCREEN_ORIGINAL_WIDTH, SCREEN_ORIGINAL_HEIGHT);
+	SDL_SetWindowSize(win, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return EXIT_SUCCESS;
 }
