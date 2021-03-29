@@ -32,7 +32,7 @@ void creationPersonnage(entite * p){
     */
     p->classe = "DPS";
 
-    p->ID = 1;
+    p->id = 1;
     p->niveau = 1;
     p->paMax = 6;
     p->pmMax = 3;
@@ -245,7 +245,7 @@ void creationEnnemi(){
     
     e1.nom = "Ennemi1";
 
-    e1.ID = 101;    
+    e1.id = 101;    
     e1.niveau = 1;
     e1.hpMax = 200;
     e1.nitroMax = 300;
@@ -257,7 +257,7 @@ void creationEnnemi(){
 
     e2.nom = "Ennemi2";
     
-    e2.ID = 102;  
+    e2.id = 102;  
     e2.niveau = 1;
     e2.hpMax = 200;
     e2.nitroMax = 300;
@@ -269,7 +269,7 @@ void creationEnnemi(){
 
     e3.nom = "Ennemi3";
     
-    e3.ID = 201;
+    e3.id = 201;
     e3.niveau = 1;
     e3.hpMax = 200;
     e3.nitroMax = 300;
@@ -281,7 +281,7 @@ void creationEnnemi(){
 
     e4.nom = "Ennemi4";
     
-    e4.ID = 202;
+    e4.id = 202;
     e4.niveau = 1;
     e4.hpMax = 200;
     e4.nitroMax = 300;
@@ -293,7 +293,7 @@ void creationEnnemi(){
 
     e5.nom = "Ennemi5";
     
-    e5.ID = 301;
+    e5.id = 301;
     e5.niveau = 1;
     e5.hpMax = 200;
     e5.nitroMax = 300;
@@ -305,7 +305,7 @@ void creationEnnemi(){
 
     e6.nom = "Ennemi6";
     
-    e6.ID = 302;
+    e6.id = 302;
     e6.niveau = 1;
     e6.hpMax = 200;
     e6.nitroMax = 300;
@@ -317,7 +317,7 @@ void creationEnnemi(){
 
     e7.nom = "Ennemi7";
     
-    e7.ID = 401;
+    e7.id = 401;
     e7.niveau = 1;
     e7.hpMax = 200;
     e7.nitroMax = 300;
@@ -329,7 +329,7 @@ void creationEnnemi(){
 
     e8.nom = "Ennemi8";
     
-    e8.ID = 402;
+    e8.id = 402;
     e8.niveau = 1;
     e8.hpMax = 200;
     e8.nitroMax = 300;
@@ -341,7 +341,7 @@ void creationEnnemi(){
 
     e9.nom = "Ennemi9";
     
-    e9.ID = 501;
+    e9.id = 501;
     e9.niveau = 1;
     e9.hpMax = 200;
     e9.nitroMax = 300;
@@ -353,7 +353,7 @@ void creationEnnemi(){
 
     e10.nom = "Ennemi10";
     
-    e10.ID = 502;
+    e10.id = 502;
     e10.niveau = 1;
     e10.hpMax = 200;
     e10.nitroMax = 300;
@@ -365,7 +365,7 @@ void creationEnnemi(){
 
     b1.nom = "Boss1";
     
-    b1.ID = 100;
+    b1.id = 100;
     b1.niveau = 1;
     b1.hpMax = 200;
     b1.nitroMax = 300;
@@ -377,7 +377,7 @@ void creationEnnemi(){
 
     b2.nom = "Boss2";
     
-    b2.ID = 200;
+    b2.id = 200;
     b2.niveau = 1;
     b2.hpMax = 200;
     b2.nitroMax = 300;
@@ -389,7 +389,7 @@ void creationEnnemi(){
 
     b3.nom = "Boss3";
     
-    b3.ID = 300;
+    b3.id = 300;
     b3.niveau = 1;
     b3.hpMax = 200;
     b3.nitroMax = 300;
@@ -401,7 +401,7 @@ void creationEnnemi(){
 
     b4.nom = "Boss4";
     
-    b4.ID = 400;
+    b4.id = 400;
     b4.niveau = 1;
     b4.hpMax = 200;
     b4.nitroMax = 300;
@@ -413,7 +413,7 @@ void creationEnnemi(){
 
     b5.nom = "Boss5";
     
-    b5.ID = 500;
+    b5.id = 500;
     b5.niveau = 1;
     b5.hpMax = 200;
     b5.nitroMax = 300;
