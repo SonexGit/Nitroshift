@@ -16,7 +16,7 @@ int parcours = 0;
 
 int estUnBoss(entite e){
 
-    if(e.ID == 100 || e.ID == 200 || e.ID == 300 || e.ID == 400 || e.ID == 500){
+    if(e.id == 100 || e.id == 200 || e.id == 300 || e.id == 400 || e.id == 500){
         return VRAI;
     }
 
@@ -200,7 +200,7 @@ void tourEnnemi(){
 void deroulementCombat(){
     
     for(parcours = 0; parcours <= nbEntite; parcours++){
-        if(ordrePassage[parcours].ID == 1){
+        if(ordrePassage[parcours].id == 1){
             printf("\n\nahahhahahaha1\n\n");
             /* tourPersonnage(); */
             printf("\n\nahahhahahaha2\n\n");
