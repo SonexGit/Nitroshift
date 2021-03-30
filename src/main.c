@@ -630,20 +630,18 @@ int affichagePlateau() {
 	creationEnnemi();
 	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
 	e1.equipe = ENNEMIS;
-	e1.pm = 3;
 	e1.initiative = 1000;
 	e1.nom = "Moustique";
 
 	e2.equipe = ENNEMIS;
-	e2.pm = 3;
 	e2.initiative = 2000;
 	e2.nom = "Bot";
 
 	v1.equipe = ALLIES;
-	v1.pm = 100;
 	v1.initiative = 5000;
-	v1.nom = "Héro";
+	v1.nom = "Hero";
 	v1.id = 1;
+	v1.pm = 4;
 	initCombat(1);
 
 	// ==============================================
@@ -651,6 +649,7 @@ int affichagePlateau() {
 	// ==============================================
 
 	SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
+
 
 	// Dessine la grille (carré 4:3 dans 16:9)
 	init_points(points);
@@ -668,12 +667,13 @@ int affichagePlateau() {
 	// Pour que le personnage s'affiche dès le départ, on initialise sur une valeur correct sprite
 	sprite = 0;
 
+	finTempsAllie = 0;
+
 	while (1) {
 
 		if (handle_keys() == 1) {
 			break;
 		}
-
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
 		SDL_RenderClear(ren);
 
@@ -716,8 +716,18 @@ int affichagePlateau() {
 		// Dessin des personnages (joueur)
 		// ==============================================
 
+
 		init_textures_personnage();
 		init_textures_ennemis();
+
+
+		if(v1.pm <= 0){
+			if(finTempsAllie == 0){
+				tempsDebutPlateau = SDL_GetTicks();
+				finTempsAllie = 1;
+			}
+			deroulementCombat(1);
+		}
 
 		/*
 		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau, sprite);
@@ -736,7 +746,7 @@ int affichagePlateau() {
 
 		affichage_sorts();
 
-		SDL_RenderPresent(ren);
+		SDL_RenderPresent(ren);		
 		free_personnage_c();
 		free_ennemi_c();
 		free_texture_cases();

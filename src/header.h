@@ -61,4 +61,7 @@ int sprite;
 #define VRAI 1
 #define FAUX 0
 
+int finTempsAllie;
+int tempsDebutPlateau;
+
 #endif // HEADER_H_

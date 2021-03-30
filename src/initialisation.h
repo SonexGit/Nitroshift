@@ -3,9 +3,6 @@
 
 #include "header.h"
 
-entite ordrePassage[4];
-int nbEntite;
-
-void initCombat(int numCarte);
+void initCombat(int level);
 
 #endif // _INITIALISATION_H_

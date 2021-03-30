@@ -3,13 +3,9 @@
 
 #include "header.h"
 
-/* Variables */
-int tourP;
-
 /* Fonctions */
-int estUnBoss(entite e);
-void tourPersonnage();
-void tourEnnemi();
-void deroulementCombat();
+int estUnBoss(entite * e);
+void actionEnnemi(entite * e);
+void deroulementCombat(int level);
 
 #endif // _COMBAT_H_
