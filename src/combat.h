@@ -5,6 +5,7 @@
 
 /* Fonctions */
 int estUnBoss(entite * e);
+void iaEnnemi(entite * e);
 void actionEnnemi(entite * e);
 void deroulementCombat(int level);
 

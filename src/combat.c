@@ -24,22 +24,208 @@ int estUnBoss(entite * e){
     return FAUX;
 }
 
-void actionEnnemi(entite * e){
+void iaEnnemi(entite * e){
 
-    int boss, prec, tempsActuel;
+    int boss, prec, ligne, colonne, comparaisonLigne, comparaisonColonne;
     int flag = 0;
 
     boss = estUnBoss(e);
+
+    if(!boss){
+        if(e->positionX == v1.positionX){ /* Même colonne */
+            if(v1.positionY - e->positionY > 0){ /* Ennemi doit descendre */
+                if(!(plateau[e->positionY+1][e->positionX].solide)){ /* Case non solide en bas */
+                    prec = e->positionY;
+                    e->positionY++;
+                    e->pm--;
+                    flag = 0;
+                }
+                else{ /* Case solide */
+                    if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                        prec = e->positionX;
+                        e->positionX--;
+                        e->pm--;
+                        flag = 1;                        
+                    }
+                    else{ /* Case solide donc il va à droite*/
+                        prec = e->positionX;
+                        e->positionX++;
+                        e->pm--;
+                        flag = 1;   
+                    }
+                }
+            }
+            else{ /* Ennemi doit monter */
+                if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                    prec = e->positionY;
+                    e->positionY--;
+                    e->pm--;
+                    flag = 0;
+                }
+                else{ /* Case solide */
+                    if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                        prec = e->positionX;
+                        e->positionX--;
+                        e->pm--;
+                        flag = 1;                        
+                    }
+                    else{ /* Case solide donc il va à droite*/
+                        prec = e->positionX;
+                        e->positionX++;
+                        e->pm--;
+                        flag = 1;   
+                    }
+                }
+            }
+        }
+        else if(e->positionY == v1.positionY){ /* Même ligne */
+            if(v1.positionX - e->positionX > 0){ /* Ennemi doit aller à droite */
+                if(!(plateau[e->positionY][e->positionX+1].solide)){ /* Case non solide à droite */
+                    e->positionX++;
+                    e->pm--;
+                    flag = 0;
+                }
+                else{ /* Case solide */
+                    if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                        e->positionY--;
+                        e->pm--;
+                        flag = 2;                         
+                    }
+                    else{ /* Case solide donc il va en bas*/
+                        e->positionY++;
+                        e->pm--;
+                        flag = 2;    
+                    }
+                }
+            }
+            else{ /* Ennemi doit aller à gauche */
+                if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                    e->positionX--;
+                    e->pm--;
+                    flag = 0; 
+                }
+                else{ /* Case solide */
+                    if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                        e->positionY--;
+                        e->pm--;
+                        flag = 2;                         
+                    }
+                    else{ /* Case solide donc il va en bas*/
+                        e->positionY++;
+                        e->pm--;
+                        flag = 2;   
+                    }
+                }
+            }
+        }
+        else{ /* Aucun des deux */
+
+            // ---------------------------------------------------------
+
+            ligne = v1.positionY - e->positionY; // 6 - 12
+            colonne = v1.positionX - e->positionX; // 8 - 7
+            if(ligne >= 0){
+                comparaisonLigne = ligne;
+            }
+            else{
+                comparaisonLigne = e->positionY - v1.positionY;
+            }
+
+            if(colonne >= 0){
+                comparaisonColonne = colonne;
+            }
+            else{
+                comparaisonColonne = e->positionX - v1.positionX;
+            }
+
+            // ---------------------------------------------------------
+
+            if((comparaisonLigne >= comparaisonColonne && flag == 0) || flag == 2){ /* Ennemi va se mettre sur la même colonne en premier (car moins loin ou égal sans compter les obstacles) */
+                if(v1.positionX - e->positionX > 0){ /* Ennemi doit aller à droite */
+                    if(!(plateau[e->positionY][e->positionX+1].solide)){ /* Case non solide à droite */
+                        e->positionX++;
+                        e->pm--;
+                    }
+                    else{ /* Case solide */
+                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                            e->positionY--;
+                            e->pm--;                        
+                        }  
+                        else{ /* Case solide donc il va en bas*/
+                            e->positionY++;
+                            e->pm--;   
+                        }
+                    }
+                }
+                else{ /* Ennemi doit aller à gauche */
+                    if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide en bas */
+                        e->positionX--;
+                        e->pm--;
+                    }
+                    else{ /* Case solide */
+                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                            e->positionY--;
+                            e->pm--;                        
+                        }
+                        else{ /* Case solide donc il va en bas*/
+                            e->positionY++;
+                            e->pm--;   
+                        }
+                    }
+                }
+            }
+            else{ /* Ennemi va se mettre sur la même ligne en premier (car moins loin sans compter les obstacles) */
+                if(v1.positionY - e->positionY > 0){ /* Ennemi doit descendre */
+                    if(!(plateau[e->positionY+1][e->positionX].solide)){ /* Case non solide en bas */
+                        e->positionY++;
+                        e->pm--;
+                    }
+                    else{ /* Case solide */
+                        if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                            e->positionX--;
+                            e->pm--;                        
+                        }
+                        else{ /* Case solide donc il va à droite*/
+                            e->positionX++;
+                            e->pm--;   
+                        }
+                    }
+                }
+                else{ /* Ennemi doit monter */
+                    if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                        e->positionY--;
+                        e->pm--;
+                    }
+                    else{ /* Case solide */
+                        if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                            e->positionX--;
+                            e->pm--;                        
+                        }
+                        else{ /* Case solide donc il va à droite*/
+                            e->positionX++;
+                            e->pm--;   
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else{
+        
+    }
+}    
+
+
+void actionEnnemi(entite * e){
+
+    int tempsActuel;
+
     tempsActuel = SDL_GetTicks();
 
     if(e->pm > 0){
         if(tempsActuel - tempsDebutPlateau > 1000){
-            if(e->positionX == 14);
-            else{
-                e->positionX++;
-                e->pm--;
-                tempsDebutPlateau = SDL_GetTicks();
-            }
+            iaEnnemi(e);
+            tempsDebutPlateau = SDL_GetTicks();
         }
     }
     else{
@@ -66,33 +252,3 @@ void deroulementCombat(int level){
             
     }
 }
-
-/*
-void actionEnnemi(entite * e){
-
-    int boss, prec;
-    int flag = 0;
-
-    boss = estUnBoss(e);
-
-    if(e->pm > 0){
-        if(!boss){
-            if(e->positionX == v1.positionX){
-                
-            }
-            else if(e->positionY == v1.positionY){
-
-            }
-            else{
-
-            }
-        }
-        else{
-            
-        }
-    }
-    else{
-        tourTermine = 1;
-    }
-}
-*/
