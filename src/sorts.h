@@ -9,6 +9,7 @@ typedef struct sort_S {
 	int id;
 	char * nom;
 	char * description;
+	int relance;
 	int degats;
 	int portee;
 	int coutPA;
@@ -19,6 +20,17 @@ typedef struct sort_S {
 } sort_T;
 
 sort_T sorts[MAX_SORTS];
+
+sort_T sortsEnnemi1[MAX_SORTS];
+sort_T sortsEnnemi2[MAX_SORTS];
+sort_T sortsEnnemi3[MAX_SORTS];
+sort_T sortsEnnemi4[MAX_SORTS];
+sort_T sortsEnnemi5[MAX_SORTS];
+sort_T sortsEnnemi6[MAX_SORTS];
+sort_T sortsEnnemi7[MAX_SORTS];
+sort_T sortsEnnemi8[MAX_SORTS];
+sort_T sortsEnnemi9[MAX_SORTS];
+sort_T sortsEnnemi10[MAX_SORTS];
 
 SDL_Rect liste_sorts[10];
 

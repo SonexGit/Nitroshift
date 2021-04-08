@@ -629,19 +629,12 @@ int affichagePlateau() {
 
 	creationEnnemi();
 	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
-	e1.equipe = ENNEMIS;
-	e1.initiative = 1000;
-	e1.nom = "Moustique";
-
-	e2.equipe = ENNEMIS;
-	e2.initiative = 2000;
-	e2.nom = "Bot";
-
 	v1.equipe = ALLIES;
-	v1.initiative = 5000;
+	v1.hpMax = 1000;
+	v1.hp = v1.hpMax;
 	v1.nom = "Hero";
 	v1.id = 1;
-	v1.pm = 4;
+	v1.pm = 10;
 	initCombat(1);
 
 	// ==============================================

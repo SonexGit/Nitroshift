@@ -11,8 +11,8 @@
 #include "render.h"
 
 sort_T sorts[MAX_SORTS] = {
-	{0, "Téléportation", "Test", 0, 10, 0, 0, NULL, NULL},
-	{1, "Boost PM", "Test", 0, 0, 0, 0, NULL, NULL}
+	{0, "Téléportation", "Test", 0, 0, 10, 0, 0, NULL, NULL},
+	{1, "Boost PM", "Test", 0, 0, 0, 0, 0, NULL, NULL}
 };
 
 void affichage_sorts() {
