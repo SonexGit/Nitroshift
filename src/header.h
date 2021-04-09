@@ -6,7 +6,7 @@
 #define plateau_y 15
 
 // Tiles.png (l'atlas des textures des cases du plateau)
-#define tiles_row 4 // Combien de textures par ligne ?
+#define tiles_row 15 // Combien de textures par ligne ?
 #define tiles_col 1 // Combien de textures par colonne ?
 
 // Taille d'une cellule
@@ -45,6 +45,8 @@ typedef struct cell_S {
 	int profondeur; // 0 = le plus loin de "nous"
 	entite e;
 	SDL_Point pc; // Quel point centre pour cette cellule ?
+	SDL_Surface * sort_surface;
+	SDL_Texture * sort_texture;
 } cell_T;
 
 cell_T plateau[plateau_y][plateau_x];
