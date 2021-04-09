@@ -101,7 +101,7 @@ entite b5;
 
 /* Fonction(s) utilisée(s) */
 // Personnages
-void creationPersonnage(entite * p);
+void creationPersonnage();
 void creationAcces();
 void affichagePersonnage(entite p);
 

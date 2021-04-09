@@ -63,16 +63,20 @@ void initCombat(int level){
         
         e1.tempsRelance = 0;
         e1.relanceBoost = 1;
+        e1.hp = e1.hpMax;
         statsMaximum(&e1);
         e1.positionX = 7;
         e1.positionY = 13;
 
         e2.tempsRelance = 0;
         e2.relanceBoost = 1;
+        e2.hp = e2.hpMax;
         statsMaximum(&e2);
         e2.positionX = 8;
         e2.positionY = 13;
 
+        v1.hp = v1.hpMax;
+        statsMaximum(&v1);
         v1.positionX = 8;
         v1.positionY = 2;          
     }

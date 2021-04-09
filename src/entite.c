@@ -15,52 +15,42 @@
 // ==============================================
 
 /* Création du personnage */
-void creationPersonnage(entite * p){
-    
-    /*
-    printf("Veuillez saisir le nom du personnage : ");
-    scanf("%s", p->nom);
-    */
+void creationPersonnage(){
 
-    p->nom = "Leo";
+    v1.nom = "Personnage";
 
-    /*
-    do{
-        printf("Veuillez saisir la classe du personnage (DPS, Tank, Sniper, Healer) : ");
-        scanf("%s", p->classe);
-    }while(!(strcmp(p->classe,"DPS") == 0 || strcmp(p->classe,"Tank") == 0 || strcmp(p->classe,"Sniper") == 0 || strcmp(p->classe,"Healer") == 0));
-    */
-    p->classe = "DPS";
+    // Faire les if des cliques pour sélect
+    v1.classe = "Sniper";
 
-    p->id = 1;
-    p->niveau = 1;
-    p->paMax = 6;
-    p->pmMax = 3;
-    p->initiative = 100;
+    v1.id = 1;
+    v1.equipe = ALLIES;
+    v1.niveau = 1;
+    v1.paMax = 6;
+    v1.pmMax = 3;
 
-    if(strcmp(p->classe,"DPS") == 0){
-        p->hpMax = 50;
-        p->nitroMax = 100;
-        p->attaque = 40;
-        p->defense = 20;
+    if(strcmp(v1.classe,"DPS") == 0){
+        v1.hpMax = 50;
+        v1.nitroMax = 100;
+        v1.attaque = 40;
+        v1.defense = 20;
     }
-    else if(strcmp(p->classe,"Tank") == 0){
-        p->hpMax = 100;
-        p->nitroMax = 70;
-        p->attaque = 15;
-        p->defense = 40;
+    else if(strcmp(v1.classe,"Tank") == 0){
+        v1.hpMax = 100;
+        v1.nitroMax = 70;
+        v1.attaque = 15;
+        v1.defense = 40;
     }
-    else if(strcmp(p->classe,"Sniper") == 0){
-        p->hpMax = 40;
-        p->nitroMax = 80;
-        p->attaque = 60;
-        p->defense = 15;
+    else if(strcmp(v1.classe,"Sniper") == 0){
+        v1.hpMax = 1000;
+        v1.nitroMax = 80;
+        v1.attaque = 60;
+        v1.defense = 15;
     }
-    else if(strcmp(p->classe,"Healer") == 0){
-        p->hpMax = 70;
-        p->nitroMax = 200;
-        p->attaque = 20;
-        p->defense = 20;
+    else if(strcmp(v1.classe,"Healer") == 0){
+        v1.hpMax = 70;
+        v1.nitroMax = 200;
+        v1.attaque = 20;
+        v1.defense = 20;
     }
 }
 
@@ -119,7 +109,20 @@ void affichagePersonnage(entite p){
 
 // Textures du personnage
 void init_textures_personnage() {
-	v1.surface = IMG_Load("../data/personnages/personnageTest.png");
+
+    if(strcmp(v1.classe,"DPS") == 0){
+        v1.surface = IMG_Load("../data/personnages/personnageDPS.png");
+    }
+    else if(strcmp(v1.classe,"Tank") == 0){
+        v1.surface = IMG_Load("../data/personnages/personnageTank.png");
+    }
+    else if(strcmp(v1.classe,"Sniper") == 0){
+        v1.surface = IMG_Load("../data/personnages/personnageSniper.png");
+    }
+    else if(strcmp(v1.classe,"Healer") == 0){
+        v1.surface = IMG_Load("../data/personnages/personnageHealer.png");
+    }
+
 	v1.texture = SDL_CreateTextureFromSurface(ren, v1.surface);
 
 	int i = 0, j = 0, k = 0;

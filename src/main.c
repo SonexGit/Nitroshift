@@ -1,6 +1,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -628,13 +629,7 @@ int affichagePlateau() {
 	}
 
 	creationEnnemi();
-	// Initialisation (pour tester - à enlever/mettre ailleurs pour la fin)
-	v1.equipe = ALLIES;
-	v1.hpMax = 1000;
-	v1.hp = v1.hpMax;
-	v1.nom = "Hero";
-	v1.id = 1;
-	v1.pm = 10;
+	creationPersonnage();
 	initCombat(1);
 
 	// ==============================================
