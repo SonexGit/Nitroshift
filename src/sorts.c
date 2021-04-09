@@ -12,9 +12,10 @@
 #include "render.h"
 
 sort_T sorts[MAX_SORTS] = {
-	{0, "Attaque de base", "Test", 25, 40, 1, 2, 0, NULL, NULL, 1},
-	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 4, 1, 3, NULL, NULL, 1},
-	{2, "Téléportation", "Test", 0, 0, 5, 0, 5, NULL, NULL, 1}
+	{0, "Attaque de base", "Test", 25, 40, 1, 1, 2, 0, NULL, NULL, 1},
+	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 2, 4, 1, 3, NULL, NULL, 1},
+	{2, "Téléportation", "Test", 0, 0, 5, 5, 0, 5, NULL, NULL, 1},
+	{3, "Boost PM", "Test", 0, 0, 4, 0, 0, 0, NULL, NULL}
 };
 
 void affichage_sorts() {
