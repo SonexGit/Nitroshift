@@ -72,34 +72,34 @@ int rechercheDegatSort(entite * e){
 
     switch(e->id){
         case 101 :
-            return sortsEnnemi1[0].degats;
+            return sortsEnnemi1[0].degatsMin;
             break;
         case 102 :
-            return sortsEnnemi2[0].degats;
+            return sortsEnnemi2[0].degatsMin;
             break;
         case 201 :
-            return sortsEnnemi3[0].degats;
+            return sortsEnnemi3[0].degatsMin;
             break;
         case 202 :
-            return sortsEnnemi4[0].degats;
+            return sortsEnnemi4[0].degatsMin;
             break;
         case 301 :
-            return sortsEnnemi5[0].degats;
+            return sortsEnnemi5[0].degatsMin;
             break;
         case 302 :
-            return sortsEnnemi6[0].degats;
+            return sortsEnnemi6[0].degatsMin;
             break;
         case 401 :
-            return sortsEnnemi7[0].degats;
+            return sortsEnnemi7[0].degatsMin;
             break;
         case 402 :
-            return sortsEnnemi8[0].degats;
+            return sortsEnnemi8[0].degatsMin;
             break;
         case 501 :
-            return sortsEnnemi9[0].degats;
+            return sortsEnnemi9[0].degatsMin;
             break;
         case 502 :
-            return sortsEnnemi10[0].degats;
+            return sortsEnnemi10[0].degatsMin;
             break;
     }
 }
@@ -222,8 +222,8 @@ int boostEnnemi(entite * e){
         switch(e->id){
             case 101 :
                 if(e->relanceBoost == 1){
-                    e->nitro += sortsEnnemi1[1].degats; /* On ajoute la nitro du boost */
-                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi1[1].degats);
+                    e->nitro += sortsEnnemi1[1].degatsMin; /* On ajoute la nitro du boost */
+                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi1[1].degatsMin);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     printf("Nitro restante : %i\n", e->nitro);
@@ -236,8 +236,8 @@ int boostEnnemi(entite * e){
                 break;
             case 102 :
                 if(e->relanceBoost == 1){
-                    e->pm += sortsEnnemi2[1].degats; /* On ajoute les PM du boost */
-                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi2[1].degats);
+                    e->pm += sortsEnnemi2[1].degatsMin; /* On ajoute les PM du boost */
+                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi2[1].degatsMin);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     printf("PM restant : %i\n", e->pm);

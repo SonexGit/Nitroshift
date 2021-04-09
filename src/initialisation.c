@@ -21,7 +21,8 @@ void initCombat(int level){
         sortsEnnemi1[0].nom = "Lame de glace";
         sortsEnnemi1[0].description = "Test";
         sortsEnnemi1[0].relance = 0;
-        sortsEnnemi1[0].degats = 100;
+        sortsEnnemi1[0].degatsMin = 100;
+		sortsEnnemi1[0].degatsMax = 100;
         sortsEnnemi1[0].portee = 3;
         sortsEnnemi1[0].coutPA = 0;
         sortsEnnemi1[0].coutNitro = 100;
@@ -32,7 +33,8 @@ void initCombat(int level){
         sortsEnnemi1[1].nom = "Boost Nitro";
         sortsEnnemi1[1].description = "Test";
         sortsEnnemi1[1].relance = 3;
-        sortsEnnemi1[1].degats = 100;
+        sortsEnnemi1[1].degatsMin = 100;
+		sortsEnnemi1[1].degatsMax = 100;
         sortsEnnemi1[1].portee = 0;
         sortsEnnemi1[1].coutPA = 3;
         sortsEnnemi1[1].coutNitro = 0;
@@ -43,7 +45,8 @@ void initCombat(int level){
         sortsEnnemi2[0].nom = "Lame de feu";
         sortsEnnemi2[0].description = "Test";
         sortsEnnemi2[0].relance = 0;
-        sortsEnnemi2[0].degats = 100;
+        sortsEnnemi2[0].degatsMin = 100;
+		sortsEnnemi2[0].degatsMax = 100;
         sortsEnnemi2[0].portee = 3;
         sortsEnnemi2[0].coutPA = 0;
         sortsEnnemi2[0].coutNitro = 100;
@@ -54,7 +57,8 @@ void initCombat(int level){
         sortsEnnemi2[1].nom = "Boost PM";
         sortsEnnemi2[1].description = "Test";
         sortsEnnemi2[1].relance = 3;
-        sortsEnnemi2[1].degats = 3;
+        sortsEnnemi2[1].degatsMin = 3;
+		sortsEnnemi2[1].degatsMax = 3;
         sortsEnnemi2[1].portee = 0;
         sortsEnnemi2[1].coutPA = 3;
         sortsEnnemi2[1].coutNitro = 100;
