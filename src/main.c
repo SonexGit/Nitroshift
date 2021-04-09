@@ -118,9 +118,10 @@ size_t handle_keys() {
 			case SDL_MOUSEBUTTONDOWN:
 				if (event.button.button == SDL_BUTTON_LEFT)
 				{
-					for(int i = 0; i < 1; i++) {
+					for(int i = 0; i < 3; i++) {
 						if (event.button.x >= liste_sorts[i].x && event.button.x <= liste_sorts[i].x+liste_sorts[i].w && event.button.y >= liste_sorts[i].y && event.button.y <= liste_sorts[i].y+liste_sorts[i].h) {
-							lancement_sort(&v1, 7, 12, sorts[0]);
+							clic_sort(&v1, sorts[i]);
+							// lancement_sort(&v1, 7, 12, sorts[0]);
 						}
 					}
 				}
@@ -655,15 +656,17 @@ int affichagePlateau() {
 	// Pour que le personnage s'affiche dès le départ, on initialise sur une valeur correct sprite
 	sprite = 0;
 
+	prepaSort = -1; // à mettre dans init combat plus tard
 	finTempsAllie = 0;
 
 	while (1) {
 
+		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
+		SDL_RenderClear(ren);
+
 		if (handle_keys() == 1) {
 			break;
 		}
-		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
-		SDL_RenderClear(ren);
 
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
 
@@ -734,7 +737,11 @@ int affichagePlateau() {
 
 		affichage_sorts();
 
-		SDL_RenderPresent(ren);		
+		if (prepaSort >= 0) {
+			preparation_sort(&v1, sorts[prepaSort]);
+		}
+
+		SDL_RenderPresent(ren);
 		free_personnage_c();
 		free_ennemi_c();
 		free_texture_cases();

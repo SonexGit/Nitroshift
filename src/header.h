@@ -48,6 +48,8 @@ typedef struct cell_S {
 	int profondeur; // 0 = le plus loin de "nous"
 	entite e;
 	SDL_Point pc; // Quel point centre pour cette cellule ?
+	SDL_Surface * sort_surface;
+	SDL_Texture * sort_texture;
 } cell_T;
 
 cell_T plateau[plateau_y][plateau_x];
