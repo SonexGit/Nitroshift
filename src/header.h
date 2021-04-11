@@ -33,7 +33,10 @@ typedef struct entite_S {
 	int positionY;
 	int profondeur; // 0 = le plus loin de "nous"
 	int equipe; // ALLIES ou ENNEMIS
+	int nitroDollars;
+	int experience;
 	int flag;
+	int mort;
 	int tempsRelance;
 	int relanceBoost;
 	SDL_Surface * surface;

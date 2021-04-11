@@ -16,20 +16,55 @@
 
 int tourTermine;
 
+void boutonPasserTour(){
+
+    SDL_Surface *imageBoutonPasserTour = NULL;
+    SDL_Texture *textureBoutonPasserTour = NULL;
+
+    imageBoutonPasserTour=IMG_Load("../data/combat/passerTour.png");
+
+    if(imageBoutonPasserTour == NULL){
+        SDL_DestroyRenderer(ren);
+        SDL_DestroyWindow(win);
+    }
+
+    textureBoutonPasserTour = SDL_CreateTextureFromSurface(ren, imageBoutonPasserTour);
+
+    /* Libération de la surface car on en a plus besoin */
+    SDL_FreeSurface(imageBoutonPasserTour);
+
+    if(textureBoutonPasserTour == NULL){
+        SDL_DestroyRenderer(ren);
+        SDL_DestroyWindow(win);
+    }
+    
+    // L'image est chargée en mémoire
+
+
+    /* Chargement de la texture */
+    SDL_Rect rectangleBoutonPasserTour;
+
+    if(SDL_QueryTexture(textureBoutonPasserTour, NULL, NULL, &rectangleBoutonPasserTour.w, &rectangleBoutonPasserTour.h) != 0){
+        SDL_DestroyRenderer(ren);
+        SDL_DestroyWindow(win);
+    }
+    /* Positionnement du bouton */
+    rectangleBoutonPasserTour.x = 1150;
+    rectangleBoutonPasserTour.y = 750;
+
+    /* Affichage de l'image */
+    if(SDL_RenderCopy(ren, textureBoutonPasserTour, NULL, &rectangleBoutonPasserTour) != 0){
+        SDL_DestroyRenderer(ren);
+        SDL_DestroyWindow(win);
+    }
+    SDL_DestroyTexture(textureBoutonPasserTour);
+}
+
 void statsMaximum(entite * e){
 
     e->pm = e->pmMax;
     e->pa = e->paMax;
     e->nitro = e->nitroMax;
-}
-
-int estUnBoss(entite * e){
-
-    if(e->id == 100 || e->id == 200 || e->id == 300 || e->id == 400 || e->id == 500){
-        return VRAI;
-    }
-
-    return FAUX;
 }
 
 int recherchePorteeSort(entite * e){
@@ -276,6 +311,10 @@ int boostEnnemi(entite * e){
     }
 }
 
+void passerTour(){
+
+}
+
 void attaqueEnnemi(entite * e){
 
     int nbPO, i;
@@ -452,22 +491,176 @@ void iaEnnemi(entite * e){
 
     boss = estUnBoss(e);
 
-    if(!boss){
+    attaqueEnnemi(e);
+    if(e->positionX == v1.positionX && e->flag == 0){ /* Même colonne */
+        if(v1.positionY - e->positionY > 0){ /* Ennemi doit descendre */
+            if(!(plateau[e->positionY+1][e->positionX].solide)){ /* Case non solide en bas */
+                e->positionY++;
+                e->pm--;
+                attaqueEnnemi(e);
+            }
+            else{ /* Case solide */
+                if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                    e->positionX--;
+                    e->pm--;
+                    attaqueEnnemi(e);                      
+                }
+                else{ /* Case solide donc il va à droite*/
+                    e->positionX++;
+                    e->pm--;
+                    attaqueEnnemi(e);
+                }
+            }
+        }
+        else{ /* Ennemi doit monter */
+            if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                e->positionY--;
+                e->pm--;
+                attaqueEnnemi(e);
+            }
+            else{ /* Case solide */
+                if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                    e->positionX--;
+                    e->pm--;
+                    attaqueEnnemi(e);                     
+                }
+                else{ /* Case solide donc il va à droite*/
+                    e->positionX++;
+                    e->pm--;
+                    attaqueEnnemi(e);   
+                }
+            }
+        }
+    }
+    else if(e->positionY == v1.positionY && e->flag == 0){ /* Même ligne */
+        if(v1.positionX - e->positionX > 0){ /* Ennemi doit aller à droite */
+            if(!(plateau[e->positionY][e->positionX+1].solide)){ /* Case non solide à droite */
+                e->positionX++;
+                e->pm--;
+                attaqueEnnemi(e);
+            }
+            else{ /* Case solide */
+                if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                    e->positionY--;
+                    e->pm--;
+                    attaqueEnnemi(e);                     
+                }
+                else{ /* Case solide donc il va en bas*/
+                    e->positionY++;
+                    e->pm--;
+                    attaqueEnnemi(e);   
+                }
+            }
+        }
+        else{ /* Ennemi doit aller à gauche */
+            if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                e->positionX--;
+                e->pm--;
+                attaqueEnnemi(e);
+            }
+            else{ /* Case solide */
+                if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                    e->positionY--;
+                    e->pm--;
+                    attaqueEnnemi(e);                     
+                }
+                else{ /* Case solide donc il va en bas*/
+                    e->positionY++;
+                    e->pm--;
+                    attaqueEnnemi(e); 
+                }
+            }
+        }
+    }
+    else{ /* Aucun des deux */
+        if(e->positionX != v1.positionX && e->positionY != v1.positionY){
+
+            e->flag = 0;
+
+            // ---------------------------------------------------------
+
+            ligne = v1.positionY - e->positionY; // 6 - 12
+            colonne = v1.positionX - e->positionX; // 8 - 7
+            if(ligne >= 0){
+                comparaisonLigne = ligne;
+            }
+            else{
+                comparaisonLigne = e->positionY - v1.positionY;
+            }
+
+            if(colonne >= 0){
+                comparaisonColonne = colonne;
+            }
+            else{
+                comparaisonColonne = e->positionX - v1.positionX;
+            }
+
+            // ---------------------------------------------------------
+
             attaqueEnnemi(e);
-            if(e->positionX == v1.positionX && e->flag == 0){ /* Même colonne */
+            if(comparaisonLigne >= comparaisonColonne){ /* Ennemi va se mettre sur la même colonne en premier (car moins loin ou égal sans compter les obstacles) */
+                if(v1.positionX - e->positionX > 0){ /* Ennemi doit aller à droite */
+                    if(!(plateau[e->positionY][e->positionX+1].solide)){ /* Case non solide à droite */
+                        attaqueEnnemi(e);
+                        e->positionX++;
+                        e->pm--;
+                        attaqueEnnemi(e); 
+                    }
+                    else{ /* Case solide */
+                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                            attaqueEnnemi(e);
+                            e->positionY--;
+                            e->pm--;
+                            attaqueEnnemi(e);                        
+                        }  
+                        else{ /* Case solide donc il va en bas*/
+                            attaqueEnnemi(e);
+                            e->positionY++;
+                            e->pm--;
+                            attaqueEnnemi(e);    
+                        }
+                    }
+                }
+                else{ /* Ennemi doit aller à gauche */
+                    if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide en bas */
+                        attaqueEnnemi(e);
+                        e->positionX--;
+                        e->pm--;
+                        attaqueEnnemi(e); 
+                    }
+                    else{ /* Case solide */
+                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                            attaqueEnnemi(e);
+                            e->positionY--;
+                            e->pm--;
+                            attaqueEnnemi(e);                      
+                        }
+                        else{ /* Case solide donc il va en bas*/
+                            attaqueEnnemi(e);
+                            e->positionY++;
+                            e->pm--;
+                            attaqueEnnemi(e);
+                        }
+                    }
+                }
+            }
+            else{ /* Ennemi va se mettre sur la même ligne en premier (car moins loin sans compter les obstacles) */
                 if(v1.positionY - e->positionY > 0){ /* Ennemi doit descendre */
                     if(!(plateau[e->positionY+1][e->positionX].solide)){ /* Case non solide en bas */
+                        attaqueEnnemi(e);
                         e->positionY++;
                         e->pm--;
                         attaqueEnnemi(e);
                     }
                     else{ /* Case solide */
                         if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                            attaqueEnnemi(e);
                             e->positionX--;
                             e->pm--;
-                            attaqueEnnemi(e);                      
+                            attaqueEnnemi(e);                     
                         }
                         else{ /* Case solide donc il va à droite*/
+                            attaqueEnnemi(e);
                             e->positionX++;
                             e->pm--;
                             attaqueEnnemi(e);
@@ -476,179 +669,23 @@ void iaEnnemi(entite * e){
                 }
                 else{ /* Ennemi doit monter */
                     if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
+                        attaqueEnnemi(e);
                         e->positionY--;
                         e->pm--;
-                        attaqueEnnemi(e);
+                        attaqueEnnemi(e); 
                     }
                     else{ /* Case solide */
                         if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
+                            attaqueEnnemi(e);
                             e->positionX--;
                             e->pm--;
-                            attaqueEnnemi(e);                     
+                            attaqueEnnemi(e);                       
                         }
                         else{ /* Case solide donc il va à droite*/
-                            e->positionX++;
-                            e->pm--;
-                            attaqueEnnemi(e);   
-                        }
-                    }
-                }
-            }
-            else if(e->positionY == v1.positionY && e->flag == 0){ /* Même ligne */
-                if(v1.positionX - e->positionX > 0){ /* Ennemi doit aller à droite */
-                    if(!(plateau[e->positionY][e->positionX+1].solide)){ /* Case non solide à droite */
-                        e->positionX++;
-                        e->pm--;
-                        attaqueEnnemi(e);
-                    }
-                    else{ /* Case solide */
-                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
-                            e->positionY--;
-                            e->pm--;
-                            attaqueEnnemi(e);                     
-                        }
-                        else{ /* Case solide donc il va en bas*/
-                            e->positionY++;
-                            e->pm--;
-                            attaqueEnnemi(e);   
-                        }
-                    }
-                }
-                else{ /* Ennemi doit aller à gauche */
-                    if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
-                        e->positionX--;
-                        e->pm--;
-                        attaqueEnnemi(e);
-                    }
-                    else{ /* Case solide */
-                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
-                            e->positionY--;
-                            e->pm--;
-                            attaqueEnnemi(e);                     
-                        }
-                        else{ /* Case solide donc il va en bas*/
-                            e->positionY++;
-                            e->pm--;
-                            attaqueEnnemi(e); 
-                        }
-                    }
-                }
-        }
-        else{ /* Aucun des deux */
-            if(e->positionX != v1.positionX && e->positionY != v1.positionY){
-
-                e->flag = 0;
-
-                // ---------------------------------------------------------
-
-                ligne = v1.positionY - e->positionY; // 6 - 12
-                colonne = v1.positionX - e->positionX; // 8 - 7
-                if(ligne >= 0){
-                    comparaisonLigne = ligne;
-                }
-                else{
-                    comparaisonLigne = e->positionY - v1.positionY;
-                }
-
-                if(colonne >= 0){
-                    comparaisonColonne = colonne;
-                }
-                else{
-                    comparaisonColonne = e->positionX - v1.positionX;
-                }
-
-                // ---------------------------------------------------------
-
-                attaqueEnnemi(e);
-                if(comparaisonLigne >= comparaisonColonne){ /* Ennemi va se mettre sur la même colonne en premier (car moins loin ou égal sans compter les obstacles) */
-                    if(v1.positionX - e->positionX > 0){ /* Ennemi doit aller à droite */
-                        if(!(plateau[e->positionY][e->positionX+1].solide)){ /* Case non solide à droite */
                             attaqueEnnemi(e);
                             e->positionX++;
                             e->pm--;
-                            attaqueEnnemi(e); 
-                        }
-                        else{ /* Case solide */
-                            if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
-                                attaqueEnnemi(e);
-                                e->positionY--;
-                                e->pm--;
-                                attaqueEnnemi(e);                        
-                            }  
-                            else{ /* Case solide donc il va en bas*/
-                                attaqueEnnemi(e);
-                                e->positionY++;
-                                e->pm--;
-                                attaqueEnnemi(e);    
-                            }
-                        }
-                    }
-                    else{ /* Ennemi doit aller à gauche */
-                        if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide en bas */
                             attaqueEnnemi(e);
-                            e->positionX--;
-                            e->pm--;
-                            attaqueEnnemi(e); 
-                        }
-                        else{ /* Case solide */
-                            if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
-                                attaqueEnnemi(e);
-                                e->positionY--;
-                                e->pm--;
-                                attaqueEnnemi(e);                      
-                            }
-                            else{ /* Case solide donc il va en bas*/
-                                attaqueEnnemi(e);
-                                e->positionY++;
-                                e->pm--;
-                                attaqueEnnemi(e);
-                            }
-                        }
-                    }
-                }
-                else{ /* Ennemi va se mettre sur la même ligne en premier (car moins loin sans compter les obstacles) */
-                    if(v1.positionY - e->positionY > 0){ /* Ennemi doit descendre */
-                        if(!(plateau[e->positionY+1][e->positionX].solide)){ /* Case non solide en bas */
-                            attaqueEnnemi(e);
-                            e->positionY++;
-                            e->pm--;
-                            attaqueEnnemi(e);
-                        }
-                        else{ /* Case solide */
-                            if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
-                                attaqueEnnemi(e);
-                                e->positionX--;
-                                e->pm--;
-                                attaqueEnnemi(e);                     
-                            }
-                            else{ /* Case solide donc il va à droite*/
-                                attaqueEnnemi(e);
-                                e->positionX++;
-                                e->pm--;
-                                attaqueEnnemi(e);
-                            }
-                        }
-                    }
-                    else{ /* Ennemi doit monter */
-                        if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
-                            attaqueEnnemi(e);
-                            e->positionY--;
-                            e->pm--;
-                            attaqueEnnemi(e); 
-                        }
-                        else{ /* Case solide */
-                            if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
-                                attaqueEnnemi(e);
-                                e->positionX--;
-                                e->pm--;
-                                attaqueEnnemi(e);                       
-                            }
-                            else{ /* Case solide donc il va à droite*/
-                                attaqueEnnemi(e);
-                                e->positionX++;
-                                e->pm--;
-                                attaqueEnnemi(e);
-                            }
                         }
                     }
                 }
@@ -658,9 +695,6 @@ void iaEnnemi(entite * e){
     if(e->flag == 1){
         e->pm--;
     }
-    else{
-        
-    }
 }    
 
 void actionEnnemi(entite * e){
@@ -669,45 +703,113 @@ void actionEnnemi(entite * e){
 
     tempsActuel = SDL_GetTicks();
 
-    if(e->pm > 0){
-        if(tempsActuel - tempsDebutPlateau > 1000){
-            iaEnnemi(e);
-            tempsDebutPlateau = SDL_GetTicks();
+    if(e->hp > 0){
+        if(e->pm > 0){
+            if(tempsActuel - tempsDebutPlateau > 1000){
+                iaEnnemi(e);
+                tempsDebutPlateau = SDL_GetTicks();
+            }
+        }
+        else{
+            tourTermine = 1;
         }
     }
     else{
-        tourTermine = 1;
+        e->mort = 1;
     }
+}
+
+void tourPersonnage(entite * ee1, entite * ee2){
+
+    int degat;
+
+    srand(time(NULL));
+
+    degat = rand() % 70 + 40;
+    printf("%s attaque du %i !\n", v1.nom, degat);
+    ee1->hp -= degat;
+    printf("Vie restante de %s : %i.\n", ee1->nom, ee1->hp);
+
+    degat = rand() % 40 + 10;
+    printf("%s attaque du %i !\n", v1.nom, degat);
+    ee2->hp -= degat;
+    printf("Vie restante de %s : %i.\n", ee2->nom, ee2->hp);
 }
 
 void deroulementCombat(int level){
     
     tourTermine = 0;
+    int money, exp;
 
     switch(level){
         case 1 :
-            actionEnnemi(&e1);
-            if(tourTermine == 1){
+            if(e1.mort == 0 && e2.mort == 0){
+                actionEnnemi(&e1);
+                if(tourTermine == 1){
+                    actionEnnemi(&e2);
+                    if(e2.pm <= 0){
+                        if(e1.tempsRelance > 0){
+                            e1.tempsRelance--;
+                        }
+                        else{
+                            e1.relanceBoost = 1;
+                        }
+                        if(e2.tempsRelance > 0){
+                            e2.tempsRelance--;
+                        }
+                        else{
+                            e2.relanceBoost = 1;
+                        }
+                        statsMaximum(&e1);
+                        statsMaximum(&e2);
+                        statsMaximum(&v1);
+                        finTempsAllie = 0;
+                    }
+                }
+            }
+            else if(e1.mort == 1 && e2.mort == 0){
                 actionEnnemi(&e2);
                 if(e2.pm <= 0){
-                    if(e1.tempsRelance > 0){
-                        e1.tempsRelance--;
-                    }
-                    else{
-                        e1.relanceBoost = 1;
-                    }
                     if(e2.tempsRelance > 0){
                         e2.tempsRelance--;
                     }
                     else{
                         e2.relanceBoost = 1;
                     }
-                    statsMaximum(&e1);
                     statsMaximum(&e2);
                     statsMaximum(&v1);
                     finTempsAllie = 0;
-                }
+                }               
             }
-            
+            else if(e1.mort == 0 && e2.mort == 1){
+                actionEnnemi(&e1);
+                if(e1.pm <= 0){
+                    if(e1.tempsRelance > 0){
+                        e1.tempsRelance--;
+                    }
+                    else{
+                        e1.relanceBoost = 1;
+                    }
+                    statsMaximum(&e1);
+                    statsMaximum(&v1);
+                    finTempsAllie = 0;
+                }          
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 40 + 10;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 100 + 50;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                exit(EXIT_SUCCESS);
+            }
+            break;    
     }
 }

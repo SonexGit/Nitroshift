@@ -27,6 +27,8 @@ void creationPersonnage(){
     v1.niveau = 1;
     v1.paMax = 6;
     v1.pmMax = 3;
+    v1.mort = 0;
+    v1.experience = 0;
 
     if(strcmp(v1.classe,"DPS") == 0){
         v1.hpMax = 50;
@@ -248,7 +250,6 @@ void creationEnnemi(){
     
     e1.nom = "Ennemi1";
 
-    e1.equipe = ENNEMIS;
     e1.id = 101;    
     e1.niveau = 1;
     e1.hpMax = 200;
@@ -259,10 +260,11 @@ void creationEnnemi(){
     e1.attaque = 30;
     e1.defense = 30;
     e1.flag = 0;
+    e1.mort = 0;
+    e1.equipe = ENNEMIS;
 
     e2.nom = "Ennemi2";
-
-    e2.equipe = ENNEMIS;    
+ 
     e2.id = 102;  
     e2.niveau = 1;
     e2.hpMax = 200;
@@ -273,6 +275,8 @@ void creationEnnemi(){
     e2.attaque = 30;
     e2.defense = 30;
     e2.flag = 0;
+    e2.mort = 0;
+    e2.equipe = ENNEMIS;
 
     e3.nom = "Ennemi3";
     
@@ -286,6 +290,8 @@ void creationEnnemi(){
     e3.attaque = 70;
     e3.defense = 50;
     e3.flag = 0;
+    e3.mort = 0;
+    e3.equipe = ENNEMIS;
 
     e4.nom = "Ennemi4";
     
@@ -299,6 +305,8 @@ void creationEnnemi(){
     e4.attaque = 70;
     e4.defense = 50;
     e4.flag = 0;
+    e4.mort = 0;
+    e4.equipe = ENNEMIS;
 
     e5.nom = "Ennemi5";
     
@@ -312,6 +320,8 @@ void creationEnnemi(){
     e5.attaque = 70;
     e5.defense = 50;
     e5.flag = 0;
+    e5.mort = 0;
+    e5.equipe = ENNEMIS;
 
     e6.nom = "Ennemi6";
     
@@ -325,6 +335,8 @@ void creationEnnemi(){
     e6.attaque = 70;
     e6.defense = 50;
     e6.flag = 0;
+    e6.mort = 0;
+    e6.equipe = ENNEMIS;
 
     e7.nom = "Ennemi7";
     
@@ -338,6 +350,8 @@ void creationEnnemi(){
     e7.attaque = 70;
     e7.defense = 50;
     e7.flag = 0;
+    e7.mort = 0;
+    e7.equipe = ENNEMIS;
 
     e8.nom = "Ennemi8";
     
@@ -351,6 +365,8 @@ void creationEnnemi(){
     e8.attaque = 70;
     e8.defense = 50;
     e8.flag = 0;
+    e8.mort = 0;
+    e8.equipe = ENNEMIS;
 
     e9.nom = "Ennemi9";
     
@@ -364,6 +380,8 @@ void creationEnnemi(){
     e9.attaque = 70;
     e9.defense = 50;
     e9.flag = 0;
+    e9.mort = 0;
+    e9.equipe = ENNEMIS;
 
     e10.nom = "Ennemi10";
     
@@ -377,6 +395,8 @@ void creationEnnemi(){
     e10.attaque = 70;
     e10.defense = 50;
     e10.flag = 0;
+    e10.mort = 0;
+    e10.equipe = ENNEMIS;
 
     b1.nom = "Boss1";
     
@@ -390,6 +410,8 @@ void creationEnnemi(){
     b1.attaque = 70;
     b1.defense = 50;
     b1.flag = 0;
+    b1.mort = 0;
+    b1.equipe = ENNEMIS;
 
     b2.nom = "Boss2";
     
@@ -403,6 +425,8 @@ void creationEnnemi(){
     b2.attaque = 70;
     b2.defense = 50;
     b2.flag = 0;
+    b2.mort = 0;
+    b2.equipe = ENNEMIS;
 
     b3.nom = "Boss3";
     
@@ -416,6 +440,8 @@ void creationEnnemi(){
     b3.attaque = 70;
     b3.defense = 50;
     b3.flag = 0;
+    b3.mort = 0;
+    b3.equipe = ENNEMIS;
 
     b4.nom = "Boss4";
     
@@ -429,6 +455,8 @@ void creationEnnemi(){
     b4.attaque = 70;
     b4.defense = 50;
     b4.flag = 0;
+    b4.mort = 0;
+    b4.equipe = ENNEMIS;
 
     b5.nom = "Boss5";
     
@@ -442,6 +470,8 @@ void creationEnnemi(){
     b5.attaque = 70;
     b5.defense = 50;
     b5.flag = 0;
+    b5.mort = 0;
+    b5.equipe = ENNEMIS;
 }
 
 /* Affichage des statistiques d'un ennemi */
@@ -484,17 +514,19 @@ void init_textures_ennemis() {
 // Dessiner l'ennemi sur le plateau
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
 	
-	int pos_x, pos_y, img_w, img_h;
-	img_w = e.surface->w;
-	img_h = e.surface->h;
-	pos_x = plat[case_y][case_x].pc.x - (img_w / (ennemi_row * 2));
-	pos_y = plat[case_y][case_x].pc.y - img_h + 5;
-	dest_ennemi.x = pos_x;
-	dest_ennemi.y = pos_y;
-	dest_ennemi.w = img_w / ennemi_row;
-	dest_ennemi.h = img_h / ennemi_col;
+    if(e.mort == 0){
+        int pos_x, pos_y, img_w, img_h;
+        img_w = e.surface->w;
+        img_h = e.surface->h;
+        pos_x = plat[case_y][case_x].pc.x - (img_w / (ennemi_row * 2));
+        pos_y = plat[case_y][case_x].pc.y - img_h + 5;
+        dest_ennemi.x = pos_x;
+        dest_ennemi.y = pos_y;
+        dest_ennemi.w = img_w / ennemi_row;
+        dest_ennemi.h = img_h / ennemi_col;
 
-	SDL_RenderCopy(ren, e.texture, &src_ennemi[sprite], &dest_ennemi);
+        SDL_RenderCopy(ren, e.texture, &src_ennemi[sprite], &dest_ennemi);
+    }
 }
 
 // Free général des fonctions ennemis

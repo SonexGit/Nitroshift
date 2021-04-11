@@ -711,9 +711,9 @@ int affichagePlateau() {
 		init_textures_personnage();
 		init_textures_ennemis();
 
-
 		if(v1.pm <= 0){
 			if(finTempsAllie == 0){
+				tourPersonnage(&e1, &e2); // Tour personnage avec des dégâts random (à enlever plus tard)
 				tempsDebutPlateau = SDL_GetTicks();
 				finTempsAllie = 1;
 			}
@@ -735,6 +735,7 @@ int affichagePlateau() {
 		
 		affichage_entites(plateau);
 
+		boutonPasserTour();
 		affichage_sorts();
 
 		if (prepaSort >= 0) {
@@ -747,7 +748,7 @@ int affichagePlateau() {
 		free_texture_cases();
 		SDL_Delay(10);
 	}
-	
+
 	SDL_FreeSurface(icon);
 	SDL_DestroyTexture(texture_mouse_hover);
 	SDL_FreeSurface(surface_mouse_hover);
