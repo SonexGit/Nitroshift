@@ -11,7 +11,8 @@ typedef struct sort_S {
 	char * description;
 	int degatsMin;
 	int degatsMax;
-	int relance;
+	int relance; // Nombre de tours pour recharger le sort après l'avoir utilisé
+	int relanceActuel; // si est a 0 = il peut lancer le sort, relanceActuel passe donc a relanceMax et -- chaque tour
 	int portee;
 	int coutPA;
 	int coutNitro;
@@ -45,7 +46,9 @@ int prepaSort;
 void affichage_sorts();
 void init_sorts();
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s);
-void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T * plat[]);
+void init_sort_surftext();
+void free_sort_text();
+void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau_y][plateau_x]);
 void clic_sort(entite * lanceur, sort_T s);
 void preparation_sort(entite * lanceur, sort_T s);
 

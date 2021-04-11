@@ -24,6 +24,7 @@ SDL_bool mouse_active = SDL_FALSE;
 SDL_bool mouse_hover = SDL_FALSE;
 SDL_bool mouse_toofar = SDL_FALSE;
 SDL_bool mouse_solide = SDL_FALSE;
+SDL_bool mouse_cast_able = SDL_FALSE;
 
 // Déclaration de l'activité de la fenêtre
 SDL_bool resizing = SDL_FALSE;
@@ -124,6 +125,11 @@ size_t handle_keys() {
 							// lancement_sort(&v1, 7, 12, sorts[0]);
 						}
 					}
+					if (mouse_solide == SDL_FALSE && mouse_cast_able == SDL_TRUE) {
+						int temp_pc_x, temp_pc_y;
+						trouver_case_pc(points_centre[save], plateau, &temp_pc_x, &temp_pc_y);
+						lancement_sort(&v1, temp_pc_x, temp_pc_y, sorts[prepaSort]);
+					}
 				}
 				break;
 			case SDL_MOUSEWHEEL:
@@ -171,6 +177,16 @@ size_t handle_keys() {
 				grid_cursor_ghost.x = points_centre[save].x - (grid_cell_size_iso_x / 2);
 				grid_cursor_ghost.y = points_centre[save].y - (grid_cell_size_iso_y / 2);
 				// printf("Voici le gcg : %i, %i\n", grid_cursor_ghost.x, grid_cursor_ghost.y);
+
+				int temp_x, temp_y;
+				trouver_case_pc(points_centre[save], plateau, &temp_x, &temp_y);
+
+				if (plateau[temp_y][temp_x].castable) {
+					mouse_cast_able = SDL_TRUE;
+				}
+				else {
+					mouse_cast_able = SDL_FALSE;
+				}
 
 				if (!mouse_active)
 					mouse_active = SDL_TRUE;
@@ -586,10 +602,10 @@ void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
-void init_id_entite_plateau(cell_T plat[plateau_y][plateau_x]) {
+void init_id_entite_plateau() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
-			plat[i][j].e.id = 0;
+			plateau[i][j].e.id = 0;
 		}
 	}
 }
@@ -604,7 +620,7 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 
 int affichagePlateau() {
 	// Plateau
-	cell_T plateau[plateau_y][plateau_x];
+	// cell_T plateau[plateau_y][plateau_x];
 
 	SDL_Cursor * cursor;
 	cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
@@ -653,11 +669,16 @@ int affichagePlateau() {
 	// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
 	fileListPoints(points, points_centre);
 
+	// Initialisation de la possibilité de lancer un sort sur une certaine case à 0 (on ne prépare aucun sort au début)
+	init_sort_surftext();
+
 	// Pour que le personnage s'affiche dès le départ, on initialise sur une valeur correct sprite
 	sprite = 0;
 
 	prepaSort = -1; // à mettre dans init combat plus tard
 	finTempsAllie = 0;
+
+	printf("pc = x : %i, y : %i", plateau[7][7].pc.x, plateau[7][7].pc.y);
 
 	while (1) {
 
@@ -728,7 +749,7 @@ int affichagePlateau() {
 
 		init_cases_solide(1, plateau);
 		
-		init_id_entite_plateau(plateau);
+		init_id_entite_plateau();
 		plateau[v1.positionY][v1.positionX].e = v1;
 		plateau[e1.positionY][e1.positionX].e = e1;
 		plateau[e2.positionY][e2.positionX].e = e2;
@@ -742,6 +763,10 @@ int affichagePlateau() {
 			preparation_sort(&v1, sorts[prepaSort]);
 		}
 
+		affichage_entites(plateau);
+
+		affichage_sorts();
+
 		SDL_RenderPresent(ren);
 		free_personnage_c();
 		free_ennemi_c();
@@ -749,6 +774,8 @@ int affichagePlateau() {
 		SDL_Delay(10);
 	}
 
+	
+	free_sort_text();
 	SDL_FreeSurface(icon);
 	SDL_DestroyTexture(texture_mouse_hover);
 	SDL_FreeSurface(surface_mouse_hover);
