@@ -11,11 +11,12 @@
 #include "entite.h"
 #include "render.h"
 
+// sort : id, nom, description, degatsMin, degatsMax, relanceMax, relanceActuel, portee, coutPA, coutNitro, surface, texture, id_lanceur
 sort_T sorts[MAX_SORTS] = {
-	{0, "Attaque de base", "Test", 25, 40, 1, 1, 2, 0, NULL, NULL, 1},
-	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 2, 4, 1, 3, NULL, NULL, 1},
-	{2, "Téléportation", "Test", 0, 0, 5, 5, 0, 5, NULL, NULL, 1},
-	{3, "Boost PM", "Test", 0, 0, 4, 0, 0, 0, NULL, NULL}
+	{0, "Attaque de base", "Test", 25, 40, 1, 0, 1, 2, 0, NULL, NULL, 1},
+	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 2, 0, 4, 1, 3, NULL, NULL, 1},
+	{2, "Téléportation", "Téléportez vous sur la case ciblée", 0, 0, 5, 0, 5, 0, 5, NULL, NULL, 1},
+	{3, "Boost PM", "Test", 0, 0, 4, 0, 0, 0, 0, NULL, NULL}
 };
 
 void affichage_sorts() {
@@ -42,6 +43,14 @@ void affichage_sorts() {
 	free(id_sort);
 }
 
+void reset_castable() {
+	for (int i = 0; i < plateau_y; i++) {
+		for (int j = 0; j < plateau_x; j++) {
+			plateau[i][j].castable = 0;
+		}
+	}
+}
+
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s) {
 	switch (s.id) {
 		case 0: // Attaque de base • Sort 0
@@ -52,17 +61,52 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s) {
 			lanceur->positionY = cible_y;
 			break;
 	}
+
+	prepaSort = -1; // On arrête la préparation du sort pour la suite
+
+	s.relanceActuel = s.relance;
+	if (lanceur->pa - s.coutPA > 0) lanceur->pa -= s.coutPA;
+	else lanceur->pa = 0;
+	if (lanceur->nitro - s.coutNitro > 0) lanceur->nitro -= s.coutNitro;
+	else lanceur->nitro = 0;
+
+	reset_castable();
 }
 
 void clic_sort(entite * lanceur, sort_T s) {
-	prepaSort = s.id;
+	printf("\n PA LANCEUR : %i \n NITRO LANCEUR : %i", lanceur->pa, lanceur->nitro);
+	if (s.relanceActuel == 0 && lanceur->pa >= s.coutPA && lanceur->nitro >= s.coutNitro) {
+		prepaSort = s.id;
+	}
+	else {
+		printf("Le sort est en charge...\n");
+	}
 }
 
-void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T * plat[]) {
+void init_sort_surftext() {
+	for (int i = 0; i < plateau_y; i++) {
+		for (int j = 0; j < plateau_x; j++) {
+			plateau[i][j].sort_surface = IMG_Load("../data/tiles/cast_able.png");
+			plateau[i][j].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[i][j].sort_surface);
+
+			SDL_FreeSurface(plateau[i][j].sort_surface);
+		}
+	}
+}
+
+void free_sort_text() {
+	for (int i = 0; i < plateau_y; i++) {
+		for (int j = 0; j < plateau_x; j++) {
+			SDL_DestroyTexture(plateau[i][j].sort_texture);
+		}
+	}	
+}
+
+void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau_y][plateau_x]) {
     int i,j;
 	int compteur = 0;
 
-	// printf("TESTETSTEST\npc x, y : %i, %i\n", plat[0][0].pc.x, plat[0][0].pc.y);
+
     for (i=0; i<=2*rayon; i++)
     {
         for (j=0; j<=2*rayon; j++)
@@ -71,39 +115,48 @@ void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T * plat[]) {
 			int og_y = lanceur->positionY-rayon+i;
 			int og_x = lanceur->positionX-rayon+j;
 			// printf("OG_Y : %i\nOG_X : %i", og_y, og_x);
-            if (distance>rayon-0.5 && distance<rayon+0.5 && og_y < plateau_y && og_x < plateau_x) {
+            if (distance>rayon-0.5 && distance<rayon+0.5 && og_y < plateau_y && og_x < plateau_x && (plateau[og_y][og_x].solide == 0 || plateau[og_y][og_x].e.id != 0)) {
                 plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 				plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
+
+				plateau[og_y][og_x].castable = 1;
+
 				rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
 				rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
 				rect_prep_sort[compteur].w = grid_cell_size_iso_x;
 				rect_prep_sort[compteur].h = grid_cell_size_iso_y;
+
 				SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
 				SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
-				printf("x");
+				// printf("x");
 			}
 			else if (distance == 0) {
-				printf("o");
+				// printf("o");
 			}
-			else if (distance < rayon && og_y < plateau_y && og_x < plateau_x) {
+			else if (distance < rayon && og_y < plateau_y && og_x < plateau_x && (plateau[og_y][og_x].solide == 0 || plateau[og_y][og_x].e.id != 0)) {
 				plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 				plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
+
+				plateau[og_y][og_x].castable = 1;
+
 				rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
 				rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
 				rect_prep_sort[compteur].w = grid_cell_size_iso_x;
 				rect_prep_sort[compteur].h = grid_cell_size_iso_y;
+
 				SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
 				SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
-				printf("x");
+				// printf("x");
 			}
             else
-            	printf(" "); // Extérieur du cercle
+            	// printf(" "); // Extérieur du cercle
 			
 			compteur++;
         }
-        printf("\n");
+        // printf("\n");
     }
 	// Free des textures
+	/*
     for (i=0; i<=2*rayon; i++)
     {
         for (j=0; j<=2*rayon; j++)
@@ -122,8 +175,9 @@ void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T * plat[]) {
             else;
 			compteur++;
         }
-        printf("\n");
+        // printf("\n");
     }
+	*/
 }
 
 void preparation_sort(entite * lanceur, sort_T s) {

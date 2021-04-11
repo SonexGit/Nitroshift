@@ -46,6 +46,7 @@ typedef struct cell_S {
 	float y;
 	int solide;
 	int profondeur; // 0 = le plus loin de "nous"
+	int castable; // 1 = true, 0 = false
 	entite e;
 	SDL_Point pc; // Quel point centre pour cette cellule ?
 	SDL_Surface * sort_surface;
