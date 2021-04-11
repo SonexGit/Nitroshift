@@ -335,7 +335,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS);
+                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                     }
                 }
             }
@@ -356,7 +356,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS);
+                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                             }
                         }
                     }
@@ -374,7 +374,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS);
+                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                     }
                 }
             }
@@ -395,7 +395,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS);
+                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                             }
                         }
                     }
@@ -415,7 +415,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS);
+                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                     }
                 }
             }
@@ -436,7 +436,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS);
+                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                             }
                         }
                     }
@@ -454,7 +454,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS);
+                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                     }
                 }
             }
@@ -475,7 +475,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS);
+                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
                             }
                         }
                     }
@@ -801,12 +801,13 @@ void deroulementCombat(int level){
                 printf("[%i --> ", v1.nitroDollars);
                 v1.nitroDollars += money;
                 printf("%i]\n", v1.nitroDollars);
-                exp = rand() % 100 + 50;
+                exp = rand() % 100 + 90;
                 printf("Vous avez remporte %i points d'experiences.\n", exp);
                 printf("[%i --> ", v1.experience);
                 v1.experience += exp;
                 printf("%i]\n", v1.experience);
-                exit(EXIT_SUCCESS);
+                levelUp();
+                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
             }
             break;    
     }

@@ -548,3 +548,84 @@ void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 		// Ne rien faire
 	}
 }
+
+// Niveaux
+void gestionNiveaux(int niv){
+
+    switch(niv){
+        case 2 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 3 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 4 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 5 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 6 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 7 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 8 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 9 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        case 10 :
+            v1.hpMax += 20;
+            v1.nitroMax += 100;
+            v1.attaque += 5;
+            v1.defense += 5;
+            break;
+        default :
+            printf("Erreur du niveau...\n");
+            break;
+    }
+}
+
+void levelUp(){
+
+    int maxExp[10] = {0, 100, 300, 700, 1300, 2100, 3100, 4300, 5700, 7300}; // Niveau de 1 à 10
+
+    if(v1.experience > maxExp[v1.niveau]){
+        printf("\n! LEVEL UP !\n");
+        v1.niveau++;
+        gestionNiveaux(v1.niveau);
+        printf("Vous venez de passer niveau %i\n", v1.niveau);
+        printf("Voici vos nouvelles statistiques :\n");
+        printf("HP : %i\n", v1.hpMax);
+        printf("Nitro : %i\n", v1.nitroMax);
+        printf("Attaque : %i\n", v1.attaque);
+        printf("Defense : %i\n", v1.defense);
+    }
+}
