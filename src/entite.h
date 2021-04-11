@@ -61,36 +61,23 @@ SDL_Rect dest_ennemi;
 // Joueurs
 entite v1;
 
-// Ennemis
+// Ennemis 
+
 /* Zone 1 */
 entite e1;
 entite e2;
+/* Zone 2 */
 entite e3;
 entite e4;
-
-/* Zone 2 */
+/* Zone 3 */
 entite e5;
 entite e6;
+/* Zone 4 */
 entite e7;
 entite e8;
-
-/* Zone 3 */
+/* Zone 5 */
 entite e9;
 entite e10;
-entite e11;
-entite e12;
-
-/* Zone 4 */
-entite e13;
-entite e14;
-entite e15;
-entite e16;
-
-/* Zone 5 */
-entite e17;
-entite e18;
-entite e19;
-entite e20;
 
 // Boss
 entite b1;
@@ -121,4 +108,7 @@ void free_ennemi_c();
 // Entités
 void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
 
+// Niveaux
+void gestionNiveaux(int niv);
+void levelUp();
 #endif // _ENTITE_H_
