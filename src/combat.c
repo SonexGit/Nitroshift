@@ -294,7 +294,7 @@ void attaqueEnnemi(entite * e){
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
-                    if(v1.hp < 0){
+                    if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
                         exit(EXIT_SUCCESS);
                     }
@@ -315,7 +315,7 @@ void attaqueEnnemi(entite * e){
                             printf("Attaque avec sort de %s : %i\n", e->nom, rechercheDegatSort(e));
                             e->nitro -= rechercheCoutNitroSort(e); /* On retire le coût du sort en nitro */
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
-                            if(v1.hp < 0){
+                            if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
                                 exit(EXIT_SUCCESS);
                             }
@@ -333,7 +333,7 @@ void attaqueEnnemi(entite * e){
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
-                    if(v1.hp < 0){
+                    if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
                         exit(EXIT_SUCCESS);
                     }
@@ -354,7 +354,7 @@ void attaqueEnnemi(entite * e){
                             printf("Attaque avec sort de %s : %i\n", e->nom, rechercheDegatSort(e));
                             e->nitro -= rechercheCoutNitroSort(e); /* On retire le coût du sort en nitro */
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
-                            if(v1.hp < 0){
+                            if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
                                 exit(EXIT_SUCCESS);
                             }
@@ -374,7 +374,7 @@ void attaqueEnnemi(entite * e){
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
-                    if(v1.hp < 0){
+                    if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
                         exit(EXIT_SUCCESS);
                     }
@@ -395,7 +395,7 @@ void attaqueEnnemi(entite * e){
                             printf("Attaque avec sort de %s : %i\n", e->nom, rechercheDegatSort(e));
                             e->nitro -= rechercheCoutNitroSort(e); /* On retire le coût du sort en nitro */
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
-                            if(v1.hp < 0){
+                            if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
                                 exit(EXIT_SUCCESS);
                             }
@@ -413,7 +413,7 @@ void attaqueEnnemi(entite * e){
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
-                    if(v1.hp < 0){
+                    if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
                         exit(EXIT_SUCCESS);
                     }
@@ -434,7 +434,7 @@ void attaqueEnnemi(entite * e){
                             printf("Attaque avec sort de %s : %i\n", e->nom, rechercheDegatSort(e));
                             e->nitro -= rechercheCoutNitroSort(e); /* On retire le coût du sort en nitro */
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
-                            if(v1.hp < 0){
+                            if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
                                 exit(EXIT_SUCCESS);
                             }
@@ -702,9 +702,9 @@ void deroulementCombat(int level){
                     else{
                         e2.relanceBoost = 1;
                     }
-                    v1.pm = 4;
                     statsMaximum(&e1);
                     statsMaximum(&e2);
+                    statsMaximum(&v1);
                     finTempsAllie = 0;
                 }
             }
