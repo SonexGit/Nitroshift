@@ -45,7 +45,7 @@ int prepaSort;
 // Déclarations des fonctions
 void affichage_sorts();
 void init_sorts();
-void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s);
+void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s);
 void init_sort_surftext();
 void free_sort_text();
 void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau_y][plateau_x]);

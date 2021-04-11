@@ -489,8 +489,6 @@ void iaEnnemi(entite * e){
 
     int boss, ligne, colonne, comparaisonLigne, comparaisonColonne;
 
-    boss = estUnBoss(e);
-
     attaqueEnnemi(e);
     if(e->positionX == v1.positionX && e->flag == 0){ /* Même colonne */
         if(v1.positionY - e->positionY > 0){ /* Ennemi doit descendre */
