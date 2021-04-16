@@ -21,4 +21,4 @@ main.o: ./src/main.c ./src/header.h
 	gcc ${CFLAGS} -c ./src/main.c -o ./src/main.o -m32 -L./lib -I./include
 
 nitroshift: ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o
-	gcc ${CFLAGS} ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o -o ./src/nitroshift -m32 -L./lib -I./include -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer
+	gcc ${CFLAGS} ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o -o ./src/nitroshift -m32 -L./lib -I./include -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf

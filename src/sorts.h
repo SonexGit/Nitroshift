@@ -12,14 +12,13 @@ typedef struct sort_S {
 	int degatsMin;
 	int degatsMax;
 	int relance; // Nombre de tours pour recharger le sort après l'avoir utilisé
-	int relanceActuel; // si est a 0 = il peut lancer le sort, relanceActuel passe donc a relanceMax et -- chaque tour
+	int relanceActuel; // 0 = il peut lancer le sort, relanceActuel passe a relanceMax et -- chaque tour
 	int portee;
 	int coutPA;
 	int coutNitro;
 	SDL_Surface * surface;
 	SDL_Texture * texture;
 	int id_lanceur;
-	// Faire un pointeur sur fonction "lancement_sort(sort)" ?
 } sort_T;
 
 sort_T sorts[MAX_SORTS];
