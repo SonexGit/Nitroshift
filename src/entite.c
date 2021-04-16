@@ -27,7 +27,6 @@ void creationPersonnage(){
     v1.niveau = 1;
     v1.paMax = 6;
     v1.pmMax = 3;
-    v1.mort = 0;
     v1.experience = 0;
 
     if(strcmp(v1.classe,"Soldat") == 0){

@@ -701,7 +701,7 @@ void actionEnnemi(entite * e){
 
     tempsActuel = SDL_GetTicks();
 
-    if(e->hp > 0){
+    if(e->mort == 0){
         if(e->pm > 0){
             if(tempsActuel - tempsDebutPlateau > 1000){
                 iaEnnemi(e);
@@ -712,26 +712,6 @@ void actionEnnemi(entite * e){
             tourTermine = 1;
         }
     }
-    else{
-        e->mort = 1;
-    }
-}
-
-void tourPersonnage(entite * ee1, entite * ee2){
-
-    int degat;
-
-    srand(time(NULL));
-
-    degat = rand() % 70 + 40;
-    printf("%s attaque du %i !\n", v1.nom, degat);
-    ee1->hp -= degat;
-    printf("Vie restante de %s : %i.\n", ee1->nom, ee1->hp);
-
-    degat = rand() % 40 + 10;
-    printf("%s attaque du %i !\n", v1.nom, degat);
-    ee2->hp -= degat;
-    printf("Vie restante de %s : %i.\n", ee2->nom, ee2->hp);
 }
 
 void deroulementCombat(int level){
@@ -761,6 +741,7 @@ void deroulementCombat(int level){
                         statsMaximum(&e1);
                         statsMaximum(&e2);
                         statsMaximum(&v1);
+                        v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
                 }
@@ -776,6 +757,7 @@ void deroulementCombat(int level){
                     }
                     statsMaximum(&e2);
                     statsMaximum(&v1);
+                    v1.passerTour = 0;
                     finTempsAllie = 0;
                 }               
             }
@@ -790,6 +772,7 @@ void deroulementCombat(int level){
                     }
                     statsMaximum(&e1);
                     statsMaximum(&v1);
+                    v1.passerTour = 0;
                     finTempsAllie = 0;
                 }          
             }

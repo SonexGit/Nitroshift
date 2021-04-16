@@ -10,6 +10,7 @@
 #include "sorts.h"
 #include "entite.h"
 #include "render.h"
+#include "combat.h"
 
 // sort : id, nom, description, degatsMin, degatsMax, relanceMax, relanceActuel, portee, coutPA, coutNitro, surface, texture, id_lanceur
 sort_T sorts[MAX_SORTS] = {
@@ -73,6 +74,9 @@ void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", plateau[cible_y][cible_x].e.hp);
 		plateau[cible_y][cible_x].e.hp -= degats;
 		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", plateau[cible_y][cible_x].e.hp);
+		if(plateau[cible_y][cible_x].e.hp <= 0){
+			plateau[cible_y][cible_x].e.mort = 1;
+		}
 	}
 }
 

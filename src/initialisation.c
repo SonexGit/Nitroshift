@@ -15,6 +15,11 @@
 
 void initCombat(int level){
 
+    v1.mort = 0;
+    v1.passerTour = 0;
+    v1.hp = v1.hpMax;
+    statsMaximum(&v1);
+
     if(level == 1){
 
         sortsEnnemi1[0].id = 0;
@@ -79,10 +84,8 @@ void initCombat(int level){
         e2.positionX = 8;
         e2.positionY = 13;
 
-        v1.hp = v1.hpMax;
-        statsMaximum(&v1);
         v1.positionX = 8;
-        v1.positionY = 2;          
+        v1.positionY = 2;        
     }
 
     /* Faire chaque niveau */
