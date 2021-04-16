@@ -128,7 +128,7 @@ size_t handle_keys() {
 					if (mouse_solide == SDL_FALSE && mouse_cast_able == SDL_TRUE) {
 						int temp_pc_x, temp_pc_y;
 						trouver_case_pc(points_centre[save], plateau, &temp_pc_x, &temp_pc_y);
-						lancement_sort(&v1, temp_pc_x, temp_pc_y, sorts[prepaSort]);
+						lancement_sort(&v1, temp_pc_x, temp_pc_y, &sorts[prepaSort]);
 					}
 				}
 				break;
@@ -759,13 +759,24 @@ int affichagePlateau() {
 		boutonPasserTour();
 		affichage_sorts();
 
-		if (prepaSort >= 0) {
-			preparation_sort(&v1, sorts[prepaSort]);
+		if (!finTempsAllie) {
+			if (prepaSort >= 0) {
+				preparation_sort(&v1, sorts[prepaSort]);
+			}
 		}
 
 		affichage_entites(plateau);
 
 		affichage_sorts();
+
+		// Recharge des relance etc a la fin d'un tour
+		if (finTempsAllie == 1 || finTourComplet == 1) {
+			finTourComplet = 1;
+			if (finTempsAllie == 0 && finTourComplet == 1) {
+				sort_relance_fintour();
+				finTourComplet = 0;
+			}
+		}
 
 		SDL_RenderPresent(ren);
 		free_personnage_c();

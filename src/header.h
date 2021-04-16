@@ -71,6 +71,7 @@ int sprite;
 #define FAUX 0
 
 int finTempsAllie;
+int finTourComplet;
 int tempsDebutPlateau;
 
 #endif // HEADER_H_

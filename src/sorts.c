@@ -51,8 +51,16 @@ void reset_castable() {
 	}
 }
 
-void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s) {
-	switch (s.id) {
+void sort_relance_fintour() {
+	for (int i = 0; i < MAX_SORTS; i++) {
+		if (sorts[i].relanceActuel > 0) {
+			sorts[i].relanceActuel--;
+		}
+	}
+}
+
+void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
+	switch (s->id) {
 		case 0: // Attaque de base • Sort 0
 			printf("\nAttaque de base!\n");
 			break;
@@ -64,10 +72,10 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s) {
 
 	prepaSort = -1; // On arrête la préparation du sort pour la suite
 
-	s.relanceActuel = s.relance;
-	if (lanceur->pa - s.coutPA > 0) lanceur->pa -= s.coutPA;
+	s->relanceActuel = s->relance;
+	if (lanceur->pa - s->coutPA > 0) lanceur->pa -= s->coutPA;
 	else lanceur->pa = 0;
-	if (lanceur->nitro - s.coutNitro > 0) lanceur->nitro -= s.coutNitro;
+	if (lanceur->nitro - s->coutNitro > 0) lanceur->nitro -= s->coutNitro;
 	else lanceur->nitro = 0;
 
 	reset_castable();
@@ -75,6 +83,7 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T s) {
 
 void clic_sort(entite * lanceur, sort_T s) {
 	printf("\n PA LANCEUR : %i \n NITRO LANCEUR : %i", lanceur->pa, lanceur->nitro);
+	printf("\nRELANCE ACTUEL : %i\n", s.relanceActuel);
 	if (s.relanceActuel == 0 && lanceur->pa >= s.coutPA && lanceur->nitro >= s.coutNitro) {
 		prepaSort = s.id;
 	}
@@ -186,7 +195,7 @@ void preparation_sort(entite * lanceur, sort_T s) {
 
 	switch (s.id) {
 		case 0:
-			lancement_sort(lanceur, 1, 1, sorts[0]);
+			lancement_sort(lanceur, 1, 1, &sorts[0]);
 			break;
 		case 2:
 			prep_sort_cercle(lanceur, s, 3, plateau);
