@@ -1,6 +1,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +16,11 @@ int rendering()
 		fprintf(stderr, "SDL_Init Error: %s\n", SDL_GetError());
 		return EXIT_FAILURE;
 	}
+
+	TTF_Init();
+
+	// Initialisation des polices nécessaiers
+	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 16);
 
 	win = SDL_CreateWindow("Nitroshift", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 	if (win == NULL)
@@ -50,6 +56,9 @@ int stopRendering() {
 
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
+
+	TTF_Quit();
+
 	SDL_Quit();
 
 	return EXIT_SUCCESS;

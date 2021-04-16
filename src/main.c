@@ -119,6 +119,9 @@ size_t handle_keys() {
 			case SDL_MOUSEBUTTONDOWN:
 				if (event.button.button == SDL_BUTTON_LEFT)
 				{
+					int temp_pc_x = -1, temp_pc_y = -1;
+					trouver_case_pc(points_centre[save], plateau, &temp_pc_x, &temp_pc_y);
+
 					for(int i = 0; i < 3; i++) {
 						if (event.button.x >= liste_sorts[i].x && event.button.x <= liste_sorts[i].x+liste_sorts[i].w && event.button.y >= liste_sorts[i].y && event.button.y <= liste_sorts[i].y+liste_sorts[i].h) {
 							clic_sort(&v1, sorts[i]);
@@ -126,8 +129,9 @@ size_t handle_keys() {
 						}
 					}
 					if (mouse_solide == SDL_FALSE && mouse_cast_able == SDL_TRUE) {
-						int temp_pc_x, temp_pc_y;
-						trouver_case_pc(points_centre[save], plateau, &temp_pc_x, &temp_pc_y);
+						lancement_sort(&v1, temp_pc_x, temp_pc_y, &sorts[prepaSort]);
+					}
+					else if (plateau[temp_pc_y][temp_pc_x].e.id != 0 && mouse_cast_able == SDL_TRUE) {
 						lancement_sort(&v1, temp_pc_x, temp_pc_y, &sorts[prepaSort]);
 					}
 				}

@@ -59,10 +59,30 @@ void sort_relance_fintour() {
 	}
 }
 
+int numero_aleatoire(int minimum, int maximum) {
+	srand(time(NULL));
+	int nombre = (rand() % (maximum - minimum + 1)) + minimum;
+	return nombre;
+}
+
+void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
+	int degats = numero_aleatoire(s->degatsMin, s->degatsMax);
+
+	if (plateau[cible_y][cible_x].e.id != 0) {
+		printf("\nJE FAIS DES DEGATS !! : %i\n", degats);
+		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", plateau[cible_y][cible_x].e.hp);
+		plateau[cible_y][cible_x].e.hp -= degats;
+		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", plateau[cible_y][cible_x].e.hp);
+	}
+}
+
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 	switch (s->id) {
 		case 0: // Attaque de base • Sort 0
-			printf("\nAttaque de base!\n");
+			infliger_degats(lanceur, cible_x, cible_y, s);
+			break;
+		case 1: // Tir rapide • Sort 1
+			infliger_degats(lanceur, cible_x, cible_y, s);
 			break;
 		case 2: // Téléportation • Sort 2
 			lanceur->positionX = cible_x;
@@ -108,7 +128,53 @@ void free_sort_text() {
 		for (int j = 0; j < plateau_x; j++) {
 			SDL_DestroyTexture(plateau[i][j].sort_texture);
 		}
-	}	
+	}
+}
+
+void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[plateau_y][plateau_x]) {
+
+	int compteur = 0;
+
+	for (int i = 0 - distance; i <= distance; i++) {
+		if (i == 0) i++;
+		int og_y = lanceur->positionY + i;
+		int og_x = lanceur->positionX;
+
+		plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
+		plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
+
+		plateau[og_y][og_x].castable = 1;
+
+		rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
+		rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
+		rect_prep_sort[compteur].w = grid_cell_size_iso_x;
+		rect_prep_sort[compteur].h = grid_cell_size_iso_y;
+
+		SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
+		SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
+
+		compteur++;
+	}
+	for (int j = 0 - distance; j <= distance; j++) {
+		if (j == 0) j++;
+		int og_y = lanceur->positionY;
+		int og_x = lanceur->positionX + j;
+
+		plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
+		plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
+		
+		plateau[og_y][og_x].castable = 1;
+
+		rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
+		rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
+		rect_prep_sort[compteur].w = grid_cell_size_iso_x;
+		rect_prep_sort[compteur].h = grid_cell_size_iso_y;
+		
+		SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
+		SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
+
+		compteur++;
+	}
 }
 
 void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau_y][plateau_x]) {
@@ -164,7 +230,7 @@ void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau
         }
         // printf("\n");
     }
-	// Free des textures
+	// Free des textures (a mettre dans une autre fonction plus tard ! pour l'instant ce n'est pas grave il ne gêne absolument rien)
 	/*
     for (i=0; i<=2*rayon; i++)
     {
@@ -195,7 +261,10 @@ void preparation_sort(entite * lanceur, sort_T s) {
 
 	switch (s.id) {
 		case 0:
-			lancement_sort(lanceur, 1, 1, &sorts[0]);
+			prep_sort_plus(lanceur, s, 1, plateau);
+			break;
+		case 1:
+			prep_sort_plus(lanceur, s, 3, plateau);
 			break;
 		case 2:
 			prep_sort_cercle(lanceur, s, 3, plateau);
