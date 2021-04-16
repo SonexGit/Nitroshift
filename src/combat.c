@@ -329,7 +329,7 @@ void attaqueEnnemi(entite * e){
             if(nbPO == 1){ /* En priorité l'ennemi va taper au corps à corps si il y a un PO d'écart c'est qu'ils sont collés donc pas besoin de check */
                 e->flag = 1;
                 while(e->pa - 3 >= 0){ /* On vérifie que si on enlève 3 PA on est toujours à 0 ou + */
-                    v1.hp -= e->attaque; /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
+                    v1.hp -= (e->attaque - v1.defense); /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
@@ -368,7 +368,7 @@ void attaqueEnnemi(entite * e){
             if(nbPO == 1){ /* En priorité l'ennemi va taper au corps à corps si il y a un PO d'écart c'est qu'ils sont collés donc pas besoin de check */
                 e->flag = 1;
                 while(e->pa - 3 >= 0){ /* On vérifie que si on enlève 3 PA on est toujours à 0 ou + */
-                    v1.hp -= e->attaque; /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
+                    v1.hp -= (e->attaque - v1.defense); /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
@@ -409,7 +409,7 @@ void attaqueEnnemi(entite * e){
             if(nbPO == 1){ /* En priorité l'ennemi va taper au corps à corps si il y a un PO d'écart c'est qu'ils sont collés donc pas besoin de check */
                 e->flag = 1;
                 while(e->pa - 3 >= 0){ /* On vérifie que si on enlève 3 PA on est toujours à 0 ou + */
-                    v1.hp -= e->attaque; /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
+                    v1.hp -= (e->attaque - v1.defense); /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
@@ -448,7 +448,7 @@ void attaqueEnnemi(entite * e){
             if(nbPO == 1){ /* En priorité l'ennemi va taper au corps à corps si il y a un PO d'écart c'est qu'ils sont collés donc pas besoin de check */
                 e->flag = 1;
                 while(e->pa - 3 >= 0){ /* On vérifie que si on enlève 3 PA on est toujours à 0 ou + */
-                    v1.hp -= e->attaque; /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
+                    v1.hp -= (e->attaque - v1.defense); /* On retire les dégâts de l'ennemi du corps à corps aux HP du personnage */
                     printf("Attaque au corps a corps de %s : %i\n", e->nom, e->attaque);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'une attaque au corps à corps */
                     printf("Points de vies restant du personnage : %i\n", v1.hp);

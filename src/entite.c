@@ -20,7 +20,7 @@ void creationPersonnage(){
     v1.nom = "Personnage";
 
     // Faire les if des cliques pour sélect
-    v1.classe = "Sniper";
+    v1.classe = "Assassin";
 
     v1.id = 1;
     v1.equipe = ALLIES;
@@ -30,28 +30,28 @@ void creationPersonnage(){
     v1.mort = 0;
     v1.experience = 0;
 
-    if(strcmp(v1.classe,"DPS") == 0){
-        v1.hpMax = 50;
+    if(strcmp(v1.classe,"Soldat") == 0){
+        v1.hpMax = 100;
         v1.nitroMax = 100;
-        v1.attaque = 40;
-        v1.defense = 20;
+        v1.attaque = 30;
+        v1.defense = 30;
     }
     else if(strcmp(v1.classe,"Tank") == 0){
-        v1.hpMax = 100;
-        v1.nitroMax = 70;
+        v1.hpMax = 200;
+        v1.nitroMax = 100;
         v1.attaque = 15;
-        v1.defense = 40;
+        v1.defense = 60;
     }
     else if(strcmp(v1.classe,"Sniper") == 0){
-        v1.hpMax = 1000;
-        v1.nitroMax = 80;
+        v1.hpMax = 50;
+        v1.nitroMax = 100;
         v1.attaque = 60;
-        v1.defense = 15;
+        v1.defense = 10;
     }
-    else if(strcmp(v1.classe,"Healer") == 0){
-        v1.hpMax = 70;
-        v1.nitroMax = 200;
-        v1.attaque = 20;
+    else if(strcmp(v1.classe,"Assassin") == 0){
+        v1.hpMax = 80;
+        v1.nitroMax = 100;
+        v1.attaque = 60;
         v1.defense = 20;
     }
 }
@@ -112,7 +112,7 @@ void affichagePersonnage(entite p){
 // Textures du personnage
 void init_textures_personnage() {
 
-    if(strcmp(v1.classe,"DPS") == 0){
+    if(strcmp(v1.classe,"Soldat") == 0){
         v1.surface = IMG_Load("../data/personnages/personnageDPS.png");
     }
     else if(strcmp(v1.classe,"Tank") == 0){
@@ -121,7 +121,7 @@ void init_textures_personnage() {
     else if(strcmp(v1.classe,"Sniper") == 0){
         v1.surface = IMG_Load("../data/personnages/personnageSniper.png");
     }
-    else if(strcmp(v1.classe,"Healer") == 0){
+    else if(strcmp(v1.classe,"Assassin") == 0){
         v1.surface = IMG_Load("../data/personnages/personnageHealer.png");
     }
 
