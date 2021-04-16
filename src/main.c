@@ -769,6 +769,24 @@ int affichagePlateau() {
 
 		affichage_sorts();
 
+		SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+
+                switch (event.type)
+                {
+                case SDL_QUIT:
+                SDL_DestroyRenderer(ren);
+                SDL_DestroyWindow(win);
+                break;
+                case SDL_MOUSEBUTTONDOWN:
+                    if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841){
+                        printf("Gucci gucci\n");
+                    }
+                    break;
+                }
+        }
+
 		// Recharge des relance etc a la fin d'un tour
 		if (finTempsAllie == 1 || finTourComplet == 1) {
 			finTourComplet = 1;
