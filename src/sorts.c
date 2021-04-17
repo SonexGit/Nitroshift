@@ -15,8 +15,8 @@
 // sort : id, nom, description, degatsMin, degatsMax, relanceMax, relanceActuel, portee, coutPA, coutNitro, surface, texture, id_lanceur
 sort_T sorts[MAX_SORTS] = {
 	{0, "Attaque de base", "Test", 25, 40, 1, 0, 1, 2, 0, NULL, NULL, 1},
-	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 2, 0, 4, 1, 3, NULL, NULL, 1},
-	{2, "Téléportation", "Téléportez vous sur la case ciblée", 0, 0, 5, 0, 5, 0, 5, NULL, NULL, 1},
+	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 2, 0, 4, 1, 24, NULL, NULL, 1},
+	{2, "Téléportation", "Téléportez vous sur la case ciblée", 0, 0, 5, 0, 5, 0, 50, NULL, NULL, 1},
 	{3, "Boost PM", "Test", 0, 0, 4, 0, 0, 0, 0, NULL, NULL}
 };
 

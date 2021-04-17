@@ -195,6 +195,14 @@ size_t handle_keys() {
 				else {
 					mouse_cast_able = SDL_FALSE;
 				}
+				if (plateau[temp_y][temp_x].e.id != 0 && plateau[temp_y][temp_x].e.id != 1) {
+					sur_ennemi_x = temp_x;
+					sur_ennemi_y = temp_y;
+				}
+				else {
+					sur_ennemi_x = -1;
+					sur_ennemi_y = -1;
+				}
 
 				if (!mouse_active)
 					mouse_active = SDL_TRUE;
@@ -737,7 +745,6 @@ int affichagePlateau() {
 		// ==============================================
 		// Dessin des personnages (joueur)
 		// ==============================================
-
 
 		init_textures_personnage();
 		init_textures_ennemis();

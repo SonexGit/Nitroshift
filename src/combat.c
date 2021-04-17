@@ -765,13 +765,14 @@ void update_barre_vie() {
 	SDL_RenderCopy(ren, texture_vie, &srcrect_vie, &dstrect_vie);
 	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_texte);
 
+	free(hp_texte);
     SDL_FreeSurface(surface_vie);
     SDL_FreeSurface(surface_vie_fond);
     SDL_DestroyTexture(texture_vie);
     SDL_DestroyTexture(texture_vie_fond);
     SDL_FreeSurface(surface_vie_texte);
     SDL_DestroyTexture(texture_vie_texte);
-	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
+	TTF_CloseFont(font);
 }
 
 void update_barre_nitro() {
@@ -820,25 +821,59 @@ void update_barre_nitro() {
 	dstrect_nitro_texte.h = temp_h;
 
 	SDL_RenderCopy(ren, texture_nitro_fond, NULL, &dstrect_nitro_fond);
-	SDL_RenderCopy(ren, texture_nitro, &srcrect_vie, &dstrect_nitro);
+	SDL_RenderCopy(ren, texture_nitro, &srcrect_nitro, &dstrect_nitro);
 	SDL_RenderCopy(ren, texture_nitro_texte, NULL, &dstrect_nitro_texte);
 
+	free(nitro_texte);
     SDL_FreeSurface(surface_nitro);
     SDL_FreeSurface(surface_nitro_fond);
     SDL_DestroyTexture(texture_nitro);
     SDL_DestroyTexture(texture_nitro_fond);
     SDL_FreeSurface(surface_nitro_texte);
     SDL_DestroyTexture(texture_nitro_texte);
-	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
+	TTF_CloseFont(font);
+}
+
+void affichage_infos_ennemi(int cible_x, int cible_y) {
+	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-Italic.ttf", 16);
+
+	SDL_Color color_white = {255, 255, 255, 255};
+
+	entite ennemi = plateau[cible_y][cible_x].e;
+
+	int longueur = snprintf(NULL, 0, "%d/%d", ennemi.hp, ennemi.hpMax);
+	char * vie_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(vie_texte, longueur + 1, "%d/%d", ennemi.hp, ennemi.hpMax);
+	SDL_Surface * surface_vie_texte = TTF_RenderText_Blended(font, vie_texte, color_white);
+	SDL_Texture * texture_vie_texte = SDL_CreateTextureFromSurface(ren, surface_vie_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_vie_texte, NULL, NULL, &temp_w, &temp_h);
+
+	SDL_Rect dstrect_vie_ennemi_texte;
+	dstrect_vie_ennemi_texte.x = plateau[cible_y][cible_x].pc.x - temp_w / 2;
+	dstrect_vie_ennemi_texte.y = plateau[cible_y][cible_x].pc.y - 100;
+	dstrect_vie_ennemi_texte.h = temp_h;
+	dstrect_vie_ennemi_texte.w = temp_w;
+
+	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_ennemi_texte);
+
+	free(vie_texte);
+    SDL_FreeSurface(surface_vie_texte);
+    SDL_DestroyTexture(texture_vie_texte);
+	TTF_CloseFont(font);
 }
 
 void init_interface_combat() {
-	// Vide pour l'instant
+	sur_ennemi_x = -1, sur_ennemi_y = -1;
 }
 
 void update_interface_combat() {
 	update_barre_vie();
     update_barre_nitro();
+	if (sur_ennemi_x != -1 && sur_ennemi_y != -1) {
+		affichage_infos_ennemi(sur_ennemi_x, sur_ennemi_y);
+	}
 }
 
 void deroulementCombat(int level){
