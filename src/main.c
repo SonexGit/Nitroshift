@@ -713,6 +713,28 @@ void positionnerEnnemi(int lev){
     }	
 }
 
+void sauvegarderPartie(){
+
+	FILE * fichier;
+	fichier = fopen("../sauvegarde.txt", "w");
+
+	fprintf(fichier, "%i\n", v1.id);
+	fprintf(fichier, "%s\n", v1.nom);
+	fprintf(fichier, "%s\n", v1.classe);
+	fprintf(fichier, "%i\n", v1.niveau);
+	fprintf(fichier, "%i\n", v1.hpMax);
+	fprintf(fichier, "%i\n", v1.nitroMax);
+	fprintf(fichier, "%i\n", v1.paMax);
+	fprintf(fichier, "%i\n", v1.pmMax);
+	fprintf(fichier, "%i\n", v1.attaque);
+	fprintf(fichier, "%i\n", v1.defense);
+	fprintf(fichier, "%i\n", v1.equipe);
+	fprintf(fichier, "%i\n", v1.nitroDollars);
+	fprintf(fichier, "%i\n", v1.experience);
+
+	fclose(fichier);	
+}
+
 int affichagePlateau() {
 	// Plateau
 	// cell_T plateau[plateau_y][plateau_x];
@@ -899,6 +921,8 @@ int main(int argc, char** argv) {
 	while (isCombat == 1) {
 		isCombat = affichagePlateau();
 	}
+
+	sauvegarderPartie();
 
 	stopRendering();
 	return 0;

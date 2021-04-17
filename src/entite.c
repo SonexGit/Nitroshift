@@ -28,6 +28,7 @@ void creationPersonnage(){
     v1.paMax = 6;
     v1.pmMax = 3;
     v1.experience = 0;
+    v1.nitroDollars = 0;
 
     if(strcmp(v1.classe,"Soldat") == 0){
         v1.hpMax = 100;
