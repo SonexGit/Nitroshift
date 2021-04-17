@@ -77,6 +77,7 @@ void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 }
 
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
+
 	switch (s->id) {
 		case 0: // Attaque de base • Sort 0
 			infliger_degats(lanceur, cible_x, cible_y, s);

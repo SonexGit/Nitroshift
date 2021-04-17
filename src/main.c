@@ -684,6 +684,8 @@ int affichagePlateau() {
 
 	printf("pc = x : %i, y : %i", plateau[7][7].pc.x, plateau[7][7].pc.y);
 
+	init_interface_combat();
+
 	while (1) {
 
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
@@ -760,6 +762,8 @@ int affichagePlateau() {
 		
 		affichage_entites(plateau);
 
+		update_interface_combat();
+		
 		boutonPasserTour();
 		affichage_sorts();
 
