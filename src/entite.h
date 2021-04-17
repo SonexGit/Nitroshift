@@ -8,7 +8,6 @@ typedef struct zone_D {
     int niveau1;
     int niveau2;
     int niveau3;
-    int niveau4;
 }zone;
 
 /* Structure des accès ou non aux zones et niveaux */

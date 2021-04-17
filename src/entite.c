@@ -33,25 +33,25 @@ void creationPersonnage(){
         v1.hpMax = 100;
         v1.nitroMax = 100;
         v1.attaque = 30;
-        v1.defense = 30;
+        v1.defense = 10;
     }
     else if(strcmp(v1.classe,"Tank") == 0){
         v1.hpMax = 200;
         v1.nitroMax = 100;
         v1.attaque = 15;
-        v1.defense = 60;
+        v1.defense = 20;
     }
     else if(strcmp(v1.classe,"Sniper") == 0){
         v1.hpMax = 50;
         v1.nitroMax = 100;
         v1.attaque = 60;
-        v1.defense = 10;
+        v1.defense = 2;
     }
     else if(strcmp(v1.classe,"Assassin") == 0){
         v1.hpMax = 80;
         v1.nitroMax = 100;
         v1.attaque = 60;
-        v1.defense = 20;
+        v1.defense = 5;
     }
 }
 
@@ -65,31 +65,26 @@ void creationAcces(){
     a1.z1.niveau1 = 1; /* Cela signifie : Niveau 1 de la zone 1 par exemple */
     a1.z1.niveau2 = 0;
     a1.z1.niveau3 = 0;
-    a1.z1.niveau4 = 0;
 
     a1.zone2 = 0;
     a1.z2.niveau1 = 0;
     a1.z2.niveau2 = 0; /* Cela signifie : Niveau 2 de la zone 2 par exemple */
     a1.z2.niveau3 = 0;
-    a1.z2.niveau4 = 0;
 
     a1.zone3 = 0;
     a1.z3.niveau1 = 0;
     a1.z3.niveau2 = 0;
     a1.z3.niveau3 = 0;
-    a1.z3.niveau4 = 0;
 
     a1.zone4 = 0;
     a1.z4.niveau1 = 0;
     a1.z4.niveau2 = 0;
     a1.z4.niveau3 = 0;
-    a1.z4.niveau4 = 0;
 
     a1.zone5 = 0;
     a1.z5.niveau1 = 0;
     a1.z5.niveau2 = 0;
     a1.z5.niveau3 = 0;
-    a1.z5.niveau4 = 0;
 }
 
 // Textures du personnage
@@ -363,12 +358,12 @@ void creationEnnemi(){
     b1.nom = "Boss1";  
     b1.id = 100;
     b1.niveau = 1;
-    b1.hpMax = 200;
-    b1.nitroMax = 300;
-    b1.paMax = 6;
+    b1.hpMax = 300;
+    b1.nitroMax = 100;
+    b1.paMax = 3;
     b1.pmMax = 3;
-    b1.attaque = 70;
-    b1.defense = 50;
+    b1.attaque = 45;
+    b1.defense = 20;
     b1.flag = 0;
     b1.mort = 0;
     b1.equipe = ENNEMIS;
@@ -431,6 +426,8 @@ void init_textures_ennemis() {
 	e1.texture = SDL_CreateTextureFromSurface(ren, e1.surface);
 	e2.surface = IMG_Load("../data/ennemis/mobTest.png");
 	e2.texture = SDL_CreateTextureFromSurface(ren, e2.surface);
+	b1.surface = IMG_Load("../data/ennemis/mobTest.png");
+	b1.texture = SDL_CreateTextureFromSurface(ren, b1.surface);
 
 	int i = 0, j = 0, k = 0;
 
@@ -469,6 +466,10 @@ void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 void free_ennemi_c() {
 	SDL_DestroyTexture(e1.texture);
 	SDL_FreeSurface(e1.surface);
+	SDL_DestroyTexture(e2.texture);
+	SDL_FreeSurface(e2.surface);
+	SDL_DestroyTexture(b1.texture);
+	SDL_FreeSurface(b1.surface);
 }
 
 // Entités

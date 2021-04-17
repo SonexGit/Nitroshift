@@ -62,6 +62,8 @@ SDL_Point pts_2D[plateau_x*plateau_y];
 
 int isCombat;
 
+int levelCombat;
+
 // Texture du personnage
 int sprite;
 
