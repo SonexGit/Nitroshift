@@ -773,7 +773,6 @@ void update_barre_vie() {
     SDL_FreeSurface(surface_vie_texte);
     SDL_DestroyTexture(texture_vie_texte);
     TTF_CloseFont(font);
-	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
 }
 
 void update_barre_nitro() {
@@ -833,16 +832,14 @@ void update_barre_nitro() {
     SDL_FreeSurface(surface_nitro_texte);
     SDL_DestroyTexture(texture_nitro_texte);
     TTF_CloseFont(font);
-	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
-}
-
-void init_interface_combat() {
-	// Vide pour l'instant
 }
 
 void update_interface_combat() {
 	update_barre_vie();
     update_barre_nitro();
+	if (sur_ennemi_x != -1 && sur_ennemi_y != -1) {
+		affichage_infos_ennemi(sur_ennemi_x, sur_ennemi_y);
+	}
 }
 
 void deroulementCombat(int level){

@@ -7,6 +7,9 @@ SDL_Rect srcrect_vie, dstrect_vie, dstrect_vie_fond, dstrect_vie_texte;
 
 SDL_Rect srcrect_nitro, dstrect_nitro, dstrect_nitro_fond, dstrect_nitro_texte;
 
+// Variable pour savoir si la souris est sur un ennemi et quelle case
+int sur_ennemi_x, sur_ennemi_y;
+
 /* Fonctions */
 void boutonPasserTour();
 void statsMaximum(entite * e);
