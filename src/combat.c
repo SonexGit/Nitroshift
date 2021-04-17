@@ -102,6 +102,21 @@ int recherchePorteeSort(entite * e){
         case 502 :
             return sortsEnnemi10[0].portee;
             break;
+        case 100 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].portee;
+            break;
     }
 }
 
@@ -136,6 +151,21 @@ int rechercheDegatSort(entite * e){
             return sortsEnnemi9[0].degatsMin;
             break;
         case 502 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 100 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 500 :
             return sortsEnnemi10[0].degatsMin;
             break;
     }
@@ -174,6 +204,21 @@ int rechercheCoutNitroSort(entite * e){
         case 502 :
             return sortsEnnemi10[0].coutNitro;
             break;
+        case 100 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
     }
 }
 
@@ -209,6 +254,21 @@ int rechercheCoutPaBoost(entite * e){
             break;
         case 502 :
             return sortsEnnemi10[1].coutPA;
+            break;
+        case 100 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].coutPA;
             break;
     }    
 }
@@ -246,6 +306,21 @@ int rechercheRelanceBoost(entite * e){
         case 502 :
             return sortsEnnemi10[1].relance;
             break;
+        case 100 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].relance;
+            break;
     }    
 }
 
@@ -260,7 +335,7 @@ int boostEnnemi(entite * e){
             case 101 :
                 if(e->relanceBoost == 1){
                     e->nitro += sortsEnnemi1[1].degatsMin; /* On ajoute la nitro du boost */
-                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi1[1].degatsMin);
+                    printf("Boost de %s : +%i Nitro\n", e->nom, sortsEnnemi1[1].degatsMin);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     printf("Nitro restante : %i\n", e->nitro);
@@ -274,7 +349,7 @@ int boostEnnemi(entite * e){
             case 102 :
                 if(e->relanceBoost == 1){
                     e->pm += sortsEnnemi2[1].degatsMin; /* On ajoute les PM du boost */
-                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi2[1].degatsMin);
+                    printf("Boost de %s : +%i PM\n", e->nom, sortsEnnemi2[1].degatsMin);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     printf("PM restant : %i\n", e->pm);
@@ -309,12 +384,33 @@ int boostEnnemi(entite * e){
             case 502 :
                 return 0;
                 break;
+            case 100 :
+                if(e->relanceBoost == 1){
+                    e->pa += sortsBoss1[1].degatsMin; /* On ajoute les PA du boost */
+                    printf("Boost de %s : +%i\n", e->nom, sortsBoss1[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);            
+                    return 1;
+                    break;
+                }
+                return 0;
+                break;
+            case 200 :
+                return 0;
+                break;
+            case 300 :
+                return 0;
+                break;
+            case 400 :
+                return 0;
+                break;
+            case 500 :
+                return 0;
+                break;
         }
     }
-}
-
-void passerTour(){
-
 }
 
 void attaqueEnnemi(entite * e){

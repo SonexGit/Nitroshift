@@ -98,9 +98,9 @@ void deplacements_personnage(int direction);
 // Ennemis
 void creationEnnemi();
 
-void init_textures_ennemis();
+void init_textures_ennemis(int lev);
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
-void free_ennemi_c();
+void free_ennemi_c(int lev);
 
 // Entités
 void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
