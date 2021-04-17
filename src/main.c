@@ -618,6 +618,7 @@ void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+/* Initialuser les ID des entités sur le plateau */
 void init_id_entite_plateau() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -626,6 +627,7 @@ void init_id_entite_plateau() {
 	}
 }
 
+/* Afficher les entités du plateau */
 void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -634,6 +636,7 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+/* Positionner les positions des entités sur le plateau (en fonction du niveau qu'on a choisi) */
 void positionnerEnnemi(int lev){
 
     switch(lev){
@@ -737,7 +740,7 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
-	levelCombat = 3;
+	levelCombat = 5;
 
 	creationEnnemi();
 	creationPersonnage();
