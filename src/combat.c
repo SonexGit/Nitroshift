@@ -765,12 +765,12 @@ void update_barre_vie() {
 	SDL_RenderCopy(ren, texture_vie, &srcrect_vie, &dstrect_vie);
 	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_texte);
 
-    free(surface_vie);
-    free(surface_vie_fond);
-    free(texture_vie);
-    free(texture_vie_fond);
-    free(surface_vie_texte);
-    free(texture_vie_texte);
+    SDL_FreeSurface(surface_vie);
+    SDL_FreeSurface(surface_vie_fond);
+    SDL_DestroyTexture(texture_vie);
+    SDL_DestroyTexture(texture_vie_fond);
+    SDL_FreeSurface(surface_vie_texte);
+    SDL_DestroyTexture(texture_vie_texte);
 	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
 }
 
@@ -823,12 +823,12 @@ void update_barre_nitro() {
 	SDL_RenderCopy(ren, texture_nitro, &srcrect_vie, &dstrect_nitro);
 	SDL_RenderCopy(ren, texture_nitro_texte, NULL, &dstrect_nitro_texte);
 
-    free(surface_nitro);
-    free(surface_nitro_fond);
-    free(texture_nitro);
-    free(texture_nitro_fond);
-    free(surface_nitro_texte);
-    free(texture_nitro_texte);
+    SDL_FreeSurface(surface_nitro);
+    SDL_FreeSurface(surface_nitro_fond);
+    SDL_DestroyTexture(texture_nitro);
+    SDL_DestroyTexture(texture_nitro_fond);
+    SDL_FreeSurface(surface_nitro_texte);
+    SDL_DestroyTexture(texture_nitro_texte);
 	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
 }
 
