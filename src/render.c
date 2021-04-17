@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "header.h"
 #include "render.h"
 
 int rendering()
@@ -18,9 +19,6 @@ int rendering()
 	}
 
 	TTF_Init();
-
-	// Initialisation des polices nécessaiers
-	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 16);
 
 	win = SDL_CreateWindow("Nitroshift", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 	if (win == NULL)

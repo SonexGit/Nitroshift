@@ -1,11 +1,13 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 
 #include "render.h"
 #include "header.h"
@@ -712,6 +714,66 @@ void actionEnnemi(entite * e){
             tourTermine = 1;
         }
     }
+}
+
+void update_barre_vie() {
+
+	// Initialisation des polices nécessaires
+	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
+
+	SDL_Color color_white = {255, 255, 255, 255};
+
+	SDL_Surface * surface_vie = IMG_Load("../data/combat/health.png");
+	SDL_Surface * surface_vie_fond = IMG_Load("../data/combat/health_bg.png");
+	SDL_Texture * texture_vie = SDL_CreateTextureFromSurface(ren, surface_vie);
+	SDL_Texture * texture_vie_fond = SDL_CreateTextureFromSurface(ren, surface_vie_fond);
+
+	float percent_vie_restante = (float)v1.hp / (float)v1.hpMax;
+	percent_vie_restante = roundf(percent_vie_restante * 100) / 100;
+	float percent_vie_perdue = 1 - percent_vie_restante;
+
+	srcrect_vie.x = 0;
+	srcrect_vie.y = 164 * percent_vie_perdue;
+	srcrect_vie.w = 184;
+	srcrect_vie.h = 164 * percent_vie_restante;
+
+	dstrect_vie.x = 200;
+	dstrect_vie.y = 700 + 164 * percent_vie_perdue;
+	dstrect_vie.w = 184;
+	dstrect_vie.h = 164 * percent_vie_restante;
+
+	dstrect_vie_fond.x = 200;
+	dstrect_vie_fond.y = 700;
+	dstrect_vie_fond.w = 184;
+	dstrect_vie_fond.h = 164;
+
+	int longueur = snprintf(NULL, 0, "%d/%d", v1.hp, v1.hpMax);
+	char * hp_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(hp_texte, longueur + 1, "%d/%d", v1.hp, v1.hpMax);
+	SDL_Surface * surface_vie_texte = TTF_RenderText_Blended(font, hp_texte, color_white);
+	SDL_Texture * texture_vie_texte = SDL_CreateTextureFromSurface(ren, surface_vie_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_vie_texte, NULL, NULL, &temp_w, &temp_h);
+
+	dstrect_vie_texte.x = dstrect_vie_fond.x + dstrect_vie_fond.w / 2 - temp_w / 2;
+	dstrect_vie_texte.y = dstrect_vie_fond.y + dstrect_vie_fond.h / 2 - temp_h / 2;
+	dstrect_vie_texte.w = temp_w;
+	dstrect_vie_texte.h = temp_h;
+
+	SDL_RenderCopy(ren, texture_vie_fond, NULL, &dstrect_vie_fond);
+	SDL_RenderCopy(ren, texture_vie, &srcrect_vie, &dstrect_vie);
+	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_texte);
+
+	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
+}
+
+void init_interface_combat() {
+	// Vide pour l'instant
+}
+
+void update_interface_combat() {
+	update_barre_vie();
 }
 
 void deroulementCombat(int level){
