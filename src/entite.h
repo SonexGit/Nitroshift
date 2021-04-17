@@ -90,7 +90,6 @@ entite b5;
 // Personnages
 void creationPersonnage();
 void creationAcces();
-void affichagePersonnage(entite p);
 
 void init_textures_personnage();
 void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
@@ -99,7 +98,6 @@ void deplacements_personnage(int direction);
 
 // Ennemis
 void creationEnnemi();
-void affichageEnnemi(entite e);
 
 void init_textures_ennemis();
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);

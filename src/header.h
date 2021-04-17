@@ -26,7 +26,6 @@ typedef struct entite_S {
 	int paMax;
 	int pm;
 	int pmMax;
-	int initiative;
 	int attaque;
 	int defense;
 	int positionX;

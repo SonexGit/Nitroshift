@@ -76,6 +76,8 @@ void initCombat(int level){
         statsMaximum(&e1);
         e1.positionX = 1;
         e1.positionY = 8;
+        e1.tempsRelance = 0;
+        e1.relanceBoost = 1;
 
         e2.tempsRelance = 0;
         e2.relanceBoost = 1;
@@ -83,6 +85,8 @@ void initCombat(int level){
         statsMaximum(&e2);
         e2.positionX = 13;
         e2.positionY = 8;
+        e2.tempsRelance = 0;
+        e2.relanceBoost = 1;
 
         v1.positionX = 6;
         v1.positionY = 2;        
@@ -93,8 +97,8 @@ void initCombat(int level){
         sortsEnnemi1[0].nom = "Lame de glace";
         sortsEnnemi1[0].description = "Test";
         sortsEnnemi1[0].relance = 0;
-        sortsEnnemi1[0].degatsMin = 20;
-		sortsEnnemi1[0].degatsMax = 50;
+        sortsEnnemi1[0].degatsMin = 30;
+		sortsEnnemi1[0].degatsMax = 60;
         sortsEnnemi1[0].portee = 3;
         sortsEnnemi1[0].coutPA = 0;
         sortsEnnemi1[0].coutNitro = 100;
@@ -117,8 +121,8 @@ void initCombat(int level){
         sortsEnnemi2[0].nom = "Lame de feu";
         sortsEnnemi2[0].description = "Test";
         sortsEnnemi2[0].relance = 0;
-        sortsEnnemi2[0].degatsMin = 20;
-		sortsEnnemi2[0].degatsMax = 50;
+        sortsEnnemi2[0].degatsMin = 30;
+		sortsEnnemi2[0].degatsMax = 60;
         sortsEnnemi2[0].portee = 3;
         sortsEnnemi2[0].coutPA = 0;
         sortsEnnemi2[0].coutNitro = 100;
