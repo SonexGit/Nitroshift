@@ -202,6 +202,11 @@ size_t handle_keys() {
 					mouse_toofar = SDL_TRUE;
 				else if (dist < 25)
 					mouse_toofar = SDL_FALSE;
+
+				if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841){
+					printf("Vous avez passe votre tour.\n");
+					v1.passerTour = 1;
+				}
 				break;
 			
 			case SDL_WINDOWEVENT:
@@ -622,28 +627,6 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
-void passerTourPersonnage(){
-
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-
-			switch (event.type)
-			{
-			case SDL_QUIT:
-			SDL_DestroyRenderer(ren);
-			SDL_DestroyWindow(win);
-			break;
-			case SDL_MOUSEBUTTONDOWN:
-				if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841){
-					printf("Gucci gucci\n");
-					v1.passerTour = 1;
-				}
-				break;
-			}
-	}	
-}
-
 int affichagePlateau() {
 	// Plateau
 	// cell_T plateau[plateau_y][plateau_x];
@@ -793,8 +776,6 @@ int affichagePlateau() {
 		affichage_entites(plateau);
 
 		affichage_sorts();
-
-		passerTourPersonnage();
 
 		// Recharge des relance etc a la fin d'un tour
 		if (finTempsAllie == 1 || finTourComplet == 1) {
