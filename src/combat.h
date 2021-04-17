@@ -5,6 +5,8 @@
 
 SDL_Rect srcrect_vie, dstrect_vie, dstrect_vie_fond, dstrect_vie_texte;
 
+SDL_Rect srcrect_nitro, dstrect_nitro, dstrect_nitro_fond, dstrect_nitro_texte;
+
 /* Fonctions */
 void boutonPasserTour();
 void statsMaximum(entite * e);
@@ -21,6 +23,7 @@ void actionEnnemi(entite * e);
 void tourPersonnage(entite * ee1, entite * ee2);
 
 void update_barre_vie();
+void update_barre_nitro();
 void init_interface_combat();
 void update_interface_combat();
 

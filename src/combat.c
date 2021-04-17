@@ -765,6 +765,70 @@ void update_barre_vie() {
 	SDL_RenderCopy(ren, texture_vie, &srcrect_vie, &dstrect_vie);
 	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_texte);
 
+    free(surface_vie);
+    free(surface_vie_fond);
+    free(texture_vie);
+    free(texture_vie_fond);
+    free(surface_vie_texte);
+    free(texture_vie_texte);
+	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
+}
+
+void update_barre_nitro() {
+
+	// Initialisation des polices nécessaires
+	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
+
+	SDL_Color color_white = {255, 255, 255, 255};
+
+	SDL_Surface * surface_nitro = IMG_Load("../data/combat/nitro.png");
+	SDL_Surface * surface_nitro_fond = IMG_Load("../data/combat/nitro_bg.png");
+	SDL_Texture * texture_nitro = SDL_CreateTextureFromSurface(ren, surface_nitro);
+	SDL_Texture * texture_nitro_fond = SDL_CreateTextureFromSurface(ren, surface_nitro_fond);
+
+	float percent_nitro_restante = (float)v1.nitro / (float)v1.nitroMax;
+	percent_nitro_restante = roundf(percent_nitro_restante * 100) / 100;
+	float percent_nitro_perdue = 1 - percent_nitro_restante;
+
+	srcrect_nitro.x = 0;
+	srcrect_nitro.y = 164 * percent_nitro_perdue;
+	srcrect_nitro.w = 184;
+	srcrect_nitro.h = 164 * percent_nitro_restante;
+
+	dstrect_nitro.x = 400;
+	dstrect_nitro.y = 700 + 164 * percent_nitro_perdue;
+	dstrect_nitro.w = 184;
+	dstrect_nitro.h = 164 * percent_nitro_restante;
+
+	dstrect_nitro_fond.x = 400;
+	dstrect_nitro_fond.y = 700;
+	dstrect_nitro_fond.w = 184;
+	dstrect_nitro_fond.h = 164;
+
+	int longueur = snprintf(NULL, 0, "%d/%d", v1.nitro, v1.nitroMax);
+	char * nitro_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(nitro_texte, longueur + 1, "%d/%d", v1.nitro, v1.nitroMax);
+	SDL_Surface * surface_nitro_texte = TTF_RenderText_Blended(font, nitro_texte, color_white);
+	SDL_Texture * texture_nitro_texte = SDL_CreateTextureFromSurface(ren, surface_nitro_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_nitro_texte, NULL, NULL, &temp_w, &temp_h);
+
+	dstrect_nitro_texte.x = dstrect_nitro_fond.x + dstrect_nitro_fond.w / 2 - temp_w / 2;
+	dstrect_nitro_texte.y = dstrect_nitro_fond.y + dstrect_nitro_fond.h / 2 - temp_h / 2;
+	dstrect_nitro_texte.w = temp_w;
+	dstrect_nitro_texte.h = temp_h;
+
+	SDL_RenderCopy(ren, texture_nitro_fond, NULL, &dstrect_nitro_fond);
+	SDL_RenderCopy(ren, texture_nitro, &srcrect_vie, &dstrect_nitro);
+	SDL_RenderCopy(ren, texture_nitro_texte, NULL, &dstrect_nitro_texte);
+
+    free(surface_nitro);
+    free(surface_nitro_fond);
+    free(texture_nitro);
+    free(texture_nitro_fond);
+    free(surface_nitro_texte);
+    free(texture_nitro_texte);
 	// FAUT FAIRE UNE FONCTION POUR TOUT FREE AVANT LA FIN !!	
 }
 
@@ -774,6 +838,7 @@ void init_interface_combat() {
 
 void update_interface_combat() {
 	update_barre_vie();
+    update_barre_nitro();
 }
 
 void deroulementCombat(int level){
