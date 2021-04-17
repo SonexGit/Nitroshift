@@ -835,17 +835,26 @@ void update_barre_nitro() {
 }
 
 void affichage_infos_ennemi(int cible_x, int cible_y) {
-	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-Italic.ttf", 16);
+	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-BoldItalic.ttf", 14);
+	TTF_Font * font_nom = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 16);
 
 	SDL_Color color_white = {255, 255, 255, 255};
 
 	entite ennemi = plateau[cible_y][cible_x].e;
 
+	// Vie de l'ennemi en texte
 	int longueur = snprintf(NULL, 0, "%d/%d", ennemi.hp, ennemi.hpMax);
 	char * vie_texte = malloc(sizeof(char) * longueur + 1);
 	snprintf(vie_texte, longueur + 1, "%d/%d", ennemi.hp, ennemi.hpMax);
 	SDL_Surface * surface_vie_texte = TTF_RenderText_Blended(font, vie_texte, color_white);
 	SDL_Texture * texture_vie_texte = SDL_CreateTextureFromSurface(ren, surface_vie_texte);
+
+	// Nom de l'ennemi en texte
+	longueur = snprintf(NULL, 0, "%s", ennemi.nom);
+	char * nom_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(nom_texte, longueur + 1, "%s", ennemi.nom);
+	SDL_Surface * surface_nom_texte = TTF_RenderText_Blended(font_nom, nom_texte, color_white);
+	SDL_Texture * texture_nom_texte = SDL_CreateTextureFromSurface(ren, surface_nom_texte);
 
 	int temp_w, temp_h;
 	SDL_QueryTexture(texture_vie_texte, NULL, NULL, &temp_w, &temp_h);
@@ -856,7 +865,28 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
 	dstrect_vie_ennemi_texte.h = temp_h;
 	dstrect_vie_ennemi_texte.w = temp_w;
 
+	SDL_QueryTexture(texture_nom_texte, NULL, NULL, &temp_w, &temp_h);
+	SDL_Rect dstrect_nom_ennemi_texte;
+	dstrect_nom_ennemi_texte.x = plateau[cible_y][cible_x].pc.x - temp_w / 2;
+	dstrect_nom_ennemi_texte.y = plateau[cible_y][cible_x].pc.y - 120;
+	dstrect_nom_ennemi_texte.h = temp_h;
+	dstrect_nom_ennemi_texte.w = temp_w;
+
+	SDL_Rect fond_vie_ennemi_texte;
+	int temp_x;
+	if (dstrect_nom_ennemi_texte.x >= dstrect_vie_ennemi_texte.x) {
+		temp_x = dstrect_nom_ennemi_texte.w; 
+	}
+	else temp_x = dstrect_vie_ennemi_texte.w;
+	fond_vie_ennemi_texte.x = dstrect_nom_ennemi_texte.x - 10;
+	fond_vie_ennemi_texte.y = dstrect_nom_ennemi_texte.y - 5;
+	fond_vie_ennemi_texte.h = dstrect_nom_ennemi_texte.h + dstrect_vie_ennemi_texte.h + 10;
+	fond_vie_ennemi_texte.w = temp_x + 30;
+
+	SDL_SetRenderDrawColor(ren, 25, 25, 25, 200);
+	SDL_RenderFillRect(ren, &fond_vie_ennemi_texte);
 	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_ennemi_texte);
+	SDL_RenderCopy(ren, texture_nom_texte, NULL, &dstrect_nom_ennemi_texte);
 
 	free(vie_texte);
     SDL_FreeSurface(surface_vie_texte);

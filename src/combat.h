@@ -27,6 +27,8 @@ void tourPersonnage(entite * ee1, entite * ee2);
 
 void update_barre_vie();
 void update_barre_nitro();
+
+void affichage_infos_ennemi(int cible_x, int cible_y);
 void init_interface_combat();
 void update_interface_combat();
 

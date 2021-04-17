@@ -773,7 +773,6 @@ int affichagePlateau() {
 		affichage_entites(plateau);
 
 		update_interface_combat();
-		
 		boutonPasserTour();
 		affichage_sorts();
 
@@ -783,10 +782,6 @@ int affichagePlateau() {
 			}
 		}
 
-		affichage_entites(plateau);
-
-		affichage_sorts();
-
 		// Recharge des relance etc a la fin d'un tour
 		if (finTempsAllie == 1 || finTourComplet == 1) {
 			finTourComplet = 1;
@@ -795,7 +790,7 @@ int affichagePlateau() {
 				finTourComplet = 0;
 			}
 		}
-
+		
 		SDL_RenderPresent(ren);
 		free_personnage_c();
 		free_ennemi_c();
