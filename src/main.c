@@ -134,6 +134,10 @@ size_t handle_keys() {
 					else if (plateau[temp_pc_y][temp_pc_x].e.id != 0 && mouse_cast_able == SDL_TRUE) {
 						lancement_sort(&v1, temp_pc_x, temp_pc_y, &sorts[prepaSort]);
 					}
+					if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841 && v1.passerTour == 0){
+						printf("Vous avez passe votre tour.\n");
+						v1.passerTour = 1;
+					}
 				}
 				break;
 			case SDL_MOUSEWHEEL:
@@ -202,11 +206,6 @@ size_t handle_keys() {
 					mouse_toofar = SDL_TRUE;
 				else if (dist < 25)
 					mouse_toofar = SDL_FALSE;
-
-				if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841){
-					printf("Vous avez passe votre tour.\n");
-					v1.passerTour = 1;
-				}
 				break;
 			
 			case SDL_WINDOWEVENT:
