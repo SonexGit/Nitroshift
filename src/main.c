@@ -622,6 +622,28 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+void passerTourPersonnage(){
+
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+
+			switch (event.type)
+			{
+			case SDL_QUIT:
+			SDL_DestroyRenderer(ren);
+			SDL_DestroyWindow(win);
+			break;
+			case SDL_MOUSEBUTTONDOWN:
+				if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841){
+					printf("Gucci gucci\n");
+					v1.passerTour = 1;
+				}
+				break;
+			}
+	}	
+}
+
 int affichagePlateau() {
 	// Plateau
 	// cell_T plateau[plateau_y][plateau_x];
@@ -738,9 +760,8 @@ int affichagePlateau() {
 		init_textures_personnage();
 		init_textures_ennemis();
 
-		if(v1.pm <= 0){
+		if(v1.passerTour == 1){
 			if(finTempsAllie == 0){
-				tourPersonnage(&e1, &e2); // Tour personnage avec des dégâts random (à enlever plus tard)
 				tempsDebutPlateau = SDL_GetTicks();
 				finTempsAllie = 1;
 			}
@@ -777,23 +798,7 @@ int affichagePlateau() {
 
 		affichage_sorts();
 
-		SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {
-
-                switch (event.type)
-                {
-                case SDL_QUIT:
-                SDL_DestroyRenderer(ren);
-                SDL_DestroyWindow(win);
-                break;
-                case SDL_MOUSEBUTTONDOWN:
-                    if(event.button.x >=1150 && event.button.x<=1292 && event.button.y>=750 && event.button.y<=841){
-                        printf("Gucci gucci\n");
-                    }
-                    break;
-                }
-        }
+		passerTourPersonnage();
 
 		// Recharge des relance etc a la fin d'un tour
 		if (finTempsAllie == 1 || finTourComplet == 1) {

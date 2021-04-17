@@ -37,6 +37,7 @@ typedef struct entite_S {
 	int experience;
 	int flag;
 	int mort;
+	int passerTour;
 	int tempsRelance;
 	int relanceBoost;
 	SDL_Surface * surface;
