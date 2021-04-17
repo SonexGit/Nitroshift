@@ -34,6 +34,12 @@ sort_T sortsEnnemi8[MAX_SORTS];
 sort_T sortsEnnemi9[MAX_SORTS];
 sort_T sortsEnnemi10[MAX_SORTS];
 
+sort_T sortsBoss1[MAX_SORTS];
+sort_T sortsBoss2[MAX_SORTS];
+sort_T sortsBoss3[MAX_SORTS];
+sort_T sortsBoss4[MAX_SORTS];
+sort_T sortsBoss5[MAX_SORTS];
+
 SDL_Rect liste_sorts[10];
 
 SDL_Rect rect_prep_sort[plateau_x*plateau_y];

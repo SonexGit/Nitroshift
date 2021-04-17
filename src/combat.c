@@ -765,14 +765,14 @@ void update_barre_vie() {
 	SDL_RenderCopy(ren, texture_vie, &srcrect_vie, &dstrect_vie);
 	SDL_RenderCopy(ren, texture_vie_texte, NULL, &dstrect_vie_texte);
 
-	free(hp_texte);
+    free(hp_texte);
     SDL_FreeSurface(surface_vie);
     SDL_FreeSurface(surface_vie_fond);
     SDL_DestroyTexture(texture_vie);
     SDL_DestroyTexture(texture_vie_fond);
     SDL_FreeSurface(surface_vie_texte);
     SDL_DestroyTexture(texture_vie_texte);
-	TTF_CloseFont(font);
+    TTF_CloseFont(font);
 }
 
 void update_barre_nitro() {
@@ -824,7 +824,7 @@ void update_barre_nitro() {
 	SDL_RenderCopy(ren, texture_nitro, &srcrect_nitro, &dstrect_nitro);
 	SDL_RenderCopy(ren, texture_nitro_texte, NULL, &dstrect_nitro_texte);
 
-	free(nitro_texte);
+    free(nitro_texte);
     SDL_FreeSurface(surface_nitro);
     SDL_FreeSurface(surface_nitro_fond);
     SDL_DestroyTexture(texture_nitro);
@@ -892,6 +892,7 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
     SDL_FreeSurface(surface_vie_texte);
     SDL_DestroyTexture(texture_vie_texte);
 	TTF_CloseFont(font);
+	TTF_CloseFont(font_nom);
 }
 
 void init_interface_combat() {
@@ -971,16 +972,126 @@ void deroulementCombat(int level){
             else{
                 printf("\nBravo vous avez gagne le niveau %i !\n", level);
                 srand(time(NULL));
-                money = rand() % 40 + 10;
+                money = rand() % 30 + 10;
                 printf("Vous avez remporte %i nitroDollars.\n", money);
                 printf("[%i --> ", v1.nitroDollars);
                 v1.nitroDollars += money;
                 printf("%i]\n", v1.nitroDollars);
-                exp = rand() % 100 + 90;
+                exp = rand() % 20 + 10;
                 printf("Vous avez remporte %i points d'experiences.\n", exp);
                 printf("[%i --> ", v1.experience);
                 v1.experience += exp;
                 printf("%i]\n", v1.experience);
+                a1.z1.niveau2 = 1;
+                levelUp();
+                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+            }
+            break;
+        case 2 :
+            if(e1.mort == 0 && e2.mort == 0){
+                actionEnnemi(&e1);
+                if(tourTermine == 1){
+                    actionEnnemi(&e2);
+                    if(e2.pm <= 0){
+                        if(e1.tempsRelance > 0){
+                            e1.tempsRelance--;
+                        }
+                        else{
+                            e1.relanceBoost = 1;
+                        }
+                        if(e2.tempsRelance > 0){
+                            e2.tempsRelance--;
+                        }
+                        else{
+                            e2.relanceBoost = 1;
+                        }
+                        statsMaximum(&e1);
+                        statsMaximum(&e2);
+                        statsMaximum(&v1);
+                        v1.passerTour = 0;
+                        finTempsAllie = 0;
+                    }
+                }
+            }
+            else if(e1.mort == 1 && e2.mort == 0){
+                actionEnnemi(&e2);
+                if(e2.pm <= 0){
+                    if(e2.tempsRelance > 0){
+                        e2.tempsRelance--;
+                    }
+                    else{
+                        e2.relanceBoost = 1;
+                    }
+                    statsMaximum(&e2);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }               
+            }
+            else if(e1.mort == 0 && e2.mort == 1){
+                actionEnnemi(&e1);
+                if(e1.pm <= 0){
+                    if(e1.tempsRelance > 0){
+                        e1.tempsRelance--;
+                    }
+                    else{
+                        e1.relanceBoost = 1;
+                    }
+                    statsMaximum(&e1);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }          
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 40 + 20;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 30 + 20;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.z1.niveau3 = 1;
+                levelUp();
+                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+            }
+            break;
+        case 3 :
+            if(b1.mort == 0){
+                actionEnnemi(&b1);
+                if(b1.pm <= 0){
+                    if(b1.tempsRelance > 0){
+                        b1.tempsRelance--;
+                    }
+                    else{
+                        b1.relanceBoost = 1;
+                    }
+                    statsMaximum(&b1);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 80 + 40;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 60 + 40;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.zone2 = 1;
+                a1.z2.niveau1 = 1;
                 levelUp();
                 exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
             }

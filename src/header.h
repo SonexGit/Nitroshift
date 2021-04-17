@@ -26,7 +26,6 @@ typedef struct entite_S {
 	int paMax;
 	int pm;
 	int pmMax;
-	int initiative;
 	int attaque;
 	int defense;
 	int positionX;
@@ -62,6 +61,8 @@ cell_T plateau[plateau_y][plateau_x];
 SDL_Point pts_2D[plateau_x*plateau_y];
 
 int isCombat;
+
+int levelCombat;
 
 // Texture du personnage
 int sprite;

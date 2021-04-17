@@ -661,9 +661,11 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
+	levelCombat = 2;
+
 	creationEnnemi();
 	creationPersonnage();
-	initCombat(1);
+	initCombat(levelCombat);
 
 	// ==============================================
 	// Initialisation du plateau
@@ -754,7 +756,7 @@ int affichagePlateau() {
 				tempsDebutPlateau = SDL_GetTicks();
 				finTempsAllie = 1;
 			}
-			deroulementCombat(1);
+			deroulementCombat(levelCombat);
 		}
 
 		/*
@@ -766,10 +768,16 @@ int affichagePlateau() {
 		init_cases_solide(1, plateau);
 		
 		init_id_entite_plateau();
-		plateau[v1.positionY][v1.positionX].e = v1;
+		
+		/*----------------------------------------------------------------------------------------*/
+		// A CHANGER EN FONCTION DU NIVEAU POUR QUE CA MARCHE
+		// ON CHANGERA CA CAR C EST PAS PRATIQUE
+		/*----------------------------------------------------------------------------------------*/
 		plateau[e1.positionY][e1.positionX].e = e1;
 		plateau[e2.positionY][e2.positionX].e = e2;
-		
+		//plateau[b1.positionY][b1.positionX].e = b1;
+		plateau[v1.positionY][v1.positionX].e = v1;
+
 		affichage_entites(plateau);
 
 		update_interface_combat();
