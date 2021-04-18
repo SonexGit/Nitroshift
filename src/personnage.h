@@ -4,9 +4,10 @@
 #include "header.h"
 
 /* Structure du personnage */
-typedef struct personnage_S {
-    char * pseudo;
-    char * classe;
+typedef struct personnage_S
+{
+    char *pseudo;
+    char *classe;
     int niveau;
     int hp;
     int hpMax;
@@ -23,21 +24,23 @@ typedef struct personnage_S {
     int positionY;
     int zone;
     int niveauZone;
-}personnage;
+} personnage;
 
 /* Joueur 1 */
 personnage v1;
 
 /* Sous structure des zones*/
-typedef struct zone_D {
+typedef struct zone_D
+{
     int niveau1;
     int niveau2;
     int niveau3;
     int niveau4;
-}zone;
+} zone;
 
 /* Structure des accès ou non aux zones et niveaux */
-typedef struct acces_D {
+typedef struct acces_D
+{
     /* Les types zones sont pour les différents niveaux */
     int zone1;
     zone z1;
@@ -49,7 +52,7 @@ typedef struct acces_D {
     zone z4;
     int zone5;
     zone z5;
-}acces;
+} acces;
 
 /* Liste des accès */
 acces a1;
@@ -59,9 +62,9 @@ acces a1;
 #define perso_col 1 // Combien de textures par colonne ?
 
 // Déclarations
-SDL_Surface * surface_perso;
-SDL_Texture * texture_perso;
-SDL_Rect src_perso[perso_row*perso_col];
+SDL_Surface *surface_perso;
+SDL_Texture *texture_perso;
+SDL_Rect src_perso[perso_row * perso_col];
 SDL_Rect dest_perso;
 
 #define STAND_LEFT 0
@@ -70,7 +73,7 @@ SDL_Rect dest_perso;
 #define STAND_DOWN 3
 
 /* Fonction(s) utilisée(s) */
-void creationPersonnage(personnage * p);
+void creationPersonnage(personnage *p);
 void creationAcces();
 void affichagePersonnage(personnage p);
 
