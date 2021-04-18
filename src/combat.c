@@ -391,6 +391,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
+                        SDL_RenderClear(ren);
                         findujeu();
                     }
                 }
@@ -412,7 +413,8 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                              findujeu();
+                                SDL_RenderClear(ren);
+                                findujeu();
                             }
                         }
                     }
@@ -430,6 +432,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
+                        SDL_RenderClear(ren);
                         findujeu();
                     }
                 }
@@ -451,6 +454,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
+                                SDL_RenderClear(ren);
                                 findujeu();
                             }
                         }
@@ -471,7 +475,8 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                      findujeu();
+                        SDL_RenderClear(ren);
+                        findujeu();
                     }
                 }
             }
@@ -492,6 +497,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
+                                SDL_RenderClear(ren);
                                 findujeu();
                             }
                         }
@@ -510,6 +516,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
+                        SDL_RenderClear(ren);
                         findujeu();
                     }
                 }
@@ -531,6 +538,7 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
+                                SDL_RenderClear(ren);
                                 findujeu();
                             }
                         }
@@ -1142,6 +1150,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z1.niveau2 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1216,6 +1225,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z1.niveau3 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1251,6 +1261,7 @@ void deroulementCombat(int level){
                 a1.zone2 = 1;
                 a1.z2.niveau1 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1325,6 +1336,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z2.niveau2 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1399,6 +1411,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z2.niveau3 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1434,6 +1447,7 @@ void deroulementCombat(int level){
                 a1.zone3 = 1;
                 a1.z3.niveau1 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1508,6 +1522,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z3.niveau2 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1582,6 +1597,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z3.niveau3 = 1;
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
@@ -1615,6 +1631,7 @@ void deroulementCombat(int level){
                 v1.experience += exp;
                 printf("%i]\n", v1.experience);
                 levelUp();
+                SDL_RenderClear(ren);
                 fingagnant();
             }
             break;
