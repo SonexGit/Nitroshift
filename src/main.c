@@ -496,6 +496,8 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	free(repertoire_cartes);
 	free(buffer);
 	fclose(fichier_texture);
+	SDL_FreeSurface(surface_test);
+	SDL_DestroyTexture(textures_plateau);
 }
 
 void free_texture_cases() {
