@@ -67,6 +67,8 @@ int isCombat;
 
 int levelCombat;
 
+int numeroZone;
+
 int affichageSort;
 
 // Déclaration des polices
