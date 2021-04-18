@@ -1,6 +1,6 @@
 CFLAGS=-W -Wall -pedantic
 
-all:render.o entite.o initialisation.o combat.o sorts.o main.o menujeu.o mesmodif.o pile.o shifumi.o apropos.o shop.o perdu.o amelioration.o gagnant.o niveau.o niveau.o zone.o nitroshift
+all:render.o entite.o initialisation.o combat.o sorts.o main.o menujeu.o mesmodif.o pile.o shifumi.o apropos.o shop.o perdu.o amelioration.o gagnant.o niveau.o niveau.o zone.o saveok.o nitroshift
 
 render.o: ./src/render.c ./src/render.h
 	gcc ${CFLAGS} -c ./src/render.c -o ./src/render.o -m32 -L./lib -I./include
@@ -53,5 +53,9 @@ niveau.o: ./src/niveau.c ./src/niveau.h
 zone.o: ./src/zone.c ./src/zone.h
 	gcc ${CFLAGS} -c ./src/zone.c -o ./src/zone.o -m32 -L./lib -I./include
 
-nitroshift: ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o ./src/amelioration.o ./src/shop.o ./src/shifumi.o ./src/pile.o ./src/mesmodif.o ./src/menujeu.o ./src/perdu.o ./src/gagnant.o ./src/niveau.o ./src/zone.o
-	gcc ${CFLAGS} ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o ./src/amelioration.o ./src/shop.o ./src/apropos.o ./src/shifumi.o ./src/pile.o ./src/mesmodif.o ./src/menujeu.o ./src/perdu.o ./src/gagnant.o ./src/niveau.o ./src/zone.o -o ./src/nitroshift -m32 -L./lib -I./include -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
+saveok.o: ./src/saveok.c ./src/saveok.h
+	gcc ${CFLAGS} -c ./src/saveok.c -o ./src/saveok.o -m32 -L./lib -I./include
+
+
+nitroshift: ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o ./src/amelioration.o ./src/shop.o ./src/shifumi.o ./src/pile.o ./src/mesmodif.o ./src/menujeu.o ./src/perdu.o ./src/gagnant.o ./src/niveau.o ./src/zone.o ./src/saveok.o
+	gcc ${CFLAGS} ./src/main.o ./src/render.o ./src/entite.o ./src/initialisation.o ./src/combat.o ./src/sorts.o ./src/amelioration.o ./src/shop.o ./src/apropos.o ./src/shifumi.o ./src/pile.o ./src/mesmodif.o ./src/menujeu.o ./src/perdu.o ./src/gagnant.o ./src/niveau.o ./src/zone.o ./src/saveok.o -o ./src/nitroshift -m32 -L./lib -I./include -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
