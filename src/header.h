@@ -72,6 +72,7 @@ int affichageSort;
 TTF_Font * font;
 TTF_Font * font_titre;
 TTF_Font * font_barres;
+TTF_Font * font_barres2;
 TTF_Font * font_degats;
 TTF_Font * font_tour;
 

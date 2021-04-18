@@ -986,6 +986,78 @@ void update_barre_nitro() {
     SDL_DestroyTexture(texture_nitro_texte);
 }
 
+void update_barre_pa() {
+	SDL_Color color_black = {0,0,0};
+
+	SDL_Surface * surface_pa = IMG_Load("../data/combat/pa.png");
+	SDL_Texture * texture_pa = SDL_CreateTextureFromSurface(ren, surface_pa);
+
+	int longueur = snprintf(NULL, 0, "%d", v1.pa);
+	char * pa_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(pa_texte, longueur + 1, "%d", v1.pa);
+	SDL_Surface * surface_pa_texte = TTF_RenderText_Blended(font_barres2, pa_texte, color_black);
+	SDL_Texture * texture_pa_texte = SDL_CreateTextureFromSurface(ren, surface_pa_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_pa_texte, NULL, NULL, &temp_w, &temp_h);
+
+	SDL_Rect dstrect_pa;
+	dstrect_pa.x = 600;
+	dstrect_pa.y = 725;
+	dstrect_pa.w = 64;
+	dstrect_pa.h = 64;
+
+	SDL_Rect dstrect_pa_texte;
+	dstrect_pa_texte.x = dstrect_pa.x + dstrect_pa.w / 2 - temp_w / 2;
+	dstrect_pa_texte.y = dstrect_pa.y + dstrect_pa.h / 2 - temp_h / 2 + 2;
+	dstrect_pa_texte.w = temp_w;
+	dstrect_pa_texte.h = temp_h;
+
+	SDL_RenderCopy(ren, texture_pa, NULL, &dstrect_pa);
+	SDL_RenderCopy(ren, texture_pa_texte, NULL, &dstrect_pa_texte);
+
+	SDL_FreeSurface(surface_pa_texte);
+	SDL_FreeSurface(surface_pa);
+	SDL_DestroyTexture(texture_pa_texte);
+	SDL_DestroyTexture(texture_pa);
+}
+
+void update_barre_pm() {
+	SDL_Color color_black = {0,0,0};
+
+	SDL_Surface * surface_pm = IMG_Load("../data/combat/pm.png");
+	SDL_Texture * texture_pm = SDL_CreateTextureFromSurface(ren, surface_pm);
+
+	int longueur = snprintf(NULL, 0, "%d", v1.pm);
+	char * pm_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(pm_texte, longueur + 1, "%d", v1.pm);
+	SDL_Surface * surface_pm_texte = TTF_RenderText_Blended(font_barres2, pm_texte, color_black);
+	SDL_Texture * texture_pm_texte = SDL_CreateTextureFromSurface(ren, surface_pm_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_pm_texte, NULL, NULL, &temp_w, &temp_h);
+
+	SDL_Rect dstrect_pm;
+	dstrect_pm.x = 600;
+	dstrect_pm.y = 795;
+	dstrect_pm.w = 64;
+	dstrect_pm.h = 64;
+
+	SDL_Rect dstrect_pm_texte;
+	dstrect_pm_texte.x = dstrect_pm.x + dstrect_pm.w / 2 - temp_w / 2;
+	dstrect_pm_texte.y = dstrect_pm.y + dstrect_pm.h / 2 - temp_h / 2;
+	dstrect_pm_texte.w = temp_w;
+	dstrect_pm_texte.h = temp_h;
+
+	SDL_RenderCopy(ren, texture_pm, NULL, &dstrect_pm);
+	SDL_RenderCopy(ren, texture_pm_texte, NULL, &dstrect_pm_texte);
+
+	SDL_FreeSurface(surface_pm_texte);
+	SDL_FreeSurface(surface_pm);
+	SDL_DestroyTexture(texture_pm_texte);
+	SDL_DestroyTexture(texture_pm);
+}
+
 void affichage_infos_ennemi(int cible_x, int cible_y) {
 	SDL_Color color_white = {255, 255, 255, 255};
 
@@ -1050,7 +1122,9 @@ void init_interface_combat() {
 
 void update_interface_combat() {
 	update_barre_vie();
-    update_barre_nitro();
+	update_barre_nitro();
+	update_barre_pa();
+	update_barre_pm();
 	if (sur_ennemi_x != -1 && sur_ennemi_y != -1) {
 		affichage_infos_ennemi(sur_ennemi_x, sur_ennemi_y);
 	}

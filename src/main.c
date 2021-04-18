@@ -650,6 +650,7 @@ void init_polices() {
 	font = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 14);
 	font_titre = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 16);
 	font_barres = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
+	font_barres2 = TTF_OpenFont("../data/police/Roboto-Black.ttf", 32);
 	font_degats = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 24);
 	font_tour = TTF_OpenFont("../data/police/Roboto-Black.ttf", 36);
 }
@@ -658,6 +659,7 @@ void close_polices() {
 	TTF_CloseFont(font);
 	TTF_CloseFont(font_titre);
 	TTF_CloseFont(font_barres);
+	TTF_CloseFont(font_barres2);
 	TTF_CloseFont(font_degats);
 	TTF_CloseFont(font_tour);
 }
