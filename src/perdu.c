@@ -57,7 +57,8 @@ void findujeu()
     SDL_Surface * surface_perdu = IMG_Load("../data/combat/test.png");
     SDL_Texture * texture_perdu=SDL_CreateTextureFromSurface(ren,surface_perdu);
 
-
+    SDL_Surface *imageretour = NULL;
+    SDL_Texture *textureretour = NULL;
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
@@ -152,7 +153,49 @@ void findujeu()
  }
 
  SDL_RenderPresent(ren);
+ imageretour=IMG_Load("../data/menu/bouton_retour.png");
+ if(imageretour==NULL)
+ {
+     SDL_DestroyRenderer(ren);
+     SDL_DestroyWindow(win);
+     SDLError("Erreur lors du chargement de l'image");
+ }
+ textureretour=SDL_CreateTextureFromSurface(ren,imageretour);
 
+ //libération de la surface car plus besoin
+ SDL_FreeSurface(imageretour);
+
+ if(textureretour==NULL)
+ {
+     SDL_DestroyRenderer(ren);
+     SDL_DestroyWindow(win);
+     SDLError("Erreur lors de la création de la texture bouton abandon");
+ }
+ //l'image est chargé en mémoire
+
+
+ //chargement de la texture
+ SDL_Rect rectangleretour;
+ if(SDL_QueryTexture(textureretour,NULL,NULL,&rectangleretour.w,&rectangleretour.h)!=0)
+ {
+     SDL_DestroyRenderer(ren);
+     SDL_DestroyWindow(win);
+     SDLError("Erreur lors de l'affichage de l'image");
+ }
+
+ //positionnement du bouton
+ rectangleretour.x=20;
+ rectangleretour.y=10;
+ //
+ //affichage de l'image
+ if(SDL_RenderCopy(ren,textureretour,NULL, &rectangleretour)!=0)
+ {
+     SDL_DestroyRenderer(ren);
+     SDL_DestroyWindow(win);
+     SDLError("Erreur lors de l'affichage de l'image");
+ }
+
+ SDL_RenderPresent(ren);
 SDL_bool mouse_hover = SDL_FALSE;
     int continuer=3;
     SDL_Event event;
@@ -201,11 +244,12 @@ SDL_bool mouse_hover = SDL_FALSE;
 
 
     		}
-    		if(event.button.x >=20 && event.button.x<=221 && event.button.y>=500 && event.button.y<=539){
-          isCombat = 0;
-          continuer = 0;
-
-   		}
+        if(event.button.x >=20 && event.button.x<=162 && event.button.y>=10 && event.button.y<=101){
+          SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+          SDL_RenderClear(ren);
+          SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+          showmenu();
+        }
     		if(event.button.x >=0 && event.button.x<=380 && event.button.y>=250 && event.button.y<=322){
           Mix_FreeMusic(myMus);
           Mix_CloseAudio();

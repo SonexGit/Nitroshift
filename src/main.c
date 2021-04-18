@@ -815,7 +815,7 @@ void chargerSauvegarde(){
 		fgets(chaine, 30, fichier);
 		temp = atoi(chaine);
 		v1.defense = temp;
-	
+
 		fgets(chaine, 30, fichier);
 		temp = atoi(chaine);
 		v1.equipe = temp;
@@ -917,7 +917,7 @@ int affichagePlateau() {
 
 
 	creationEnnemi();
-	
+
 	initCombat(levelCombat);
 
 	// ==============================================
@@ -938,7 +938,7 @@ int affichagePlateau() {
 	lien_pc_cases(points_centre, plateau);
 
 	// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
-	fileListPoints(points, points_centre);
+	fileListPoints(poinZts, points_centre);
 
 	// Initialisation de la possibilité de lancer un sort sur une certaine case à 0 (on ne prépare aucun sort au début)
 	init_sort_surftext();
@@ -1038,7 +1038,7 @@ int affichagePlateau() {
 		update_interface_combat();
 		boutonPasserTour();
 		affichage_sorts();
-		
+
 		if (affichageSort != -1) {
 			affichage_infos_sort(&v1, sorts[affichageSort]);
 		}
@@ -1059,7 +1059,7 @@ int affichagePlateau() {
 			}
 			afficher_degats(degats_inflige, degats_cible_x, degats_cible_y);
 		}
-		
+
 		SDL_RenderPresent(ren);
 		free_personnage_c();
 		free_ennemi_c(levelCombat);

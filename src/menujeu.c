@@ -20,6 +20,7 @@
 #include "menujeu.h"
 #include "amelioration.h"
 #include "shop.h"
+#include "saveok.h"
 
 /**
  * \fn void showmenu
@@ -506,6 +507,8 @@ SDL_bool mouse_hover = SDL_FALSE;
         }
         if(event.button.x >=1250 && event.button.x<=1577 && event.button.y>=250 && event.button.y<=307){
           sauvegarderPartie();
+          SDL_RenderClear(ren);
+          saveok();
         }
         if(event.button.x >=0 && event.button.x<=375 && event.button.y>=375 && event.button.y<=451){
           SDL_RenderClear(ren);
