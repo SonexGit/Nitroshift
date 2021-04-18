@@ -749,7 +749,7 @@ void positionnerEnnemi(int lev){
 			plateau[b5.positionY][b5.positionX].e = b5;
 			plateau[v1.positionY][v1.positionX].e = v1;
             break;
-    }	
+    }
 }
 
 void sauvegarderPartie(){
@@ -792,8 +792,8 @@ void sauvegarderPartie(){
 	fprintf(fichier, "%i\n", a1.z5.niveau1);
 	fprintf(fichier, "%i\n", a1.z5.niveau2);
 	fprintf(fichier, "%i\n", a1.z5.niveau3);
-	
-	fclose(fichier);	
+
+	fclose(fichier);
 }
 
 void chargerSauvegarde(){
@@ -841,7 +841,7 @@ void chargerSauvegarde(){
 		fgets(chaine, 30, fichier);
 		temp = atoi(chaine);
 		v1.defense = temp;
-	
+
 		fgets(chaine, 30, fichier);
 		temp = atoi(chaine);
 		v1.equipe = temp;
@@ -943,7 +943,7 @@ int affichagePlateau() {
 
 
 	creationEnnemi();
-	
+
 	initCombat(levelCombat);
 
 	// ==============================================
@@ -1065,7 +1065,7 @@ int affichagePlateau() {
 		update_interface_combat();
 		boutonPasserTour();
 		affichage_sorts();
-		
+
 		if (affichageSort != -1) {
 			affichage_infos_sort(&v1, sorts[affichageSort]);
 		}
@@ -1086,7 +1086,7 @@ int affichagePlateau() {
 			}
 			afficher_degats(degats_inflige, degats_cible_x, degats_cible_y);
 		}
-		
+
 		SDL_RenderPresent(ren);
 		free_personnage_c();
 		free_ennemi_c(levelCombat);

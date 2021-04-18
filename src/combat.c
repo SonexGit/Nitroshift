@@ -39,7 +39,7 @@ void boutonPasserTour(){
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
     }
-    
+
     // L'image est chargée en mémoire
 
 
@@ -270,7 +270,7 @@ int rechercheCoutPaBoost(entite * e){
         case 500 :
             return sortsEnnemi10[0].coutPA;
             break;
-    }    
+    }
 }
 
 int rechercheRelanceBoost(entite * e){
@@ -321,7 +321,7 @@ int rechercheRelanceBoost(entite * e){
         case 500 :
             return sortsEnnemi10[0].relance;
             break;
-    }    
+    }
 }
 
 int boostEnnemi(entite * e){
@@ -340,7 +340,7 @@ int boostEnnemi(entite * e){
                     printf("PA restant : %i\n", e->pa);
                     printf("Nitro restante : %i\n", e->nitro);
                     e->relanceBoost = 0;
-                    e->tempsRelance = rechercheRelanceBoost(e);         
+                    e->tempsRelance = rechercheRelanceBoost(e);
                     return 1;
                     break;
                 }
@@ -354,7 +354,7 @@ int boostEnnemi(entite * e){
                     printf("PA restant : %i\n", e->pa);
                     printf("PM restant : %i\n", e->pm);
                     e->relanceBoost = 0;
-                    e->tempsRelance = rechercheRelanceBoost(e);            
+                    e->tempsRelance = rechercheRelanceBoost(e);
                     return 1;
                     break;
                 }
@@ -368,7 +368,7 @@ int boostEnnemi(entite * e){
                     printf("PA restant : %i\n", e->pa);
                     printf("PM restant : %i\n", e->pm);
                     e->relanceBoost = 0;
-                    e->tempsRelance = rechercheRelanceBoost(e);         
+                    e->tempsRelance = rechercheRelanceBoost(e);
                     return 1;
                     break;
                 }
@@ -382,7 +382,7 @@ int boostEnnemi(entite * e){
                     printf("PA restant : %i\n", e->pa);
                     printf("Nitro restante : %i\n", e->nitro);
                     e->relanceBoost = 0;
-                    e->tempsRelance = rechercheRelanceBoost(e);         
+                    e->tempsRelance = rechercheRelanceBoost(e);
                     return 1;
                     break;
                 }
@@ -413,7 +413,7 @@ int boostEnnemi(entite * e){
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     e->relanceBoost = 0;
-                    e->tempsRelance = rechercheRelanceBoost(e);            
+                    e->tempsRelance = rechercheRelanceBoost(e);
                     return 1;
                     break;
                 }
@@ -427,7 +427,7 @@ int boostEnnemi(entite * e){
                     printf("PA restant : %i\n", e->pa);
                     printf("Nitro restante : %i\n", e->nitro);
                     e->relanceBoost = 0;
-                    e->tempsRelance = rechercheRelanceBoost(e);            
+                    e->tempsRelance = rechercheRelanceBoost(e);
                     return 1;
                     break;
                 }
@@ -466,7 +466,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                        findujeu();
                     }
                 }
             }
@@ -487,11 +487,11 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                              findujeu();
                             }
                         }
                     }
-                }         
+                }
             }
         }
         else{ /* Le personnage est en haut donc il va vérifier si il a la PO déjà pour attaquer */
@@ -505,7 +505,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                        findujeu();
                     }
                 }
             }
@@ -526,11 +526,11 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                                findujeu();
                             }
                         }
                     }
-                }           
+                }
             }
         }
     }
@@ -546,7 +546,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                      findujeu();
                     }
                 }
             }
@@ -567,11 +567,11 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                                findujeu();
                             }
                         }
                     }
-                }           
+                }
             }
         }
         else{ /* Le personnage est à gauche donc il va vérifier si il a la PO déjà pour attaquer */
@@ -585,7 +585,7 @@ void attaqueEnnemi(entite * e){
                     printf("Points de vies restant du personnage : %i\n", v1.hp);
                     if(v1.hp <= 0){
                         printf("%s est mort.\n", v1.nom);
-                        exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                        findujeu();
                     }
                 }
             }
@@ -606,11 +606,11 @@ void attaqueEnnemi(entite * e){
                             printf("Points de vies restant du personnage : %i\n", v1.hp);
                             if(v1.hp <= 0){
                                 printf("%s est mort.\n", v1.nom);
-                                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                                findujeu();
                             }
                         }
                     }
-                }           
+                }
             }
         }
     }
@@ -632,7 +632,7 @@ void iaEnnemi(entite * e){
                 if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
                     e->positionX--;
                     e->pm--;
-                    attaqueEnnemi(e);                      
+                    attaqueEnnemi(e);
                 }
                 else{ /* Case solide donc il va à droite*/
                     e->positionX++;
@@ -651,12 +651,12 @@ void iaEnnemi(entite * e){
                 if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
                     e->positionX--;
                     e->pm--;
-                    attaqueEnnemi(e);                     
+                    attaqueEnnemi(e);
                 }
                 else{ /* Case solide donc il va à droite*/
                     e->positionX++;
                     e->pm--;
-                    attaqueEnnemi(e);   
+                    attaqueEnnemi(e);
                 }
             }
         }
@@ -672,12 +672,12 @@ void iaEnnemi(entite * e){
                 if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
                     e->positionY--;
                     e->pm--;
-                    attaqueEnnemi(e);                     
+                    attaqueEnnemi(e);
                 }
                 else{ /* Case solide donc il va en bas*/
                     e->positionY++;
                     e->pm--;
-                    attaqueEnnemi(e);   
+                    attaqueEnnemi(e);
                 }
             }
         }
@@ -691,12 +691,12 @@ void iaEnnemi(entite * e){
                 if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
                     e->positionY--;
                     e->pm--;
-                    attaqueEnnemi(e);                     
+                    attaqueEnnemi(e);
                 }
                 else{ /* Case solide donc il va en bas*/
                     e->positionY++;
                     e->pm--;
-                    attaqueEnnemi(e); 
+                    attaqueEnnemi(e);
                 }
             }
         }
@@ -733,20 +733,20 @@ void iaEnnemi(entite * e){
                         attaqueEnnemi(e);
                         e->positionX++;
                         e->pm--;
-                        attaqueEnnemi(e); 
+                        attaqueEnnemi(e);
                     }
                     else{ /* Case solide */
                         if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
                             attaqueEnnemi(e);
                             e->positionY--;
                             e->pm--;
-                            attaqueEnnemi(e);                        
-                        }  
+                            attaqueEnnemi(e);
+                        }
                         else{ /* Case solide donc il va en bas*/
                             attaqueEnnemi(e);
                             e->positionY++;
                             e->pm--;
-                            attaqueEnnemi(e);    
+                            attaqueEnnemi(e);
                         }
                     }
                 }
@@ -755,14 +755,14 @@ void iaEnnemi(entite * e){
                         attaqueEnnemi(e);
                         e->positionX--;
                         e->pm--;
-                        attaqueEnnemi(e); 
+                        attaqueEnnemi(e);
                     }
                     else{ /* Case solide */
                         if(!(plateau[e->positionY-1][e->positionX].solide)){ /* Case non solide en haut */
                             attaqueEnnemi(e);
                             e->positionY--;
                             e->pm--;
-                            attaqueEnnemi(e);                      
+                            attaqueEnnemi(e);
                         }
                         else{ /* Case solide donc il va en bas*/
                             attaqueEnnemi(e);
@@ -786,7 +786,7 @@ void iaEnnemi(entite * e){
                             attaqueEnnemi(e);
                             e->positionX--;
                             e->pm--;
-                            attaqueEnnemi(e);                     
+                            attaqueEnnemi(e);
                         }
                         else{ /* Case solide donc il va à droite*/
                             attaqueEnnemi(e);
@@ -801,14 +801,14 @@ void iaEnnemi(entite * e){
                         attaqueEnnemi(e);
                         e->positionY--;
                         e->pm--;
-                        attaqueEnnemi(e); 
+                        attaqueEnnemi(e);
                     }
                     else{ /* Case solide */
                         if(!(plateau[e->positionY][e->positionX-1].solide)){ /* Case non solide à gauche */
                             attaqueEnnemi(e);
                             e->positionX--;
                             e->pm--;
-                            attaqueEnnemi(e);                       
+                            attaqueEnnemi(e);
                         }
                         else{ /* Case solide donc il va à droite*/
                             attaqueEnnemi(e);
@@ -824,7 +824,7 @@ void iaEnnemi(entite * e){
     if(e->flag == 1){
         e->pm--;
     }
-}    
+}
 
 void actionEnnemi(entite * e){
 
@@ -1098,7 +1098,7 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
 	SDL_Rect fond_vie_ennemi_texte;
 	int temp_x;
 	if (dstrect_nom_ennemi_texte.x >= dstrect_vie_ennemi_texte.x) {
-		temp_x = dstrect_nom_ennemi_texte.w; 
+		temp_x = dstrect_nom_ennemi_texte.w;
 	}
 	else temp_x = dstrect_vie_ennemi_texte.w;
 	fond_vie_ennemi_texte.x = dstrect_nom_ennemi_texte.x - 10;
@@ -1141,7 +1141,7 @@ void update_interface_combat() {
 }
 
 void deroulementCombat(int level){
-    
+
     tourTermine = 0;
     int money, exp;
 
@@ -1185,7 +1185,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }               
+                }
             }
             else if(e1.mort == 0 && e2.mort == 1){
                 actionEnnemi(&e1);
@@ -1200,7 +1200,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }          
+                }
             }
             else{
                 printf("\nBravo vous avez gagne le niveau %i !\n", level);
@@ -1217,7 +1217,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z1.niveau2 = 1;
                 levelUp();
-                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                fingagnant();
             }
             break;
         case 2 :
@@ -1259,7 +1259,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }               
+                }
             }
             else if(e1.mort == 0 && e2.mort == 1){
                 actionEnnemi(&e1);
@@ -1274,7 +1274,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }          
+                }
             }
             else{
                 printf("\nBravo vous avez gagne le niveau %i !\n", level);
@@ -1291,7 +1291,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z1.niveau3 = 1;
                 levelUp();
-                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                fingagnant();
             }
             break;
         case 3 :
@@ -1326,7 +1326,7 @@ void deroulementCombat(int level){
                 a1.zone2 = 1;
                 a1.z2.niveau1 = 1;
                 levelUp();
-                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                fingagnant();
             }
             break;
         case 4 :
@@ -1368,7 +1368,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }               
+                }
             }
             else if(e3.mort == 0 && e4.mort == 1){
                 actionEnnemi(&e3);
@@ -1383,7 +1383,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }          
+                }
             }
             else{
                 printf("\nBravo vous avez gagne le niveau %i !\n", level);
@@ -1400,7 +1400,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z2.niveau2 = 1;
                 levelUp();
-                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                fingagnant();
             }
             break;
         case 5 :
@@ -1442,7 +1442,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }               
+                }
             }
             else if(e3.mort == 0 && e4.mort == 1){
                 actionEnnemi(&e3);
@@ -1457,7 +1457,7 @@ void deroulementCombat(int level){
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
-                }          
+                }
             }
             else{
                 printf("\nBravo vous avez gagne le niveau %i !\n", level);
@@ -1474,7 +1474,7 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.z2.niveau3 = 1;
                 levelUp();
-                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                fingagnant();
             }
             break;
         case 6 :
@@ -1509,9 +1509,9 @@ void deroulementCombat(int level){
                 a1.zone3 = 1;
                 a1.z3.niveau1 = 1;
                 levelUp();
-                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+                fingagnant();
             }
-            break;        
+            break;
     }
 
 	qui_tour = ALLIES;
