@@ -1425,7 +1425,7 @@ void deroulementCombat(int level){
                     else{
                         b2.relanceBoost = 1;
                     }
-                    statsMaximum(&b2);
+                    statsMaximum(&v1);
                     statsMaximum(&b2);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
@@ -1611,7 +1611,7 @@ void deroulementCombat(int level){
                     else{
                         b3.relanceBoost = 1;
                     }
-                    statsMaximum(&b3);
+                    statsMaximum(&v1);
                     statsMaximum(&b3);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
