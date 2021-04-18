@@ -44,13 +44,17 @@ SDL_Rect liste_sorts[10];
 
 SDL_Rect rect_prep_sort[plateau_x*plateau_y];
 
-// NULL si aucun sort en cours - ID du sort si un sort en cours
-int prepaSort;
+// Variables
+int prepaSort; // NULL si aucun sort en cours - ID du sort si un sort en cours
+int degats_inflige, degats_cible_x, degats_cible_y;
+int temps_debut, temps_actuel, flag_temps;
 
 // Déclarations des fonctions
 void affichage_sorts();
 void init_sorts();
 entite * rechercherEntite(int id);
+int numero_aleatoire(int minimum, int maximum);
+void afficher_degats(int degats, int cible_x, int cible_y);
 void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s);
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s);
 void init_sort_surftext();
