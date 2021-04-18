@@ -896,12 +896,12 @@ void update_barre_vie() {
 	srcrect_vie.h = 164 * percent_vie_restante;
 
 	dstrect_vie.x = 200;
-	dstrect_vie.y = 700 + 164 * percent_vie_perdue;
+	dstrect_vie.y = 720 + 164 * percent_vie_perdue;
 	dstrect_vie.w = 184;
 	dstrect_vie.h = 164 * percent_vie_restante;
 
 	dstrect_vie_fond.x = 200;
-	dstrect_vie_fond.y = 700;
+	dstrect_vie_fond.y = 720;
 	dstrect_vie_fond.w = 184;
 	dstrect_vie_fond.h = 164;
 
@@ -950,12 +950,12 @@ void update_barre_nitro() {
 	srcrect_nitro.h = 164 * percent_nitro_restante;
 
 	dstrect_nitro.x = 400;
-	dstrect_nitro.y = 700 + 164 * percent_nitro_perdue;
+	dstrect_nitro.y = 720 + 164 * percent_nitro_perdue;
 	dstrect_nitro.w = 184;
 	dstrect_nitro.h = 164 * percent_nitro_restante;
 
 	dstrect_nitro_fond.x = 400;
-	dstrect_nitro_fond.y = 700;
+	dstrect_nitro_fond.y = 720;
 	dstrect_nitro_fond.w = 184;
 	dstrect_nitro_fond.h = 164;
 
@@ -1003,7 +1003,7 @@ void update_barre_pa() {
 
 	SDL_Rect dstrect_pa;
 	dstrect_pa.x = 600;
-	dstrect_pa.y = 725;
+	dstrect_pa.y = 735;
 	dstrect_pa.w = 64;
 	dstrect_pa.h = 64;
 
@@ -1016,6 +1016,7 @@ void update_barre_pa() {
 	SDL_RenderCopy(ren, texture_pa, NULL, &dstrect_pa);
 	SDL_RenderCopy(ren, texture_pa_texte, NULL, &dstrect_pa_texte);
 
+	free(pa_texte);
 	SDL_FreeSurface(surface_pa_texte);
 	SDL_FreeSurface(surface_pa);
 	SDL_DestroyTexture(texture_pa_texte);
@@ -1039,7 +1040,7 @@ void update_barre_pm() {
 
 	SDL_Rect dstrect_pm;
 	dstrect_pm.x = 600;
-	dstrect_pm.y = 795;
+	dstrect_pm.y = 805;
 	dstrect_pm.w = 64;
 	dstrect_pm.h = 64;
 
@@ -1052,6 +1053,7 @@ void update_barre_pm() {
 	SDL_RenderCopy(ren, texture_pm, NULL, &dstrect_pm);
 	SDL_RenderCopy(ren, texture_pm_texte, NULL, &dstrect_pm_texte);
 
+	free(pm_texte);
 	SDL_FreeSurface(surface_pm_texte);
 	SDL_FreeSurface(surface_pm);
 	SDL_DestroyTexture(texture_pm_texte);
@@ -1121,6 +1123,14 @@ void init_interface_combat() {
 }
 
 void update_interface_combat() {
+	SDL_Rect fond_interface;
+	fond_interface.x = 0;
+	fond_interface.y = 700;
+	fond_interface.w = 1600;
+	fond_interface.h = 200;
+	SDL_SetRenderDrawColor(ren, 25, 25, 25, 225);
+	SDL_RenderFillRect(ren, &fond_interface);
+
 	update_barre_vie();
 	update_barre_nitro();
 	update_barre_pa();
