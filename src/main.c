@@ -662,6 +662,7 @@ void init_polices() {
 	font = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 14);
 	font_titre = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 16);
 	font_barres = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
+	font_barres2 = TTF_OpenFont("../data/police/Roboto-Black.ttf", 32);
 	font_degats = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 24);
 	font_tour = TTF_OpenFont("../data/police/Roboto-Black.ttf", 36);
 }
@@ -670,6 +671,7 @@ void close_polices() {
 	TTF_CloseFont(font);
 	TTF_CloseFont(font_titre);
 	TTF_CloseFont(font_barres);
+	TTF_CloseFont(font_barres2);
 	TTF_CloseFont(font_degats);
 	TTF_CloseFont(font_tour);
 }
@@ -747,7 +749,7 @@ void positionnerEnnemi(int lev){
 			plateau[b5.positionY][b5.positionX].e = b5;
 			plateau[v1.positionY][v1.positionX].e = v1;
             break;
-    }
+    }	
 }
 
 void sauvegarderPartie(){
@@ -790,8 +792,8 @@ void sauvegarderPartie(){
 	fprintf(fichier, "%i\n", a1.z5.niveau1);
 	fprintf(fichier, "%i\n", a1.z5.niveau2);
 	fprintf(fichier, "%i\n", a1.z5.niveau3);
-
-	fclose(fichier);
+	
+	fclose(fichier);	
 }
 
 void chargerSauvegarde(){
@@ -839,7 +841,7 @@ void chargerSauvegarde(){
 		fgets(chaine, 30, fichier);
 		temp = atoi(chaine);
 		v1.defense = temp;
-
+	
 		fgets(chaine, 30, fichier);
 		temp = atoi(chaine);
 		v1.equipe = temp;
@@ -1063,7 +1065,7 @@ int affichagePlateau() {
 		update_interface_combat();
 		boutonPasserTour();
 		affichage_sorts();
-
+		
 		if (affichageSort != -1) {
 			affichage_infos_sort(&v1, sorts[affichageSort]);
 		}
@@ -1084,7 +1086,7 @@ int affichagePlateau() {
 			}
 			afficher_degats(degats_inflige, degats_cible_x, degats_cible_y);
 		}
-
+		
 		SDL_RenderPresent(ren);
 		free_personnage_c();
 		free_ennemi_c(levelCombat);
@@ -1118,7 +1120,6 @@ int main(int argc, char** argv) {
 	while (isCombat == 1) {
 		isCombat = affichagePlateau();
 	}
-
 
 
 	stopRendering();
