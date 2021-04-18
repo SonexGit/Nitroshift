@@ -626,6 +626,7 @@ void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+/* Initialuser les ID des entités sur le plateau */
 void init_id_entite_plateau() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -634,6 +635,7 @@ void init_id_entite_plateau() {
 	}
 }
 
+/* Afficher les entités du plateau */
 void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -656,6 +658,104 @@ void close_polices() {
 	TTF_CloseFont(font_barres);
 	TTF_CloseFont(font_degats);
 	TTF_CloseFont(font_tour);
+}
+/* Positionner les positions des entités sur le plateau (en fonction du niveau qu'on a choisi) */
+void positionnerEnnemi(int lev){
+
+    switch(lev){
+        case 1 :
+			plateau[e1.positionY][e1.positionX].e = e1;
+			plateau[e2.positionY][e2.positionX].e = e2;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 2 :
+			plateau[e1.positionY][e1.positionX].e = e1;
+			plateau[e2.positionY][e2.positionX].e = e2;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 3 :
+			plateau[b1.positionY][b1.positionX].e = b1;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 4 :
+			plateau[e3.positionY][e3.positionX].e = e3;
+			plateau[e4.positionY][e4.positionX].e = e4;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 5 :
+			plateau[e3.positionY][e3.positionX].e = e3;
+			plateau[e4.positionY][e4.positionX].e = e4;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 6 :
+			plateau[b2.positionY][b2.positionX].e = b2;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 7 :
+			plateau[e5.positionY][e5.positionX].e = e5;
+			plateau[e6.positionY][e6.positionX].e = e6;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 8 :
+			plateau[e5.positionY][e5.positionX].e = e5;
+			plateau[e6.positionY][e6.positionX].e = e6;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 9 :
+			plateau[b3.positionY][b3.positionX].e = b3;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 10 :
+			plateau[e7.positionY][e7.positionX].e = e7;
+			plateau[e8.positionY][e8.positionX].e = e8;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 11 :
+			plateau[e7.positionY][e7.positionX].e = e7;
+			plateau[e8.positionY][e8.positionX].e = e8;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 12 :
+			plateau[b4.positionY][b4.positionX].e = b4;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 13 :
+			plateau[e9.positionY][e9.positionX].e = e9;
+			plateau[e10.positionY][e10.positionX].e = e10;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 14 :
+			plateau[e9.positionY][e9.positionX].e = e9;
+			plateau[e10.positionY][e10.positionX].e = e10;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+        case 15 :
+			plateau[b5.positionY][b5.positionX].e = b5;
+			plateau[v1.positionY][v1.positionX].e = v1;
+            break;
+    }	
+}
+
+void sauvegarderPartie(){
+
+	FILE * fichier;
+	fichier = fopen("../sauvegarde.txt", "w");
+
+	fprintf(fichier, "%i\n", v1.id);
+	fprintf(fichier, "%s\n", v1.nom);
+	fprintf(fichier, "%s\n", v1.classe);
+	fprintf(fichier, "%i\n", v1.niveau);
+	fprintf(fichier, "%i\n", v1.hpMax);
+	fprintf(fichier, "%i\n", v1.nitroMax);
+	fprintf(fichier, "%i\n", v1.paMax);
+	fprintf(fichier, "%i\n", v1.pmMax);
+	fprintf(fichier, "%i\n", v1.attaque);
+	fprintf(fichier, "%i\n", v1.defense);
+	fprintf(fichier, "%i\n", v1.equipe);
+	fprintf(fichier, "%i\n", v1.nitroDollars);
+	fprintf(fichier, "%i\n", v1.experience);
+
+	fclose(fichier);	
 }
 
 int affichagePlateau() {
@@ -687,7 +787,7 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
-	levelCombat = 2;
+	levelCombat = 5;
 
 	creationEnnemi();
 	creationPersonnage();
@@ -784,7 +884,7 @@ int affichagePlateau() {
 		// ==============================================
 
 		init_textures_personnage();
-		init_textures_ennemis();
+		init_textures_ennemis(levelCombat);
 
 		if(v1.passerTour == 1){
 			qui_tour = ENNEMIS;
@@ -808,15 +908,6 @@ int affichagePlateau() {
 		init_cases_solide(1, plateau);
 		
 		init_id_entite_plateau();
-		
-		/*----------------------------------------------------------------------------------------*/
-		// A CHANGER EN FONCTION DU NIVEAU POUR QUE CA MARCHE
-		// ON CHANGERA CA CAR C EST PAS PRATIQUE
-		/*----------------------------------------------------------------------------------------*/
-		plateau[e1.positionY][e1.positionX].e = e1;
-		plateau[e2.positionY][e2.positionX].e = e2;
-		//plateau[b1.positionY][b1.positionX].e = b1;
-		plateau[v1.positionY][v1.positionX].e = v1;
 
 		if (!finTempsAllie) {
 			if (prepaSort >= 0) {
@@ -824,6 +915,7 @@ int affichagePlateau() {
 			}
 		}
 
+		positionnerEnnemi(levelCombat);
 		affichage_entites(plateau);
 
 		update_interface_combat();
@@ -853,7 +945,7 @@ int affichagePlateau() {
 		
 		SDL_RenderPresent(ren);
 		free_personnage_c();
-		free_ennemi_c();
+		free_ennemi_c(levelCombat);
 		free_texture_cases();
 		SDL_Delay(10);
 	}
@@ -881,6 +973,8 @@ int main(int argc, char** argv) {
 	while (isCombat == 1) {
 		isCombat = affichagePlateau();
 	}
+
+	sauvegarderPartie();
 
 	stopRendering();
 	return 0;

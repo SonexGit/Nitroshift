@@ -102,6 +102,21 @@ int recherchePorteeSort(entite * e){
         case 502 :
             return sortsEnnemi10[0].portee;
             break;
+        case 100 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].portee;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].portee;
+            break;
     }
 }
 
@@ -136,6 +151,21 @@ int rechercheDegatSort(entite * e){
             return sortsEnnemi9[0].degatsMin;
             break;
         case 502 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 100 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].degatsMin;
+            break;
+        case 500 :
             return sortsEnnemi10[0].degatsMin;
             break;
     }
@@ -174,6 +204,21 @@ int rechercheCoutNitroSort(entite * e){
         case 502 :
             return sortsEnnemi10[0].coutNitro;
             break;
+        case 100 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].coutNitro;
+            break;
     }
 }
 
@@ -209,6 +254,21 @@ int rechercheCoutPaBoost(entite * e){
             break;
         case 502 :
             return sortsEnnemi10[1].coutPA;
+            break;
+        case 100 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].coutPA;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].coutPA;
             break;
     }    
 }
@@ -246,6 +306,21 @@ int rechercheRelanceBoost(entite * e){
         case 502 :
             return sortsEnnemi10[1].relance;
             break;
+        case 100 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 200 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 300 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 400 :
+            return sortsEnnemi10[0].relance;
+            break;
+        case 500 :
+            return sortsEnnemi10[0].relance;
+            break;
     }    
 }
 
@@ -260,7 +335,7 @@ int boostEnnemi(entite * e){
             case 101 :
                 if(e->relanceBoost == 1){
                     e->nitro += sortsEnnemi1[1].degatsMin; /* On ajoute la nitro du boost */
-                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi1[1].degatsMin);
+                    printf("Boost de %s : +%i Nitro\n", e->nom, sortsEnnemi1[1].degatsMin);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     printf("Nitro restante : %i\n", e->nitro);
@@ -274,7 +349,7 @@ int boostEnnemi(entite * e){
             case 102 :
                 if(e->relanceBoost == 1){
                     e->pm += sortsEnnemi2[1].degatsMin; /* On ajoute les PM du boost */
-                    printf("Boost de %s : +%i\n", e->nom, sortsEnnemi2[1].degatsMin);
+                    printf("Boost de %s : +%i PM\n", e->nom, sortsEnnemi2[1].degatsMin);
                     e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
                     printf("PA restant : %i\n", e->pa);
                     printf("PM restant : %i\n", e->pm);
@@ -286,9 +361,31 @@ int boostEnnemi(entite * e){
                 return 0;
                 break;
             case 201 :
+                if(e->relanceBoost == 1){
+                    e->pm += sortsEnnemi3[1].degatsMin; /* On ajoute les PM du boost */
+                    printf("Boost de %s : +%i PM\n", e->nom, sortsEnnemi3[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    printf("PM restant : %i\n", e->pm);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);         
+                    return 1;
+                    break;
+                }
                 return 0;
                 break;
             case 202 :
+                if(e->relanceBoost == 1){
+                    e->pa += sortsEnnemi4[1].degatsMin; /* On ajoute les PA du boost */
+                    printf("Boost de %s : +%i PA\n", e->nom, sortsEnnemi4[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    printf("Nitro restante : %i\n", e->nitro);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);         
+                    return 1;
+                    break;
+                }
                 return 0;
                 break;
             case 301 :
@@ -309,12 +406,44 @@ int boostEnnemi(entite * e){
             case 502 :
                 return 0;
                 break;
+            case 100 :
+                if(e->relanceBoost == 1){
+                    e->pa += sortsBoss1[1].degatsMin; /* On ajoute les PA du boost */
+                    printf("Boost de %s : +%i PA\n", e->nom, sortsBoss1[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);            
+                    return 1;
+                    break;
+                }
+                return 0;
+                break;
+            case 200 :
+                if(e->relanceBoost == 1){
+                    e->nitro += sortsBoss2[1].degatsMin; /* On ajoute la nitro du boost */
+                    printf("Boost de %s : +%i Nitro\n", e->nom, sortsBoss2[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    printf("Nitro restante : %i\n", e->nitro);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);            
+                    return 1;
+                    break;
+                }
+                return 0;
+                break;
+            case 300 :
+                return 0;
+                break;
+            case 400 :
+                return 0;
+                break;
+            case 500 :
+                return 0;
+                break;
         }
     }
-}
-
-void passerTour(){
-
 }
 
 void attaqueEnnemi(entite * e){
@@ -1115,7 +1244,190 @@ void deroulementCombat(int level){
                 levelUp();
                 exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
             }
-            break;    
+            break;
+        case 4 :
+            if(e3.mort == 0 && e4.mort == 0){
+                actionEnnemi(&e3);
+                if(tourTermine == 1){
+                    actionEnnemi(&e4);
+                    if(e4.pm <= 0){
+                        if(e3.tempsRelance > 0){
+                            e3.tempsRelance--;
+                        }
+                        else{
+                            e3.relanceBoost = 1;
+                        }
+                        if(e4.tempsRelance > 0){
+                            e4.tempsRelance--;
+                        }
+                        else{
+                            e4.relanceBoost = 1;
+                        }
+                        statsMaximum(&e3);
+                        statsMaximum(&e4);
+                        statsMaximum(&v1);
+                        v1.passerTour = 0;
+                        finTempsAllie = 0;
+                    }
+                }
+            }
+            else if(e3.mort == 1 && e4.mort == 0){
+                actionEnnemi(&e4);
+                if(e4.pm <= 0){
+                    if(e4.tempsRelance > 0){
+                        e4.tempsRelance--;
+                    }
+                    else{
+                        e4.relanceBoost = 1;
+                    }
+                    statsMaximum(&e4);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }               
+            }
+            else if(e3.mort == 0 && e4.mort == 1){
+                actionEnnemi(&e3);
+                if(e3.pm <= 0){
+                    if(e3.tempsRelance > 0){
+                        e3.tempsRelance--;
+                    }
+                    else{
+                        e3.relanceBoost = 1;
+                    }
+                    statsMaximum(&e3);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }          
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 60 + 20;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 40 + 30;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.z2.niveau2 = 1;
+                levelUp();
+                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+            }
+            break;
+        case 5 :
+            if(e3.mort == 0 && e4.mort == 0){
+                actionEnnemi(&e3);
+                if(tourTermine == 1){
+                    actionEnnemi(&e4);
+                    if(e4.pm <= 0){
+                        if(e3.tempsRelance > 0){
+                            e3.tempsRelance--;
+                        }
+                        else{
+                            e3.relanceBoost = 1;
+                        }
+                        if(e4.tempsRelance > 0){
+                            e4.tempsRelance--;
+                        }
+                        else{
+                            e4.relanceBoost = 1;
+                        }
+                        statsMaximum(&e3);
+                        statsMaximum(&e4);
+                        statsMaximum(&v1);
+                        v1.passerTour = 0;
+                        finTempsAllie = 0;
+                    }
+                }
+            }
+            else if(e3.mort == 1 && e4.mort == 0){
+                actionEnnemi(&e4);
+                if(e4.pm <= 0){
+                    if(e4.tempsRelance > 0){
+                        e4.tempsRelance--;
+                    }
+                    else{
+                        e4.relanceBoost = 1;
+                    }
+                    statsMaximum(&e4);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }               
+            }
+            else if(e3.mort == 0 && e4.mort == 1){
+                actionEnnemi(&e3);
+                if(e3.pm <= 0){
+                    if(e3.tempsRelance > 0){
+                        e3.tempsRelance--;
+                    }
+                    else{
+                        e3.relanceBoost = 1;
+                    }
+                    statsMaximum(&e3);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }          
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 70 + 30;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 50 + 40;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.z2.niveau3 = 1;
+                levelUp();
+                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+            }
+            break;
+        case 6 :
+            if(b2.mort == 0){
+                actionEnnemi(&b2);
+                if(b2.pm <= 0){
+                    if(b2.tempsRelance > 0){
+                        b2.tempsRelance--;
+                    }
+                    else{
+                        b2.relanceBoost = 1;
+                    }
+                    statsMaximum(&b2);
+                    statsMaximum(&b2);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 140 + 60;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 100 + 80;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.zone3 = 1;
+                a1.z3.niveau1 = 1;
+                levelUp();
+                exit(EXIT_SUCCESS); // Remplacer ce exit par un renvoi au menu principal (avec le shop et tout)
+            }
+            break;        
     }
 
 	qui_tour = ALLIES;

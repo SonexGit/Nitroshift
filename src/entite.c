@@ -28,6 +28,7 @@ void creationPersonnage(){
     v1.paMax = 6;
     v1.pmMax = 3;
     v1.experience = 0;
+    v1.nitroDollars = 0;
 
     if(strcmp(v1.classe,"Soldat") == 0){
         v1.hpMax = 100;
@@ -228,11 +229,11 @@ void creationEnnemi(){
     
     e1.nom = "Ennemi1";
     e1.id = 101;    
-    e1.hpMax = 100;
-    e1.nitroMax = 200;
-    e1.paMax = 3;
+    e1.hpMax = 150;
+    e1.nitroMax = 100;
+    e1.paMax = 6;
     e1.pmMax = 3;
-    e1.attaque = 30;
+    e1.attaque = 20;
     e1.defense = 20;
     e1.flag = 0;
     e1.mort = 0;
@@ -240,11 +241,11 @@ void creationEnnemi(){
 
     e2.nom = "Ennemi2";
     e2.id = 102;  
-    e2.hpMax = 200;
+    e2.hpMax = 150;
     e2.nitroMax = 100;
     e2.paMax = 6;
     e2.pmMax = 3;
-    e2.attaque = 30;
+    e2.attaque = 20;
     e2.defense = 20;
     e2.flag = 0;
     e2.mort = 0;
@@ -252,26 +253,24 @@ void creationEnnemi(){
 
     e3.nom = "Ennemi3";   
     e3.id = 201;
-    e3.niveau = 1;
-    e3.hpMax = 200;
-    e3.nitroMax = 300;
+    e3.hpMax = 250;
+    e3.nitroMax = 100;
     e3.paMax = 6;
-    e3.pmMax = 3;
-    e3.attaque = 70;
-    e3.defense = 50;
+    e3.pmMax = 4;
+    e3.attaque = 30;
+    e3.defense = 30;
     e3.flag = 0;
     e3.mort = 0;
     e3.equipe = ENNEMIS;
 
     e4.nom = "Ennemi4";   
     e4.id = 202;
-    e4.niveau = 1;
-    e4.hpMax = 200;
-    e4.nitroMax = 300;
+    e4.hpMax = 250;
+    e4.nitroMax = 100;
     e4.paMax = 6;
-    e4.pmMax = 3;
-    e4.attaque = 70;
-    e4.defense = 50;
+    e4.pmMax = 4;
+    e4.attaque = 30;
+    e4.defense = 30;
     e4.flag = 0;
     e4.mort = 0;
     e4.equipe = ENNEMIS;
@@ -357,12 +356,11 @@ void creationEnnemi(){
 
     b1.nom = "Boss1";  
     b1.id = 100;
-    b1.niveau = 1;
     b1.hpMax = 300;
     b1.nitroMax = 100;
-    b1.paMax = 3;
-    b1.pmMax = 3;
-    b1.attaque = 45;
+    b1.paMax = 6;
+    b1.pmMax = 4;
+    b1.attaque = 25;
     b1.defense = 20;
     b1.flag = 0;
     b1.mort = 0;
@@ -370,12 +368,12 @@ void creationEnnemi(){
 
     b2.nom = "Boss2"; 
     b2.id = 200;
-    b2.niveau = 1;
-    b2.hpMax = 200;
+    b2.hpMax = 400;
+    b3.nitroMax = 150;
     b2.paMax = 6;
-    b2.pmMax = 3;
-    b2.attaque = 70;
-    b2.defense = 50;
+    b2.pmMax = 4;
+    b2.attaque = 35;
+    b2.defense = 30;
     b2.flag = 0;
     b2.mort = 0;
     b2.equipe = ENNEMIS;
@@ -421,13 +419,92 @@ void creationEnnemi(){
 }
 
 // Textures des ennemis
-void init_textures_ennemis() {
-	e1.surface = IMG_Load("../data/ennemis/mobTest.png");
-	e1.texture = SDL_CreateTextureFromSurface(ren, e1.surface);
-	e2.surface = IMG_Load("../data/ennemis/mobTest.png");
-	e2.texture = SDL_CreateTextureFromSurface(ren, e2.surface);
-	b1.surface = IMG_Load("../data/ennemis/mobTest.png");
-	b1.texture = SDL_CreateTextureFromSurface(ren, b1.surface);
+void init_textures_ennemis(int lev) {
+
+    switch(lev){
+        case 1 :
+            e1.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e1.texture = SDL_CreateTextureFromSurface(ren, e1.surface);
+            e2.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e2.texture = SDL_CreateTextureFromSurface(ren, e2.surface);
+            break;
+        case 2 :
+            e1.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e1.texture = SDL_CreateTextureFromSurface(ren, e1.surface);
+            e2.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e2.texture = SDL_CreateTextureFromSurface(ren, e2.surface);
+            break;
+        case 3 :
+            b1.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b1.texture = SDL_CreateTextureFromSurface(ren, b1.surface);
+            break;
+        case 4 :
+            e3.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e3.texture = SDL_CreateTextureFromSurface(ren, e3.surface);
+            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
+            break;
+        case 5 :
+            e3.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e3.texture = SDL_CreateTextureFromSurface(ren, e3.surface);
+            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
+            break;
+        case 6 :
+            b2.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b2.texture = SDL_CreateTextureFromSurface(ren, b2.surface);
+            break;
+        case 7 :
+            e5.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e5.texture = SDL_CreateTextureFromSurface(ren, e5.surface);
+            e6.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e6.texture = SDL_CreateTextureFromSurface(ren, e6.surface);
+            break;
+        case 8 :
+            e5.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e5.texture = SDL_CreateTextureFromSurface(ren, e5.surface);
+            e6.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e6.texture = SDL_CreateTextureFromSurface(ren, e6.surface);
+            break;
+        case 9 :
+            b3.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b3.texture = SDL_CreateTextureFromSurface(ren, b3.surface);
+            break;
+        case 10 :
+            e7.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e7.texture = SDL_CreateTextureFromSurface(ren, e7.surface);
+            e8.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e8.texture = SDL_CreateTextureFromSurface(ren, e8.surface);
+            break;
+        case 11 :
+            e7.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e7.texture = SDL_CreateTextureFromSurface(ren, e7.surface);
+            e8.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e8.texture = SDL_CreateTextureFromSurface(ren, e8.surface);
+            break;
+        case 12 :
+            b4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b4.texture = SDL_CreateTextureFromSurface(ren, b4.surface);
+            break;
+        case 13 :
+            e9.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e9.texture = SDL_CreateTextureFromSurface(ren, e9.surface);
+            e10.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e10.texture = SDL_CreateTextureFromSurface(ren, e10.surface);
+            break;
+        case 14 :
+            e9.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e9.texture = SDL_CreateTextureFromSurface(ren, e9.surface);
+            e10.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e10.texture = SDL_CreateTextureFromSurface(ren, e10.surface);
+            break;
+        case 15 :
+            b5.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b5.texture = SDL_CreateTextureFromSurface(ren, b5.surface);
+            break;
+        default :
+            printf("Erreur du niveau : Impossible d'initialiser la surface et la texture de l'ennemi...\n");
+    }
 
 	int i = 0, j = 0, k = 0;
 
@@ -463,13 +540,90 @@ void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 }
 
 // Free général des fonctions ennemis
-void free_ennemi_c() {
-	SDL_DestroyTexture(e1.texture);
-	SDL_FreeSurface(e1.surface);
-	SDL_DestroyTexture(e2.texture);
-	SDL_FreeSurface(e2.surface);
-	SDL_DestroyTexture(b1.texture);
-	SDL_FreeSurface(b1.surface);
+void free_ennemi_c(int lev) {
+
+    switch(lev){
+        case 1 :
+            SDL_DestroyTexture(e1.texture);
+            SDL_FreeSurface(e1.surface);
+            SDL_DestroyTexture(e2.texture);
+            SDL_FreeSurface(e2.surface);
+            break;
+        case 2 :
+            SDL_DestroyTexture(e1.texture);
+            SDL_FreeSurface(e1.surface);
+            SDL_DestroyTexture(e2.texture);
+            SDL_FreeSurface(e2.surface);
+            break;
+        case 3 :
+            SDL_DestroyTexture(b1.texture);
+            SDL_FreeSurface(b1.surface);
+            break;
+        case 4 :
+            SDL_DestroyTexture(e3.texture);
+            SDL_FreeSurface(e3.surface);
+            SDL_DestroyTexture(e4.texture);
+            SDL_FreeSurface(e4.surface);
+            break;
+        case 5 :
+            SDL_DestroyTexture(e3.texture);
+            SDL_FreeSurface(e3.surface);
+            SDL_DestroyTexture(e4.texture);
+            SDL_FreeSurface(e4.surface);
+            break;
+        case 6 :
+            SDL_DestroyTexture(b2.texture);
+            SDL_FreeSurface(b2.surface);
+            break;
+        case 7 :
+            SDL_DestroyTexture(e5.texture);
+            SDL_FreeSurface(e5.surface);
+            SDL_DestroyTexture(e6.texture);
+            SDL_FreeSurface(e6.surface);
+            break;
+        case 8 :
+            SDL_DestroyTexture(e5.texture);
+            SDL_FreeSurface(e5.surface);
+            SDL_DestroyTexture(e6.texture);
+            SDL_FreeSurface(e6.surface);
+            break;
+        case 9 :
+            SDL_DestroyTexture(b3.texture);
+            SDL_FreeSurface(b3.surface);
+            break;
+        case 10 :
+            SDL_DestroyTexture(e7.texture);
+            SDL_FreeSurface(e7.surface);
+            SDL_DestroyTexture(e8.texture);
+            SDL_FreeSurface(e8.surface);
+            break;
+        case 11 :
+            SDL_DestroyTexture(e7.texture);
+            SDL_FreeSurface(e7.surface);
+            SDL_DestroyTexture(e8.texture);
+            SDL_FreeSurface(e8.surface);
+            break;
+        case 12 :
+            SDL_DestroyTexture(b4.texture);
+            SDL_FreeSurface(b4.surface);
+            break;
+        case 13 :
+            SDL_DestroyTexture(e9.texture);
+            SDL_FreeSurface(e9.surface);
+            SDL_DestroyTexture(e10.texture);
+            SDL_FreeSurface(e10.surface);
+            break;
+        case 14 :
+            SDL_DestroyTexture(e9.texture);
+            SDL_FreeSurface(e9.surface);
+            SDL_DestroyTexture(e10.texture);
+            SDL_FreeSurface(e10.surface);
+            break;
+        case 15 :
+            SDL_DestroyTexture(b5.texture);
+            SDL_FreeSurface(b5.surface);
+            break;
+    }
 }
 
 // Entités
