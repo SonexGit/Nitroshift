@@ -18,10 +18,7 @@
 void creationPersonnage(){
 
     v1.classe = malloc(sizeof(char)*10);
-
-    // Faire les if des cliques pour sélect
-    v1.etiquetteClasse = 40;
-
+    
     v1.id = 1;
     v1.equipe = ALLIES;
     v1.niveau = 1;
@@ -55,6 +52,7 @@ void creationPersonnage(){
         v1.defense = 5;
     }
     rechercheClasse();
+    creationAcces();
 }
 
 void free_classe_perso(){
@@ -67,7 +65,7 @@ void creationAcces(){
 
     /* 0 = Non Accès */
     /* 1 = Accès */
-    
+
     a1.zone1 = 1;
     a1.z1.niveau1 = 1; /* Cela signifie : Niveau 1 de la zone 1 par exemple */
     a1.z1.niveau2 = 0;
@@ -220,7 +218,7 @@ void deplacements_personnage(int direction) {
 
 /* Création de l'ennemi */
 void creationEnnemi(){
-    
+
     e1.nom = "Ennemi1";
     e1.id = 101;    
     e1.hpMax = 150;

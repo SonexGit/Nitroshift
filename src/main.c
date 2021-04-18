@@ -14,6 +14,16 @@
 #include "sorts.h"
 #include "initialisation.h"
 #include "combat.h"
+#include "mesmodif.h"
+#include "pile.h"
+#include "shifumi.h"
+#include "menujeu.h"
+#include "amelioration.h"
+#include "shop.h"
+#include "perdu.h"
+#include "gagnant.h"
+#include "niveau.h"
+#include "zone.h"
 
 int screen_w, screen_h;
 
@@ -158,7 +168,7 @@ size_t handle_keys() {
 					}
 				}
 				break;
-			
+
 			case SDL_MOUSEMOTION:
 				souris.x = event.motion.x;
 				souris.y = event.motion.y;
@@ -223,14 +233,14 @@ size_t handle_keys() {
 				else if (dist < 25)
 					mouse_toofar = SDL_FALSE;
 				break;
-			
+
 			case SDL_WINDOWEVENT:
 				if (event.window.event == SDL_WINDOWEVENT_ENTER && !mouse_hover)
 					mouse_hover = SDL_TRUE;
 				else if (event.window.event == SDL_WINDOWEVENT_LEAVE && mouse_hover)
 					mouse_hover = SDL_FALSE;
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					
+
 				}
 				break;
 		}
@@ -290,7 +300,7 @@ void init_points(SDL_Point points[]) {
 	}
 
 	/* Dessine les lignes verticales du plateau */
-	
+
 	SDL_SetRenderDrawColor(ren, 255, 0, 255, 255);
 	/*
 	for(int multiple = (plateau_y+1); multiple<((plateau_y)*2+2); multiple++) {
@@ -416,7 +426,7 @@ void init_tiles() {
 			tiles[i].x = h * 80;
 			tiles[i].y = j * 40;
 			tiles[i].w = 80;
-			tiles[i].h = 40; 
+			tiles[i].h = 40;
 			h++;
 		}
 		h=0;
@@ -578,7 +588,7 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 
 		i++;
 	}
-	
+
 	free(num_carte_string);
 	free(repertoire_cartes);
 	free(buffer);
@@ -929,11 +939,11 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
-	levelCombat = 3;
 
-	//creationPersonnage();
+
+
 	creationEnnemi();
-	creationAcces();
+	
 	initCombat(levelCombat);
 
 	// ==============================================
@@ -1104,14 +1114,13 @@ int main(int argc, char** argv) {
 
 	chargerSauvegarde();
 	v1.nom = "Personnage";
-
+	showmenu();
 	isCombat = 1;
 
 	while (isCombat == 1) {
 		isCombat = affichagePlateau();
 	}
 
-	sauvegarderPartie();
 
 	stopRendering();
 	return 0;

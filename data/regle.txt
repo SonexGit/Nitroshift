@@ -1,0 +1,7 @@
+Bienvenue à vous joueur de Nitroshift,
+Ce jeu a été crée par Léo Trottier, Allan Vannier, Enzo Rault et Lucas Renard.
+Voici les règles du jeu:
+Vous allez choisir un niveau allant de 1 à 4 avec comme niveau 1 la difficulté sera plus faible que celle du niveau 4.
+Pour chaque niveau, vous allez avoir 3 combat avec des monstres et le 4ème combat sera le boss du niveau.
+
+L'équipe de Nitroshift
