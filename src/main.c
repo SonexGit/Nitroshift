@@ -721,34 +721,6 @@ void positionnerEnnemi(int lev){
 			plateau[b3.positionY][b3.positionX].e = b3;
 			plateau[v1.positionY][v1.positionX].e = v1;
             break;
-        case 10 :
-			plateau[e7.positionY][e7.positionX].e = e7;
-			plateau[e8.positionY][e8.positionX].e = e8;
-			plateau[v1.positionY][v1.positionX].e = v1;
-            break;
-        case 11 :
-			plateau[e7.positionY][e7.positionX].e = e7;
-			plateau[e8.positionY][e8.positionX].e = e8;
-			plateau[v1.positionY][v1.positionX].e = v1;
-            break;
-        case 12 :
-			plateau[b4.positionY][b4.positionX].e = b4;
-			plateau[v1.positionY][v1.positionX].e = v1;
-            break;
-        case 13 :
-			plateau[e9.positionY][e9.positionX].e = e9;
-			plateau[e10.positionY][e10.positionX].e = e10;
-			plateau[v1.positionY][v1.positionX].e = v1;
-            break;
-        case 14 :
-			plateau[e9.positionY][e9.positionX].e = e9;
-			plateau[e10.positionY][e10.positionX].e = e10;
-			plateau[v1.positionY][v1.positionX].e = v1;
-            break;
-        case 15 :
-			plateau[b5.positionY][b5.positionX].e = b5;
-			plateau[v1.positionY][v1.positionX].e = v1;
-            break;
     }	
 }
 
@@ -792,6 +764,8 @@ void sauvegarderPartie(){
 	fprintf(fichier, "%i\n", a1.z5.niveau1);
 	fprintf(fichier, "%i\n", a1.z5.niveau2);
 	fprintf(fichier, "%i\n", a1.z5.niveau3);
+
+	printf("Le jeu a ete sauvegarde !\n");
 	
 	fclose(fichier);	
 }
@@ -997,7 +971,7 @@ int affichagePlateau() {
 		}
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
 		// On initialise les textures de toutes les cases de la carte 1 (premier argument), le deuxième est une constante cependant
-		init_texture_cases(1, points_centre);
+		init_texture_cases(numeroZone, points_centre);
 		trouver_case_pc(points_centre[save], plateau, &pc_x, &pc_y);
 		if (plateau[pc_y][pc_x].solide >= 1) {
 			// SDL_Delay(10);
@@ -1050,8 +1024,7 @@ int affichagePlateau() {
 		dessiner_ennemi(e1, 2, 2, plateau, 0);
 		dessiner_ennemi(e2, 2, 3, plateau, 0);
 		*/
-
-		init_cases_solide(1, plateau);
+		init_cases_solide(numeroZone, plateau);
 		init_id_entite_plateau();
 
 		if (!finTempsAllie) {

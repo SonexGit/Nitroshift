@@ -76,7 +76,7 @@ void creationAcces(){
     a1.z2.niveau2 = 0; /* Cela signifie : Niveau 2 de la zone 2 par exemple */
     a1.z2.niveau3 = 0;
 
-    a1.zone3 = 1;
+    a1.zone3 = 0;
     a1.z3.niveau1 = 0;
     a1.z3.niveau2 = 0;
     a1.z3.niveau3 = 0;
@@ -269,13 +269,11 @@ void creationEnnemi(){
 
     e5.nom = "Ennemi5";    
     e5.id = 301;
-    e5.niveau = 1;
-    e5.hpMax = 200;
-    e5.nitroMax = 300;
-    e5.paMax = 6;
-    e5.pmMax = 3;
-
-    e5.attaque = 70;
+    e5.hpMax = 350;
+    e5.nitroMax = 100;
+    e5.paMax = 9;
+    e5.pmMax = 4;
+    e5.attaque = 35;
     e5.defense = 50;
     e5.flag = 0;
     e5.mort = 0;
@@ -284,67 +282,15 @@ void creationEnnemi(){
     e6.nom = "Ennemi6";   
     e6.id = 302;
     e6.niveau = 1;
-    e6.hpMax = 200;
-    e6.nitroMax = 300;
-    e6.paMax = 6;
-    e6.pmMax = 3;
-    e6.attaque = 70;
+    e6.hpMax = 350;
+    e6.nitroMax = 100;
+    e6.paMax = 9;
+    e6.pmMax = 4;
+    e6.attaque = 35;
     e6.defense = 50;
     e6.flag = 0;
     e6.mort = 0;
     e6.equipe = ENNEMIS;
-
-    e7.nom = "Ennemi7";  
-    e7.id = 401;
-    e7.niveau = 1;
-    e7.hpMax = 200;
-    e7.nitroMax = 300;
-    e7.paMax = 6;
-    e7.pmMax = 3;
-    e7.attaque = 70;
-    e7.defense = 50;
-    e7.flag = 0;
-    e7.mort = 0;
-    e7.equipe = ENNEMIS;
-
-    e8.nom = "Ennemi8";   
-    e8.id = 402;
-    e8.niveau = 1;
-    e8.hpMax = 200;
-    e8.nitroMax = 300;
-    e8.paMax = 6;
-    e8.pmMax = 3;
-    e8.attaque = 70;
-    e8.defense = 50;
-    e8.flag = 0;
-    e8.mort = 0;
-    e8.equipe = ENNEMIS;
-
-    e9.nom = "Ennemi9";   
-    e9.id = 501;
-    e9.niveau = 1;
-    e9.hpMax = 200;
-    e9.nitroMax = 300;
-    e9.paMax = 6;
-    e9.pmMax = 3;
-    e9.attaque = 70;
-    e9.defense = 50;
-    e9.flag = 0;
-    e9.mort = 0;
-    e9.equipe = ENNEMIS;
-
-    e10.nom = "Ennemi10";  
-    e10.id = 502;
-    e10.niveau = 1;
-    e10.hpMax = 200;
-    e10.nitroMax = 300;
-    e10.paMax = 6;
-    e10.pmMax = 3;
-    e10.attaque = 70;
-    e10.defense = 50;
-    e10.flag = 0;
-    e10.mort = 0;
-    e10.equipe = ENNEMIS;
 
     b1.nom = "Boss1";  
     b1.id = 100;
@@ -373,41 +319,15 @@ void creationEnnemi(){
     b3.nom = "Boss3"; 
     b3.id = 300;
     b3.niveau = 1;
-    b3.hpMax = 200;
-    b3.nitroMax = 300;
+    b3.hpMax = 50;
+    b3.nitroMax = 200;
     b3.paMax = 6;
-    b3.pmMax = 3;
-    b3.attaque = 70;
-    b3.defense = 50;
+    b3.pmMax = 5;
+    b3.attaque = 45;
+    b3.defense = 40;
     b3.flag = 0;
     b3.mort = 0;
     b3.equipe = ENNEMIS;
-
-    b4.nom = "Boss4";
-    b4.id = 400;
-    b4.niveau = 1;
-    b4.hpMax = 200;
-    b4.nitroMax = 300;
-    b4.paMax = 6;
-    b4.pmMax = 3;
-    b4.attaque = 70;
-    b4.defense = 50;
-    b4.flag = 0;
-    b4.mort = 0;
-    b4.equipe = ENNEMIS;
-
-    b5.nom = "Boss5";  
-    b5.id = 500;
-    b5.niveau = 1;
-    b5.hpMax = 200;
-    b5.nitroMax = 300;
-    b5.paMax = 6;
-    b5.pmMax = 3;
-    b5.attaque = 70;
-    b5.defense = 50;
-    b5.flag = 0;
-    b5.mort = 0;
-    b5.equipe = ENNEMIS;
 }
 
 // Textures des ennemis
@@ -461,38 +381,6 @@ void init_textures_ennemis(int lev) {
         case 9 :
             b3.surface = IMG_Load("../data/ennemis/mobTest.png");
             b3.texture = SDL_CreateTextureFromSurface(ren, b3.surface);
-            break;
-        case 10 :
-            e7.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e7.texture = SDL_CreateTextureFromSurface(ren, e7.surface);
-            e8.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e8.texture = SDL_CreateTextureFromSurface(ren, e8.surface);
-            break;
-        case 11 :
-            e7.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e7.texture = SDL_CreateTextureFromSurface(ren, e7.surface);
-            e8.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e8.texture = SDL_CreateTextureFromSurface(ren, e8.surface);
-            break;
-        case 12 :
-            b4.surface = IMG_Load("../data/ennemis/mobTest.png");
-            b4.texture = SDL_CreateTextureFromSurface(ren, b4.surface);
-            break;
-        case 13 :
-            e9.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e9.texture = SDL_CreateTextureFromSurface(ren, e9.surface);
-            e10.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e10.texture = SDL_CreateTextureFromSurface(ren, e10.surface);
-            break;
-        case 14 :
-            e9.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e9.texture = SDL_CreateTextureFromSurface(ren, e9.surface);
-            e10.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e10.texture = SDL_CreateTextureFromSurface(ren, e10.surface);
-            break;
-        case 15 :
-            b5.surface = IMG_Load("../data/ennemis/mobTest.png");
-            b5.texture = SDL_CreateTextureFromSurface(ren, b5.surface);
             break;
         default :
             printf("Erreur du niveau : Impossible d'initialiser la surface et la texture de l'ennemi...\n");
@@ -582,38 +470,6 @@ void free_ennemi_c(int lev) {
         case 9 :
             SDL_DestroyTexture(b3.texture);
             SDL_FreeSurface(b3.surface);
-            break;
-        case 10 :
-            SDL_DestroyTexture(e7.texture);
-            SDL_FreeSurface(e7.surface);
-            SDL_DestroyTexture(e8.texture);
-            SDL_FreeSurface(e8.surface);
-            break;
-        case 11 :
-            SDL_DestroyTexture(e7.texture);
-            SDL_FreeSurface(e7.surface);
-            SDL_DestroyTexture(e8.texture);
-            SDL_FreeSurface(e8.surface);
-            break;
-        case 12 :
-            SDL_DestroyTexture(b4.texture);
-            SDL_FreeSurface(b4.surface);
-            break;
-        case 13 :
-            SDL_DestroyTexture(e9.texture);
-            SDL_FreeSurface(e9.surface);
-            SDL_DestroyTexture(e10.texture);
-            SDL_FreeSurface(e10.surface);
-            break;
-        case 14 :
-            SDL_DestroyTexture(e9.texture);
-            SDL_FreeSurface(e9.surface);
-            SDL_DestroyTexture(e10.texture);
-            SDL_FreeSurface(e10.surface);
-            break;
-        case 15 :
-            SDL_DestroyTexture(b5.texture);
-            SDL_FreeSurface(b5.surface);
             break;
     }
 }

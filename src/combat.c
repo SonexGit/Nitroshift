@@ -90,32 +90,14 @@ int recherchePorteeSort(entite * e){
         case 302 :
             return sortsEnnemi6[0].portee;
             break;
-        case 401 :
-            return sortsEnnemi7[0].portee;
-            break;
-        case 402 :
-            return sortsEnnemi8[0].portee;
-            break;
-        case 501 :
-            return sortsEnnemi9[0].portee;
-            break;
-        case 502 :
-            return sortsEnnemi10[0].portee;
-            break;
         case 100 :
-            return sortsEnnemi10[0].portee;
+            return sortsBoss1[0].portee;
             break;
         case 200 :
-            return sortsEnnemi10[0].portee;
+            return sortsBoss2[0].portee;
             break;
         case 300 :
-            return sortsEnnemi10[0].portee;
-            break;
-        case 400 :
-            return sortsEnnemi10[0].portee;
-            break;
-        case 500 :
-            return sortsEnnemi10[0].portee;
+            return sortsBoss3[0].portee;
             break;
     }
 }
@@ -141,32 +123,14 @@ int rechercheDegatSort(entite * e){
         case 302 :
             return sortsEnnemi6[0].degatsMin;
             break;
-        case 401 :
-            return sortsEnnemi7[0].degatsMin;
-            break;
-        case 402 :
-            return sortsEnnemi8[0].degatsMin;
-            break;
-        case 501 :
-            return sortsEnnemi9[0].degatsMin;
-            break;
-        case 502 :
-            return sortsEnnemi10[0].degatsMin;
-            break;
         case 100 :
-            return sortsEnnemi10[0].degatsMin;
+            return sortsBoss1[0].degatsMin;
             break;
         case 200 :
-            return sortsEnnemi10[0].degatsMin;
+            return sortsBoss2[0].degatsMin;
             break;
         case 300 :
-            return sortsEnnemi10[0].degatsMin;
-            break;
-        case 400 :
-            return sortsEnnemi10[0].degatsMin;
-            break;
-        case 500 :
-            return sortsEnnemi10[0].degatsMin;
+            return sortsBoss3[0].degatsMin;
             break;
     }
 }
@@ -192,32 +156,14 @@ int rechercheCoutNitroSort(entite * e){
         case 302 :
             return sortsEnnemi6[0].coutNitro;
             break;
-        case 401 :
-            return sortsEnnemi7[0].coutNitro;
-            break;
-        case 402 :
-            return sortsEnnemi8[0].coutNitro;
-            break;
-        case 501 :
-            return sortsEnnemi9[0].coutNitro;
-            break;
-        case 502 :
-            return sortsEnnemi10[0].coutNitro;
-            break;
         case 100 :
-            return sortsEnnemi10[0].coutNitro;
+            return sortsBoss1[0].coutNitro;
             break;
         case 200 :
-            return sortsEnnemi10[0].coutNitro;
+            return sortsBoss2[0].coutNitro;
             break;
         case 300 :
-            return sortsEnnemi10[0].coutNitro;
-            break;
-        case 400 :
-            return sortsEnnemi10[0].coutNitro;
-            break;
-        case 500 :
-            return sortsEnnemi10[0].coutNitro;
+            return sortsBoss3[0].coutNitro;
             break;
     }
 }
@@ -226,102 +172,66 @@ int rechercheCoutPaBoost(entite * e){
 
     switch(e->id){
         case 101 :
-            return sortsEnnemi1[1].coutPA;
+            return sortsEnnemi1[0].coutPA;
             break;
         case 102 :
-            return sortsEnnemi2[1].coutPA;
+            return sortsEnnemi2[0].coutPA;
             break;
         case 201 :
-            return sortsEnnemi3[1].coutPA;
+            return sortsEnnemi3[0].coutPA;
             break;
         case 202 :
-            return sortsEnnemi4[1].coutPA;
+            return sortsEnnemi4[0].coutPA;
             break;
         case 301 :
-            return sortsEnnemi5[1].coutPA;
+            return sortsEnnemi5[0].coutPA;
             break;
         case 302 :
-            return sortsEnnemi6[1].coutPA;
-            break;
-        case 401 :
-            return sortsEnnemi7[1].coutPA;
-            break;
-        case 402 :
-            return sortsEnnemi8[1].coutPA;
-            break;
-        case 501 :
-            return sortsEnnemi9[1].coutPA;
-            break;
-        case 502 :
-            return sortsEnnemi10[1].coutPA;
+            return sortsEnnemi6[0].coutPA;
             break;
         case 100 :
-            return sortsEnnemi10[0].coutPA;
+            return sortsBoss1[0].coutPA;
             break;
         case 200 :
-            return sortsEnnemi10[0].coutPA;
+            return sortsBoss2[0].coutPA;
             break;
         case 300 :
-            return sortsEnnemi10[0].coutPA;
+            return sortsBoss3[0].coutPA;
             break;
-        case 400 :
-            return sortsEnnemi10[0].coutPA;
-            break;
-        case 500 :
-            return sortsEnnemi10[0].coutPA;
-            break;
-    }    
+    }
 }
 
 int rechercheRelanceBoost(entite * e){
 
     switch(e->id){
         case 101 :
-            return sortsEnnemi1[1].relance;
+            return sortsEnnemi1[0].relance;
             break;
         case 102 :
-            return sortsEnnemi2[1].relance;
+            return sortsEnnemi2[0].relance;
             break;
         case 201 :
-            return sortsEnnemi3[1].relance;
+            return sortsEnnemi3[0].relance;
             break;
         case 202 :
-            return sortsEnnemi4[1].relance;
+            return sortsEnnemi4[0].relance;
             break;
         case 301 :
-            return sortsEnnemi5[1].relance;
+            return sortsEnnemi5[0].relance;
             break;
         case 302 :
-            return sortsEnnemi6[1].relance;
-            break;
-        case 401 :
-            return sortsEnnemi7[1].relance;
-            break;
-        case 402 :
-            return sortsEnnemi8[1].relance;
-            break;
-        case 501 :
-            return sortsEnnemi9[1].relance;
-            break;
-        case 502 :
-            return sortsEnnemi10[1].relance;
+            return sortsEnnemi6[0].relance;
             break;
         case 100 :
-            return sortsEnnemi10[0].relance;
+            return sortsBoss1[0].relance;
             break;
         case 200 :
-            return sortsEnnemi10[0].relance;
+            return sortsBoss2[0].relance;
             break;
         case 300 :
-            return sortsEnnemi10[0].relance;
+            return sortsBoss3[0].relance;
             break;
-        case 400 :
-            return sortsEnnemi10[0].relance;
-            break;
-        case 500 :
-            return sortsEnnemi10[0].relance;
-            break;
-    }    
+    }   
 }
 
 int boostEnnemi(entite * e){
@@ -394,18 +304,6 @@ int boostEnnemi(entite * e){
             case 302 :
                 return 0;
                 break;
-            case 401 :
-                return 0;
-                break;
-            case 402 :
-                return 0;
-                break;
-            case 501 :
-                return 0;
-                break;
-            case 502 :
-                return 0;
-                break;
             case 100 :
                 if(e->relanceBoost == 1){
                     e->pa += sortsBoss1[1].degatsMin; /* On ajoute les PA du boost */
@@ -434,12 +332,6 @@ int boostEnnemi(entite * e){
                 return 0;
                 break;
             case 300 :
-                return 0;
-                break;
-            case 400 :
-                return 0;
-                break;
-            case 500 :
                 return 0;
                 break;
         }

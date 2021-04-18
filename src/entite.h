@@ -71,19 +71,11 @@ entite e4;
 /* Zone 3 */
 entite e5;
 entite e6;
-/* Zone 4 */
-entite e7;
-entite e8;
-/* Zone 5 */
-entite e9;
-entite e10;
 
 // Boss
 entite b1;
 entite b2;
 entite b3;
-entite b4;
-entite b5;
 
 /* Fonction(s) utilisée(s) */
 // Personnages

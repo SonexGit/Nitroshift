@@ -303,7 +303,7 @@ void choix_zone_carte()
                     creationAcces();
                     if (a1.zone1 == 1)
                     {
-                        numeroZone =1;
+                        numeroZone = 1;
                         SDL_RenderClear(ren);
                         niveau();
                     }

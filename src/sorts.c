@@ -88,17 +88,6 @@ entite * rechercherEntite(int id){
         case 302 :
             return &e6;
             break;
-        case 401 :
-            return &e7;
-            break;
-        case 402 :
-            return &e8;
-            break;
-        case 501 :
-            return &e9;
-            break;
-        case 502 :
-            return &e10;
             break;
         case 100 :
             return &b1;
@@ -108,12 +97,6 @@ entite * rechercherEntite(int id){
             break;
         case 300 :
             return &b3;
-            break;
-        case 400 :
-            return &b4;
-            break;
-        case 500 :
-            return &b5;
             break;
 	}
 }
