@@ -1,6 +1,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -66,6 +67,40 @@ int numero_aleatoire(int minimum, int maximum) {
 	return nombre;
 }
 
+void afficher_degats(int degats, int cible_x, int cible_y) {
+	SDL_Color color_red = {200, 0, 0};
+
+	int longueur = snprintf(NULL, 0, "-%d", degats);
+	char * degats_texte = malloc(sizeof(char) * longueur + 1);
+	snprintf(degats_texte, longueur + 1, "-%d", degats);
+	SDL_Surface * surface_degats_texte = TTF_RenderText_Blended(font_degats, degats_texte, color_red);
+	SDL_Texture * texture_degats_texte = SDL_CreateTextureFromSurface(ren, surface_degats_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_degats_texte, NULL, NULL, &temp_w, &temp_h);
+
+	SDL_Rect dstrect_degats_texte;
+	dstrect_degats_texte.x = plateau[cible_y][cible_x].pc.x - temp_w / 2;
+	dstrect_degats_texte.y = plateau[cible_y][cible_x].pc.y - 154;
+	dstrect_degats_texte.w = temp_w;
+	dstrect_degats_texte.h = temp_h;
+
+	SDL_RenderCopy(ren, texture_degats_texte, NULL, &dstrect_degats_texte);
+
+	temps_actuel = SDL_GetTicks();
+
+	if (temps_actuel - temps_debut > 1000) {
+		degats_inflige = -1;
+		degats_cible_x = -1;
+		degats_cible_y = -1;
+		flag_temps = 0;
+	}
+
+	free(degats_texte);
+	SDL_FreeSurface(surface_degats_texte);
+	SDL_DestroyTexture(texture_degats_texte);
+}
+
 void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 	int degats = numero_aleatoire(s->degatsMin, s->degatsMax);
 
@@ -74,6 +109,11 @@ void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", plateau[cible_y][cible_x].e.hp);
 		plateau[cible_y][cible_x].e.hp -= degats;
 		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", plateau[cible_y][cible_x].e.hp);
+
+		degats_inflige = degats;
+		degats_cible_x = cible_x;
+		degats_cible_y = cible_y;
+
 		if(plateau[cible_y][cible_x].e.hp <= 0){
 			plateau[cible_y][cible_x].e.mort = 1;
 		}
@@ -115,6 +155,39 @@ void clic_sort(entite * lanceur, sort_T s) {
 	else {
 		printf("Le sort est en charge...\n");
 	}
+}
+
+void affichage_infos_sort(entite * lanceur, sort_T s) {
+	SDL_Color color_white = {255, 255, 255, 255};
+
+	// Vie de l'ennemi en texte
+	int longueur = snprintf(NULL, 0, "%s", s.nom);
+	char * nom_sort_texte = malloc(sizeof(char) * longueur);
+	snprintf(nom_sort_texte, longueur + 1, "%s", s.nom);
+	SDL_Surface * surface_sort_texte = TTF_RenderText_Blended(font_titre, nom_sort_texte, color_white);
+	SDL_Texture * texture_sort_texte = SDL_CreateTextureFromSurface(ren, surface_sort_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_sort_texte, NULL, NULL, &temp_w, &temp_h);
+
+	SDL_Rect dstrect_sort_texte;
+	dstrect_sort_texte.x = 50;
+	dstrect_sort_texte.y = 50;
+	dstrect_sort_texte.h = temp_h;
+	dstrect_sort_texte.w = temp_w;
+
+	SDL_Rect fond_sort_texte;
+	fond_sort_texte.x = 40;
+	fond_sort_texte.y = 40;
+	fond_sort_texte.h = temp_h + 20;
+	fond_sort_texte.w = temp_w + 20;
+
+	SDL_SetRenderDrawColor(ren, 25, 25, 25, 200);
+	SDL_RenderFillRect(ren, &fond_sort_texte);
+	SDL_RenderCopy(ren, texture_sort_texte, NULL, &dstrect_sort_texte);
+
+	SDL_FreeSurface(surface_sort_texte);
+	SDL_DestroyTexture(texture_sort_texte);
 }
 
 void init_sort_surftext() {

@@ -716,11 +716,40 @@ void actionEnnemi(entite * e){
     }
 }
 
+void update_affichage_tour() {
+	SDL_Color color_black = {0, 0, 0, 255};
+
+	char * tour_texte;
+	if (qui_tour == ALLIES) {
+		int longueur = snprintf(NULL, 0, "Votre tour");
+		tour_texte = malloc(sizeof(char) * longueur + 1);
+		snprintf(tour_texte, longueur + 1, "Votre tour");
+	}
+	else {
+		int longueur = snprintf(NULL, 0, "Tour des ennemis");
+		tour_texte = malloc(sizeof(char) * longueur + 1);
+		snprintf(tour_texte, longueur + 1, "Tour des ennemis");
+	}
+	SDL_Surface * surface_tour_texte = TTF_RenderText_Blended(font_tour, tour_texte, color_black);
+	SDL_Texture * texture_tour_texte = SDL_CreateTextureFromSurface(ren, surface_tour_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_tour_texte, NULL, NULL, &temp_w, &temp_h);
+
+	SDL_Rect dstrect_tour_texte;
+	dstrect_tour_texte.x = 20;
+	dstrect_tour_texte.y = 20;
+	dstrect_tour_texte.w = temp_w;
+	dstrect_tour_texte.h = temp_h;
+
+	SDL_RenderCopy(ren, texture_tour_texte, NULL, &dstrect_tour_texte);
+
+	free(tour_texte);
+	SDL_FreeSurface(surface_tour_texte);
+	SDL_DestroyTexture(texture_tour_texte);
+}
+
 void update_barre_vie() {
-
-	// Initialisation des polices nécessaires
-	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
-
 	SDL_Color color_white = {255, 255, 255, 255};
 
 	SDL_Surface * surface_vie = IMG_Load("../data/combat/health.png");
@@ -750,7 +779,7 @@ void update_barre_vie() {
 	int longueur = snprintf(NULL, 0, "%d/%d", v1.hp, v1.hpMax);
 	char * hp_texte = malloc(sizeof(char) * longueur + 1);
 	snprintf(hp_texte, longueur + 1, "%d/%d", v1.hp, v1.hpMax);
-	SDL_Surface * surface_vie_texte = TTF_RenderText_Blended(font, hp_texte, color_white);
+	SDL_Surface * surface_vie_texte = TTF_RenderText_Blended(font_barres, hp_texte, color_white);
 	SDL_Texture * texture_vie_texte = SDL_CreateTextureFromSurface(ren, surface_vie_texte);
 
 	int temp_w, temp_h;
@@ -772,14 +801,9 @@ void update_barre_vie() {
     SDL_DestroyTexture(texture_vie_fond);
     SDL_FreeSurface(surface_vie_texte);
     SDL_DestroyTexture(texture_vie_texte);
-    TTF_CloseFont(font);
 }
 
 void update_barre_nitro() {
-
-	// Initialisation des polices nécessaires
-	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
-
 	SDL_Color color_white = {255, 255, 255, 255};
 
 	SDL_Surface * surface_nitro = IMG_Load("../data/combat/nitro.png");
@@ -809,7 +833,7 @@ void update_barre_nitro() {
 	int longueur = snprintf(NULL, 0, "%d/%d", v1.nitro, v1.nitroMax);
 	char * nitro_texte = malloc(sizeof(char) * longueur + 1);
 	snprintf(nitro_texte, longueur + 1, "%d/%d", v1.nitro, v1.nitroMax);
-	SDL_Surface * surface_nitro_texte = TTF_RenderText_Blended(font, nitro_texte, color_white);
+	SDL_Surface * surface_nitro_texte = TTF_RenderText_Blended(font_barres, nitro_texte, color_white);
 	SDL_Texture * texture_nitro_texte = SDL_CreateTextureFromSurface(ren, surface_nitro_texte);
 
 	int temp_w, temp_h;
@@ -831,13 +855,9 @@ void update_barre_nitro() {
     SDL_DestroyTexture(texture_nitro_fond);
     SDL_FreeSurface(surface_nitro_texte);
     SDL_DestroyTexture(texture_nitro_texte);
-	TTF_CloseFont(font);
 }
 
 void affichage_infos_ennemi(int cible_x, int cible_y) {
-	TTF_Font * font = TTF_OpenFont("../data/police/Roboto-BoldItalic.ttf", 14);
-	TTF_Font * font_nom = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 16);
-
 	SDL_Color color_white = {255, 255, 255, 255};
 
 	entite ennemi = plateau[cible_y][cible_x].e;
@@ -853,7 +873,7 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
 	longueur = snprintf(NULL, 0, "%s", ennemi.nom);
 	char * nom_texte = malloc(sizeof(char) * longueur + 1);
 	snprintf(nom_texte, longueur + 1, "%s", ennemi.nom);
-	SDL_Surface * surface_nom_texte = TTF_RenderText_Blended(font_nom, nom_texte, color_white);
+	SDL_Surface * surface_nom_texte = TTF_RenderText_Blended(font_titre, nom_texte, color_white);
 	SDL_Texture * texture_nom_texte = SDL_CreateTextureFromSurface(ren, surface_nom_texte);
 
 	int temp_w, temp_h;
@@ -881,7 +901,7 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
 	fond_vie_ennemi_texte.x = dstrect_nom_ennemi_texte.x - 10;
 	fond_vie_ennemi_texte.y = dstrect_nom_ennemi_texte.y - 5;
 	fond_vie_ennemi_texte.h = dstrect_nom_ennemi_texte.h + dstrect_vie_ennemi_texte.h + 10;
-	fond_vie_ennemi_texte.w = temp_x + 30;
+	fond_vie_ennemi_texte.w = temp_x + 25;
 
 	SDL_SetRenderDrawColor(ren, 25, 25, 25, 200);
 	SDL_RenderFillRect(ren, &fond_vie_ennemi_texte);
@@ -891,8 +911,8 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
 	free(vie_texte);
     SDL_FreeSurface(surface_vie_texte);
     SDL_DestroyTexture(texture_vie_texte);
-	TTF_CloseFont(font);
-	TTF_CloseFont(font_nom);
+	SDL_FreeSurface(surface_nom_texte);
+    SDL_DestroyTexture(texture_nom_texte);
 }
 
 void init_interface_combat() {
@@ -1097,4 +1117,6 @@ void deroulementCombat(int level){
             }
             break;    
     }
+
+	qui_tour = ALLIES;
 }

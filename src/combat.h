@@ -10,6 +10,9 @@ SDL_Rect srcrect_nitro, dstrect_nitro, dstrect_nitro_fond, dstrect_nitro_texte;
 // Variable pour savoir si la souris est sur un ennemi et quelle case
 int sur_ennemi_x, sur_ennemi_y;
 
+// Variable pour savoir le tour est à quelle côté
+int qui_tour;
+
 /* Fonctions */
 void boutonPasserTour();
 void statsMaximum(entite * e);
@@ -25,6 +28,7 @@ void iaEnnemi(entite * e);
 void actionEnnemi(entite * e);
 void tourPersonnage(entite * ee1, entite * ee2);
 
+void update_affichage_tour();
 void update_barre_vie();
 void update_barre_nitro();
 

@@ -1,6 +1,8 @@
 #ifndef _HEADER_H_
 #define _HEADER_H_
 
+#include <SDL2/SDL_ttf.h>
+
 // Taille du plateau
 #define plateau_x 15
 #define plateau_y 15
@@ -63,6 +65,15 @@ SDL_Point pts_2D[plateau_x*plateau_y];
 int isCombat;
 
 int levelCombat;
+
+int affichageSort;
+
+// Déclaration des polices
+TTF_Font * font;
+TTF_Font * font_titre;
+TTF_Font * font_barres;
+TTF_Font * font_degats;
+TTF_Font * font_tour;
 
 // Texture du personnage
 int sprite;

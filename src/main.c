@@ -203,6 +203,14 @@ size_t handle_keys() {
 					sur_ennemi_x = -1;
 					sur_ennemi_y = -1;
 				}
+				for(int i = 0; i < 3; i++) {
+					if (event.motion.x >= liste_sorts[i].x && event.motion.x <= liste_sorts[i].x+liste_sorts[i].w && event.motion.y >= liste_sorts[i].y && event.motion.y <= liste_sorts[i].y+liste_sorts[i].h) {
+						affichageSort = i;
+					}
+					else {
+						affichageSort = -1;
+					}
+				}
 
 				if (!mouse_active)
 					mouse_active = SDL_TRUE;
@@ -634,9 +642,27 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+void init_polices() {
+	font = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 14);
+	font_titre = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 16);
+	font_barres = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
+	font_degats = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 24);
+	font_tour = TTF_OpenFont("../data/police/Roboto-Black.ttf", 36);
+}
+
+void close_polices() {
+	TTF_CloseFont(font);
+	TTF_CloseFont(font_titre);
+	TTF_CloseFont(font_barres);
+	TTF_CloseFont(font_degats);
+	TTF_CloseFont(font_tour);
+}
+
 int affichagePlateau() {
 	// Plateau
 	// cell_T plateau[plateau_y][plateau_x];
+
+	init_polices();
 
 	SDL_Cursor * cursor;
 	cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
@@ -700,6 +726,15 @@ int affichagePlateau() {
 
 	init_interface_combat();
 
+	degats_inflige = -1;
+	degats_cible_x = -1;
+	degats_cible_y = -1;
+	flag_temps = 0;
+
+	qui_tour = ALLIES;
+
+	affichageSort = -1;
+
 	while (1) {
 
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
@@ -752,11 +787,16 @@ int affichagePlateau() {
 		init_textures_ennemis();
 
 		if(v1.passerTour == 1){
+			qui_tour = ENNEMIS;
 			if(finTempsAllie == 0){
 				tempsDebutPlateau = SDL_GetTicks();
 				finTempsAllie = 1;
 			}
+			update_affichage_tour();
 			deroulementCombat(levelCombat);
+		}
+		else {
+			update_affichage_tour();
 		}
 
 		/*
@@ -778,16 +818,20 @@ int affichagePlateau() {
 		//plateau[b1.positionY][b1.positionX].e = b1;
 		plateau[v1.positionY][v1.positionX].e = v1;
 
+		if (!finTempsAllie) {
+			if (prepaSort >= 0) {
+				preparation_sort(&v1, sorts[prepaSort]);
+			}
+		}
+
 		affichage_entites(plateau);
 
 		update_interface_combat();
 		boutonPasserTour();
 		affichage_sorts();
-
-		if (!finTempsAllie) {
-			if (prepaSort >= 0) {
-				preparation_sort(&v1, sorts[prepaSort]);
-			}
+		
+		if (affichageSort != -1) {
+			affichage_infos_sort(&v1, sorts[affichageSort]);
 		}
 
 		// Recharge des relance etc a la fin d'un tour
@@ -797,6 +841,14 @@ int affichagePlateau() {
 				sort_relance_fintour();
 				finTourComplet = 0;
 			}
+		}
+
+		if (degats_inflige != -1 || degats_cible_x != -1 || degats_cible_y != -1) {
+			if(flag_temps != 1) {
+				temps_debut = SDL_GetTicks();
+				flag_temps = 1;
+			}
+			afficher_degats(degats_inflige, degats_cible_x, degats_cible_y);
 		}
 		
 		SDL_RenderPresent(ren);
@@ -814,6 +866,7 @@ int affichagePlateau() {
 	SDL_FreeSurface(surface_test);
 	SDL_FreeCursor(cursor);
 	SDL_FreeCursor(cursor_hover);
+	close_polices();
 	return 0;
 }
 
