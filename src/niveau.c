@@ -37,9 +37,6 @@ void niveau()
     SDL_Surface *imagenb3 = NULL;
     SDL_Texture *texturenb3 = NULL;
 
-    SDL_Surface *imagenb4 = NULL;
-    SDL_Texture *texturenb4 = NULL;
-
     SDL_Surface *imageretour = NULL;
     SDL_Texture *textureretour = NULL;
 
@@ -167,7 +164,7 @@ void niveau()
     }
 
     //positionnement du bouton
-    rectanglenb3.x = 810;
+    rectanglenb3.x = 1300;
     rectanglenb3.y = 480;
     rectanglenb3.w = imagenb3->w * 2;
     rectanglenb3.h = imagenb3->h * 2;
@@ -256,59 +253,13 @@ void niveau()
     }
 
     //positionnement du bouton
-    rectanglenb2.x = 440;
+    rectanglenb2.x = 650;
     rectanglenb2.y = 480;
     rectanglenb2.w = imagenb2->w * 2;
     rectanglenb2.h = imagenb2->h * 2;
     //
     //affichage de l'image
     if (SDL_RenderCopy(ren, texturenb2, NULL, &rectanglenb2) != 0)
-    {
-        SDL_DestroyRenderer(ren);
-        SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
-    }
-
-    SDL_RenderPresent(ren);
-
-    /*    Bouton a nb4      */
-    imagenb4 = IMG_Load("../data/menu/nb4.png");
-    if (imagenb4 == NULL)
-    {
-        SDL_DestroyRenderer(ren);
-        SDL_DestroyWindow(win);
-        SDLError("Erreur lors du chargement de l'image");
-    }
-    texturenb4 = SDL_CreateTextureFromSurface(ren, imagenb4);
-
-    //libération de la surface car plus besoin
-    SDL_FreeSurface(imagenb4);
-
-    if (texturenb4 == NULL)
-    {
-        SDL_DestroyRenderer(ren);
-        SDL_DestroyWindow(win);
-        SDLError("Erreur lors de la création de la texture bouton abandon");
-    }
-    //l'image est chargé en mémoire
-
-    //chargement de la texture
-    SDL_Rect rectanglenb4;
-    if (SDL_QueryTexture(texturenb4, NULL, NULL, &rectanglenb4.w, &rectanglenb4.h) != 0)
-    {
-        SDL_DestroyRenderer(ren);
-        SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
-    }
-
-    //positionnement du bouton
-    rectanglenb4.x = 1180;
-    rectanglenb4.y = 480;
-    rectanglenb4.w = imagenb4->w * 2;
-    rectanglenb4.h = imagenb4->h * 2;
-    //
-    //affichage de l'image
-    if (SDL_RenderCopy(ren, texturenb4, NULL, &rectanglenb4) != 0)
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
@@ -361,7 +312,7 @@ void niveau()
                             affichagePlateau();
                         }
                     }
-                    if (event.button.x >= 440 && event.button.x <= 724 && event.button.y >= 480 && event.button.y <= 662)
+                    if (event.button.x >=650 && event.button.x <=934 && event.button.y >= 480 && event.button.y <= 662)
                     {
                         if (a1.z1.niveau2 == 1)
                         {
@@ -372,7 +323,7 @@ void niveau()
                             affichagePlateau();
                         }
                     }
-                    if (event.button.x >= 810 && event.button.x <= 1094 && event.button.y >= 480 && event.button.y <= 662)
+                    if (event.button.x >= 1300 && event.button.x <= 1584 && event.button.y >= 480 && event.button.y <= 662)
                     {
                         if (a1.z1.niveau3 == 1)
                         {
@@ -396,7 +347,7 @@ void niveau()
                             affichagePlateau();
                         }
                     }
-                    if (event.button.x >= 440 && event.button.x <= 724 && event.button.y >= 480 && event.button.y <= 662)
+                    if (event.button.x >= 650 && event.button.x <= 934 && event.button.y >= 480 && event.button.y <= 662)
                     {
                         if (a1.z2.niveau2 == 1)
                         {
@@ -407,7 +358,7 @@ void niveau()
                             affichagePlateau();
                         }
                     }
-                    if (event.button.x >= 810 && event.button.x <= 1094 && event.button.y >= 480 && event.button.y <= 662)
+                    if (event.button.x >= 1300 && event.button.x <= 1584 && event.button.y >= 480 && event.button.y <= 662)
                     {
                         if (a1.z2.niveau3 == 1)
                         {
@@ -431,7 +382,7 @@ void niveau()
                             affichagePlateau();
                         }
                     }
-                    if (event.button.x >= 440 && event.button.x <= 724 && event.button.y >= 480 && event.button.y <= 662)
+                    if (event.button.x >= 650 && event.button.x <= 934 && event.button.y >= 480 && event.button.y <= 662)
                     {
                         if (a1.z3.niveau2 == 1)
                         {
@@ -442,7 +393,7 @@ void niveau()
                             affichagePlateau();
                         }
                     }
-                    if (event.button.x >= 810 && event.button.x <= 1094 && event.button.y >= 480 && event.button.y <= 662)
+                    if (event.button.x >= 1300 && event.button.x <= 1584 && event.button.y >= 480 && event.button.y <= 662)
                     {
                         if (a1.z3.niveau3 == 1)
                         {
@@ -469,7 +420,6 @@ void niveau()
     SDL_DestroyTexture(texturenb1);
     SDL_DestroyTexture(texturenb2);
     SDL_DestroyTexture(texturenb3);
-    SDL_DestroyTexture(texturenb4);
     SDL_DestroyTexture(texture_menu);
     SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
