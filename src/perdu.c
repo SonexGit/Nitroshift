@@ -28,6 +28,9 @@
 
 void findujeu()
 {
+  SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+  SDL_RenderClear(ren);
+  SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
     Mix_Music *myMus;
 
     /* On initialise le son */
@@ -47,7 +50,7 @@ void findujeu()
         printf("%s", Mix_GetError());
     }
 
-    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+
 
     SDL_Surface *icon = IMG_Load("../data/icon.png");
     SDL_SetWindowIcon(win, icon);
