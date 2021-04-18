@@ -8,12 +8,14 @@
 #define plateau_y 15
 
 // Tiles.png (l'atlas des textures des cases du plateau)
-#define tiles_row 15 // Combien de textures par ligne ?
+#define tiles_row 21 // Combien de textures par ligne ?
 #define tiles_col 1 // Combien de textures par colonne ?
 
 // Taille d'une cellule
 #define grid_cell_size_iso_x 80 // à modifier, pas "dynamique", +30 en x par point suivant
 #define grid_cell_size_iso_y 40 // à modifier, pas "dynamique", +15 en y par point suivant
+
+SDL_Point souris;
 
 typedef struct entite_S {
 	int id;
@@ -90,5 +92,9 @@ int sprite;
 int finTempsAllie;
 int finTourComplet;
 int tempsDebutPlateau;
+
+// Fonctions
+SDL_Point Coord2DToIso(SDL_Point point);
+SDL_Point CoordIsoTo2D(SDL_Point point);
 
 #endif // HEADER_H_

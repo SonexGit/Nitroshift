@@ -8,6 +8,7 @@
 #include <string.h>
 #include <math.h>
 
+#include "header.h"
 #include "sorts.h"
 #include "entite.h"
 #include "render.h"
@@ -88,17 +89,6 @@ entite * rechercherEntite(int id){
         case 302 :
             return &e6;
             break;
-        case 401 :
-            return &e7;
-            break;
-        case 402 :
-            return &e8;
-            break;
-        case 501 :
-            return &e9;
-            break;
-        case 502 :
-            return &e10;
             break;
         case 100 :
             return &b1;
@@ -108,12 +98,6 @@ entite * rechercherEntite(int id){
             break;
         case 300 :
             return &b3;
-            break;
-        case 400 :
-            return &b4;
-            break;
-        case 500 :
-            return &b5;
             break;
 	}
 }
@@ -214,7 +198,7 @@ void clic_sort(entite * lanceur, sort_T s) {
 void affichage_infos_sort(entite * lanceur, sort_T s) {
 	SDL_Color color_white = {255, 255, 255, 255};
 
-	// Vie de l'ennemi en texte
+	// Affichage du nom du sort
 	int longueur = snprintf(NULL, 0, "%s", s.nom);
 	char * nom_sort_texte = malloc(sizeof(char) * longueur);
 	snprintf(nom_sort_texte, longueur + 1, "%s", s.nom);
@@ -225,21 +209,43 @@ void affichage_infos_sort(entite * lanceur, sort_T s) {
 	SDL_QueryTexture(texture_sort_texte, NULL, NULL, &temp_w, &temp_h);
 
 	SDL_Rect dstrect_sort_texte;
-	dstrect_sort_texte.x = 50;
-	dstrect_sort_texte.y = 50;
+	SDL_Point temp_souris = Coord2DToIso(souris);
+	dstrect_sort_texte.x = temp_souris.x - temp_w / 2;
+	dstrect_sort_texte.y = temp_souris.y - 80;
 	dstrect_sort_texte.h = temp_h;
 	dstrect_sort_texte.w = temp_w;
 
-	SDL_Rect fond_sort_texte;
-	fond_sort_texte.x = 40;
-	fond_sort_texte.y = 40;
-	fond_sort_texte.h = temp_h + 20;
-	fond_sort_texte.w = temp_w + 20;
+	// Affichage de la description du sort
+	longueur = snprintf(NULL, 0, "%s", s.description);
+	char * desc_sort_texte = malloc(sizeof(char) * longueur);
+	snprintf(desc_sort_texte, longueur + 1, "%s", s.description);
+	SDL_Surface * surface_sort_desc_texte = TTF_RenderText_Blended_Wrapped(font, desc_sort_texte, color_white, 400);
+	SDL_Texture * texture_sort_desc_texte = SDL_CreateTextureFromSurface(ren, surface_sort_desc_texte);
 
-	SDL_SetRenderDrawColor(ren, 25, 25, 25, 200);
+	int temp_w2, temp_h2;
+	SDL_QueryTexture(texture_sort_desc_texte, NULL, NULL, &temp_w2, &temp_h2);
+
+	SDL_Rect dstrect_sort_desc_texte;
+	dstrect_sort_desc_texte.x = temp_souris.x - temp_w / 2;
+	dstrect_sort_desc_texte.y = temp_souris.y - 60;
+	dstrect_sort_desc_texte.h = temp_h2;
+	dstrect_sort_desc_texte.w = temp_w2;
+
+	// Fond des infos d'un sorts
+	SDL_Rect fond_sort_texte;
+	fond_sort_texte.x = dstrect_sort_texte.x - 10 ;
+	fond_sort_texte.y = dstrect_sort_texte.y - 10;
+	fond_sort_texte.h = temp_h + temp_h2 + 20;
+	if (temp_w > temp_w2) fond_sort_texte.w = temp_w + 20;
+	else fond_sort_texte.w = temp_w2 + 20;
+
+	SDL_SetRenderDrawColor(ren, 0, 0, 0, 235);
 	SDL_RenderFillRect(ren, &fond_sort_texte);
 	SDL_RenderCopy(ren, texture_sort_texte, NULL, &dstrect_sort_texte);
+	SDL_RenderCopy(ren, texture_sort_desc_texte, NULL, &dstrect_sort_desc_texte);
 
+	free(nom_sort_texte);
+	free(desc_sort_texte);
 	SDL_FreeSurface(surface_sort_texte);
 	SDL_DestroyTexture(texture_sort_texte);
 }
@@ -272,18 +278,20 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		int og_y = lanceur->positionY + i;
 		int og_x = lanceur->positionX;
 
-		plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
-		plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
+		if (og_y < plateau_y && og_x < plateau_x && (plateau[og_y][og_x].solide == 0 || plateau[og_y][og_x].e.id != 0)) {
+			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
+			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 
-		plateau[og_y][og_x].castable = 1;
+			plateau[og_y][og_x].castable = 1;
 
-		rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
-		rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
-		rect_prep_sort[compteur].w = grid_cell_size_iso_x;
-		rect_prep_sort[compteur].h = grid_cell_size_iso_y;
+			rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
+			rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
+			rect_prep_sort[compteur].w = grid_cell_size_iso_x;
+			rect_prep_sort[compteur].h = grid_cell_size_iso_y;
 
-		SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
-		SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
+			SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
+			SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
+		}
 
 		compteur++;
 	}
@@ -292,18 +300,20 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		int og_y = lanceur->positionY;
 		int og_x = lanceur->positionX + j;
 
-		plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
-		plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
-		
-		plateau[og_y][og_x].castable = 1;
+		if (og_y < plateau_y && og_x < plateau_x && (plateau[og_y][og_x].solide == 0 || plateau[og_y][og_x].e.id != 0)) {
+			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
+			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
+			
+			plateau[og_y][og_x].castable = 1;
 
-		rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
-		rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
-		rect_prep_sort[compteur].w = grid_cell_size_iso_x;
-		rect_prep_sort[compteur].h = grid_cell_size_iso_y;
-		
-		SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
-		SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
+			rect_prep_sort[compteur].x = plateau[og_y][og_x].pc.x - (grid_cell_size_iso_x/2);
+			rect_prep_sort[compteur].y = plateau[og_y][og_x].pc.y - (grid_cell_size_iso_y/2);
+			rect_prep_sort[compteur].w = grid_cell_size_iso_x;
+			rect_prep_sort[compteur].h = grid_cell_size_iso_y;
+			
+			SDL_RenderCopy(ren, plateau[og_y][og_x].sort_texture, NULL, &rect_prep_sort[compteur]);
+			SDL_FreeSurface(plateau[og_y][og_x].sort_surface);
+		}
 
 		compteur++;
 	}
