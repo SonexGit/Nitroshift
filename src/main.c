@@ -938,7 +938,7 @@ int affichagePlateau() {
 	lien_pc_cases(points_centre, plateau);
 
 	// Liste de points mises dans un fichier pour pouvoir suivre le fonctionnement plus facilement
-	fileListPoints(poinZts, points_centre);
+	fileListPoints(points, points_centre);
 
 	// Initialisation de la possibilité de lancer un sort sur une certaine case à 0 (on ne prépare aucun sort au début)
 	init_sort_surftext();
