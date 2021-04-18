@@ -17,10 +17,10 @@
 /* Création du personnage */
 void creationPersonnage(){
 
-    v1.nom = "Personnage";
+    v1.classe = malloc(sizeof(char)*10);
 
     // Faire les if des cliques pour sélect
-    v1.classe = "Tank";
+    v1.etiquetteClasse = 40;
 
     v1.id = 1;
     v1.equipe = ALLIES;
@@ -30,30 +30,36 @@ void creationPersonnage(){
     v1.experience = 0;
     v1.nitroDollars = 0;
 
-    if(strcmp(v1.classe,"Soldat") == 0){
-        v1.hpMax = 100;
+    if(v1.etiquetteClasse == 10){ // Soldat
+        v1.hpMax = 4000;
         v1.nitroMax = 100;
         v1.attaque = 30;
         v1.defense = 10;
     }
-    else if(strcmp(v1.classe,"Tank") == 0){
+    else if(v1.etiquetteClasse == 20){ // Tank
         v1.hpMax = 200;
         v1.nitroMax = 100;
         v1.attaque = 15;
         v1.defense = 20;
     }
-    else if(strcmp(v1.classe,"Sniper") == 0){
+    else if(v1.etiquetteClasse == 30){ // Sniper
         v1.hpMax = 50;
         v1.nitroMax = 100;
         v1.attaque = 60;
         v1.defense = 2;
     }
-    else if(strcmp(v1.classe,"Assassin") == 0){
+    else if(v1.etiquetteClasse == 40){ // Assassin
         v1.hpMax = 80;
         v1.nitroMax = 100;
         v1.attaque = 60;
         v1.defense = 5;
     }
+    rechercheClasse();
+}
+
+void free_classe_perso(){
+
+    free(v1.classe);
 }
 
 /* Accès ou non aux zones et niveaux par le personnage */
@@ -76,21 +82,10 @@ void creationAcces(){
     a1.z3.niveau1 = 0;
     a1.z3.niveau2 = 0;
     a1.z3.niveau3 = 0;
-
-    a1.zone4 = 0;
-    a1.z4.niveau1 = 0;
-    a1.z4.niveau2 = 0;
-    a1.z4.niveau3 = 0;
-
-    a1.zone5 = 0;
-    a1.z5.niveau1 = 0;
-    a1.z5.niveau2 = 0;
-    a1.z5.niveau3 = 0;
 }
 
 // Textures du personnage
 void init_textures_personnage() {
-
     if(strcmp(v1.classe,"Soldat") == 0){
         v1.surface = IMG_Load("../data/personnages/personnageDPS.png");
     }
@@ -132,7 +127,6 @@ void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y
 	dest_perso.y = pos_y;
 	dest_perso.w = img_w / perso_row;
 	dest_perso.h = img_h / perso_col;
-
 	SDL_RenderCopy(ren, p.texture, &src_perso[sprite], &dest_perso);
 }
 
@@ -638,6 +632,21 @@ void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 	else {
 		// Ne rien faire
 	}
+}
+
+void rechercheClasse(){
+    if(v1.etiquetteClasse == 10){
+        v1.classe = "Soldat";
+    }
+    else if(v1.etiquetteClasse == 20){
+        v1.classe = "Tank";
+    }
+    else if(v1.etiquetteClasse == 30){
+        v1.classe = "Sniper";
+    }
+    else if(v1.etiquetteClasse == 40){
+        v1.classe = "Assassin";
+    }
 }
 
 // Niveaux

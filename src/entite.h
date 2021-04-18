@@ -89,6 +89,8 @@ entite b5;
 // Personnages
 void creationPersonnage();
 void creationAcces();
+void free_nom_classe_perso();
+void rechercheClasse();
 
 void init_textures_personnage();
 void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);

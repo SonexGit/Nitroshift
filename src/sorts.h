@@ -50,6 +50,8 @@ int prepaSort;
 // Déclarations des fonctions
 void affichage_sorts();
 void init_sorts();
+entite * rechercherEntite(int id);
+void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s);
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s);
 void init_sort_surftext();
 void free_sort_text();

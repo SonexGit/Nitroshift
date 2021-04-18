@@ -66,16 +66,71 @@ int numero_aleatoire(int minimum, int maximum) {
 	return nombre;
 }
 
+entite * rechercherEntite(int id){
+
+	switch(id){
+        case 101 :
+            return &e1;
+            break;
+        case 102 :
+            return &e2;
+            break;
+        case 201 :
+            return &e3;
+            break;
+        case 202 :
+            return &e4;
+            break;
+        case 301 :
+            return &e5;
+            break;
+        case 302 :
+            return &e6;
+            break;
+        case 401 :
+            return &e7;
+            break;
+        case 402 :
+            return &e8;
+            break;
+        case 501 :
+            return &e9;
+            break;
+        case 502 :
+            return &e10;
+            break;
+        case 100 :
+            return &b1;
+            break;
+        case 200 :
+            return &b2;
+            break;
+        case 300 :
+            return &b3;
+            break;
+        case 400 :
+            return &b4;
+            break;
+        case 500 :
+            return &b5;
+            break;
+	}
+}
+
 void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 	int degats = numero_aleatoire(s->degatsMin, s->degatsMax);
 
+	entite * temp;
+
 	if (plateau[cible_y][cible_x].e.id != 0) {
 		printf("\nJE FAIS DES DEGATS !! : %i\n", degats);
-		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", plateau[cible_y][cible_x].e.hp);
-		plateau[cible_y][cible_x].e.hp -= degats;
-		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", plateau[cible_y][cible_x].e.hp);
-		if(plateau[cible_y][cible_x].e.hp <= 0){
-			plateau[cible_y][cible_x].e.mort = 1;
+		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", temp->hp);
+		temp = rechercherEntite(plateau[cible_y][cible_x].e.id);
+		temp->hp -= degats;
+		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", temp->hp);
+		if(temp->hp <= 0){
+			temp->mort = 1;
+			temp->id = 0;
 		}
 	}
 }

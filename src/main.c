@@ -631,7 +631,9 @@ void init_id_entite_plateau() {
 void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
-			if (plat[i][j].e.id != 0) dessiner_entite(plat[i][j].e, plat[i][j].e.positionX, plat[i][j].e.positionY, plat, sprite);
+			if(plat[i][j].e.id != 0){
+				dessiner_entite(plat[i][j].e, plat[i][j].e.positionX, plat[i][j].e.positionY, plat, sprite);
+			}
 		}
 	}
 }
@@ -718,9 +720,9 @@ void sauvegarderPartie(){
 	FILE * fichier;
 	fichier = fopen("../sauvegarde.txt", "w");
 
+	/* Sauvegarder les statistiques du personnage */
 	fprintf(fichier, "%i\n", v1.id);
-	fprintf(fichier, "%s\n", v1.nom);
-	fprintf(fichier, "%s\n", v1.classe);
+	fprintf(fichier, "%i\n", v1.etiquetteClasse);
 	fprintf(fichier, "%i\n", v1.niveau);
 	fprintf(fichier, "%i\n", v1.hpMax);
 	fprintf(fichier, "%i\n", v1.nitroMax);
@@ -732,7 +734,143 @@ void sauvegarderPartie(){
 	fprintf(fichier, "%i\n", v1.nitroDollars);
 	fprintf(fichier, "%i\n", v1.experience);
 
+	/* Sauvegarder les accès (aux différent(es) niveaux/zones) du personnage */
+	fprintf(fichier, "%i\n", a1.zone1);
+	fprintf(fichier, "%i\n", a1.z1.niveau1);
+	fprintf(fichier, "%i\n", a1.z1.niveau2);
+	fprintf(fichier, "%i\n", a1.z1.niveau3);
+	fprintf(fichier, "%i\n", a1.zone2);
+	fprintf(fichier, "%i\n", a1.z2.niveau1);
+	fprintf(fichier, "%i\n", a1.z2.niveau2);
+	fprintf(fichier, "%i\n", a1.z2.niveau3);
+	fprintf(fichier, "%i\n", a1.zone3);
+	fprintf(fichier, "%i\n", a1.z3.niveau1);
+	fprintf(fichier, "%i\n", a1.z3.niveau2);
+	fprintf(fichier, "%i\n", a1.z3.niveau3);
+	fprintf(fichier, "%i\n", a1.zone4);
+	fprintf(fichier, "%i\n", a1.z4.niveau1);
+	fprintf(fichier, "%i\n", a1.z4.niveau2);
+	fprintf(fichier, "%i\n", a1.z4.niveau3);
+	fprintf(fichier, "%i\n", a1.zone5);
+	fprintf(fichier, "%i\n", a1.z5.niveau1);
+	fprintf(fichier, "%i\n", a1.z5.niveau2);
+	fprintf(fichier, "%i\n", a1.z5.niveau3);
+	
 	fclose(fichier);	
+}
+
+void chargerSauvegarde(){
+
+	FILE * fichier = NULL;
+	fichier = fopen("../sauvegarde.txt", "r");
+	char chaine[30] = "";
+	int temp;
+	size_t len;
+
+	if(fichier != NULL){
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.id = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.etiquetteClasse = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.niveau = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.hpMax = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.nitroMax = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.paMax = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.pmMax = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.attaque = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.defense = temp;
+	
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.equipe = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.nitroDollars = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		v1.experience = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.zone1 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z1.niveau1 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z1.niveau2 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z1.niveau3 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.zone2 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z2.niveau1 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z2.niveau2 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z2.niveau3 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.zone3 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z3.niveau1 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z3.niveau2 = temp;
+
+		fgets(chaine, 30, fichier);
+		temp = atoi(chaine);
+		a1.z3.niveau3 = temp;
+
+		rechercheClasse();
+	}
+	else{
+		printf("Erreur, il n'y a pas de sauvegarde.\n");
+	}
+	fclose(fichier);
 }
 
 int affichagePlateau() {
@@ -762,10 +900,11 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
-	levelCombat = 5;
+	levelCombat = 3;
 
+	//creationPersonnage();
 	creationEnnemi();
-	creationPersonnage();
+	creationAcces();
 	initCombat(levelCombat);
 
 	// ==============================================
@@ -805,18 +944,13 @@ int affichagePlateau() {
 
 		SDL_SetRenderDrawColor(ren, 140, 140, 140, 0);
 		SDL_RenderClear(ren);
-
 		if (handle_keys() == 1) {
 			break;
 		}
-
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, 255);
-
 		// On initialise les textures de toutes les cases de la carte 1 (premier argument), le deuxième est une constante cependant
 		init_texture_cases(1, points_centre);
-
 		trouver_case_pc(points_centre[save], plateau, &pc_x, &pc_y);
-
 		if (plateau[pc_y][pc_x].solide >= 1) {
 			// SDL_Delay(10);
 			mouse_solide = SDL_TRUE;
@@ -848,10 +982,8 @@ int affichagePlateau() {
 		// ==============================================
 		// Dessin des personnages (joueur)
 		// ==============================================
-
 		init_textures_personnage();
 		init_textures_ennemis(levelCombat);
-
 		if(v1.passerTour == 1){
 			if(finTempsAllie == 0){
 				tempsDebutPlateau = SDL_GetTicks();
@@ -859,7 +991,6 @@ int affichagePlateau() {
 			}
 			deroulementCombat(levelCombat);
 		}
-
 		/*
 		dessiner_personnage(v1, v1.positionX, v1.positionY, plateau, sprite);
 		dessiner_ennemi(e1, 2, 2, plateau, 0);
@@ -867,16 +998,12 @@ int affichagePlateau() {
 		*/
 
 		init_cases_solide(1, plateau);
-		
 		init_id_entite_plateau();
-
 		positionnerEnnemi(levelCombat);
 		affichage_entites(plateau);
-
 		update_interface_combat();
 		boutonPasserTour();
 		affichage_sorts();
-
 		if (!finTempsAllie) {
 			if (prepaSort >= 0) {
 				preparation_sort(&v1, sorts[prepaSort]);
@@ -899,7 +1026,7 @@ int affichagePlateau() {
 		SDL_Delay(10);
 	}
 
-	
+	free_classe_perso();
 	free_sort_text();
 	SDL_FreeSurface(icon);
 	SDL_DestroyTexture(texture_mouse_hover);
@@ -915,7 +1042,10 @@ int main(int argc, char** argv) {
 
 	// Récuperer taille de la fenêtre
 	SDL_GetWindowSize(win, &screen_w, &screen_h);
-	
+
+	chargerSauvegarde();
+	v1.nom = "Personnage";
+
 	isCombat = 1;
 
 	while (isCombat == 1) {

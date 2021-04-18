@@ -834,7 +834,7 @@ void actionEnnemi(entite * e){
 
     if(e->mort == 0){
         if(e->pm > 0){
-            if(tempsActuel - tempsDebutPlateau > 1000){
+            if(tempsActuel - tempsDebutPlateau > 500){
                 iaEnnemi(e);
                 tempsDebutPlateau = SDL_GetTicks();
             }
