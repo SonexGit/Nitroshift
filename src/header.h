@@ -17,6 +17,7 @@
 
 typedef struct entite_S {
 	int id;
+	int etiquetteClasse;
 	char * nom;
 	char * classe;
 	int niveau;

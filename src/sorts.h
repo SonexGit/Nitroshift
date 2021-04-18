@@ -52,6 +52,7 @@ int temps_debut, temps_actuel, flag_temps;
 // Déclarations des fonctions
 void affichage_sorts();
 void init_sorts();
+entite * rechercherEntite(int id);
 int numero_aleatoire(int minimum, int maximum);
 void afficher_degats(int degats, int cible_x, int cible_y);
 void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s);
