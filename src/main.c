@@ -46,8 +46,6 @@ SDL_Point points[plateau_x*plateau_y + plateau_y];
 SDL_Point points_centre[plateau_x*plateau_y];
 SDL_Point pc_2D[plateau_x*plateau_y];
 
-SDL_Point souris;
-
 SDL_Rect grid_cursor = {(plateau_x - 1) / 2 * grid_cell_size, (plateau_y - 1) / 2 * grid_cell_size, grid_cell_size, grid_cell_size};
 SDL_Rect grid_cursor_ghost = {0, 0, grid_cell_size_iso_x, grid_cell_size_iso_y};
 
@@ -217,7 +215,7 @@ size_t handle_keys() {
 					if (event.motion.x >= liste_sorts[i].x && event.motion.x <= liste_sorts[i].x+liste_sorts[i].w && event.motion.y >= liste_sorts[i].y && event.motion.y <= liste_sorts[i].y+liste_sorts[i].h) {
 						affichageSort = i;
 					}
-					else {
+					else if (event.motion.x < 1000 || event.motion.x > 1110 || event.motion.y < 750 || event.motion.y > 790) {
 						affichageSort = -1;
 					}
 				}
