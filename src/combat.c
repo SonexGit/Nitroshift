@@ -299,9 +299,31 @@ int boostEnnemi(entite * e){
                 return 0;
                 break;
             case 301 :
+                if(e->relanceBoost == 1){
+                    e->nitro += sortsEnnemi5[1].degatsMin; /* On ajoute les PA du boost */
+                    printf("Boost de %s : +%i Nitro\n", e->nom, sortsEnnemi5[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    printf("Nitro restante : %i\n", e->nitro);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);
+                    return 1;
+                    break;
+                }
                 return 0;
                 break;
             case 302 :
+                if(e->relanceBoost == 1){
+                    e->nitro += sortsEnnemi6[1].degatsMin; /* On ajoute les PA du boost */
+                    printf("Boost de %s : +%i Nitro\n", e->nom, sortsEnnemi6[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    printf("Nitro restante : %i\n", e->nitro);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);
+                    return 1;
+                    break;
+                }
                 return 0;
                 break;
             case 100 :
@@ -332,6 +354,17 @@ int boostEnnemi(entite * e){
                 return 0;
                 break;
             case 300 :
+                if(e->relanceBoost == 1){
+                    e->pm += sortsBoss3[1].degatsMin; /* On ajoute la nitro du boost */
+                    printf("Boost de %s : +%i Nitro\n", e->nom, sortsBoss3[1].degatsMin);
+                    e->pa -= 3; /* On retire 3 PA car c'est le coût d'un boost */
+                    printf("PA restant : %i\n", e->pa);
+                    printf("Pm restant : %i\n", e->pm);
+                    e->relanceBoost = 0;
+                    e->tempsRelance = rechercheRelanceBoost(e);
+                    return 1;
+                    break;
+                }
                 return 0;
                 break;
         }
@@ -1400,6 +1433,187 @@ void deroulementCombat(int level){
                 printf("%i]\n", v1.experience);
                 a1.zone3 = 1;
                 a1.z3.niveau1 = 1;
+                levelUp();
+                fingagnant();
+            }
+            break;
+        case 7 :
+            if(e5.mort == 0 && e6.mort == 0){
+                actionEnnemi(&e5);
+                if(tourTermine == 1){
+                    actionEnnemi(&e6);
+                    if(e6.pm <= 0){
+                        if(e5.tempsRelance > 0){
+                            e5.tempsRelance--;
+                        }
+                        else{
+                            e5.relanceBoost = 1;
+                        }
+                        if(e6.tempsRelance > 0){
+                            e6.tempsRelance--;
+                        }
+                        else{
+                            e6.relanceBoost = 1;
+                        }
+                        statsMaximum(&e5);
+                        statsMaximum(&e6);
+                        statsMaximum(&v1);
+                        v1.passerTour = 0;
+                        finTempsAllie = 0;
+                    }
+                }
+            }
+            else if(e5.mort == 1 && e6.mort == 0){
+                actionEnnemi(&e6);
+                if(e6.pm <= 0){
+                    if(e6.tempsRelance > 0){
+                        e6.tempsRelance--;
+                    }
+                    else{
+                        e6.relanceBoost = 1;
+                    }
+                    statsMaximum(&e6);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else if(e5.mort == 0 && e6.mort == 1){
+                actionEnnemi(&e3);
+                if(e5.pm <= 0){
+                    if(e5.tempsRelance > 0){
+                        e5.tempsRelance--;
+                    }
+                    else{
+                        e5.relanceBoost = 1;
+                    }
+                    statsMaximum(&e5);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 70 + 30;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 50 + 40;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.z3.niveau2 = 1;
+                levelUp();
+                fingagnant();
+            }
+            break;
+        case 8 :
+            if(e5.mort == 0 && e6.mort == 0){
+                actionEnnemi(&e5);
+                if(tourTermine == 1){
+                    actionEnnemi(&e6);
+                    if(e6.pm <= 0){
+                        if(e5.tempsRelance > 0){
+                            e5.tempsRelance--;
+                        }
+                        else{
+                            e5.relanceBoost = 1;
+                        }
+                        if(e6.tempsRelance > 0){
+                            e6.tempsRelance--;
+                        }
+                        else{
+                            e6.relanceBoost = 1;
+                        }
+                        statsMaximum(&e5);
+                        statsMaximum(&e6);
+                        statsMaximum(&v1);
+                        v1.passerTour = 0;
+                        finTempsAllie = 0;
+                    }
+                }
+            }
+            else if(e5.mort == 1 && e6.mort == 0){
+                actionEnnemi(&e6);
+                if(e6.pm <= 0){
+                    if(e6.tempsRelance > 0){
+                        e6.tempsRelance--;
+                    }
+                    else{
+                        e6.relanceBoost = 1;
+                    }
+                    statsMaximum(&e6);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else if(e5.mort == 0 && e6.mort == 1){
+                actionEnnemi(&e3);
+                if(e5.pm <= 0){
+                    if(e5.tempsRelance > 0){
+                        e5.tempsRelance--;
+                    }
+                    else{
+                        e5.relanceBoost = 1;
+                    }
+                    statsMaximum(&e5);
+                    statsMaximum(&v1);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 80 + 40;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 60 + 50;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
+                a1.z3.niveau3 = 1;
+                levelUp();
+                fingagnant();
+            }
+            break;
+        case 9 :
+            if(b3.mort == 0){
+                actionEnnemi(&b3);
+                if(b3.pm <= 0){
+                    if(b3.tempsRelance > 0){
+                        b3.tempsRelance--;
+                    }
+                    else{
+                        b3.relanceBoost = 1;
+                    }
+                    statsMaximum(&b3);
+                    statsMaximum(&b3);
+                    v1.passerTour = 0;
+                    finTempsAllie = 0;
+                }
+            }
+            else{
+                printf("\nBravo vous avez gagne le niveau %i !\n", level);
+                srand(time(NULL));
+                money = rand() % 140 + 60;
+                printf("Vous avez remporte %i nitroDollars.\n", money);
+                printf("[%i --> ", v1.nitroDollars);
+                v1.nitroDollars += money;
+                printf("%i]\n", v1.nitroDollars);
+                exp = rand() % 200 + 160;
+                printf("Vous avez remporte %i points d'experiences.\n", exp);
+                printf("[%i --> ", v1.experience);
+                v1.experience += exp;
+                printf("%i]\n", v1.experience);
                 levelUp();
                 fingagnant();
             }

@@ -71,10 +71,10 @@ void creationAcces(){
     a1.z1.niveau2 = 0;
     a1.z1.niveau3 = 0;
 
-    a1.zone2 = 0;
-    a1.z2.niveau1 = 0;
-    a1.z2.niveau2 = 0; /* Cela signifie : Niveau 2 de la zone 2 par exemple */
-    a1.z2.niveau3 = 0;
+    a1.zone2 = 1;
+    a1.z2.niveau1 = 1;
+    a1.z2.niveau2 = 1; /* Cela signifie : Niveau 2 de la zone 2 par exemple */
+    a1.z2.niveau3 = 1;
 
     a1.zone3 = 0;
     a1.z3.niveau1 = 0;
