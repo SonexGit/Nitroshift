@@ -8,7 +8,6 @@ typedef struct zone_D {
     int niveau1;
     int niveau2;
     int niveau3;
-    int niveau4;
 }zone;
 
 /* Structure des accès ou non aux zones et niveaux */
@@ -58,62 +57,26 @@ SDL_Rect dest_ennemi;
 #define ALLIES 0
 #define ENNEMIS 1
 
-typedef struct entite_S {
-	char * nom;
-	char * classe;
-	int niveau;
-	int hp;
-	int hpMax;
-	int nitro;
-	int nitroMax;
-	int pa;
-	int paMax;
-	int pm;
-	int pmMax;
-	int initiative;
-	int attaque;
-	int defense;
-	int positionX;
-	int positionY;
-	int profondeur; // 0 = le plus loin de "nous"
-	int equipe; // ALLIES ou ENNEMIS
-	SDL_Surface * surface;
-	SDL_Texture * texture;
-} entite;
-
 // Joueurs
 entite v1;
 
-// Ennemis
+// Ennemis 
+
 /* Zone 1 */
 entite e1;
 entite e2;
+/* Zone 2 */
 entite e3;
 entite e4;
-
-/* Zone 2 */
+/* Zone 3 */
 entite e5;
 entite e6;
+/* Zone 4 */
 entite e7;
 entite e8;
-
-/* Zone 3 */
+/* Zone 5 */
 entite e9;
 entite e10;
-entite e11;
-entite e12;
-
-/* Zone 4 */
-entite e13;
-entite e14;
-entite e15;
-entite e16;
-
-/* Zone 5 */
-entite e17;
-entite e18;
-entite e19;
-entite e20;
 
 // Boss
 entite b1;
@@ -124,9 +87,10 @@ entite b5;
 
 /* Fonction(s) utilisée(s) */
 // Personnages
-void creationPersonnage(entite * p);
+void creationPersonnage();
 void creationAcces();
-void affichagePersonnage(entite p);
+void free_nom_classe_perso();
+void rechercheClasse();
 
 void init_textures_personnage();
 void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
@@ -135,10 +99,15 @@ void deplacements_personnage(int direction);
 
 // Ennemis
 void creationEnnemi();
-void affichageEnnemi(entite e);
 
-void init_textures_ennemis();
+void init_textures_ennemis(int lev);
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
-void free_ennemi_c();
+void free_ennemi_c(int lev);
 
+// Entités
+void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite);
+
+// Niveaux
+void gestionNiveaux(int niv);
+void levelUp();
 #endif // _ENTITE_H_

@@ -1,10 +1,12 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "header.h"
 #include "render.h"
 
 int rendering()
@@ -15,6 +17,8 @@ int rendering()
 		fprintf(stderr, "SDL_Init Error: %s\n", SDL_GetError());
 		return EXIT_FAILURE;
 	}
+
+	TTF_Init();
 
 	win = SDL_CreateWindow("Nitroshift", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 	if (win == NULL)
@@ -39,6 +43,9 @@ int rendering()
 	SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
 	// Mettre 0 pour au plus proche, 1 pour de l'AA
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
+	// Permet à la fenêtre de s'adapter à n'importe quelle taille
+	SDL_RenderSetLogicalSize(ren, SCREEN_ORIGINAL_WIDTH, SCREEN_ORIGINAL_HEIGHT);
+	SDL_SetWindowSize(win, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return EXIT_SUCCESS;
 }
@@ -47,6 +54,9 @@ int stopRendering() {
 
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
+
+	TTF_Quit();
+
 	SDL_Quit();
 
 	return EXIT_SUCCESS;
