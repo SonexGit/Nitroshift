@@ -278,7 +278,9 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		int og_y = lanceur->positionY + i;
 		int og_x = lanceur->positionX;
 
-		if (og_y < plateau_y && og_x < plateau_x && (plateau[og_y][og_x].solide == 0 || plateau[og_y][og_x].e.id != 0)) {
+		printf("e.id = %i", plateau[og_y][og_x].e.id);
+
+		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 
@@ -300,7 +302,7 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		int og_y = lanceur->positionY;
 		int og_x = lanceur->positionX + j;
 
-		if (og_y < plateau_y && og_x < plateau_x && (plateau[og_y][og_x].solide == 0 || plateau[og_y][og_x].e.id != 0)) {
+		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 			

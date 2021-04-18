@@ -924,7 +924,6 @@ int affichagePlateau() {
 
 	SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
 
-
 	// Dessine la grille (carré 4:3 dans 16:9)
 	init_points(points);
 	init_points_2D(pts_2D);
