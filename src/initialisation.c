@@ -13,12 +13,20 @@
 #include "initialisation.h"
 #include "combat.h"
 
+void sort_relance_reset(){
+    for (int i = 0; i < MAX_SORTS; i++) {
+        sorts[i].relanceActuel = 0;
+    }
+}   
+
 void initCombat(int level){
 
     v1.mort = 0;
     v1.passerTour = 0;
     v1.hp = v1.hpMax;
     statsMaximum(&v1);
+    sort_relance_reset();
+
 
     if(level == 1){
 

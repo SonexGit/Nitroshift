@@ -56,7 +56,7 @@ void reset_castable() {
 
 void sort_relance_fintour() {
 	for (int i = 0; i < MAX_SORTS; i++) {
-		if (sorts[i].relanceActuel > 0) {
+		if(sorts[i].relanceActuel > 0){
 			sorts[i].relanceActuel--;
 		}
 	}

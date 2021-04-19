@@ -1493,7 +1493,7 @@ void deroulementCombat(int level){
                 }
             }
             else if(e5.mort == 0 && e6.mort == 1){
-                actionEnnemi(&e3);
+                actionEnnemi(&e5);
                 if(e5.pm <= 0){
                     if(e5.tempsRelance > 0){
                         e5.tempsRelance--;

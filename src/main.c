@@ -911,9 +911,6 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
-
-
-
 	creationEnnemi();
 
 	initCombat(levelCombat);
