@@ -264,7 +264,7 @@ void showmenu()
 
     SDL_RenderPresent(ren);
     /*    *****************Bouton titre pour les règles   */
-    imagetitre = IMG_Load("../data/menu/titre.png");
+    imagetitre = IMG_Load("../data/logo_nitroshift.png");
     if (imagetitre == NULL)
     {
         SDL_DestroyRenderer(ren);
@@ -295,7 +295,9 @@ void showmenu()
 
     //positionnement du bouton
     rectangletitre.x = 0;
-    rectangletitre.y = 0;
+    rectangletitre.y = 10;
+    rectangletitre.w = imagetitre->w / 1.2;
+    rectangletitre.h = imagetitre->h / 1.2;
     //
     //affichage de l'image
     if (SDL_RenderCopy(ren, texturetitre, NULL, &rectangletitre) != 0)
@@ -470,22 +472,9 @@ void showmenu()
                     break;
                 }
             case SDL_MOUSEBUTTONDOWN:
-                if (event.button.x >= 20 && event.button.x <= 221 && event.button.y >= 600 && event.button.y <= 639)
+                if (event.button.x >= 20 && event.button.x <= 221 && event.button.y >= 500 && event.button.y <= 539)
                 {
-                    /*texte = TTf_RenderText_Blended(police,"Bienvenue a vous joueur de Nitroshift");
-
-                  positionTxt.x=500;
-                  positionTxt.y=600;
-                  SDL_BlitSurface(texte,NULL,ren,&positionTxt);
-                  SDL_Flip(ren);
-*/
-
-                    printf("Bienvenue a vous joueur de Nitroshift,\n");
-                    printf("Ce jeu a ete cree par Leo Trottier, Allan Vannier, Enzo Rault et Lucas Renard.\n");
-                    printf("Voici les regles du jeu:\n");
-                    printf("Vous allez choisir un niveau allant de 1 a 4 avec comme niveau 1 la difficulte sera plus faible que celle du niveau 4.\n");
-                    printf("Pour chaque niveau, vous allez avoir 3 combat avec des monstres et un 4eme combat sera le boss du niveau.\n");
-                    printf("L'equipe de Nitroshift\n");
+                    SDL_Quit();
                 }
                 if (event.button.x >= 0 && event.button.x <= 380 && event.button.y >= 250 && event.button.y <= 322)
                 {

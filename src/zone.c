@@ -155,7 +155,7 @@ void choix_zone_carte()
 
     SDL_RenderPresent(ren);
     /*    *****************Bouton z3 pour les règles   */
-    imagez3 = IMG_Load("../data/menu/z1.png");
+    imagez3 = IMG_Load("../data/menu/z3.png");
     if (imagez3 == NULL)
     {
         SDL_DestroyRenderer(ren);
@@ -244,7 +244,7 @@ void choix_zone_carte()
     SDL_RenderPresent(ren);
 
     /*    Bouton jouer  */
-    imagez2 = IMG_Load("../data/menu/z1.png");
+    imagez2 = IMG_Load("../data/menu/z2.png");
     if (imagez2 == NULL)
     {
         SDL_DestroyRenderer(ren);

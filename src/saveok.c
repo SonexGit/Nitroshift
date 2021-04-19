@@ -42,6 +42,9 @@
 
 void saveok()
 {
+  SDL_SetRenderDrawColor(ren,0,0,0,255);
+  SDL_RenderClear(ren);
+  SDL_SetRenderDrawColor(ren,0,0,0,255);
   SDL_Surface * icon = IMG_Load("../data/icon.png");
   SDL_SetWindowIcon(win, icon);
 
