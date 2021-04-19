@@ -870,6 +870,10 @@ void actionEnnemi(entite * e){
     }
 }
 
+/**
+  *\fn void update_affichage_tour(void)
+  *\brief Affiche de quel côté est le tour actuel
+*/
 void update_affichage_tour() {
 	SDL_Color color_black = {0, 0, 0, 255};
 
@@ -903,6 +907,10 @@ void update_affichage_tour() {
 	SDL_DestroyTexture(texture_tour_texte);
 }
 
+/**
+  *\fn void update_barre_vie(void)
+  *\brief Initialise et met à jour l'affichage de la barre de vie du joueur
+*/
 void update_barre_vie() {
 	SDL_Color color_white = {255, 255, 255, 255};
 
@@ -957,6 +965,10 @@ void update_barre_vie() {
     SDL_DestroyTexture(texture_vie_texte);
 }
 
+/**
+  *\fn void update_barre_nitro(void)
+  *\brief Initialise et met à jour l'affichage de la barre de nitro du joueur
+*/
 void update_barre_nitro() {
 	SDL_Color color_white = {255, 255, 255, 255};
 
@@ -1011,6 +1023,10 @@ void update_barre_nitro() {
     SDL_DestroyTexture(texture_nitro_texte);
 }
 
+/**
+  *\fn void update_barre_pa(void)
+  *\brief Initialise et met à jour l'affichage de la barre de PA (points d'action) du joueur
+*/
 void update_barre_pa() {
 	SDL_Color color_black = {0,0,0};
 
@@ -1048,6 +1064,10 @@ void update_barre_pa() {
 	SDL_DestroyTexture(texture_pa);
 }
 
+/**
+  *\fn void update_barre_pm(void)
+  *\brief Initialise et met à jour l'affichage de la barre de PM (points de mouvement) du joueur
+*/
 void update_barre_pm() {
 	SDL_Color color_black = {0,0,0};
 
@@ -1085,6 +1105,11 @@ void update_barre_pm() {
 	SDL_DestroyTexture(texture_pm);
 }
 
+/**
+  *\fn void affichage_infos_ennemi(int, int)
+  *\brief Affiche le nom et la vie de l'ennemi lorsqu'on met notre souris sur lui
+  *\param cible_x de type int, cible_y de type int
+*/
 void affichage_infos_ennemi(int cible_x, int cible_y) {
 	SDL_Color color_white = {255, 255, 255, 255};
 
@@ -1143,10 +1168,18 @@ void affichage_infos_ennemi(int cible_x, int cible_y) {
     SDL_DestroyTexture(texture_nom_texte);
 }
 
+/**
+  *\fn void init_interface_combat(void)
+  *\brief Initialise deux valeurs pour savoir si notre souris est sur un ennemi
+*/
 void init_interface_combat() {
 	sur_ennemi_x = -1, sur_ennemi_y = -1;
 }
 
+/**
+  *\fn void update_interface_combat(void)
+  *\brief Appelle tous les menus et affiche une barre en arrière-plan
+*/
 void update_interface_combat() {
 	SDL_Rect fond_interface;
 	fond_interface.x = 0;

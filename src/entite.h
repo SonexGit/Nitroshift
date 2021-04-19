@@ -44,7 +44,7 @@ acces a1;
 #define perso_col 1 // Combien de textures par colonne ?
 
 // Définitions des sprites
-#define ennemi_row 1 // Combien de textures par ligne ?
+#define ennemi_row 4 // Combien de textures par ligne ?
 #define ennemi_col 1 // Combien de textures par colonne ?
 
 // Déclarations

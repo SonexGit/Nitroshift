@@ -261,7 +261,7 @@ void deplacements_personnage(int direction) {
 /* Création de l'ennemi */
 void creationEnnemi(){
 
-    e1.nom = "Ennemi1";
+    e1.nom = "Vesta";
     e1.id = 101;    
     e1.hpMax = 150;
     e1.nitroMax = 100;
@@ -273,7 +273,7 @@ void creationEnnemi(){
     e1.mort = 0;
     e1.equipe = ENNEMIS;
 
-    e2.nom = "Ennemi2";
+    e2.nom = "Chronos";
     e2.id = 102;  
     e2.hpMax = 150;
     e2.nitroMax = 100;
@@ -285,7 +285,7 @@ void creationEnnemi(){
     e2.mort = 0;
     e2.equipe = ENNEMIS;
 
-    e3.nom = "Ennemi3";   
+    e3.nom = "Lucifer";   
     e3.id = 201;
     e3.hpMax = 250;
     e3.nitroMax = 100;
@@ -297,7 +297,7 @@ void creationEnnemi(){
     e3.mort = 0;
     e3.equipe = ENNEMIS;
 
-    e4.nom = "Ennemi4";   
+    e4.nom = "Artemis";   
     e4.id = 202;
     e4.hpMax = 250;
     e4.nitroMax = 100;
@@ -309,7 +309,7 @@ void creationEnnemi(){
     e4.mort = 0;
     e4.equipe = ENNEMIS;
 
-    e5.nom = "Ennemi5";    
+    e5.nom = "Apollo";    
     e5.id = 301;
     e5.hpMax = 350;
     e5.nitroMax = 100;
@@ -321,7 +321,7 @@ void creationEnnemi(){
     e5.mort = 0;
     e5.equipe = ENNEMIS;
 
-    b1.nom = "Boss1";  
+    b1.nom = "Joker";  
     b1.id = 100;
     b1.hpMax = 300;
     b1.nitroMax = 100;
@@ -333,7 +333,7 @@ void creationEnnemi(){
     b1.mort = 0;
     b1.equipe = ENNEMIS;
 
-    b2.nom = "Boss2"; 
+    b2.nom = "Scorpio"; 
     b2.id = 200;
     b2.hpMax = 400;
     b3.nitroMax = 150;
@@ -345,7 +345,7 @@ void creationEnnemi(){
     b2.mort = 0;
     b2.equipe = ENNEMIS;
 
-    b3.nom = "Boss3"; 
+    b3.nom = "Rudolf"; 
     b3.id = 300;
     b3.hpMax = 50;
     b3.nitroMax = 200;
@@ -368,51 +368,51 @@ void init_textures_ennemis(int lev) {
 
     switch(lev){
         case 1 :
-            e1.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e1.surface = IMG_Load("../data/ennemis/ennemi1.png");
             e1.texture = SDL_CreateTextureFromSurface(ren, e1.surface);
-            e2.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e2.surface = IMG_Load("../data/ennemis/ennemi2.png");
             e2.texture = SDL_CreateTextureFromSurface(ren, e2.surface);
             break;
         case 2 :
-            e1.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e1.surface = IMG_Load("../data/ennemis/ennemi1.png");
             e1.texture = SDL_CreateTextureFromSurface(ren, e1.surface);
-            e2.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e2.surface = IMG_Load("../data/ennemis/ennemi2.png");
             e2.texture = SDL_CreateTextureFromSurface(ren, e2.surface);
             break;
         case 3 :
-            b1.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b1.surface = IMG_Load("../data/ennemis/boss1.png");
             b1.texture = SDL_CreateTextureFromSurface(ren, b1.surface);
             break;
         case 4 :
-            e3.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e3.surface = IMG_Load("../data/ennemis/ennemi3.png");
             e3.texture = SDL_CreateTextureFromSurface(ren, e3.surface);
-            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.surface = IMG_Load("../data/ennemis/ennemi4.png");
             e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
             break;
         case 5 :
-            e3.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e3.surface = IMG_Load("../data/ennemis/ennemi3.png");
             e3.texture = SDL_CreateTextureFromSurface(ren, e3.surface);
-            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.surface = IMG_Load("../data/ennemis/ennemi4.png");
             e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
             break;
         case 6 :
-            b2.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b2.surface = IMG_Load("../data/ennemis/boss2.png");
             b2.texture = SDL_CreateTextureFromSurface(ren, b2.surface);
             break;
         case 7 :
-            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.surface = IMG_Load("../data/ennemis/ennemi6.png");
             e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
-            e5.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e5.surface = IMG_Load("../data/ennemis/ennemi5.png");
             e5.texture = SDL_CreateTextureFromSurface(ren, e5.surface);
             break;
         case 8 :
-            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.surface = IMG_Load("../data/ennemis/ennemi6.png");
             e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
-            e5.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e5.surface = IMG_Load("../data/ennemis/ennemi5.png");
             e5.texture = SDL_CreateTextureFromSurface(ren, e5.surface);
             break;
         case 9 :
-            b3.surface = IMG_Load("../data/ennemis/mobTest.png");
+            b3.surface = IMG_Load("../data/ennemis/boss3.png");
             b3.texture = SDL_CreateTextureFromSurface(ren, b3.surface);
             break;
         default :
@@ -452,6 +452,22 @@ void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
         dest_ennemi.y = pos_y;
         dest_ennemi.w = img_w / ennemi_row;
         dest_ennemi.h = img_h / ennemi_col;
+
+		int i = 0, j = 0, k = 0;
+		int temp_w, temp_h;
+		SDL_QueryTexture(e.texture, NULL, NULL, &temp_w, &temp_h);
+
+		while (i < ennemi_col) {
+			for(; j < ennemi_row; j++) {
+				src_ennemi[j].w = temp_w / ennemi_row;
+				src_ennemi[j].h = temp_h / ennemi_col;
+				src_ennemi[j].x = j * src_ennemi[j].w;
+				src_ennemi[j].y = i * src_ennemi[j].h;
+				k++;
+			}
+			k = 0;
+			i++;
+		}
 
         SDL_RenderCopy(ren, e.texture, &src_ennemi[sprite], &dest_ennemi);
     }
@@ -529,7 +545,7 @@ void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 		dessiner_personnage(e, case_x, case_y, plat, sprite);
 	}
 	else if (e.equipe == ENNEMIS) {
-		dessiner_ennemi(e, case_x, case_y, plat, 0); // il faudra remplacer 0 à un moment
+		dessiner_ennemi(e, case_x, case_y, plat, 2); // il faudra remplacer 0 à un moment
 	}
 	else {
 		// Ne rien faire

@@ -14,6 +14,14 @@
 #include "render.h"
 #include "combat.h"
 
+/**
+ * \file sorts.c
+ * \brief Programme contenant les sorts et ses fonctions
+ * \author Allan Lucas Léo Enzo
+ * \version 1.0
+ * \date 16 avril 2021
+*/
+
 // sort : id, nom, description, degatsMin, degatsMax, relanceMax, relanceActuel, portee, coutPA, coutNitro, surface, texture, id_lanceur
 sort_T sorts[MAX_SORTS] = {
 	// Sorts Assassin
@@ -34,6 +42,11 @@ sort_T sorts[MAX_SORTS] = {
 	{11, "Régénération", "Récupérez quelques points de vie", 0, 0, 3, 0, 0, 3, 33, NULL, NULL, 1}
 };
 
+/**
+  *\fn void affichage_sorts(entite *)
+  *\brief Affiche les sorts du joueur pendant le combat
+  *\param joueur de type entite *
+*/
 void affichage_sorts(entite * joueur) {
 	char * repertoire = malloc(sizeof(char) * 16);
 	char * id_sort = malloc(sizeof(char) * 3);
@@ -65,6 +78,10 @@ void affichage_sorts(entite * joueur) {
 	free(id_sort);
 }
 
+/**
+  *\fn void reset_castable(void)
+  *\brief Réinitialise à 0 (impossible) la possibilité de lancer des sorts sur chaque cellule du plateau
+*/
 void reset_castable() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -73,6 +90,10 @@ void reset_castable() {
 	}
 }
 
+/**
+  *\fn void sort_relance_fintour(void)
+  *\brief Réduit de 1 tour les sorts en rechargement
+*/
 void sort_relance_fintour() {
 	for (int i = 0; i < MAX_SORTS; i++) {
 		if(sorts[i].relanceActuel > 0){
@@ -81,12 +102,24 @@ void sort_relance_fintour() {
 	}
 }
 
+/**
+  *\fn int numero_aleatoire(int, int)
+  *\brief Prends un nombre aléatoire entre ses deux paramètres
+  *\param minimum de type int, maximum de type int
+  *\return Renvoie un int entre minimum et maximum
+*/
 int numero_aleatoire(int minimum, int maximum) {
 	srand(time(NULL));
 	int nombre = (rand() % (maximum - minimum + 1)) + minimum;
 	return nombre;
 }
 
+/**
+  *\fn entite * rechercherEntite(int)
+  *\brief Trouve l'entité selon son id
+  *\param id de type int
+  *\return Renvoie l'entité trouvée
+*/
 entite * rechercherEntite(int id){
 
 	switch(id){
@@ -120,6 +153,11 @@ entite * rechercherEntite(int id){
 	}
 }
 
+/**
+  *\fn void afficher_degats(int, int, int)
+  *\brief Affiche sur le jeu les dégats infligés
+  *\param degats de type int, cible_x de type int, cible_y de type int
+*/
 void afficher_degats(int degats, int cible_x, int cible_y) {
 	SDL_Color color_red = {200, 0, 0};
 
@@ -154,6 +192,11 @@ void afficher_degats(int degats, int cible_x, int cible_y) {
 	SDL_DestroyTexture(texture_degats_texte);
 }
 
+/**
+  *\fn void infliger_degats(int, int, sort_T *)
+  *\brief Enlève les points de vie à la cible selon les dégats infligés
+  *\param cible_x de type int, cible_y de type int, s de type sort_T *
+*/
 void infliger_degats(int cible_x, int cible_y, sort_T * s) {
 	int degats = numero_aleatoire(s->degatsMin, s->degatsMax);
 
@@ -176,6 +219,11 @@ void infliger_degats(int cible_x, int cible_y, sort_T * s) {
 	}
 }
 
+/**
+  *\fn void lancement_sort(entite *, int, int, sort_T *)
+  *\brief Trouve quel sort est lancé et réalise les effets de ce sort
+  *\param lanceur de type entite *, cible_x de type int, cible_y de type int, s de type sort_T *
+*/
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 
 	switch (s->id) {
@@ -239,6 +287,11 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 	reset_castable();
 }
 
+/**
+  *\fn void clic_sort(entite *, sort_T)
+  *\brief Place l'id du sort dans une variable lorsqu'on clique dessus, et qui permet la mise en place de la préparation du sort
+  *\param lanceur de type entite *, s de type sort_T
+*/
 void clic_sort(entite * lanceur, sort_T s) {
 	printf("\n PA LANCEUR : %i \n NITRO LANCEUR : %i", lanceur->pa, lanceur->nitro);
 	printf("\nRELANCE ACTUEL : %i\n", s.relanceActuel);
@@ -251,6 +304,11 @@ void clic_sort(entite * lanceur, sort_T s) {
 	}
 }
 
+/**
+  *\fn void affichage_infos_sort(sort_T)
+  *\brief Affiche sous forme de tooltip les informations d'un sort (son nom, sa description, sa portée, ses dégats, son temps de récupération)
+  *\param s de type sort_T
+*/
 void affichage_infos_sort(sort_T s) {
 	SDL_Color color_white = {255, 255, 255, 255};
 
@@ -327,6 +385,10 @@ void affichage_infos_sort(sort_T s) {
 	SDL_DestroyTexture(texture_infos_sort_texte);
 }
 
+/**
+  *\fn void init_sort_surftext(void)
+  *\brief Initialise les surfaces et textures pour afficher les cases ou l'on peut lancer ses sorts puis libère les surfaces
+*/
 void init_sort_surftext() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -338,6 +400,10 @@ void init_sort_surftext() {
 	}
 }
 
+/**
+  *\fn void free_sort_text(void)
+  *\brief Libère la mémoire en détruisant les textures des cases ou l'on peut lancer ses sorts
+*/
 void free_sort_text() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -346,6 +412,11 @@ void free_sort_text() {
 	}
 }
 
+/**
+  *\fn void prep_sort_plus(entite *, int)
+  *\brief Affiche les possibilités pour lancer son sort sous forme de plus d'une distance en paramètre
+  *\param lanceur de type entite *, distance de type int
+*/
 void prep_sort_plus(entite * lanceur, int distance) {
 
 	int compteur = 0;
@@ -396,6 +467,11 @@ void prep_sort_plus(entite * lanceur, int distance) {
 	}
 }
 
+/**
+  *\fn void prep_sort_cercle(entite *, int)
+  *\brief Affiche les possibilités pour lancer son sort sous forme de cercle d'un rayon en paramètre
+  *\param lanceur de type entite *, rayon de type int
+*/
 void prep_sort_cercle(entite * lanceur, int rayon) {
     int i,j;
 	int compteur = 0;
@@ -474,6 +550,11 @@ void prep_sort_cercle(entite * lanceur, int rayon) {
 	*/
 }
 
+/**
+  *\fn void preparation_sort(entite *, sort_T)
+  *\brief Trouve selon l'id du sort sur quelles cellules on peut lancer son sort
+  *\param lanceur de type entite *, s de type sort_T
+*/
 void preparation_sort(entite * lanceur, sort_T s) {
 	SDL_Surface * surface_prep_sort = IMG_Load("../data/tiles/cast_able.png");
 	SDL_Texture * texture_prep_sort = SDL_CreateTextureFromSurface(ren, surface_prep_sort);

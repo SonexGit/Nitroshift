@@ -1,0 +1,281 @@
+\hypertarget{sorts_8c}{}\doxysection{Référence du fichier sorts.\+c}
+\label{sorts_8c}\index{sorts.c@{sorts.c}}
+
+
+Programme contenant les sorts et ses fonctions.  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+ttf.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sorts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sorts_8c_a2f689871492985a997135fde55584d04}{affichage\+\_\+sorts}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Affiche les sorts du joueur pendant le combat. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sorts_8c_ae261db4895f656d415d3b7d20c657a6c}\label{sorts_8c_ae261db4895f656d415d3b7d20c657a6c}} 
+void \mbox{\hyperlink{sorts_8c_ae261db4895f656d415d3b7d20c657a6c}{reset\+\_\+castable}} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise à 0 (impossible) la possibilité de lancer des sorts sur chaque cellule du plateau. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sorts_8c_aeb780b71b9cdc8033971e4eb101db83a}\label{sorts_8c_aeb780b71b9cdc8033971e4eb101db83a}} 
+void \mbox{\hyperlink{sorts_8c_aeb780b71b9cdc8033971e4eb101db83a}{sort\+\_\+relance\+\_\+fintour}} ()
+\begin{DoxyCompactList}\small\item\em Réduit de 1 tour les sorts en rechargement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sorts_8c_a3ceef7045fb6ffa1f3806a23327b35df}{numero\+\_\+aleatoire}} (int minimum, int maximum)
+\begin{DoxyCompactList}\small\item\em Prends un nombre aléatoire entre ses deux paramètres. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structentite___s}{entite}} $\ast$ \mbox{\hyperlink{sorts_8c_a179fd86b0aec582c6bf18abd569cf864}{rechercher\+Entite}} (int id)
+\begin{DoxyCompactList}\small\item\em Trouve l\textquotesingle{}entité selon son id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_a131e26a832cf3fea11ae73f33f3c4617}{afficher\+\_\+degats}} (int degats, int cible\+\_\+x, int cible\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Affiche sur le jeu les dégats infligés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_ab78b6c4ded99481345eb3b7ecb3ec679}{infliger\+\_\+degats}} (int cible\+\_\+x, int cible\+\_\+y, \mbox{\hyperlink{structsort___s}{sort\+\_\+T}} $\ast$s)
+\begin{DoxyCompactList}\small\item\em Enlève les points de vie à la cible selon les dégats infligés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_a687ef13b926745c18f78e9dd60d1fa49}{lancement\+\_\+sort}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$lanceur, int cible\+\_\+x, int cible\+\_\+y, \mbox{\hyperlink{structsort___s}{sort\+\_\+T}} $\ast$s)
+\begin{DoxyCompactList}\small\item\em Trouve quel sort est lancé et réalise les effets de ce sort. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_a2e7482b53b5c23bad4c24fd42e4470a8}{clic\+\_\+sort}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$lanceur, \mbox{\hyperlink{structsort___s}{sort\+\_\+T}} s)
+\begin{DoxyCompactList}\small\item\em Place l\textquotesingle{}id du sort dans une variable lorsqu\textquotesingle{}on clique dessus, et qui permet la mise en place de la préparation du sort. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_a88bf888852ea9665dca812319a142ff9}{affichage\+\_\+infos\+\_\+sort}} (\mbox{\hyperlink{structsort___s}{sort\+\_\+T}} s)
+\begin{DoxyCompactList}\small\item\em Affiche sous forme de tooltip les informations d\textquotesingle{}un sort (son nom, sa description, sa portée, ses dégats, son temps de récupération) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sorts_8c_aef35f08d50687607fb17b45a52aff37d}\label{sorts_8c_aef35f08d50687607fb17b45a52aff37d}} 
+void \mbox{\hyperlink{sorts_8c_aef35f08d50687607fb17b45a52aff37d}{init\+\_\+sort\+\_\+surftext}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les surfaces et textures pour afficher les cases ou l\textquotesingle{}on peut lancer ses sorts puis libère les surfaces. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sorts_8c_a488e95f2d713520d3f3c7ee26facf0fe}\label{sorts_8c_a488e95f2d713520d3f3c7ee26facf0fe}} 
+void \mbox{\hyperlink{sorts_8c_a488e95f2d713520d3f3c7ee26facf0fe}{free\+\_\+sort\+\_\+text}} ()
+\begin{DoxyCompactList}\small\item\em Libère la mémoire en détruisant les textures des cases ou l\textquotesingle{}on peut lancer ses sorts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_aa93de8b1e81ddd76cf7bfe21eb75ed1b}{prep\+\_\+sort\+\_\+plus}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$lanceur, int distance)
+\begin{DoxyCompactList}\small\item\em Affiche les possibilités pour lancer son sort sous forme de plus d\textquotesingle{}une distance en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_a08c973a6d0c19806f8f00a505167e808}{prep\+\_\+sort\+\_\+cercle}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$lanceur, int rayon)
+\begin{DoxyCompactList}\small\item\em Affiche les possibilités pour lancer son sort sous forme de cercle d\textquotesingle{}un rayon en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sorts_8c_a40889d2ce4788c8352836532a0ed39d8}{preparation\+\_\+sort}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$lanceur, \mbox{\hyperlink{structsort___s}{sort\+\_\+T}} s)
+\begin{DoxyCompactList}\small\item\em Trouve selon l\textquotesingle{}id du sort sur quelles cellules on peut lancer son sort. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsort___s}{sort\+\_\+T}} {\bfseries sorts} \mbox{[}MAX\+\_\+\+SORTS\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Programme contenant les sorts et ses fonctions. 
+
+\begin{DoxyAuthor}{Auteur}
+Allan Lucas Léo Enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{sorts_8c_a88bf888852ea9665dca812319a142ff9}\label{sorts_8c_a88bf888852ea9665dca812319a142ff9}} 
+\index{sorts.c@{sorts.c}!affichage\_infos\_sort@{affichage\_infos\_sort}}
+\index{affichage\_infos\_sort@{affichage\_infos\_sort}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_infos\_sort()}{affichage\_infos\_sort()}}
+{\footnotesize\ttfamily void affichage\+\_\+infos\+\_\+sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsort___s}{sort\+\_\+T}}}]{s }\end{DoxyParamCaption})}
+
+
+
+Affiche sous forme de tooltip les informations d\textquotesingle{}un sort (son nom, sa description, sa portée, ses dégats, son temps de récupération) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & de type sort\+\_\+T \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a2f689871492985a997135fde55584d04}\label{sorts_8c_a2f689871492985a997135fde55584d04}} 
+\index{sorts.c@{sorts.c}!affichage\_sorts@{affichage\_sorts}}
+\index{affichage\_sorts@{affichage\_sorts}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_sorts()}{affichage\_sorts()}}
+{\footnotesize\ttfamily void affichage\+\_\+sorts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Affiche les sorts du joueur pendant le combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a131e26a832cf3fea11ae73f33f3c4617}\label{sorts_8c_a131e26a832cf3fea11ae73f33f3c4617}} 
+\index{sorts.c@{sorts.c}!afficher\_degats@{afficher\_degats}}
+\index{afficher\_degats@{afficher\_degats}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{afficher\_degats()}{afficher\_degats()}}
+{\footnotesize\ttfamily void afficher\+\_\+degats (\begin{DoxyParamCaption}\item[{int}]{degats,  }\item[{int}]{cible\+\_\+x,  }\item[{int}]{cible\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Affiche sur le jeu les dégats infligés. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em degats} & de type int, cible\+\_\+x de type int, cible\+\_\+y de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a2e7482b53b5c23bad4c24fd42e4470a8}\label{sorts_8c_a2e7482b53b5c23bad4c24fd42e4470a8}} 
+\index{sorts.c@{sorts.c}!clic\_sort@{clic\_sort}}
+\index{clic\_sort@{clic\_sort}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{clic\_sort()}{clic\_sort()}}
+{\footnotesize\ttfamily void clic\+\_\+sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{lanceur,  }\item[{\mbox{\hyperlink{structsort___s}{sort\+\_\+T}}}]{s }\end{DoxyParamCaption})}
+
+
+
+Place l\textquotesingle{}id du sort dans une variable lorsqu\textquotesingle{}on clique dessus, et qui permet la mise en place de la préparation du sort. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lanceur} & de type entite $\ast$, s de type sort\+\_\+T \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_ab78b6c4ded99481345eb3b7ecb3ec679}\label{sorts_8c_ab78b6c4ded99481345eb3b7ecb3ec679}} 
+\index{sorts.c@{sorts.c}!infliger\_degats@{infliger\_degats}}
+\index{infliger\_degats@{infliger\_degats}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{infliger\_degats()}{infliger\_degats()}}
+{\footnotesize\ttfamily void infliger\+\_\+degats (\begin{DoxyParamCaption}\item[{int}]{cible\+\_\+x,  }\item[{int}]{cible\+\_\+y,  }\item[{\mbox{\hyperlink{structsort___s}{sort\+\_\+T}} $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Enlève les points de vie à la cible selon les dégats infligés. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cible\+\_\+x} & de type int, cible\+\_\+y de type int, s de type sort\+\_\+T $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a687ef13b926745c18f78e9dd60d1fa49}\label{sorts_8c_a687ef13b926745c18f78e9dd60d1fa49}} 
+\index{sorts.c@{sorts.c}!lancement\_sort@{lancement\_sort}}
+\index{lancement\_sort@{lancement\_sort}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{lancement\_sort()}{lancement\_sort()}}
+{\footnotesize\ttfamily void lancement\+\_\+sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{lanceur,  }\item[{int}]{cible\+\_\+x,  }\item[{int}]{cible\+\_\+y,  }\item[{\mbox{\hyperlink{structsort___s}{sort\+\_\+T}} $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Trouve quel sort est lancé et réalise les effets de ce sort. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lanceur} & de type entite $\ast$, cible\+\_\+x de type int, cible\+\_\+y de type int, s de type sort\+\_\+T $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a3ceef7045fb6ffa1f3806a23327b35df}\label{sorts_8c_a3ceef7045fb6ffa1f3806a23327b35df}} 
+\index{sorts.c@{sorts.c}!numero\_aleatoire@{numero\_aleatoire}}
+\index{numero\_aleatoire@{numero\_aleatoire}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{numero\_aleatoire()}{numero\_aleatoire()}}
+{\footnotesize\ttfamily int numero\+\_\+aleatoire (\begin{DoxyParamCaption}\item[{int}]{minimum,  }\item[{int}]{maximum }\end{DoxyParamCaption})}
+
+
+
+Prends un nombre aléatoire entre ses deux paramètres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em minimum} & de type int, maximum de type int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Renvoie un int entre minimum et maximum 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sorts_8c_a08c973a6d0c19806f8f00a505167e808}\label{sorts_8c_a08c973a6d0c19806f8f00a505167e808}} 
+\index{sorts.c@{sorts.c}!prep\_sort\_cercle@{prep\_sort\_cercle}}
+\index{prep\_sort\_cercle@{prep\_sort\_cercle}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{prep\_sort\_cercle()}{prep\_sort\_cercle()}}
+{\footnotesize\ttfamily void prep\+\_\+sort\+\_\+cercle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{lanceur,  }\item[{int}]{rayon }\end{DoxyParamCaption})}
+
+
+
+Affiche les possibilités pour lancer son sort sous forme de cercle d\textquotesingle{}un rayon en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lanceur} & de type entite $\ast$, rayon de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_aa93de8b1e81ddd76cf7bfe21eb75ed1b}\label{sorts_8c_aa93de8b1e81ddd76cf7bfe21eb75ed1b}} 
+\index{sorts.c@{sorts.c}!prep\_sort\_plus@{prep\_sort\_plus}}
+\index{prep\_sort\_plus@{prep\_sort\_plus}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{prep\_sort\_plus()}{prep\_sort\_plus()}}
+{\footnotesize\ttfamily void prep\+\_\+sort\+\_\+plus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{lanceur,  }\item[{int}]{distance }\end{DoxyParamCaption})}
+
+
+
+Affiche les possibilités pour lancer son sort sous forme de plus d\textquotesingle{}une distance en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lanceur} & de type entite $\ast$, distance de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a40889d2ce4788c8352836532a0ed39d8}\label{sorts_8c_a40889d2ce4788c8352836532a0ed39d8}} 
+\index{sorts.c@{sorts.c}!preparation\_sort@{preparation\_sort}}
+\index{preparation\_sort@{preparation\_sort}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{preparation\_sort()}{preparation\_sort()}}
+{\footnotesize\ttfamily void preparation\+\_\+sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{lanceur,  }\item[{\mbox{\hyperlink{structsort___s}{sort\+\_\+T}}}]{s }\end{DoxyParamCaption})}
+
+
+
+Trouve selon l\textquotesingle{}id du sort sur quelles cellules on peut lancer son sort. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lanceur} & de type entite $\ast$, s de type sort\+\_\+T \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sorts_8c_a179fd86b0aec582c6bf18abd569cf864}\label{sorts_8c_a179fd86b0aec582c6bf18abd569cf864}} 
+\index{sorts.c@{sorts.c}!rechercherEntite@{rechercherEntite}}
+\index{rechercherEntite@{rechercherEntite}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{rechercherEntite()}{rechercherEntite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structentite___s}{entite}} $\ast$ rechercher\+Entite (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Trouve l\textquotesingle{}entité selon son id. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em id} & de type int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Renvoie l\textquotesingle{}entité trouvée 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{sorts_8c_a8ffd0fd4cd450c9e4dcf8214f1a2cff8}\label{sorts_8c_a8ffd0fd4cd450c9e4dcf8214f1a2cff8}} 
+\index{sorts.c@{sorts.c}!sorts@{sorts}}
+\index{sorts@{sorts}!sorts.c@{sorts.c}}
+\doxysubsubsection{\texorpdfstring{sorts}{sorts}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsort___s}{sort\+\_\+T}} sorts\mbox{[}MAX\+\_\+\+SORTS\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{0, \textcolor{stringliteral}{"{}Attaque de base"{}}, \textcolor{stringliteral}{"{}Attaquez faiblement un ennemi"{}}, 25, 40, 1, 0, 1, 2, 0, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{1, \textcolor{stringliteral}{"{}Tir rapide"{}}, \textcolor{stringliteral}{"{}Tirez une salve avec votre arme"{}}, 100, 125, 2, 0, 4, 1, 24, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{2, \textcolor{stringliteral}{"{}Téléportation"{}}, \textcolor{stringliteral}{"{}Téléportez vous sur la case ciblée"{}}, 0, 0, 5, 0, 5, 0, 50, NULL, NULL, 1\},}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{3, \textcolor{stringliteral}{"{}Attaque de base"{}}, \textcolor{stringliteral}{"{}Attaquez faiblement un ennemi"{}}, 25, 40, 1, 0, 2, 3, 0, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{4, \textcolor{stringliteral}{"{}Grenade"{}}, \textcolor{stringliteral}{"{}Lancez une grenade"{}}, 200, 300, 4, 0, 4, 5, 60, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{5, \textcolor{stringliteral}{"{}Glissade"{}}, \textcolor{stringliteral}{"{}Avancez rapidement vers un emplacement"{}}, 0, 0, 3, 0, 2, 3, 0, NULL, NULL, 1\},}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{6, \textcolor{stringliteral}{"{}Attaque de base"{}}, \textcolor{stringliteral}{"{}Attaquez faiblement un ennemi"{}}, 35, 50, 1, 0, 1, 3, 0, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{7, \textcolor{stringliteral}{"{}Explosion de mine horizontale"{}}, \textcolor{stringliteral}{"{}Placez une mine qui explose directement, touchant trois cases perpendiculaire à vous"{}}, 150, 200, 5, 0, 2, 3, 60, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{8, \textcolor{stringliteral}{"{}Tacle"{}}, \textcolor{stringliteral}{"{}Frappez un ennemi proche de plein fouet"{}}, 70, 90, 3, 0, 1, 6, 0, NULL, NULL, 1\},}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{9, \textcolor{stringliteral}{"{}Attaque de base"{}}, \textcolor{stringliteral}{"{}Attaquez faiblement un ennemi"{}}, 25, 40, 1, 0, 3, 4, 0, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{10, \textcolor{stringliteral}{"{}Tir de sniper"{}}, \textcolor{stringliteral}{"{}Touchez une cible lointaine avec une grande puissance"{}}, 280, 300, 5, 0, 7, 5, 75, NULL, NULL, 1\},}
+\DoxyCodeLine{    \{11, \textcolor{stringliteral}{"{}Régénération"{}}, \textcolor{stringliteral}{"{}Récupérez quelques points de vie"{}}, 0, 0, 3, 0, 0, 3, 33, NULL, NULL, 1\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

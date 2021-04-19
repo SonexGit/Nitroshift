@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nitroshift: Référence du fichier sorts.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Nitroshift
+   </div>
+   <div id="projectbrief">Projet Licence 2 Informatique | 2020 - 2021</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier sorts.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Programme contenant les sorts et ses fonctions.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;SDL2/SDL.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_image.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_mixer.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_ttf.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;header.h&quot;</code><br />
+<code>#include &quot;sorts.h&quot;</code><br />
+<code>#include &quot;entite.h&quot;</code><br />
+<code>#include &quot;render.h&quot;</code><br />
+<code>#include &quot;combat.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a2f689871492985a997135fde55584d04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a2f689871492985a997135fde55584d04">affichage_sorts</a> (<a class="el" href="structentite___s.html">entite</a> *joueur)</td></tr>
+<tr class="memdesc:a2f689871492985a997135fde55584d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les sorts du joueur pendant le combat.  <a href="sorts_8c.html#a2f689871492985a997135fde55584d04">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2f689871492985a997135fde55584d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae261db4895f656d415d3b7d20c657a6c"><td class="memItemLeft" align="right" valign="top"><a id="ae261db4895f656d415d3b7d20c657a6c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#ae261db4895f656d415d3b7d20c657a6c">reset_castable</a> ()</td></tr>
+<tr class="memdesc:ae261db4895f656d415d3b7d20c657a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise à 0 (impossible) la possibilité de lancer des sorts sur chaque cellule du plateau. <br /></td></tr>
+<tr class="separator:ae261db4895f656d415d3b7d20c657a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb780b71b9cdc8033971e4eb101db83a"><td class="memItemLeft" align="right" valign="top"><a id="aeb780b71b9cdc8033971e4eb101db83a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#aeb780b71b9cdc8033971e4eb101db83a">sort_relance_fintour</a> ()</td></tr>
+<tr class="memdesc:aeb780b71b9cdc8033971e4eb101db83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réduit de 1 tour les sorts en rechargement. <br /></td></tr>
+<tr class="separator:aeb780b71b9cdc8033971e4eb101db83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ceef7045fb6ffa1f3806a23327b35df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a3ceef7045fb6ffa1f3806a23327b35df">numero_aleatoire</a> (int minimum, int maximum)</td></tr>
+<tr class="memdesc:a3ceef7045fb6ffa1f3806a23327b35df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prends un nombre aléatoire entre ses deux paramètres.  <a href="sorts_8c.html#a3ceef7045fb6ffa1f3806a23327b35df">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3ceef7045fb6ffa1f3806a23327b35df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179fd86b0aec582c6bf18abd569cf864"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structentite___s.html">entite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a179fd86b0aec582c6bf18abd569cf864">rechercherEntite</a> (int id)</td></tr>
+<tr class="memdesc:a179fd86b0aec582c6bf18abd569cf864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trouve l'entité selon son id.  <a href="sorts_8c.html#a179fd86b0aec582c6bf18abd569cf864">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a179fd86b0aec582c6bf18abd569cf864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131e26a832cf3fea11ae73f33f3c4617"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a131e26a832cf3fea11ae73f33f3c4617">afficher_degats</a> (int degats, int cible_x, int cible_y)</td></tr>
+<tr class="memdesc:a131e26a832cf3fea11ae73f33f3c4617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche sur le jeu les dégats infligés.  <a href="sorts_8c.html#a131e26a832cf3fea11ae73f33f3c4617">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a131e26a832cf3fea11ae73f33f3c4617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78b6c4ded99481345eb3b7ecb3ec679"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#ab78b6c4ded99481345eb3b7ecb3ec679">infliger_degats</a> (int cible_x, int cible_y, <a class="el" href="structsort___s.html">sort_T</a> *s)</td></tr>
+<tr class="memdesc:ab78b6c4ded99481345eb3b7ecb3ec679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enlève les points de vie à la cible selon les dégats infligés.  <a href="sorts_8c.html#ab78b6c4ded99481345eb3b7ecb3ec679">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab78b6c4ded99481345eb3b7ecb3ec679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687ef13b926745c18f78e9dd60d1fa49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a687ef13b926745c18f78e9dd60d1fa49">lancement_sort</a> (<a class="el" href="structentite___s.html">entite</a> *lanceur, int cible_x, int cible_y, <a class="el" href="structsort___s.html">sort_T</a> *s)</td></tr>
+<tr class="memdesc:a687ef13b926745c18f78e9dd60d1fa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trouve quel sort est lancé et réalise les effets de ce sort.  <a href="sorts_8c.html#a687ef13b926745c18f78e9dd60d1fa49">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a687ef13b926745c18f78e9dd60d1fa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e7482b53b5c23bad4c24fd42e4470a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a2e7482b53b5c23bad4c24fd42e4470a8">clic_sort</a> (<a class="el" href="structentite___s.html">entite</a> *lanceur, <a class="el" href="structsort___s.html">sort_T</a> s)</td></tr>
+<tr class="memdesc:a2e7482b53b5c23bad4c24fd42e4470a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place l'id du sort dans une variable lorsqu'on clique dessus, et qui permet la mise en place de la préparation du sort.  <a href="sorts_8c.html#a2e7482b53b5c23bad4c24fd42e4470a8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2e7482b53b5c23bad4c24fd42e4470a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88bf888852ea9665dca812319a142ff9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a88bf888852ea9665dca812319a142ff9">affichage_infos_sort</a> (<a class="el" href="structsort___s.html">sort_T</a> s)</td></tr>
+<tr class="memdesc:a88bf888852ea9665dca812319a142ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche sous forme de tooltip les informations d'un sort (son nom, sa description, sa portée, ses dégats, son temps de récupération)  <a href="sorts_8c.html#a88bf888852ea9665dca812319a142ff9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a88bf888852ea9665dca812319a142ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef35f08d50687607fb17b45a52aff37d"><td class="memItemLeft" align="right" valign="top"><a id="aef35f08d50687607fb17b45a52aff37d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#aef35f08d50687607fb17b45a52aff37d">init_sort_surftext</a> ()</td></tr>
+<tr class="memdesc:aef35f08d50687607fb17b45a52aff37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les surfaces et textures pour afficher les cases ou l'on peut lancer ses sorts puis libère les surfaces. <br /></td></tr>
+<tr class="separator:aef35f08d50687607fb17b45a52aff37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a488e95f2d713520d3f3c7ee26facf0fe"><td class="memItemLeft" align="right" valign="top"><a id="a488e95f2d713520d3f3c7ee26facf0fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a488e95f2d713520d3f3c7ee26facf0fe">free_sort_text</a> ()</td></tr>
+<tr class="memdesc:a488e95f2d713520d3f3c7ee26facf0fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère la mémoire en détruisant les textures des cases ou l'on peut lancer ses sorts. <br /></td></tr>
+<tr class="separator:a488e95f2d713520d3f3c7ee26facf0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa93de8b1e81ddd76cf7bfe21eb75ed1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#aa93de8b1e81ddd76cf7bfe21eb75ed1b">prep_sort_plus</a> (<a class="el" href="structentite___s.html">entite</a> *lanceur, int distance)</td></tr>
+<tr class="memdesc:aa93de8b1e81ddd76cf7bfe21eb75ed1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les possibilités pour lancer son sort sous forme de plus d'une distance en paramètre.  <a href="sorts_8c.html#aa93de8b1e81ddd76cf7bfe21eb75ed1b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa93de8b1e81ddd76cf7bfe21eb75ed1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c973a6d0c19806f8f00a505167e808"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a08c973a6d0c19806f8f00a505167e808">prep_sort_cercle</a> (<a class="el" href="structentite___s.html">entite</a> *lanceur, int rayon)</td></tr>
+<tr class="memdesc:a08c973a6d0c19806f8f00a505167e808"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les possibilités pour lancer son sort sous forme de cercle d'un rayon en paramètre.  <a href="sorts_8c.html#a08c973a6d0c19806f8f00a505167e808">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08c973a6d0c19806f8f00a505167e808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40889d2ce4788c8352836532a0ed39d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sorts_8c.html#a40889d2ce4788c8352836532a0ed39d8">preparation_sort</a> (<a class="el" href="structentite___s.html">entite</a> *lanceur, <a class="el" href="structsort___s.html">sort_T</a> s)</td></tr>
+<tr class="memdesc:a40889d2ce4788c8352836532a0ed39d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trouve selon l'id du sort sur quelles cellules on peut lancer son sort.  <a href="sorts_8c.html#a40889d2ce4788c8352836532a0ed39d8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a40889d2ce4788c8352836532a0ed39d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8ffd0fd4cd450c9e4dcf8214f1a2cff8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsort___s.html">sort_T</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sorts</b> [MAX_SORTS]</td></tr>
+<tr class="separator:a8ffd0fd4cd450c9e4dcf8214f1a2cff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Programme contenant les sorts et ses fonctions. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Allan Lucas Léo Enzo </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>16 avril 2021 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a88bf888852ea9665dca812319a142ff9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88bf888852ea9665dca812319a142ff9">&#9670;&nbsp;</a></span>affichage_infos_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_infos_sort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsort___s.html">sort_T</a>&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche sous forme de tooltip les informations d'un sort (son nom, sa description, sa portée, ses dégats, son temps de récupération) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>de type sort_T </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2f689871492985a997135fde55584d04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f689871492985a997135fde55584d04">&#9670;&nbsp;</a></span>affichage_sorts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_sorts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les sorts du joueur pendant le combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>de type entite * </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a131e26a832cf3fea11ae73f33f3c4617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131e26a832cf3fea11ae73f33f3c4617">&#9670;&nbsp;</a></span>afficher_degats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_degats </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>degats</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cible_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cible_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche sur le jeu les dégats infligés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degats</td><td>de type int, cible_x de type int, cible_y de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2e7482b53b5c23bad4c24fd42e4470a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e7482b53b5c23bad4c24fd42e4470a8">&#9670;&nbsp;</a></span>clic_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clic_sort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a> *&#160;</td>
+          <td class="paramname"><em>lanceur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsort___s.html">sort_T</a>&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Place l'id du sort dans une variable lorsqu'on clique dessus, et qui permet la mise en place de la préparation du sort. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanceur</td><td>de type entite *, s de type sort_T </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab78b6c4ded99481345eb3b7ecb3ec679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab78b6c4ded99481345eb3b7ecb3ec679">&#9670;&nbsp;</a></span>infliger_degats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void infliger_degats </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cible_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cible_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsort___s.html">sort_T</a> *&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enlève les points de vie à la cible selon les dégats infligés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cible_x</td><td>de type int, cible_y de type int, s de type sort_T * </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a687ef13b926745c18f78e9dd60d1fa49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a687ef13b926745c18f78e9dd60d1fa49">&#9670;&nbsp;</a></span>lancement_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lancement_sort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a> *&#160;</td>
+          <td class="paramname"><em>lanceur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cible_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cible_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsort___s.html">sort_T</a> *&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trouve quel sort est lancé et réalise les effets de ce sort. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanceur</td><td>de type entite *, cible_x de type int, cible_y de type int, s de type sort_T * </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3ceef7045fb6ffa1f3806a23327b35df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ceef7045fb6ffa1f3806a23327b35df">&#9670;&nbsp;</a></span>numero_aleatoire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int numero_aleatoire </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>minimum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maximum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prends un nombre aléatoire entre ses deux paramètres. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minimum</td><td>de type int, maximum de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Renvoie un int entre minimum et maximum </dd></dl>
+
+</div>
+</div>
+<a id="a08c973a6d0c19806f8f00a505167e808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c973a6d0c19806f8f00a505167e808">&#9670;&nbsp;</a></span>prep_sort_cercle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prep_sort_cercle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a> *&#160;</td>
+          <td class="paramname"><em>lanceur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rayon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les possibilités pour lancer son sort sous forme de cercle d'un rayon en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanceur</td><td>de type entite *, rayon de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa93de8b1e81ddd76cf7bfe21eb75ed1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa93de8b1e81ddd76cf7bfe21eb75ed1b">&#9670;&nbsp;</a></span>prep_sort_plus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prep_sort_plus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a> *&#160;</td>
+          <td class="paramname"><em>lanceur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les possibilités pour lancer son sort sous forme de plus d'une distance en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanceur</td><td>de type entite *, distance de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a40889d2ce4788c8352836532a0ed39d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40889d2ce4788c8352836532a0ed39d8">&#9670;&nbsp;</a></span>preparation_sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void preparation_sort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a> *&#160;</td>
+          <td class="paramname"><em>lanceur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsort___s.html">sort_T</a>&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trouve selon l'id du sort sur quelles cellules on peut lancer son sort. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanceur</td><td>de type entite *, s de type sort_T </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a179fd86b0aec582c6bf18abd569cf864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a179fd86b0aec582c6bf18abd569cf864">&#9670;&nbsp;</a></span>rechercherEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structentite___s.html">entite</a> * rechercherEntite </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trouve l'entité selon son id. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Renvoie l'entité trouvée </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a8ffd0fd4cd450c9e4dcf8214f1a2cff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ffd0fd4cd450c9e4dcf8214f1a2cff8">&#9670;&nbsp;</a></span>sorts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsort___s.html">sort_T</a> sorts[MAX_SORTS]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    </div>
+<div class="line">    {0, <span class="stringliteral">&quot;Attaque de base&quot;</span>, <span class="stringliteral">&quot;Attaquez faiblement un ennemi&quot;</span>, 25, 40, 1, 0, 1, 2, 0, NULL, NULL, 1},</div>
+<div class="line">    {1, <span class="stringliteral">&quot;Tir rapide&quot;</span>, <span class="stringliteral">&quot;Tirez une salve avec votre arme&quot;</span>, 100, 125, 2, 0, 4, 1, 24, NULL, NULL, 1},</div>
+<div class="line">    {2, <span class="stringliteral">&quot;Téléportation&quot;</span>, <span class="stringliteral">&quot;Téléportez vous sur la case ciblée&quot;</span>, 0, 0, 5, 0, 5, 0, 50, NULL, NULL, 1},</div>
+<div class="line">    </div>
+<div class="line">    {3, <span class="stringliteral">&quot;Attaque de base&quot;</span>, <span class="stringliteral">&quot;Attaquez faiblement un ennemi&quot;</span>, 25, 40, 1, 0, 2, 3, 0, NULL, NULL, 1},</div>
+<div class="line">    {4, <span class="stringliteral">&quot;Grenade&quot;</span>, <span class="stringliteral">&quot;Lancez une grenade&quot;</span>, 200, 300, 4, 0, 4, 5, 60, NULL, NULL, 1},</div>
+<div class="line">    {5, <span class="stringliteral">&quot;Glissade&quot;</span>, <span class="stringliteral">&quot;Avancez rapidement vers un emplacement&quot;</span>, 0, 0, 3, 0, 2, 3, 0, NULL, NULL, 1},</div>
+<div class="line">    </div>
+<div class="line">    {6, <span class="stringliteral">&quot;Attaque de base&quot;</span>, <span class="stringliteral">&quot;Attaquez faiblement un ennemi&quot;</span>, 35, 50, 1, 0, 1, 3, 0, NULL, NULL, 1},</div>
+<div class="line">    {7, <span class="stringliteral">&quot;Explosion de mine horizontale&quot;</span>, <span class="stringliteral">&quot;Placez une mine qui explose directement, touchant trois cases perpendiculaire à vous&quot;</span>, 150, 200, 5, 0, 2, 3, 60, NULL, NULL, 1},</div>
+<div class="line">    {8, <span class="stringliteral">&quot;Tacle&quot;</span>, <span class="stringliteral">&quot;Frappez un ennemi proche de plein fouet&quot;</span>, 70, 90, 3, 0, 1, 6, 0, NULL, NULL, 1},</div>
+<div class="line">    </div>
+<div class="line">    {9, <span class="stringliteral">&quot;Attaque de base&quot;</span>, <span class="stringliteral">&quot;Attaquez faiblement un ennemi&quot;</span>, 25, 40, 1, 0, 3, 4, 0, NULL, NULL, 1},</div>
+<div class="line">    {10, <span class="stringliteral">&quot;Tir de sniper&quot;</span>, <span class="stringliteral">&quot;Touchez une cible lointaine avec une grande puissance&quot;</span>, 280, 300, 5, 0, 7, 5, 75, NULL, NULL, 1},</div>
+<div class="line">    {11, <span class="stringliteral">&quot;Régénération&quot;</span>, <span class="stringliteral">&quot;Récupérez quelques points de vie&quot;</span>, 0, 0, 3, 0, 0, 3, 33, NULL, NULL, 1}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
