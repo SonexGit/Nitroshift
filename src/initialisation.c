@@ -21,9 +21,10 @@
  * \date 10 avril
 */
 
+///La relance de tous les sorts du personnage est remise à zéro
 /**
   * \fn void sort_relance_reset(void)
-  * \brief Fonction qui permet de reset la relance des sorts du personnage
+  * \brief Fonction qui permet de réinitialiser la relance des sorts du personnage
 */
 void sort_relance_reset(){
     for (int i = 0; i < MAX_SORTS; i++) {
@@ -32,9 +33,9 @@ void sort_relance_reset(){
 }   
 
 /**
-  *\fn void initCombat(int level)
-  *\brief Fonction centrale qui permet d'initialiser le combat en fonction du niveau (position, stats)
-  *\param level de type int
+  * \fn void initCombat(int level)
+  * \brief Fonction centrale qui permet d'initialiser le combat en fonction du niveau (position, stats)
+  * \param level de type int
 */
 void initCombat(int level){
 
