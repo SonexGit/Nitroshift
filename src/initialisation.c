@@ -13,12 +13,29 @@
 #include "initialisation.h"
 #include "combat.h"
 
+/**
+ * \file initialisation.c
+ * \brief Initialiser le combat en fonction du niveau
+ * \author Allan Lucas Léo Enzo
+ * \version 1.0
+ * \date 10 avril
+*/
+
+/**
+  * \fn void sort_relance_reset(void)
+  * \brief Fonction qui permet de reset la relance des sorts du personnage
+*/
 void sort_relance_reset(){
     for (int i = 0; i < MAX_SORTS; i++) {
         sorts[i].relanceActuel = 0;
     }
 }   
 
+/**
+  *\fn void initCombat(int level)
+  *\brief Fonction centrale qui permet d'initialiser le combat en fonction du niveau (position, stats)
+  *\param level de type int
+*/
 void initCombat(int level){
 
     v1.mort = 0;
