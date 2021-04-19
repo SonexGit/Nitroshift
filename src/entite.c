@@ -10,10 +10,22 @@
 #include "render.h"
 #include "header.h"
 
+/**
+ * \file entite.c
+ * \brief Programme qui gère toutes les entités
+ * \author Allan Lucas Léo Enzo
+ * \version 1.0
+ * \date 10 avril 2021
+*/
+
 // ==============================================
 // Personnage
 // ==============================================
 
+/**
+  * \fn void creationPersonnage()
+  * \brief Fonction qui permet de créer un personnage, les stats sont différentes en fonction de la classe choisie
+*/
 /* Création du personnage */
 void creationPersonnage(){
 
@@ -55,11 +67,19 @@ void creationPersonnage(){
     creationAcces();
 }
 
+/**
+  * \fn void free_classe_perso()
+  * \brief Fonction qui permet de free la classe
+*/
 void free_classe_perso(){
 
     free(v1.classe);
 }
 
+/**
+  * \fn void creationAcces()
+  * \brief Fonction qui permet de créer les accès du personnage
+*/
 /* Accès ou non aux zones et niveaux par le personnage */
 void creationAcces(){
 
@@ -82,6 +102,10 @@ void creationAcces(){
     a1.z3.niveau3 = 1;
 }
 
+/**
+  * \fn void init_textures_personnage()
+  * \brief Fonction qui permet d'initialiser la texture du personnage en fonction de la classe
+*/
 // Textures du personnage
 void init_textures_personnage() {
     if(strcmp(v1.classe,"Soldat") == 0){
@@ -114,6 +138,11 @@ void init_textures_personnage() {
 	}
 }
 
+/**
+  * \fn void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite)
+  * \brief Fonction qui permet de dessiner le personnage sur le plateau
+  * \param p de type entite, case_x et case_y de type int, plat de type cell_T et sprite de type int
+*/
 // Dessiner le personnage sur le plateau
 void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
 	int pos_x, pos_y, img_w, img_h;
@@ -128,12 +157,21 @@ void dessiner_personnage(entite p, int case_x, int case_y, cell_T plat[plateau_y
 	SDL_RenderCopy(ren, p.texture, &src_perso[sprite], &dest_perso);
 }
 
+/**
+  * \fn void free_personnage_c()
+  * \brief Fonction qui permet de détruire la surface et la texture du personnage
+*/
 // Free général des fonctions personnage
 void free_personnage_c() {
 	SDL_DestroyTexture(v1.texture);
 	SDL_FreeSurface(v1.surface);
 }
 
+/**
+  * \fn void deplacements_personnage(int direction)
+  * \brief Fonction qui permet de déplacer un personnage sur le plateau
+  * \param direction de type int
+*/
 // Déplacements du personnage
 void deplacements_personnage(int direction) {
 	/*
@@ -216,6 +254,10 @@ void deplacements_personnage(int direction) {
 // Ennemis
 // ==============================================
 
+/**
+  * \fn void creationEnnemi()
+  * \brief Fonction qui permet de créer les ennemis
+*/
 /* Création de l'ennemi */
 void creationEnnemi(){
 
@@ -316,6 +358,11 @@ void creationEnnemi(){
     b3.equipe = ENNEMIS;
 }
 
+/**
+  * \fn void init_textures_ennemis(int lev)
+  * \brief Fonction qui permet d'initialiser les textures des ennemis en fonction du niveau de combat passé en paramètre
+  * \param lev de type int
+*/
 // Textures des ennemis
 void init_textures_ennemis(int lev) {
 
@@ -387,6 +434,11 @@ void init_textures_ennemis(int lev) {
 	}
 }
 
+/**
+  * \fn void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite)
+  * \brief Fonction qui permet de dessiner l'ennemi sur le plateau
+  * \param e de type entite, case_x et case_y de type int, plat de type cell_T et sprite de type int
+*/
 // Dessiner l'ennemi sur le plateau
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
 	
@@ -405,6 +457,11 @@ void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
     }
 }
 
+/**
+  * \fn void free_ennemi_c(int lev)
+  * \brief Fonction qui permet de détruire la texture et la surface des ennemis en fonction du niveau de combat passé en paramètre
+  * \param lev de type int
+*/
 // Free général des fonctions ennemis
 void free_ennemi_c(int lev) {
 
@@ -462,6 +519,11 @@ void free_ennemi_c(int lev) {
 
 // Entités
 
+/**
+  * \fn void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite)
+  * \brief Fonction qui permet de dessiner une entite, si l'equipe est ALLIES on dessine le personnage et si l'equipe est ENNEMIS on dessingne l'ennemi
+  * \param e de type entite, case_x et case_y de type int, plat de type cell_T et sprite de type int
+*/
 void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
 	if (e.equipe == ALLIES) {
 		dessiner_personnage(e, case_x, case_y, plat, sprite);
@@ -474,6 +536,10 @@ void dessiner_entite(entite e, int case_x, int case_y, cell_T plat[plateau_y][pl
 	}
 }
 
+/**
+  * \fn void rechercheClasse()
+  * \brief Fonction qui permet de déterminer la classe du personnage en fonction de l'étiquette
+*/
 void rechercheClasse(){
     if(v1.etiquetteClasse == 10){
         v1.classe = "Soldat";
@@ -489,6 +555,10 @@ void rechercheClasse(){
     }
 }
 
+/**
+  * \fn void gestionNiveaux(int niv)
+  * \brief Fonction qui permet d'ajouter les stats en fonction du niveau du personnage (cette fonction est appelée lorsque le personnage a pris un niveau supplémentaire)
+*/
 // Niveaux
 void gestionNiveaux(int niv){
 
@@ -553,6 +623,10 @@ void gestionNiveaux(int niv){
     }
 }
 
+/**
+  * \fn void levelUp()
+  * \brief Fonction qui permet de vérifier si le personnage a pris un niveau supplémentaire en fonction de l'expérience
+*/
 void levelUp(){
 
     int maxExp[10] = {0, 100, 300, 700, 1300, 2100, 3100, 4300, 5700, 7300}; // Niveau de 1 à 10

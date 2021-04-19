@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nitroshift: Référence du fichier entite.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Nitroshift
+   </div>
+   <div id="projectbrief">Projet Licence 2 Informatique | 2020 - 2021</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier entite.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Programme qui gère toutes les entités.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;SDL2/SDL.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_image.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_mixer.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;entite.h&quot;</code><br />
+<code>#include &quot;render.h&quot;</code><br />
+<code>#include &quot;header.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac5ee6af2e9891320358f1faa62620dfe"><td class="memItemLeft" align="right" valign="top"><a id="ac5ee6af2e9891320358f1faa62620dfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ac5ee6af2e9891320358f1faa62620dfe">creationPersonnage</a> ()</td></tr>
+<tr class="memdesc:ac5ee6af2e9891320358f1faa62620dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de créer un personnage, les stats sont différentes en fonction de la classe choisie. <br /></td></tr>
+<tr class="separator:ac5ee6af2e9891320358f1faa62620dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8628f0d8340b04a392ded562208ce81"><td class="memItemLeft" align="right" valign="top"><a id="ae8628f0d8340b04a392ded562208ce81"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ae8628f0d8340b04a392ded562208ce81">free_classe_perso</a> ()</td></tr>
+<tr class="memdesc:ae8628f0d8340b04a392ded562208ce81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de free la classe. <br /></td></tr>
+<tr class="separator:ae8628f0d8340b04a392ded562208ce81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4d5b500042dd82d92307f77c5ed8d3"><td class="memItemLeft" align="right" valign="top"><a id="aeb4d5b500042dd82d92307f77c5ed8d3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aeb4d5b500042dd82d92307f77c5ed8d3">creationAcces</a> ()</td></tr>
+<tr class="memdesc:aeb4d5b500042dd82d92307f77c5ed8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de créer les accès du personnage. <br /></td></tr>
+<tr class="separator:aeb4d5b500042dd82d92307f77c5ed8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c18c1626bd9c8e1a12593305f2ac70c"><td class="memItemLeft" align="right" valign="top"><a id="a7c18c1626bd9c8e1a12593305f2ac70c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a7c18c1626bd9c8e1a12593305f2ac70c">init_textures_personnage</a> ()</td></tr>
+<tr class="memdesc:a7c18c1626bd9c8e1a12593305f2ac70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'initialiser la texture du personnage en fonction de la classe. <br /></td></tr>
+<tr class="separator:a7c18c1626bd9c8e1a12593305f2ac70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055f26ae8a4cc32c34339b4fe8e26849"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a055f26ae8a4cc32c34339b4fe8e26849">dessiner_personnage</a> (<a class="el" href="structentite___s.html">entite</a> p, int case_x, int case_y, <a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x], int sprite)</td></tr>
+<tr class="memdesc:a055f26ae8a4cc32c34339b4fe8e26849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de dessiner le personnage sur le plateau.  <a href="entite_8c.html#a055f26ae8a4cc32c34339b4fe8e26849">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a055f26ae8a4cc32c34339b4fe8e26849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d261c1b3d1f12406c41e4bb8c45a924"><td class="memItemLeft" align="right" valign="top"><a id="a7d261c1b3d1f12406c41e4bb8c45a924"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a7d261c1b3d1f12406c41e4bb8c45a924">free_personnage_c</a> ()</td></tr>
+<tr class="memdesc:a7d261c1b3d1f12406c41e4bb8c45a924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de détruire la surface et la texture du personnage. <br /></td></tr>
+<tr class="separator:a7d261c1b3d1f12406c41e4bb8c45a924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab03635bf79c54e409e05822aa190ca01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ab03635bf79c54e409e05822aa190ca01">deplacements_personnage</a> (int direction)</td></tr>
+<tr class="memdesc:ab03635bf79c54e409e05822aa190ca01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de déplacer un personnage sur le plateau.  <a href="entite_8c.html#ab03635bf79c54e409e05822aa190ca01">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab03635bf79c54e409e05822aa190ca01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b541c5adb68ac271469f8514bcbc2e"><td class="memItemLeft" align="right" valign="top"><a id="aa6b541c5adb68ac271469f8514bcbc2e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aa6b541c5adb68ac271469f8514bcbc2e">creationEnnemi</a> ()</td></tr>
+<tr class="memdesc:aa6b541c5adb68ac271469f8514bcbc2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de créer les ennemis. <br /></td></tr>
+<tr class="separator:aa6b541c5adb68ac271469f8514bcbc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e0107f6bb2e25d83c6682e73d8f1f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a42e0107f6bb2e25d83c6682e73d8f1f7">init_textures_ennemis</a> (int lev)</td></tr>
+<tr class="memdesc:a42e0107f6bb2e25d83c6682e73d8f1f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'initialiser les textures des ennemis en fonction du niveau de combat passé en paramètre.  <a href="entite_8c.html#a42e0107f6bb2e25d83c6682e73d8f1f7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a42e0107f6bb2e25d83c6682e73d8f1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c51e7ffaa3806f571d5e388bb235868"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a3c51e7ffaa3806f571d5e388bb235868">dessiner_ennemi</a> (<a class="el" href="structentite___s.html">entite</a> e, int case_x, int case_y, <a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x], int sprite)</td></tr>
+<tr class="memdesc:a3c51e7ffaa3806f571d5e388bb235868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de dessiner l'ennemi sur le plateau.  <a href="entite_8c.html#a3c51e7ffaa3806f571d5e388bb235868">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3c51e7ffaa3806f571d5e388bb235868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291999e8208d2c5c767d088a597e5cc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a291999e8208d2c5c767d088a597e5cc7">free_ennemi_c</a> (int lev)</td></tr>
+<tr class="memdesc:a291999e8208d2c5c767d088a597e5cc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de détruire la texture et la surface des ennemis en fonction du niveau de combat passé en paramètre.  <a href="entite_8c.html#a291999e8208d2c5c767d088a597e5cc7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a291999e8208d2c5c767d088a597e5cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fdca077bc8d703b9fc5056234e1c718"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a6fdca077bc8d703b9fc5056234e1c718">dessiner_entite</a> (<a class="el" href="structentite___s.html">entite</a> e, int case_x, int case_y, <a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x], int sprite)</td></tr>
+<tr class="memdesc:a6fdca077bc8d703b9fc5056234e1c718"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de dessiner une entite, si l'equipe est ALLIES on dessine le personnage et si l'equipe est ENNEMIS on dessingne l'ennemi.  <a href="entite_8c.html#a6fdca077bc8d703b9fc5056234e1c718">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6fdca077bc8d703b9fc5056234e1c718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac30d0fe80fd75b92721052bacdc8193c"><td class="memItemLeft" align="right" valign="top"><a id="ac30d0fe80fd75b92721052bacdc8193c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ac30d0fe80fd75b92721052bacdc8193c">rechercheClasse</a> ()</td></tr>
+<tr class="memdesc:ac30d0fe80fd75b92721052bacdc8193c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de déterminer la classe du personnage en fonction de l'étiquette. <br /></td></tr>
+<tr class="separator:ac30d0fe80fd75b92721052bacdc8193c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48591de35b16914d8eb1f037e6a93ed2"><td class="memItemLeft" align="right" valign="top"><a id="a48591de35b16914d8eb1f037e6a93ed2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a48591de35b16914d8eb1f037e6a93ed2">gestionNiveaux</a> (int niv)</td></tr>
+<tr class="memdesc:a48591de35b16914d8eb1f037e6a93ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'ajouter les stats en fonction du niveau du personnage (cette fonction est appelée lorsque le personnage a pris un niveau supplémentaire) <br /></td></tr>
+<tr class="separator:a48591de35b16914d8eb1f037e6a93ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac235927565a120a3157ef902721c105e"><td class="memItemLeft" align="right" valign="top"><a id="ac235927565a120a3157ef902721c105e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ac235927565a120a3157ef902721c105e">levelUp</a> ()</td></tr>
+<tr class="memdesc:ac235927565a120a3157ef902721c105e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de vérifier si le personnage a pris un niveau supplémentaire en fonction de l'expérience. <br /></td></tr>
+<tr class="separator:ac235927565a120a3157ef902721c105e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Programme qui gère toutes les entités. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Allan Lucas Léo Enzo </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 avril 2021 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ab03635bf79c54e409e05822aa190ca01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab03635bf79c54e409e05822aa190ca01">&#9670;&nbsp;</a></span>deplacements_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacements_personnage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de déplacer un personnage sur le plateau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3c51e7ffaa3806f571d5e388bb235868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c51e7ffaa3806f571d5e388bb235868">&#9670;&nbsp;</a></span>dessiner_ennemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessiner_ennemi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>case_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>case_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell___s.html">cell_T</a>&#160;</td>
+          <td class="paramname"><em>plat</em>[plateau_y][plateau_x], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sprite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de dessiner l'ennemi sur le plateau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>de type entite, case_x et case_y de type int, plat de type cell_T et sprite de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fdca077bc8d703b9fc5056234e1c718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fdca077bc8d703b9fc5056234e1c718">&#9670;&nbsp;</a></span>dessiner_entite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessiner_entite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>case_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>case_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell___s.html">cell_T</a>&#160;</td>
+          <td class="paramname"><em>plat</em>[plateau_y][plateau_x], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sprite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de dessiner une entite, si l'equipe est ALLIES on dessine le personnage et si l'equipe est ENNEMIS on dessingne l'ennemi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>de type entite, case_x et case_y de type int, plat de type cell_T et sprite de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a055f26ae8a4cc32c34339b4fe8e26849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055f26ae8a4cc32c34339b4fe8e26849">&#9670;&nbsp;</a></span>dessiner_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessiner_personnage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structentite___s.html">entite</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>case_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>case_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell___s.html">cell_T</a>&#160;</td>
+          <td class="paramname"><em>plat</em>[plateau_y][plateau_x], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sprite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de dessiner le personnage sur le plateau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>de type entite, case_x et case_y de type int, plat de type cell_T et sprite de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a291999e8208d2c5c767d088a597e5cc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a291999e8208d2c5c767d088a597e5cc7">&#9670;&nbsp;</a></span>free_ennemi_c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_ennemi_c </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de détruire la texture et la surface des ennemis en fonction du niveau de combat passé en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lev</td><td>de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42e0107f6bb2e25d83c6682e73d8f1f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42e0107f6bb2e25d83c6682e73d8f1f7">&#9670;&nbsp;</a></span>init_textures_ennemis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_textures_ennemis </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet d'initialiser les textures des ennemis en fonction du niveau de combat passé en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lev</td><td>de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,165 @@
+\hypertarget{entite_8c}{}\doxysection{Référence du fichier entite.\+c}
+\label{entite_8c}\index{entite.c@{entite.c}}
+
+
+Programme qui gère toutes les entités.  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{entite_8c_ac5ee6af2e9891320358f1faa62620dfe}\label{entite_8c_ac5ee6af2e9891320358f1faa62620dfe}} 
+void \mbox{\hyperlink{entite_8c_ac5ee6af2e9891320358f1faa62620dfe}{creation\+Personnage}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de créer un personnage, les stats sont différentes en fonction de la classe choisie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_ae8628f0d8340b04a392ded562208ce81}\label{entite_8c_ae8628f0d8340b04a392ded562208ce81}} 
+void \mbox{\hyperlink{entite_8c_ae8628f0d8340b04a392ded562208ce81}{free\+\_\+classe\+\_\+perso}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de free la classe. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_aeb4d5b500042dd82d92307f77c5ed8d3}\label{entite_8c_aeb4d5b500042dd82d92307f77c5ed8d3}} 
+void \mbox{\hyperlink{entite_8c_aeb4d5b500042dd82d92307f77c5ed8d3}{creation\+Acces}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de créer les accès du personnage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_a7c18c1626bd9c8e1a12593305f2ac70c}\label{entite_8c_a7c18c1626bd9c8e1a12593305f2ac70c}} 
+void \mbox{\hyperlink{entite_8c_a7c18c1626bd9c8e1a12593305f2ac70c}{init\+\_\+textures\+\_\+personnage}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}initialiser la texture du personnage en fonction de la classe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a055f26ae8a4cc32c34339b4fe8e26849}{dessiner\+\_\+personnage}} (\mbox{\hyperlink{structentite___s}{entite}} p, int case\+\_\+x, int case\+\_\+y, \mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]}, int sprite)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de dessiner le personnage sur le plateau. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_a7d261c1b3d1f12406c41e4bb8c45a924}\label{entite_8c_a7d261c1b3d1f12406c41e4bb8c45a924}} 
+void \mbox{\hyperlink{entite_8c_a7d261c1b3d1f12406c41e4bb8c45a924}{free\+\_\+personnage\+\_\+c}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de détruire la surface et la texture du personnage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_ab03635bf79c54e409e05822aa190ca01}{deplacements\+\_\+personnage}} (int direction)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de déplacer un personnage sur le plateau. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_aa6b541c5adb68ac271469f8514bcbc2e}\label{entite_8c_aa6b541c5adb68ac271469f8514bcbc2e}} 
+void \mbox{\hyperlink{entite_8c_aa6b541c5adb68ac271469f8514bcbc2e}{creation\+Ennemi}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de créer les ennemis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a42e0107f6bb2e25d83c6682e73d8f1f7}{init\+\_\+textures\+\_\+ennemis}} (int lev)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}initialiser les textures des ennemis en fonction du niveau de combat passé en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a3c51e7ffaa3806f571d5e388bb235868}{dessiner\+\_\+ennemi}} (\mbox{\hyperlink{structentite___s}{entite}} e, int case\+\_\+x, int case\+\_\+y, \mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]}, int sprite)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de dessiner l\textquotesingle{}ennemi sur le plateau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a291999e8208d2c5c767d088a597e5cc7}{free\+\_\+ennemi\+\_\+c}} (int lev)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de détruire la texture et la surface des ennemis en fonction du niveau de combat passé en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a6fdca077bc8d703b9fc5056234e1c718}{dessiner\+\_\+entite}} (\mbox{\hyperlink{structentite___s}{entite}} e, int case\+\_\+x, int case\+\_\+y, \mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]}, int sprite)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de dessiner une entite, si l\textquotesingle{}equipe est ALLIES on dessine le personnage et si l\textquotesingle{}equipe est ENNEMIS on dessingne l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_ac30d0fe80fd75b92721052bacdc8193c}\label{entite_8c_ac30d0fe80fd75b92721052bacdc8193c}} 
+void \mbox{\hyperlink{entite_8c_ac30d0fe80fd75b92721052bacdc8193c}{recherche\+Classe}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de déterminer la classe du personnage en fonction de l\textquotesingle{}étiquette. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_a48591de35b16914d8eb1f037e6a93ed2}\label{entite_8c_a48591de35b16914d8eb1f037e6a93ed2}} 
+void \mbox{\hyperlink{entite_8c_a48591de35b16914d8eb1f037e6a93ed2}{gestion\+Niveaux}} (int niv)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}ajouter les stats en fonction du niveau du personnage (cette fonction est appelée lorsque le personnage a pris un niveau supplémentaire) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8c_ac235927565a120a3157ef902721c105e}\label{entite_8c_ac235927565a120a3157ef902721c105e}} 
+void \mbox{\hyperlink{entite_8c_ac235927565a120a3157ef902721c105e}{level\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de vérifier si le personnage a pris un niveau supplémentaire en fonction de l\textquotesingle{}expérience. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Programme qui gère toutes les entités. 
+
+\begin{DoxyAuthor}{Auteur}
+Allan Lucas Léo Enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{entite_8c_ab03635bf79c54e409e05822aa190ca01}\label{entite_8c_ab03635bf79c54e409e05822aa190ca01}} 
+\index{entite.c@{entite.c}!deplacements\_personnage@{deplacements\_personnage}}
+\index{deplacements\_personnage@{deplacements\_personnage}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{deplacements\_personnage()}{deplacements\_personnage()}}
+{\footnotesize\ttfamily void deplacements\+\_\+personnage (\begin{DoxyParamCaption}\item[{int}]{direction }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de déplacer un personnage sur le plateau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em direction} & de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8c_a3c51e7ffaa3806f571d5e388bb235868}\label{entite_8c_a3c51e7ffaa3806f571d5e388bb235868}} 
+\index{entite.c@{entite.c}!dessiner\_ennemi@{dessiner\_ennemi}}
+\index{dessiner\_ennemi@{dessiner\_ennemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{dessiner\_ennemi()}{dessiner\_ennemi()}}
+{\footnotesize\ttfamily void dessiner\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}}}]{e,  }\item[{int}]{case\+\_\+x,  }\item[{int}]{case\+\_\+y,  }\item[{\mbox{\hyperlink{structcell___s}{cell\+\_\+T}}}]{plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]},  }\item[{int}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de dessiner l\textquotesingle{}ennemi sur le plateau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite, case\+\_\+x et case\+\_\+y de type int, plat de type cell\+\_\+T et sprite de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8c_a6fdca077bc8d703b9fc5056234e1c718}\label{entite_8c_a6fdca077bc8d703b9fc5056234e1c718}} 
+\index{entite.c@{entite.c}!dessiner\_entite@{dessiner\_entite}}
+\index{dessiner\_entite@{dessiner\_entite}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{dessiner\_entite()}{dessiner\_entite()}}
+{\footnotesize\ttfamily void dessiner\+\_\+entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}}}]{e,  }\item[{int}]{case\+\_\+x,  }\item[{int}]{case\+\_\+y,  }\item[{\mbox{\hyperlink{structcell___s}{cell\+\_\+T}}}]{plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]},  }\item[{int}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de dessiner une entite, si l\textquotesingle{}equipe est ALLIES on dessine le personnage et si l\textquotesingle{}equipe est ENNEMIS on dessingne l\textquotesingle{}ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite, case\+\_\+x et case\+\_\+y de type int, plat de type cell\+\_\+T et sprite de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8c_a055f26ae8a4cc32c34339b4fe8e26849}\label{entite_8c_a055f26ae8a4cc32c34339b4fe8e26849}} 
+\index{entite.c@{entite.c}!dessiner\_personnage@{dessiner\_personnage}}
+\index{dessiner\_personnage@{dessiner\_personnage}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{dessiner\_personnage()}{dessiner\_personnage()}}
+{\footnotesize\ttfamily void dessiner\+\_\+personnage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}}}]{p,  }\item[{int}]{case\+\_\+x,  }\item[{int}]{case\+\_\+y,  }\item[{\mbox{\hyperlink{structcell___s}{cell\+\_\+T}}}]{plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]},  }\item[{int}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de dessiner le personnage sur le plateau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em p} & de type entite, case\+\_\+x et case\+\_\+y de type int, plat de type cell\+\_\+T et sprite de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8c_a291999e8208d2c5c767d088a597e5cc7}\label{entite_8c_a291999e8208d2c5c767d088a597e5cc7}} 
+\index{entite.c@{entite.c}!free\_ennemi\_c@{free\_ennemi\_c}}
+\index{free\_ennemi\_c@{free\_ennemi\_c}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{free\_ennemi\_c()}{free\_ennemi\_c()}}
+{\footnotesize\ttfamily void free\+\_\+ennemi\+\_\+c (\begin{DoxyParamCaption}\item[{int}]{lev }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de détruire la texture et la surface des ennemis en fonction du niveau de combat passé en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lev} & de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8c_a42e0107f6bb2e25d83c6682e73d8f1f7}\label{entite_8c_a42e0107f6bb2e25d83c6682e73d8f1f7}} 
+\index{entite.c@{entite.c}!init\_textures\_ennemis@{init\_textures\_ennemis}}
+\index{init\_textures\_ennemis@{init\_textures\_ennemis}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{init\_textures\_ennemis()}{init\_textures\_ennemis()}}
+{\footnotesize\ttfamily void init\+\_\+textures\+\_\+ennemis (\begin{DoxyParamCaption}\item[{int}]{lev }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet d\textquotesingle{}initialiser les textures des ennemis en fonction du niveau de combat passé en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lev} & de type int \\
+\hline
+\end{DoxyParams}

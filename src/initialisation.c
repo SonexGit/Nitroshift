@@ -18,10 +18,11 @@
  * \brief Initialiser le combat en fonction du niveau
  * \author Allan Lucas Léo Enzo
  * \version 1.0
- * \date 10 avril
+ * \date 10 avril 2021
 */
 
 ///La relance de tous les sorts du personnage est remise à zéro
+
 /**
   * \fn void sort_relance_reset(void)
   * \brief Fonction qui permet de réinitialiser la relance des sorts du personnage
@@ -31,6 +32,10 @@ void sort_relance_reset(){
         sorts[i].relanceActuel = 0;
     }
 }   
+
+///A l'aide de la variable level, la fonction va intialiser la position des entités sur le plateau
+///Ensuite, les stats des entités dans le niveau seront mises ax maximum
+///Pour finir, les sorts sont également initialisés
 
 /**
   * \fn void initCombat(int level)

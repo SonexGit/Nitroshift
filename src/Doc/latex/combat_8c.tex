@@ -1,0 +1,297 @@
+\hypertarget{combat_8c}{}\doxysection{Référence du fichier combat.\+c}
+\label{combat_8c}\index{combat.c@{combat.c}}
+
+
+Programme qui fait fonctionner le combat.  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+ttf.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}initialisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sorts.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{combat_8c_a68ac1cee03c4ef8f996fe4840c360470}\label{combat_8c_a68ac1cee03c4ef8f996fe4840c360470}} 
+void \mbox{\hyperlink{combat_8c_a68ac1cee03c4ef8f996fe4840c360470}{bouton\+Passer\+Tour}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui place le bouton passer son tour dans le combat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_afb41e7ec96a8f053fe38ee904aac8943}{stats\+Maximum}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui met au maximum les stats (PA, PM, nitro) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a00d42ec5f21cbdcc4a4461bf698aaa47}{stats\+Fin\+De\+Tour}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Similaire à la fonction stats\+Maximum sauf que celle-\/ci ne met pas la nitro au maximum, elle en redonne que 20 à chaque tour (utilisé pour le personnage) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a115a3d6be7edb5f0f8e781b971d250c1}{recherche\+Portee\+Sort}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui recherche un attribut spécifique concernant les sorts d\textquotesingle{}un ennemi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a45fde4acb80ded3b80cc171757269465}{recherche\+Degat\+Sort}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui recherche un attribut spécifique concernant les sorts d\textquotesingle{}un ennemi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a9588791f5a39e00abc0b775d8f3989af}{recherche\+Cout\+Nitro\+Sort}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui recherche un attribut spécifique concernant les sorts d\textquotesingle{}un ennemi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a4a46d9fed5435b5a3d523edbc1893d5b}{recherche\+Cout\+Pa\+Boost}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui recherche un attribut spécifique concernant les boost d\textquotesingle{}un ennemi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_afaa5e88baccc98b34bda2154b0973e2d}{recherche\+Relance\+Boost}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui recherche un attribut spécifique concernant les boost d\textquotesingle{}un ennemi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a1229de105aba9f4709547a565987638d}{boost\+Ennemi}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de booster un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a8cf072736b8481679c47b242125b5bb6}{attaque\+Ennemi}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de faire attaquer un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_ab010a217d8e4eb6e4e1293378a710ab5}{ia\+Ennemi}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de faire déplacer un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a79402035e48c74252373ca35d477b90e}{action\+Ennemi}} (\mbox{\hyperlink{structentite___s}{entite}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de faire une action à un ennemi (un mouvement d\textquotesingle{}une case et attaque/se boost si il peut) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{combat_8c_aecf341baf8ad6a9166ea6954ffb1e8e0}\label{combat_8c_aecf341baf8ad6a9166ea6954ffb1e8e0}} 
+void {\bfseries update\+\_\+affichage\+\_\+tour} ()
+\item 
+\mbox{\Hypertarget{combat_8c_ab67b34ef3f283e1a9585fbe4027c16da}\label{combat_8c_ab67b34ef3f283e1a9585fbe4027c16da}} 
+void {\bfseries update\+\_\+barre\+\_\+vie} ()
+\item 
+\mbox{\Hypertarget{combat_8c_a779a712012e51b801bb2c4659fc561cd}\label{combat_8c_a779a712012e51b801bb2c4659fc561cd}} 
+void {\bfseries update\+\_\+barre\+\_\+nitro} ()
+\item 
+\mbox{\Hypertarget{combat_8c_a4f98fdcbef86b2d0f02658c3efb5f781}\label{combat_8c_a4f98fdcbef86b2d0f02658c3efb5f781}} 
+void {\bfseries update\+\_\+barre\+\_\+pa} ()
+\item 
+\mbox{\Hypertarget{combat_8c_ad1f682229f3093237f537a20d124341c}\label{combat_8c_ad1f682229f3093237f537a20d124341c}} 
+void {\bfseries update\+\_\+barre\+\_\+pm} ()
+\item 
+\mbox{\Hypertarget{combat_8c_aea822b431062655060cbf19421febb23}\label{combat_8c_aea822b431062655060cbf19421febb23}} 
+void {\bfseries affichage\+\_\+infos\+\_\+ennemi} (int cible\+\_\+x, int cible\+\_\+y)
+\item 
+\mbox{\Hypertarget{combat_8c_a85dc614e8a1d6f893134a9cbe9b50172}\label{combat_8c_a85dc614e8a1d6f893134a9cbe9b50172}} 
+void {\bfseries init\+\_\+interface\+\_\+combat} ()
+\item 
+\mbox{\Hypertarget{combat_8c_a2fd99e022094d242c4ff4b39a8cc03f7}\label{combat_8c_a2fd99e022094d242c4ff4b39a8cc03f7}} 
+void {\bfseries update\+\_\+interface\+\_\+combat} ()
+\item 
+void \mbox{\hyperlink{combat_8c_a9adc8b568e0beaaa6ee9641a024e329d}{deroulement\+Combat}} (int level)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de dérouler le combat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{combat_8c_a9fdb94b8b423813ac4d8f6c324dc393d}\label{combat_8c_a9fdb94b8b423813ac4d8f6c324dc393d}} 
+int {\bfseries tour\+Termine}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Programme qui fait fonctionner le combat. 
+
+\begin{DoxyAuthor}{Auteur}
+Allan Lucas Léo Enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{combat_8c_a79402035e48c74252373ca35d477b90e}\label{combat_8c_a79402035e48c74252373ca35d477b90e}} 
+\index{combat.c@{combat.c}!actionEnnemi@{actionEnnemi}}
+\index{actionEnnemi@{actionEnnemi}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{actionEnnemi()}{actionEnnemi()}}
+{\footnotesize\ttfamily void action\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de faire une action à un ennemi (un mouvement d\textquotesingle{}une case et attaque/se boost si il peut) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a8cf072736b8481679c47b242125b5bb6}\label{combat_8c_a8cf072736b8481679c47b242125b5bb6}} 
+\index{combat.c@{combat.c}!attaqueEnnemi@{attaqueEnnemi}}
+\index{attaqueEnnemi@{attaqueEnnemi}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{attaqueEnnemi()}{attaqueEnnemi()}}
+{\footnotesize\ttfamily void attaque\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de faire attaquer un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a1229de105aba9f4709547a565987638d}\label{combat_8c_a1229de105aba9f4709547a565987638d}} 
+\index{combat.c@{combat.c}!boostEnnemi@{boostEnnemi}}
+\index{boostEnnemi@{boostEnnemi}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{boostEnnemi()}{boostEnnemi()}}
+{\footnotesize\ttfamily int boost\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de booster un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si le boost a eu lieu sinon 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a9adc8b568e0beaaa6ee9641a024e329d}\label{combat_8c_a9adc8b568e0beaaa6ee9641a024e329d}} 
+\index{combat.c@{combat.c}!deroulementCombat@{deroulementCombat}}
+\index{deroulementCombat@{deroulementCombat}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{deroulementCombat()}{deroulementCombat()}}
+{\footnotesize\ttfamily void deroulement\+Combat (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de dérouler le combat. 
+
+A la fin du combat, si le personnage a gagné, il gagne de l\textquotesingle{}expérience et de la nitro dollar 
+\begin{DoxyParams}{Paramètres}
+{\em level} & de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_ab010a217d8e4eb6e4e1293378a710ab5}\label{combat_8c_ab010a217d8e4eb6e4e1293378a710ab5}} 
+\index{combat.c@{combat.c}!iaEnnemi@{iaEnnemi}}
+\index{iaEnnemi@{iaEnnemi}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{iaEnnemi()}{iaEnnemi()}}
+{\footnotesize\ttfamily void ia\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de faire déplacer un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a9588791f5a39e00abc0b775d8f3989af}\label{combat_8c_a9588791f5a39e00abc0b775d8f3989af}} 
+\index{combat.c@{combat.c}!rechercheCoutNitroSort@{rechercheCoutNitroSort}}
+\index{rechercheCoutNitroSort@{rechercheCoutNitroSort}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{rechercheCoutNitroSort()}{rechercheCoutNitroSort()}}
+{\footnotesize\ttfamily int recherche\+Cout\+Nitro\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui recherche un attribut spécifique concernant les sorts d\textquotesingle{}un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la valeur de l\textquotesingle{}attribut est retournée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a4a46d9fed5435b5a3d523edbc1893d5b}\label{combat_8c_a4a46d9fed5435b5a3d523edbc1893d5b}} 
+\index{combat.c@{combat.c}!rechercheCoutPaBoost@{rechercheCoutPaBoost}}
+\index{rechercheCoutPaBoost@{rechercheCoutPaBoost}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{rechercheCoutPaBoost()}{rechercheCoutPaBoost()}}
+{\footnotesize\ttfamily int recherche\+Cout\+Pa\+Boost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui recherche un attribut spécifique concernant les boost d\textquotesingle{}un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la valeur de l\textquotesingle{}attribut est retournée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a45fde4acb80ded3b80cc171757269465}\label{combat_8c_a45fde4acb80ded3b80cc171757269465}} 
+\index{combat.c@{combat.c}!rechercheDegatSort@{rechercheDegatSort}}
+\index{rechercheDegatSort@{rechercheDegatSort}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{rechercheDegatSort()}{rechercheDegatSort()}}
+{\footnotesize\ttfamily int recherche\+Degat\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui recherche un attribut spécifique concernant les sorts d\textquotesingle{}un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la valeur de l\textquotesingle{}attribut est retournée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a115a3d6be7edb5f0f8e781b971d250c1}\label{combat_8c_a115a3d6be7edb5f0f8e781b971d250c1}} 
+\index{combat.c@{combat.c}!recherchePorteeSort@{recherchePorteeSort}}
+\index{recherchePorteeSort@{recherchePorteeSort}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{recherchePorteeSort()}{recherchePorteeSort()}}
+{\footnotesize\ttfamily int recherche\+Portee\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui recherche un attribut spécifique concernant les sorts d\textquotesingle{}un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la valeur de l\textquotesingle{}attribut est retournée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_afaa5e88baccc98b34bda2154b0973e2d}\label{combat_8c_afaa5e88baccc98b34bda2154b0973e2d}} 
+\index{combat.c@{combat.c}!rechercheRelanceBoost@{rechercheRelanceBoost}}
+\index{rechercheRelanceBoost@{rechercheRelanceBoost}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{rechercheRelanceBoost()}{rechercheRelanceBoost()}}
+{\footnotesize\ttfamily int recherche\+Relance\+Boost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui recherche un attribut spécifique concernant les boost d\textquotesingle{}un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la valeur de l\textquotesingle{}attribut est retournée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a00d42ec5f21cbdcc4a4461bf698aaa47}\label{combat_8c_a00d42ec5f21cbdcc4a4461bf698aaa47}} 
+\index{combat.c@{combat.c}!statsFinDeTour@{statsFinDeTour}}
+\index{statsFinDeTour@{statsFinDeTour}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{statsFinDeTour()}{statsFinDeTour()}}
+{\footnotesize\ttfamily void stats\+Fin\+De\+Tour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Similaire à la fonction stats\+Maximum sauf que celle-\/ci ne met pas la nitro au maximum, elle en redonne que 20 à chaque tour (utilisé pour le personnage) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_afb41e7ec96a8f053fe38ee904aac8943}\label{combat_8c_afb41e7ec96a8f053fe38ee904aac8943}} 
+\index{combat.c@{combat.c}!statsMaximum@{statsMaximum}}
+\index{statsMaximum@{statsMaximum}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{statsMaximum()}{statsMaximum()}}
+{\footnotesize\ttfamily void stats\+Maximum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentite___s}{entite}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fonction qui met au maximum les stats (PA, PM, nitro) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em e} & de type entite $\ast$ \\
+\hline
+\end{DoxyParams}

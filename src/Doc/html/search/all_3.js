@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['findujeu_9',['findujeu',['../perdu_8c.html#af9c37a741c298137836beb1671652acb',1,'perdu.c']]],
-  ['fingagnant_10',['fingagnant',['../gagnant_8c.html#a8b33879ed815471c08c834cbda63fc14',1,'gagnant.c']]],
-  ['free_5ftexture_5fcases_11',['free_texture_cases',['../main_8c.html#addae290943d25a04fc9b064bc2b23392',1,'main.c']]]
+  ['deplacements_5fpersonnage_16',['deplacements_personnage',['../entite_8c.html#ab03635bf79c54e409e05822aa190ca01',1,'entite.c']]],
+  ['deroulementcombat_17',['deroulementCombat',['../combat_8c.html#a9adc8b568e0beaaa6ee9641a024e329d',1,'combat.c']]],
+  ['dessiner_5fennemi_18',['dessiner_ennemi',['../entite_8c.html#a3c51e7ffaa3806f571d5e388bb235868',1,'entite.c']]],
+  ['dessiner_5fentite_19',['dessiner_entite',['../entite_8c.html#a6fdca077bc8d703b9fc5056234e1c718',1,'entite.c']]],
+  ['dessiner_5fpersonnage_20',['dessiner_personnage',['../entite_8c.html#a055f26ae8a4cc32c34339b4fe8e26849',1,'entite.c']]]
 ];

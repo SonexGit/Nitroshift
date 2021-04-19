@@ -16,8 +16,20 @@
 #include "combat.h"
 #include "sorts.h"
 
+/**
+ * \file combat.c
+ * \brief Programme qui fait fonctionner le combat
+ * \author Allan Lucas Léo Enzo
+ * \version 1.0
+ * \date 10 avril 2021
+*/
+
 int tourTermine;
 
+/**
+  * \fn void boutonPasserTour(void)
+  * \brief Fonction qui place le bouton passer son tour dans le combat
+*/
 void boutonPasserTour(){
 
     SDL_Surface *imageBoutonPasserTour = NULL;
@@ -62,6 +74,11 @@ void boutonPasserTour(){
     SDL_DestroyTexture(textureBoutonPasserTour);
 }
 
+/**
+  * \fn void statsMaximum(entite * e)
+  * \brief Fonction qui met au maximum les stats (PA, PM, nitro)
+  * \param e de type entite *
+*/
 void statsMaximum(entite * e){
 
     e->pm = e->pmMax;
@@ -69,6 +86,11 @@ void statsMaximum(entite * e){
     e->nitro = e->nitroMax;
 }
 
+/**
+  * \fn void statsFinDeTour(entite * e)
+  * \brief Similaire à la fonction statsMaximum sauf que celle-ci ne met pas la nitro au maximum, elle en redonne que 20 à chaque tour (utilisé pour le personnage)
+  * \param e de type entite *
+*/
 void statsFinDeTour(entite * e){
 
     e->pm = e->pmMax;
@@ -82,6 +104,12 @@ void statsFinDeTour(entite * e){
 
 }
 
+/**
+  * \fn int recherchePorteeSort(entite * e)
+  * \brief Fonction qui recherche un attribut spécifique concernant les sorts d'un ennemi
+  * \param e de type entite *
+  * \return la valeur de l'attribut est retournée
+*/
 int recherchePorteeSort(entite * e){
 
     switch(e->id){
@@ -116,6 +144,12 @@ int recherchePorteeSort(entite * e){
     return 0;
 }
 
+/**
+  * \fn int rechercheDegatSort(entite * e)
+  * \brief Fonction qui recherche un attribut spécifique concernant les sorts d'un ennemi
+  * \param e de type entite *
+  * \return la valeur de l'attribut est retournée
+*/
 int rechercheDegatSort(entite * e){
 
     switch(e->id){
@@ -150,6 +184,12 @@ int rechercheDegatSort(entite * e){
     return 0;
 }
 
+/**
+  * \fn int rechercheCoutNitroSort(entite * e)
+  * \brief Fonction qui recherche un attribut spécifique concernant les sorts d'un ennemi
+  * \param e de type entite *
+  * \return la valeur de l'attribut est retournée
+*/
 int rechercheCoutNitroSort(entite * e){
 
     switch(e->id){
@@ -184,6 +224,12 @@ int rechercheCoutNitroSort(entite * e){
     return 0;
 }
 
+/**
+  * \fn int rechercheCoutPaBoost(entite * e)
+  * \brief Fonction qui recherche un attribut spécifique concernant les boost d'un ennemi
+  * \param e de type entite *
+  * \return la valeur de l'attribut est retournée
+*/
 int rechercheCoutPaBoost(entite * e){
 
     switch(e->id){
@@ -218,6 +264,12 @@ int rechercheCoutPaBoost(entite * e){
     return 0;
 }
 
+/**
+  * \fn int rechercheRelanceBoost(entite * e)
+  * \brief Fonction qui recherche un attribut spécifique concernant les boost d'un ennemi
+  * \param e de type entite *
+  * \return la valeur de l'attribut est retournée
+*/
 int rechercheRelanceBoost(entite * e){
 
     switch(e->id){
@@ -252,6 +304,12 @@ int rechercheRelanceBoost(entite * e){
     return 0;   
 }
 
+/**
+  * \fn int boostEnnemi(entite * e)
+  * \brief Fonction qui permet de booster un ennemi
+  * \param e de type entite *
+  * \return 1 si le boost a eu lieu sinon 0
+*/
 int boostEnnemi(entite * e){
 
     int cout;
@@ -390,6 +448,11 @@ int boostEnnemi(entite * e){
     return 0;
 }
 
+/**
+  * \fn void attaqueEnnemi(entite * e)
+  * \brief Fonction qui permet de faire attaquer un ennemi
+  * \param e de type entite *
+*/
 void attaqueEnnemi(entite * e){
 
     int nbPO, i;
@@ -568,6 +631,11 @@ void attaqueEnnemi(entite * e){
     }
 }
 
+/**
+  * \fn void iaEnnemi(entite * e)
+  * \brief Fonction qui permet de faire déplacer un ennemi
+  * \param e de type entite *
+*/
 void iaEnnemi(entite * e){
 
     int ligne, colonne, comparaisonLigne, comparaisonColonne;
@@ -778,6 +846,11 @@ void iaEnnemi(entite * e){
     }
 }
 
+/**
+  * \fn void actionEnnemi(entite * e)
+  * \brief Fonction qui permet de faire une action à un ennemi (un mouvement d'une case et attaque/se boost si il peut)
+  * \param e de type entite *
+*/
 void actionEnnemi(entite * e){
 
     int tempsActuel;
@@ -1092,6 +1165,11 @@ void update_interface_combat() {
 	}
 }
 
+/**
+  * \fn void deroulementCombat(int level)
+  * \brief Fonction qui permet de dérouler le combat. A la fin du combat, si le personnage a gagné, il gagne de l'expérience et de la nitro dollar
+  * \param level de type int
+*/
 void deroulementCombat(int level){
 
     tourTermine = 0;

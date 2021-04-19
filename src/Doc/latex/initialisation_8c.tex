@@ -1,0 +1,69 @@
+\hypertarget{initialisation_8c}{}\doxysection{Référence du fichier initialisation.\+c}
+\label{initialisation_8c}\index{initialisation.c@{initialisation.c}}
+
+
+Initialiser le combat en fonction du niveau.  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sorts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}initialisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{initialisation_8c_aeb6b0badfb90c147cf990cdf60388fa7}{sort\+\_\+relance\+\_\+reset}} ()
+\begin{DoxyCompactList}\small\item\em La relance de tous les sorts du personnage est remise à zéro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{initialisation_8c_af01cfec1a3b89afce64ff9f104517312}{init\+Combat}} (int level)
+\begin{DoxyCompactList}\small\item\em A l\textquotesingle{}aide de la variable level, la fonction va intialiser la position des entités sur le plateau Ensuite, les stats des entités dans le niveau seront mises ax maximum Pour finir, les sorts sont également initialisés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Initialiser le combat en fonction du niveau. 
+
+\begin{DoxyAuthor}{Auteur}
+Allan Lucas Léo Enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{initialisation_8c_af01cfec1a3b89afce64ff9f104517312}\label{initialisation_8c_af01cfec1a3b89afce64ff9f104517312}} 
+\index{initialisation.c@{initialisation.c}!initCombat@{initCombat}}
+\index{initCombat@{initCombat}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{initCombat()}{initCombat()}}
+{\footnotesize\ttfamily void init\+Combat (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+
+
+A l\textquotesingle{}aide de la variable level, la fonction va intialiser la position des entités sur le plateau Ensuite, les stats des entités dans le niveau seront mises ax maximum Pour finir, les sorts sont également initialisés. 
+
+Fonction centrale qui permet d\textquotesingle{}initialiser le combat en fonction du niveau (position, stats) 
+\begin{DoxyParams}{Paramètres}
+{\em level} & de type int \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{initialisation_8c_aeb6b0badfb90c147cf990cdf60388fa7}\label{initialisation_8c_aeb6b0badfb90c147cf990cdf60388fa7}} 
+\index{initialisation.c@{initialisation.c}!sort\_relance\_reset@{sort\_relance\_reset}}
+\index{sort\_relance\_reset@{sort\_relance\_reset}!initialisation.c@{initialisation.c}}
+\doxysubsubsection{\texorpdfstring{sort\_relance\_reset()}{sort\_relance\_reset()}}
+{\footnotesize\ttfamily void sort\+\_\+relance\+\_\+reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+La relance de tous les sorts du personnage est remise à zéro. 
+
+Fonction qui permet de réinitialiser la relance des sorts du personnage 

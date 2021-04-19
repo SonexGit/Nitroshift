@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gagnant_2ec_44',['gagnant.c',['../gagnant_8c.html',1,'']]]
+  ['combat_2ec_77',['combat.c',['../combat_8c.html',1,'']]]
 ];
