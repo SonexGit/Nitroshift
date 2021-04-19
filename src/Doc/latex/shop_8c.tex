@@ -1,0 +1,72 @@
+\hypertarget{shop_8c}{}\doxysection{Référence du fichier shop.\+c}
+\label{shop_8c}\index{shop.c@{shop.c}}
+
+
+programme contenant la fonction qui génère le menu du shop  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sorts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}initialisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mesmodif.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shifumi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menujeu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}amelioration.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{shop_8c_a0d9358200e8cd579e2b941b66feaebf5}{showshop}} ()
+\begin{DoxyCompactList}\small\item\em Initialisation des images avec une texture~\newline
+positionnement des images~\newline
+check d\textquotesingle{}evènement avec les clics de la souris~\newline
+cas de if pour faire plusieurs actions(exemple\+: choisir les mini-\/jeux ou amélioration)~\newline
+. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+programme contenant la fonction qui génère le menu du shop 
+
+\begin{DoxyAuthor}{Auteur}
+lucas allan leo enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{shop_8c_a0d9358200e8cd579e2b941b66feaebf5}\label{shop_8c_a0d9358200e8cd579e2b941b66feaebf5}} 
+\index{shop.c@{shop.c}!showshop@{showshop}}
+\index{showshop@{showshop}!shop.c@{shop.c}}
+\doxysubsubsection{\texorpdfstring{showshop()}{showshop()}}
+{\footnotesize\ttfamily void showshop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialisation des images avec une texture~\newline
+positionnement des images~\newline
+check d\textquotesingle{}evènement avec les clics de la souris~\newline
+cas de if pour faire plusieurs actions(exemple\+: choisir les mini-\/jeux ou amélioration)~\newline
+. 
+
+fonction qui permet de créer le menu du shop avec soit les mini-\/jeux ou bien améliorer son équipement 
+\begin{DoxyParams}{Paramètres}
+{\em aucun} & parametre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la fenetre avec le menu et ces boutons 
+\end{DoxyReturn}

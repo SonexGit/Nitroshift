@@ -1,0 +1,72 @@
+\hypertarget{gagnant_8c}{}\doxysection{Référence du fichier gagnant.\+c}
+\label{gagnant_8c}\index{gagnant.c@{gagnant.c}}
+
+
+programme contenant la fonction si l\textquotesingle{}on gagne un combat  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+ttf.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sorts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}initialisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mesmodif.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shifumi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menujeu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}amelioration.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shop.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gagnant_8c_a8b33879ed815471c08c834cbda63fc14}{fingagnant}} ()
+\begin{DoxyCompactList}\small\item\em Initialisation des images avec une texture~\newline
+positionnement des images et de la musique~\newline
+annonce de fin combat avec comme choix un retour au menu principal~\newline
+. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+programme contenant la fonction si l\textquotesingle{}on gagne un combat 
+
+\begin{DoxyAuthor}{Auteur}
+lucas allan leo enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{gagnant_8c_a8b33879ed815471c08c834cbda63fc14}\label{gagnant_8c_a8b33879ed815471c08c834cbda63fc14}} 
+\index{gagnant.c@{gagnant.c}!fingagnant@{fingagnant}}
+\index{fingagnant@{fingagnant}!gagnant.c@{gagnant.c}}
+\doxysubsubsection{\texorpdfstring{fingagnant()}{fingagnant()}}
+{\footnotesize\ttfamily void fingagnant (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialisation des images avec une texture~\newline
+positionnement des images et de la musique~\newline
+annonce de fin combat avec comme choix un retour au menu principal~\newline
+. 
+
+fonction qui permet de créer la fenetre de fin de combat lors d\textquotesingle{}une victoire 
+\begin{DoxyParams}{Paramètres}
+{\em aucun} & parametre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la fenetre avec la musique, une image et un bouton retour 
+\end{DoxyReturn}
