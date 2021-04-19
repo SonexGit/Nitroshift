@@ -202,52 +202,73 @@ void affichage_infos_sort(entite * lanceur, sort_T s) {
 	int longueur = snprintf(NULL, 0, "%s", s.nom);
 	char * nom_sort_texte = malloc(sizeof(char) * longueur);
 	snprintf(nom_sort_texte, longueur + 1, "%s", s.nom);
-	SDL_Surface * surface_sort_texte = TTF_RenderText_Blended(font_titre, nom_sort_texte, color_white);
+	SDL_Surface * surface_sort_texte = TTF_RenderUTF8_Blended(font_titre, nom_sort_texte, color_white);
 	SDL_Texture * texture_sort_texte = SDL_CreateTextureFromSurface(ren, surface_sort_texte);
-
-	int temp_w, temp_h;
-	SDL_QueryTexture(texture_sort_texte, NULL, NULL, &temp_w, &temp_h);
-
-	SDL_Rect dstrect_sort_texte;
-	SDL_Point temp_souris = Coord2DToIso(souris);
-	dstrect_sort_texte.x = temp_souris.x - temp_w / 2;
-	dstrect_sort_texte.y = temp_souris.y - 80;
-	dstrect_sort_texte.h = temp_h;
-	dstrect_sort_texte.w = temp_w;
 
 	// Affichage de la description du sort
 	longueur = snprintf(NULL, 0, "%s", s.description);
 	char * desc_sort_texte = malloc(sizeof(char) * longueur);
 	snprintf(desc_sort_texte, longueur + 1, "%s", s.description);
-	SDL_Surface * surface_sort_desc_texte = TTF_RenderText_Blended_Wrapped(font, desc_sort_texte, color_white, 400);
+	SDL_Surface * surface_sort_desc_texte = TTF_RenderUTF8_Blended_Wrapped(font, desc_sort_texte, color_white, 400);
 	SDL_Texture * texture_sort_desc_texte = SDL_CreateTextureFromSurface(ren, surface_sort_desc_texte);
 
+	// Affichage de la portée du sort
+	longueur = snprintf(NULL, 0, "Dégâts : %i-%i • Portée : %i case(s) • Récupération : %i tour(s)", s.degatsMin, s.degatsMax, s.portee, s.relance);
+	char * infos_sort_texte = malloc(sizeof(char) * longueur);
+	snprintf(infos_sort_texte, longueur + 1, "Dégâts : %i-%i • Portée : %i case(s) • Récupération : %i tour(s)", s.degatsMin, s.degatsMax, s.portee, s.relance);
+	SDL_Surface * surface_infos_sort_texte = TTF_RenderUTF8_Blended(font_small, infos_sort_texte, color_white);
+	SDL_Texture * texture_infos_sort_texte = SDL_CreateTextureFromSurface(ren, surface_infos_sort_texte);
+
+	int temp_w, temp_h;
+	SDL_QueryTexture(texture_sort_texte, NULL, NULL, &temp_w, &temp_h);
 	int temp_w2, temp_h2;
 	SDL_QueryTexture(texture_sort_desc_texte, NULL, NULL, &temp_w2, &temp_h2);
+	int temp_w3, temp_h3;
+	SDL_QueryTexture(texture_infos_sort_texte, NULL, NULL, &temp_w3, &temp_h3);
+
+	SDL_Rect dstrect_sort_texte;
+	SDL_Point temp_souris = Coord2DToIso(souris);
+	dstrect_sort_texte.x = temp_souris.x - temp_w / 2;
+	dstrect_sort_texte.y = temp_souris.y - 20 - temp_h - temp_h2 - temp_h3;
+	dstrect_sort_texte.h = temp_h;
+	dstrect_sort_texte.w = temp_w;
 
 	SDL_Rect dstrect_sort_desc_texte;
 	dstrect_sort_desc_texte.x = temp_souris.x - temp_w / 2;
-	dstrect_sort_desc_texte.y = temp_souris.y - 60;
+	dstrect_sort_desc_texte.y = temp_souris.y - temp_h - temp_h2 - temp_h3 + 5;
 	dstrect_sort_desc_texte.h = temp_h2;
 	dstrect_sort_desc_texte.w = temp_w2;
 
+	SDL_Rect dstrect_sort_portee_texte;
+	dstrect_sort_portee_texte.x = temp_souris.x - temp_w / 2;
+	dstrect_sort_portee_texte.y = temp_souris.y - temp_h - temp_h2 - temp_h3 + 25;
+	dstrect_sort_portee_texte.h = temp_h3;
+	dstrect_sort_portee_texte.w = temp_w3;
+
 	// Fond des infos d'un sorts
 	SDL_Rect fond_sort_texte;
-	fond_sort_texte.x = dstrect_sort_texte.x - 10 ;
+	fond_sort_texte.x = dstrect_sort_texte.x - 10;
 	fond_sort_texte.y = dstrect_sort_texte.y - 10;
-	fond_sort_texte.h = temp_h + temp_h2 + 20;
-	if (temp_w > temp_w2) fond_sort_texte.w = temp_w + 20;
-	else fond_sort_texte.w = temp_w2 + 20;
+	fond_sort_texte.h = temp_h + temp_h2 + temp_h3 + 20 + 5;
+	if (temp_w > temp_w2 && temp_w > temp_w3) fond_sort_texte.w = temp_w + 20;
+	else if (temp_w2 > temp_w && temp_w2 > temp_w3) fond_sort_texte.w = temp_w2 + 20;
+	else fond_sort_texte.w = temp_w3 + 20;
 
 	SDL_SetRenderDrawColor(ren, 0, 0, 0, 235);
 	SDL_RenderFillRect(ren, &fond_sort_texte);
 	SDL_RenderCopy(ren, texture_sort_texte, NULL, &dstrect_sort_texte);
 	SDL_RenderCopy(ren, texture_sort_desc_texte, NULL, &dstrect_sort_desc_texte);
+	SDL_RenderCopy(ren, texture_infos_sort_texte, NULL, &dstrect_sort_portee_texte);
 
 	free(nom_sort_texte);
 	free(desc_sort_texte);
+	free(infos_sort_texte);
 	SDL_FreeSurface(surface_sort_texte);
 	SDL_DestroyTexture(texture_sort_texte);
+	SDL_FreeSurface(surface_sort_desc_texte);
+	SDL_DestroyTexture(texture_sort_desc_texte);
+	SDL_FreeSurface(surface_infos_sort_texte);
+	SDL_DestroyTexture(texture_infos_sort_texte);
 }
 
 void init_sort_surftext() {
@@ -277,8 +298,6 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		if (i == 0) i++;
 		int og_y = lanceur->positionY + i;
 		int og_x = lanceur->positionX;
-
-		printf("e.id = %i", plateau[og_y][og_x].e.id);
 
 		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");

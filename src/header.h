@@ -75,6 +75,7 @@ int affichageSort;
 
 // Déclaration des polices
 TTF_Font * font;
+TTF_Font * font_small;
 TTF_Font * font_titre;
 TTF_Font * font_barres;
 TTF_Font * font_barres2;
