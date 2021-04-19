@@ -3,7 +3,7 @@
 
 #include "header.h"
 
-#define MAX_SORTS 100
+#define MAX_SORTS 50
 
 int debutSorts;
 typedef struct sort_S {

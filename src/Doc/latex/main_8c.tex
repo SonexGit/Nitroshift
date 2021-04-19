@@ -1,0 +1,258 @@
+\hypertarget{main_8c}{}\doxysection{Référence du fichier main.\+c}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+Programme contenant le plateau et réunissant tous les autres.  
+
+
+{\ttfamily \#include \char`\"{}SDL2/\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SDL2/\+SDL\+\_\+ttf.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}header.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sorts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}initialisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mesmodif.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shifumi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menujeu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}amelioration.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}perdu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gagnant.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}niveau.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}zone.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Point \mbox{\hyperlink{main_8c_a269436c6614a27b3d683c5565b398135}{Coord2\+DTo\+Iso}} (SDL\+\_\+\+Point point)
+\begin{DoxyCompactList}\small\item\em Convertit les coordonnées cartésiennes d\textquotesingle{}un point en coordonnées isométrique. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Point \mbox{\hyperlink{main_8c_a68d3ded13c5da749da0244c92f683f8c}{Coord\+Iso\+To2D}} (SDL\+\_\+\+Point point)
+\begin{DoxyCompactList}\small\item\em Convertit les coordonnées isométrique d\textquotesingle{}un point en coordonnées cartésiennes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a12d880b0d624f4896174b79a874e6f15}\label{main_8c_a12d880b0d624f4896174b79a874e6f15}} 
+size\+\_\+t \mbox{\hyperlink{main_8c_a12d880b0d624f4896174b79a874e6f15}{handle\+\_\+keys}} ()
+\begin{DoxyCompactList}\small\item\em Contient toutes les manipulations avec les entrées utilisateur (clavier/mouvements de souris/clics/etc.) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_aab53fa32b6900734a58e0df527a19657}\label{main_8c_aab53fa32b6900734a58e0df527a19657}} 
+void {\bfseries init\+\_\+points\+\_\+2D} (SDL\+\_\+\+Point points\+\_\+2D\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_a5ff1dd091213fe4f9a9c7c623e514d85}\label{main_8c_a5ff1dd091213fe4f9a9c7c623e514d85}} 
+void {\bfseries init\+\_\+points} (SDL\+\_\+\+Point points\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_a02f784169a4dffbeb572c4c02f1316d5}\label{main_8c_a02f784169a4dffbeb572c4c02f1316d5}} 
+void {\bfseries init\+\_\+point\+\_\+centre} (SDL\+\_\+\+Point pc\mbox{[}$\,$\mbox{]}, SDL\+\_\+\+Point pts\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_afd79897b2abff58e87e14c975cc34a70}\label{main_8c_afd79897b2abff58e87e14c975cc34a70}} 
+void {\bfseries init\+\_\+point\+\_\+centre\+\_\+2D} (SDL\+\_\+\+Point points\+\_\+centre\mbox{[}$\,$\mbox{]}, SDL\+\_\+\+Point points\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_a8247aa017e0c91bdd3f0e7d8db7c1977}\label{main_8c_a8247aa017e0c91bdd3f0e7d8db7c1977}} 
+void {\bfseries file\+List\+Points} (SDL\+\_\+\+Point pts\mbox{[}$\,$\mbox{]}, SDL\+\_\+\+Point pc\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_a633ef40ff07fe6a8ee4cb5a8b4b405cb}\label{main_8c_a633ef40ff07fe6a8ee4cb5a8b4b405cb}} 
+void {\bfseries lien\+\_\+pc\+\_\+cases} (SDL\+\_\+\+Point pc\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_a690d56e0ad976e54b230cd1adf41dff5}\label{main_8c_a690d56e0ad976e54b230cd1adf41dff5}} 
+int {\bfseries trouver\+\_\+case\+\_\+pc} (SDL\+\_\+\+Point pc, \mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]}, int $\ast$x, int $\ast$y)
+\item 
+\mbox{\Hypertarget{main_8c_addc738dce5e1c7077f9fd7a1e3a9110d}\label{main_8c_addc738dce5e1c7077f9fd7a1e3a9110d}} 
+void \mbox{\hyperlink{main_8c_addc738dce5e1c7077f9fd7a1e3a9110d}{init\+\_\+tiles}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les origines et tailles de toutes les textures disponibles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a0d3bee571d6924d6c2943ea6f2110a89}\label{main_8c_a0d3bee571d6924d6c2943ea6f2110a89}} 
+void {\bfseries init\+\_\+texture\+\_\+cases} (int num\+\_\+carte, SDL\+\_\+\+Point pc\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_addae290943d25a04fc9b064bc2b23392}\label{main_8c_addae290943d25a04fc9b064bc2b23392}} 
+void \mbox{\hyperlink{main_8c_addae290943d25a04fc9b064bc2b23392}{free\+\_\+texture\+\_\+cases}} ()
+\begin{DoxyCompactList}\small\item\em Libère la mémoire alloué pour les textures de chaque cellule. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a6ab26b1531b2463262428cc2e14d293d}\label{main_8c_a6ab26b1531b2463262428cc2e14d293d}} 
+void {\bfseries init\+\_\+cases\+\_\+solide} (int num\+\_\+carte, \mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_ad6319c77545ce326bcc41f826ea64fe9}\label{main_8c_ad6319c77545ce326bcc41f826ea64fe9}} 
+void {\bfseries init\+\_\+cases\+\_\+profondeur} (\mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_a255d5094d23f3515bae9779b75914e1a}\label{main_8c_a255d5094d23f3515bae9779b75914e1a}} 
+void \mbox{\hyperlink{main_8c_a255d5094d23f3515bae9779b75914e1a}{init\+\_\+id\+\_\+entite\+\_\+plateau}} ()
+\begin{DoxyCompactList}\small\item\em Initialise à 0 tous les id des entités (qu\textquotesingle{}il y en ait une ou pas) dans chaque cellule du plateau. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a56457cafd1119b7f6138d4d04c3121a7}\label{main_8c_a56457cafd1119b7f6138d4d04c3121a7}} 
+void {\bfseries affichage\+\_\+entites} (\mbox{\hyperlink{structcell___s}{cell\+\_\+T}} plat\mbox{[}plateau\+\_\+y\mbox{]}\mbox{[}plateau\+\_\+x\mbox{]})
+\item 
+\mbox{\Hypertarget{main_8c_ab076f6068e11495cf995c124762064f8}\label{main_8c_ab076f6068e11495cf995c124762064f8}} 
+void \mbox{\hyperlink{main_8c_ab076f6068e11495cf995c124762064f8}{init\+\_\+polices}} ()
+\begin{DoxyCompactList}\small\item\em Initialise toutes les polices utilisées dans le programme. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a3fbaee7fcb4ca671d0cf0f9a0b96447b}\label{main_8c_a3fbaee7fcb4ca671d0cf0f9a0b96447b}} 
+void \mbox{\hyperlink{main_8c_a3fbaee7fcb4ca671d0cf0f9a0b96447b}{close\+\_\+polices}} ()
+\begin{DoxyCompactList}\small\item\em Libère toutes les polices utilisées dans le programme. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a7d7355eb76692755f9e796fee0288eba}{positionner\+Ennemi}} (int lev)
+\begin{DoxyCompactList}\small\item\em Positionne les entités ennemis sur le plateau selon le niveau choisi. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_abd74c0dc29a484f53eb910d16400591e}\label{main_8c_abd74c0dc29a484f53eb910d16400591e}} 
+void \mbox{\hyperlink{main_8c_abd74c0dc29a484f53eb910d16400591e}{sauvegarder\+Partie}} ()
+\begin{DoxyCompactList}\small\item\em Sauvegarde dans un fichier texte la progression du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_acebbbf80ece18030035ff757fe6566a4}\label{main_8c_acebbbf80ece18030035ff757fe6566a4}} 
+void \mbox{\hyperlink{main_8c_acebbbf80ece18030035ff757fe6566a4}{charger\+Sauvegarde}} ()
+\begin{DoxyCompactList}\small\item\em Charge la sauvegarde en lisant le fichier texte sauvegarde.\+txt. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a6b49ef0c86546c66484e49421c3b4b7f}{affichage\+Plateau}} ()
+\begin{DoxyCompactList}\small\item\em Réunit toutes les fonctions et variables nécessaires à la réalisation du plateau, et l\textquotesingle{}affiche. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Démarre le rendu de la SDL, charge une sauvegarde, affiche le menu du jeu puis le plateau et arrête le rendu lorsque le jeu est quitté \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a4f3da26347df03b6570470ffa227f83e}\label{main_8c_a4f3da26347df03b6570470ffa227f83e}} 
+int {\bfseries screen\+\_\+w}
+\item 
+\mbox{\Hypertarget{main_8c_ad5226a6884c9edce3ee08d9fd235ca2f}\label{main_8c_ad5226a6884c9edce3ee08d9fd235ca2f}} 
+int {\bfseries screen\+\_\+h}
+\item 
+\mbox{\Hypertarget{main_8c_a682955ca368e2a0f12c1fd90b24739d3}\label{main_8c_a682955ca368e2a0f12c1fd90b24739d3}} 
+const int {\bfseries grid\+\_\+cell\+\_\+size} = (900 / (plateau\+\_\+x+1))
+\item 
+\mbox{\Hypertarget{main_8c_a2f1b95a66620d969276e4dfc05adabb0}\label{main_8c_a2f1b95a66620d969276e4dfc05adabb0}} 
+SDL\+\_\+bool {\bfseries mouse\+\_\+active} = SDL\+\_\+\+FALSE
+\item 
+\mbox{\Hypertarget{main_8c_a1329f5aa48a64e495218d67efe34da1d}\label{main_8c_a1329f5aa48a64e495218d67efe34da1d}} 
+SDL\+\_\+bool {\bfseries mouse\+\_\+hover} = SDL\+\_\+\+FALSE
+\item 
+\mbox{\Hypertarget{main_8c_a1bb0ba31b20680592953757e0faafae1}\label{main_8c_a1bb0ba31b20680592953757e0faafae1}} 
+SDL\+\_\+bool {\bfseries mouse\+\_\+toofar} = SDL\+\_\+\+FALSE
+\item 
+\mbox{\Hypertarget{main_8c_aeb676ac01eea051b8cfa99cd8ad55451}\label{main_8c_aeb676ac01eea051b8cfa99cd8ad55451}} 
+SDL\+\_\+bool {\bfseries mouse\+\_\+solide} = SDL\+\_\+\+FALSE
+\item 
+\mbox{\Hypertarget{main_8c_a3210bcbb18b57bc11874fcb499715933}\label{main_8c_a3210bcbb18b57bc11874fcb499715933}} 
+SDL\+\_\+bool {\bfseries mouse\+\_\+cast\+\_\+able} = SDL\+\_\+\+FALSE
+\item 
+\mbox{\Hypertarget{main_8c_ad9079337a92d89f488fca05603e13eb2}\label{main_8c_ad9079337a92d89f488fca05603e13eb2}} 
+SDL\+\_\+bool {\bfseries resizing} = SDL\+\_\+\+FALSE
+\item 
+\mbox{\Hypertarget{main_8c_a9e8571fb42f451692c422c2a3d133baa}\label{main_8c_a9e8571fb42f451692c422c2a3d133baa}} 
+int {\bfseries total\+\_\+points} = ((plateau\+\_\+x + 1) $\ast$ plateau\+\_\+y) + (plateau\+\_\+y + 1)
+\item 
+\mbox{\Hypertarget{main_8c_ae632aff75e6b479fe5d330785559507f}\label{main_8c_ae632aff75e6b479fe5d330785559507f}} 
+SDL\+\_\+\+Point {\bfseries points} \mbox{[}plateau\+\_\+x $\ast$plateau\+\_\+y+plateau\+\_\+y\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_a5ef3154a78c9aa3b8ed05113678869e3}\label{main_8c_a5ef3154a78c9aa3b8ed05113678869e3}} 
+SDL\+\_\+\+Point {\bfseries points\+\_\+centre} \mbox{[}plateau\+\_\+x $\ast$plateau\+\_\+y\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_a15b47f8dbd1d78935a8e528f40f25126}\label{main_8c_a15b47f8dbd1d78935a8e528f40f25126}} 
+SDL\+\_\+\+Point {\bfseries pc\+\_\+2D} \mbox{[}plateau\+\_\+x $\ast$plateau\+\_\+y\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_a7f870689077c25eefb92e5f6049060a0}\label{main_8c_a7f870689077c25eefb92e5f6049060a0}} 
+SDL\+\_\+\+Rect {\bfseries grid\+\_\+cursor} = \{(plateau\+\_\+x -\/ 1) / 2 $\ast$ grid\+\_\+cell\+\_\+size, (plateau\+\_\+y -\/ 1) / 2 $\ast$ grid\+\_\+cell\+\_\+size, grid\+\_\+cell\+\_\+size, grid\+\_\+cell\+\_\+size\}
+\item 
+\mbox{\Hypertarget{main_8c_a91ea01e15698a47bd9145f861cb5bed5}\label{main_8c_a91ea01e15698a47bd9145f861cb5bed5}} 
+SDL\+\_\+\+Rect {\bfseries grid\+\_\+cursor\+\_\+ghost} = \{0, 0, grid\+\_\+cell\+\_\+size\+\_\+iso\+\_\+x, grid\+\_\+cell\+\_\+size\+\_\+iso\+\_\+y\}
+\item 
+\mbox{\Hypertarget{main_8c_ad3eb4c69f12f844775abf02c2187f19f}\label{main_8c_ad3eb4c69f12f844775abf02c2187f19f}} 
+int {\bfseries total\+\_\+wheel\+\_\+down} = 0
+\item 
+\mbox{\Hypertarget{main_8c_a8391716fd8676bc0fc9eee5e89bd1e82}\label{main_8c_a8391716fd8676bc0fc9eee5e89bd1e82}} 
+int {\bfseries total\+\_\+wheel\+\_\+up} = 0
+\item 
+\mbox{\Hypertarget{main_8c_a5982c0cd10e968aa97bab335cfcdfde4}\label{main_8c_a5982c0cd10e968aa97bab335cfcdfde4}} 
+SDL\+\_\+\+Surface $\ast$ {\bfseries surface\+\_\+test}
+\item 
+\mbox{\Hypertarget{main_8c_a1153e082a432718829f7654521bfbbd6}\label{main_8c_a1153e082a432718829f7654521bfbbd6}} 
+SDL\+\_\+\+Texture $\ast$ {\bfseries textures\+\_\+plateau}
+\item 
+\mbox{\Hypertarget{main_8c_a48069f36c641a33b6bdc6bde74113626}\label{main_8c_a48069f36c641a33b6bdc6bde74113626}} 
+SDL\+\_\+\+Rect {\bfseries dest\+\_\+plateau} \mbox{[}plateau\+\_\+x $\ast$plateau\+\_\+y\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_afb88454b41273e7fd0bd9e5f5b95e8d3}\label{main_8c_afb88454b41273e7fd0bd9e5f5b95e8d3}} 
+SDL\+\_\+\+Rect {\bfseries tiles} \mbox{[}tiles\+\_\+row $\ast$tiles\+\_\+col\mbox{]}
+\item 
+\mbox{\Hypertarget{main_8c_abeb8baadb5d54f3e7a43fff7051f519f}\label{main_8c_abeb8baadb5d54f3e7a43fff7051f519f}} 
+int {\bfseries save}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Programme contenant le plateau et réunissant tous les autres. 
+
+\begin{DoxyAuthor}{Auteur}
+Lucas Allan Léo Enzo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 avril 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{main_8c_a6b49ef0c86546c66484e49421c3b4b7f}\label{main_8c_a6b49ef0c86546c66484e49421c3b4b7f}} 
+\index{main.c@{main.c}!affichagePlateau@{affichagePlateau}}
+\index{affichagePlateau@{affichagePlateau}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{affichagePlateau()}{affichagePlateau()}}
+{\footnotesize\ttfamily void affichage\+Plateau (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Réunit toutes les fonctions et variables nécessaires à la réalisation du plateau, et l\textquotesingle{}affiche. 
+
+\begin{DoxyReturn}{Renvoie}
+Renvoie 0 lorsque la fonction est terminée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_a269436c6614a27b3d683c5565b398135}\label{main_8c_a269436c6614a27b3d683c5565b398135}} 
+\index{main.c@{main.c}!Coord2DToIso@{Coord2DToIso}}
+\index{Coord2DToIso@{Coord2DToIso}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Coord2DToIso()}{Coord2DToIso()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Point Coord2\+DTo\+Iso (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Point}]{point }\end{DoxyParamCaption})}
+
+
+
+Convertit les coordonnées cartésiennes d\textquotesingle{}un point en coordonnées isométrique. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em point} & de type SDL\+\_\+\+Point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a68d3ded13c5da749da0244c92f683f8c}\label{main_8c_a68d3ded13c5da749da0244c92f683f8c}} 
+\index{main.c@{main.c}!CoordIsoTo2D@{CoordIsoTo2D}}
+\index{CoordIsoTo2D@{CoordIsoTo2D}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{CoordIsoTo2D()}{CoordIsoTo2D()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Point Coord\+Iso\+To2D (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Point}]{point }\end{DoxyParamCaption})}
+
+
+
+Convertit les coordonnées isométrique d\textquotesingle{}un point en coordonnées cartésiennes. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em point} & de type SDL\+\_\+\+Point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Démarre le rendu de la SDL, charge une sauvegarde, affiche le menu du jeu puis le plateau et arrête le rendu lorsque le jeu est quitté 
+
+\begin{DoxyReturn}{Renvoie}
+Renvoie 0 lorsque la fonction est terminée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_a7d7355eb76692755f9e796fee0288eba}\label{main_8c_a7d7355eb76692755f9e796fee0288eba}} 
+\index{main.c@{main.c}!positionnerEnnemi@{positionnerEnnemi}}
+\index{positionnerEnnemi@{positionnerEnnemi}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{positionnerEnnemi()}{positionnerEnnemi()}}
+{\footnotesize\ttfamily void positionner\+Ennemi (\begin{DoxyParamCaption}\item[{int}]{lev }\end{DoxyParamCaption})}
+
+
+
+Positionne les entités ennemis sur le plateau selon le niveau choisi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lev} & de type int \\
+\hline
+\end{DoxyParams}

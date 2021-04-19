@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['saveok_45',['saveok',['../saveok_8c.html#ae5053b853819986cd03053adec2cdf3f',1,'saveok.c']]],
-  ['showjeu_46',['showjeu',['../mesmodif_8c.html#ab57a00a0c7c39ec873a6e0084d9976f9',1,'mesmodif.c']]],
-  ['showshop_47',['showshop',['../shop_8c.html#a0d9358200e8cd579e2b941b66feaebf5',1,'shop.c']]]
+  ['init_5fid_5fentite_5fplateau_64',['init_id_entite_plateau',['../main_8c.html#a255d5094d23f3515bae9779b75914e1a',1,'main.c']]],
+  ['init_5fpolices_65',['init_polices',['../main_8c.html#ab076f6068e11495cf995c124762064f8',1,'main.c']]],
+  ['init_5ftiles_66',['init_tiles',['../main_8c.html#addc738dce5e1c7077f9fd7a1e3a9110d',1,'main.c']]]
 ];
