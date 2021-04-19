@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nitroshift: Référence du fichier main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Nitroshift
+   </div>
+   <div id="projectbrief">Projet Licence 2 Informatique | 2020 - 2021</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier main.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Programme contenant le plateau et réunissant tous les autres.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;SDL2/SDL.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_image.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_mixer.h&quot;</code><br />
+<code>#include &quot;SDL2/SDL_ttf.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;header.h&quot;</code><br />
+<code>#include &quot;render.h&quot;</code><br />
+<code>#include &quot;entite.h&quot;</code><br />
+<code>#include &quot;sorts.h&quot;</code><br />
+<code>#include &quot;initialisation.h&quot;</code><br />
+<code>#include &quot;combat.h&quot;</code><br />
+<code>#include &quot;mesmodif.h&quot;</code><br />
+<code>#include &quot;pile.h&quot;</code><br />
+<code>#include &quot;shifumi.h&quot;</code><br />
+<code>#include &quot;menujeu.h&quot;</code><br />
+<code>#include &quot;amelioration.h&quot;</code><br />
+<code>#include &quot;shop.h&quot;</code><br />
+<code>#include &quot;perdu.h&quot;</code><br />
+<code>#include &quot;gagnant.h&quot;</code><br />
+<code>#include &quot;niveau.h&quot;</code><br />
+<code>#include &quot;zone.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a269436c6614a27b3d683c5565b398135"><td class="memItemLeft" align="right" valign="top">SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a269436c6614a27b3d683c5565b398135">Coord2DToIso</a> (SDL_Point point)</td></tr>
+<tr class="memdesc:a269436c6614a27b3d683c5565b398135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit les coordonnées cartésiennes d'un point en coordonnées isométrique.  <a href="main_8c.html#a269436c6614a27b3d683c5565b398135">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a269436c6614a27b3d683c5565b398135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d3ded13c5da749da0244c92f683f8c"><td class="memItemLeft" align="right" valign="top">SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a68d3ded13c5da749da0244c92f683f8c">CoordIsoTo2D</a> (SDL_Point point)</td></tr>
+<tr class="memdesc:a68d3ded13c5da749da0244c92f683f8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit les coordonnées isométrique d'un point en coordonnées cartésiennes.  <a href="main_8c.html#a68d3ded13c5da749da0244c92f683f8c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a68d3ded13c5da749da0244c92f683f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12d880b0d624f4896174b79a874e6f15"><td class="memItemLeft" align="right" valign="top"><a id="a12d880b0d624f4896174b79a874e6f15"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a12d880b0d624f4896174b79a874e6f15">handle_keys</a> ()</td></tr>
+<tr class="memdesc:a12d880b0d624f4896174b79a874e6f15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contient toutes les manipulations avec les entrées utilisateur (clavier/mouvements de souris/clics/etc.) <br /></td></tr>
+<tr class="separator:a12d880b0d624f4896174b79a874e6f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab53fa32b6900734a58e0df527a19657"><td class="memItemLeft" align="right" valign="top"><a id="aab53fa32b6900734a58e0df527a19657"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_points_2D</b> (SDL_Point points_2D[])</td></tr>
+<tr class="separator:aab53fa32b6900734a58e0df527a19657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff1dd091213fe4f9a9c7c623e514d85"><td class="memItemLeft" align="right" valign="top"><a id="a5ff1dd091213fe4f9a9c7c623e514d85"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_points</b> (SDL_Point points[])</td></tr>
+<tr class="separator:a5ff1dd091213fe4f9a9c7c623e514d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f784169a4dffbeb572c4c02f1316d5"><td class="memItemLeft" align="right" valign="top"><a id="a02f784169a4dffbeb572c4c02f1316d5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_point_centre</b> (SDL_Point pc[], SDL_Point pts[])</td></tr>
+<tr class="separator:a02f784169a4dffbeb572c4c02f1316d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd79897b2abff58e87e14c975cc34a70"><td class="memItemLeft" align="right" valign="top"><a id="afd79897b2abff58e87e14c975cc34a70"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_point_centre_2D</b> (SDL_Point points_centre[], SDL_Point points[])</td></tr>
+<tr class="separator:afd79897b2abff58e87e14c975cc34a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8247aa017e0c91bdd3f0e7d8db7c1977"><td class="memItemLeft" align="right" valign="top"><a id="a8247aa017e0c91bdd3f0e7d8db7c1977"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fileListPoints</b> (SDL_Point pts[], SDL_Point pc[])</td></tr>
+<tr class="separator:a8247aa017e0c91bdd3f0e7d8db7c1977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a633ef40ff07fe6a8ee4cb5a8b4b405cb"><td class="memItemLeft" align="right" valign="top"><a id="a633ef40ff07fe6a8ee4cb5a8b4b405cb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>lien_pc_cases</b> (SDL_Point pc[], <a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x])</td></tr>
+<tr class="separator:a633ef40ff07fe6a8ee4cb5a8b4b405cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690d56e0ad976e54b230cd1adf41dff5"><td class="memItemLeft" align="right" valign="top"><a id="a690d56e0ad976e54b230cd1adf41dff5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>trouver_case_pc</b> (SDL_Point pc, <a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x], int *x, int *y)</td></tr>
+<tr class="separator:a690d56e0ad976e54b230cd1adf41dff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addc738dce5e1c7077f9fd7a1e3a9110d"><td class="memItemLeft" align="right" valign="top"><a id="addc738dce5e1c7077f9fd7a1e3a9110d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#addc738dce5e1c7077f9fd7a1e3a9110d">init_tiles</a> ()</td></tr>
+<tr class="memdesc:addc738dce5e1c7077f9fd7a1e3a9110d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les origines et tailles de toutes les textures disponibles. <br /></td></tr>
+<tr class="separator:addc738dce5e1c7077f9fd7a1e3a9110d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3bee571d6924d6c2943ea6f2110a89"><td class="memItemLeft" align="right" valign="top"><a id="a0d3bee571d6924d6c2943ea6f2110a89"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_texture_cases</b> (int num_carte, SDL_Point pc[])</td></tr>
+<tr class="separator:a0d3bee571d6924d6c2943ea6f2110a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addae290943d25a04fc9b064bc2b23392"><td class="memItemLeft" align="right" valign="top"><a id="addae290943d25a04fc9b064bc2b23392"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#addae290943d25a04fc9b064bc2b23392">free_texture_cases</a> ()</td></tr>
+<tr class="memdesc:addae290943d25a04fc9b064bc2b23392"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère la mémoire alloué pour les textures de chaque cellule. <br /></td></tr>
+<tr class="separator:addae290943d25a04fc9b064bc2b23392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab26b1531b2463262428cc2e14d293d"><td class="memItemLeft" align="right" valign="top"><a id="a6ab26b1531b2463262428cc2e14d293d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_cases_solide</b> (int num_carte, <a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x])</td></tr>
+<tr class="separator:a6ab26b1531b2463262428cc2e14d293d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6319c77545ce326bcc41f826ea64fe9"><td class="memItemLeft" align="right" valign="top"><a id="ad6319c77545ce326bcc41f826ea64fe9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_cases_profondeur</b> (<a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x])</td></tr>
+<tr class="separator:ad6319c77545ce326bcc41f826ea64fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255d5094d23f3515bae9779b75914e1a"><td class="memItemLeft" align="right" valign="top"><a id="a255d5094d23f3515bae9779b75914e1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a255d5094d23f3515bae9779b75914e1a">init_id_entite_plateau</a> ()</td></tr>
+<tr class="memdesc:a255d5094d23f3515bae9779b75914e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise à 0 tous les id des entités (qu'il y en ait une ou pas) dans chaque cellule du plateau. <br /></td></tr>
+<tr class="separator:a255d5094d23f3515bae9779b75914e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56457cafd1119b7f6138d4d04c3121a7"><td class="memItemLeft" align="right" valign="top"><a id="a56457cafd1119b7f6138d4d04c3121a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_entites</b> (<a class="el" href="structcell___s.html">cell_T</a> plat[plateau_y][plateau_x])</td></tr>
+<tr class="separator:a56457cafd1119b7f6138d4d04c3121a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab076f6068e11495cf995c124762064f8"><td class="memItemLeft" align="right" valign="top"><a id="ab076f6068e11495cf995c124762064f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ab076f6068e11495cf995c124762064f8">init_polices</a> ()</td></tr>
+<tr class="memdesc:ab076f6068e11495cf995c124762064f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise toutes les polices utilisées dans le programme. <br /></td></tr>
+<tr class="separator:ab076f6068e11495cf995c124762064f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fbaee7fcb4ca671d0cf0f9a0b96447b"><td class="memItemLeft" align="right" valign="top"><a id="a3fbaee7fcb4ca671d0cf0f9a0b96447b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3fbaee7fcb4ca671d0cf0f9a0b96447b">close_polices</a> ()</td></tr>
+<tr class="memdesc:a3fbaee7fcb4ca671d0cf0f9a0b96447b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère toutes les polices utilisées dans le programme. <br /></td></tr>
+<tr class="separator:a3fbaee7fcb4ca671d0cf0f9a0b96447b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d7355eb76692755f9e796fee0288eba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a7d7355eb76692755f9e796fee0288eba">positionnerEnnemi</a> (int lev)</td></tr>
+<tr class="memdesc:a7d7355eb76692755f9e796fee0288eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positionne les entités ennemis sur le plateau selon le niveau choisi.  <a href="main_8c.html#a7d7355eb76692755f9e796fee0288eba">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7d7355eb76692755f9e796fee0288eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd74c0dc29a484f53eb910d16400591e"><td class="memItemLeft" align="right" valign="top"><a id="abd74c0dc29a484f53eb910d16400591e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#abd74c0dc29a484f53eb910d16400591e">sauvegarderPartie</a> ()</td></tr>
+<tr class="memdesc:abd74c0dc29a484f53eb910d16400591e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde dans un fichier texte la progression du joueur. <br /></td></tr>
+<tr class="separator:abd74c0dc29a484f53eb910d16400591e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acebbbf80ece18030035ff757fe6566a4"><td class="memItemLeft" align="right" valign="top"><a id="acebbbf80ece18030035ff757fe6566a4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#acebbbf80ece18030035ff757fe6566a4">chargerSauvegarde</a> ()</td></tr>
+<tr class="memdesc:acebbbf80ece18030035ff757fe6566a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge la sauvegarde en lisant le fichier texte sauvegarde.txt. <br /></td></tr>
+<tr class="separator:acebbbf80ece18030035ff757fe6566a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b49ef0c86546c66484e49421c3b4b7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a6b49ef0c86546c66484e49421c3b4b7f">affichagePlateau</a> ()</td></tr>
+<tr class="memdesc:a6b49ef0c86546c66484e49421c3b4b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réunit toutes les fonctions et variables nécessaires à la réalisation du plateau, et l'affiche.  <a href="main_8c.html#a6b49ef0c86546c66484e49421c3b4b7f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6b49ef0c86546c66484e49421c3b4b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre le rendu de la SDL, charge une sauvegarde, affiche le menu du jeu puis le plateau et arrête le rendu lorsque le jeu est quitté  <a href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4f3da26347df03b6570470ffa227f83e"><td class="memItemLeft" align="right" valign="top"><a id="a4f3da26347df03b6570470ffa227f83e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>screen_w</b></td></tr>
+<tr class="separator:a4f3da26347df03b6570470ffa227f83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5226a6884c9edce3ee08d9fd235ca2f"><td class="memItemLeft" align="right" valign="top"><a id="ad5226a6884c9edce3ee08d9fd235ca2f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>screen_h</b></td></tr>
+<tr class="separator:ad5226a6884c9edce3ee08d9fd235ca2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a682955ca368e2a0f12c1fd90b24739d3"><td class="memItemLeft" align="right" valign="top"><a id="a682955ca368e2a0f12c1fd90b24739d3"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>grid_cell_size</b> = (900 / (plateau_x+1))</td></tr>
+<tr class="separator:a682955ca368e2a0f12c1fd90b24739d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1b95a66620d969276e4dfc05adabb0"><td class="memItemLeft" align="right" valign="top"><a id="a2f1b95a66620d969276e4dfc05adabb0"></a>
+SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_active</b> = SDL_FALSE</td></tr>
+<tr class="separator:a2f1b95a66620d969276e4dfc05adabb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1329f5aa48a64e495218d67efe34da1d"><td class="memItemLeft" align="right" valign="top"><a id="a1329f5aa48a64e495218d67efe34da1d"></a>
+SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_hover</b> = SDL_FALSE</td></tr>
+<tr class="separator:a1329f5aa48a64e495218d67efe34da1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb0ba31b20680592953757e0faafae1"><td class="memItemLeft" align="right" valign="top"><a id="a1bb0ba31b20680592953757e0faafae1"></a>
+SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_toofar</b> = SDL_FALSE</td></tr>
+<tr class="separator:a1bb0ba31b20680592953757e0faafae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb676ac01eea051b8cfa99cd8ad55451"><td class="memItemLeft" align="right" valign="top"><a id="aeb676ac01eea051b8cfa99cd8ad55451"></a>
+SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_solide</b> = SDL_FALSE</td></tr>
+<tr class="separator:aeb676ac01eea051b8cfa99cd8ad55451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3210bcbb18b57bc11874fcb499715933"><td class="memItemLeft" align="right" valign="top"><a id="a3210bcbb18b57bc11874fcb499715933"></a>
+SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_cast_able</b> = SDL_FALSE</td></tr>
+<tr class="separator:a3210bcbb18b57bc11874fcb499715933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9079337a92d89f488fca05603e13eb2"><td class="memItemLeft" align="right" valign="top"><a id="ad9079337a92d89f488fca05603e13eb2"></a>
+SDL_bool&#160;</td><td class="memItemRight" valign="bottom"><b>resizing</b> = SDL_FALSE</td></tr>
+<tr class="separator:ad9079337a92d89f488fca05603e13eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8571fb42f451692c422c2a3d133baa"><td class="memItemLeft" align="right" valign="top"><a id="a9e8571fb42f451692c422c2a3d133baa"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>total_points</b> = ((plateau_x + 1) * plateau_y) + (plateau_y + 1)</td></tr>
+<tr class="separator:a9e8571fb42f451692c422c2a3d133baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae632aff75e6b479fe5d330785559507f"><td class="memItemLeft" align="right" valign="top"><a id="ae632aff75e6b479fe5d330785559507f"></a>
+SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><b>points</b> [plateau_x *plateau_y+plateau_y]</td></tr>
+<tr class="separator:ae632aff75e6b479fe5d330785559507f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef3154a78c9aa3b8ed05113678869e3"><td class="memItemLeft" align="right" valign="top"><a id="a5ef3154a78c9aa3b8ed05113678869e3"></a>
+SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><b>points_centre</b> [plateau_x *plateau_y]</td></tr>
+<tr class="separator:a5ef3154a78c9aa3b8ed05113678869e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b47f8dbd1d78935a8e528f40f25126"><td class="memItemLeft" align="right" valign="top"><a id="a15b47f8dbd1d78935a8e528f40f25126"></a>
+SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><b>pc_2D</b> [plateau_x *plateau_y]</td></tr>
+<tr class="separator:a15b47f8dbd1d78935a8e528f40f25126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f870689077c25eefb92e5f6049060a0"><td class="memItemLeft" align="right" valign="top"><a id="a7f870689077c25eefb92e5f6049060a0"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>grid_cursor</b> = {(plateau_x - 1) / 2 * grid_cell_size, (plateau_y - 1) / 2 * grid_cell_size, grid_cell_size, grid_cell_size}</td></tr>
+<tr class="separator:a7f870689077c25eefb92e5f6049060a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ea01e15698a47bd9145f861cb5bed5"><td class="memItemLeft" align="right" valign="top"><a id="a91ea01e15698a47bd9145f861cb5bed5"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>grid_cursor_ghost</b> = {0, 0, grid_cell_size_iso_x, grid_cell_size_iso_y}</td></tr>
+<tr class="separator:a91ea01e15698a47bd9145f861cb5bed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3eb4c69f12f844775abf02c2187f19f"><td class="memItemLeft" align="right" valign="top"><a id="ad3eb4c69f12f844775abf02c2187f19f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>total_wheel_down</b> = 0</td></tr>
+<tr class="separator:ad3eb4c69f12f844775abf02c2187f19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8391716fd8676bc0fc9eee5e89bd1e82"><td class="memItemLeft" align="right" valign="top"><a id="a8391716fd8676bc0fc9eee5e89bd1e82"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>total_wheel_up</b> = 0</td></tr>
+<tr class="separator:a8391716fd8676bc0fc9eee5e89bd1e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5982c0cd10e968aa97bab335cfcdfde4"><td class="memItemLeft" align="right" valign="top"><a id="a5982c0cd10e968aa97bab335cfcdfde4"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>surface_test</b></td></tr>
+<tr class="separator:a5982c0cd10e968aa97bab335cfcdfde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1153e082a432718829f7654521bfbbd6"><td class="memItemLeft" align="right" valign="top"><a id="a1153e082a432718829f7654521bfbbd6"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>textures_plateau</b></td></tr>
+<tr class="separator:a1153e082a432718829f7654521bfbbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48069f36c641a33b6bdc6bde74113626"><td class="memItemLeft" align="right" valign="top"><a id="a48069f36c641a33b6bdc6bde74113626"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>dest_plateau</b> [plateau_x *plateau_y]</td></tr>
+<tr class="separator:a48069f36c641a33b6bdc6bde74113626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb88454b41273e7fd0bd9e5f5b95e8d3"><td class="memItemLeft" align="right" valign="top"><a id="afb88454b41273e7fd0bd9e5f5b95e8d3"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>tiles</b> [tiles_row *tiles_col]</td></tr>
+<tr class="separator:afb88454b41273e7fd0bd9e5f5b95e8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeb8baadb5d54f3e7a43fff7051f519f"><td class="memItemLeft" align="right" valign="top"><a id="abeb8baadb5d54f3e7a43fff7051f519f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>save</b></td></tr>
+<tr class="separator:abeb8baadb5d54f3e7a43fff7051f519f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Programme contenant le plateau et réunissant tous les autres. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Lucas Allan Léo Enzo </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>19 avril 2021 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a6b49ef0c86546c66484e49421c3b4b7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b49ef0c86546c66484e49421c3b4b7f">&#9670;&nbsp;</a></span>affichagePlateau()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichagePlateau </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réunit toutes les fonctions et variables nécessaires à la réalisation du plateau, et l'affiche. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Renvoie 0 lorsque la fonction est terminée </dd></dl>
+
+</div>
+</div>
+<a id="a269436c6614a27b3d683c5565b398135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269436c6614a27b3d683c5565b398135">&#9670;&nbsp;</a></span>Coord2DToIso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Point Coord2DToIso </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Point&#160;</td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convertit les coordonnées cartésiennes d'un point en coordonnées isométrique. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>de type SDL_Point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a68d3ded13c5da749da0244c92f683f8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d3ded13c5da749da0244c92f683f8c">&#9670;&nbsp;</a></span>CoordIsoTo2D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Point CoordIsoTo2D </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Point&#160;</td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convertit les coordonnées isométrique d'un point en coordonnées cartésiennes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>de type SDL_Point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Démarre le rendu de la SDL, charge une sauvegarde, affiche le menu du jeu puis le plateau et arrête le rendu lorsque le jeu est quitté </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Renvoie 0 lorsque la fonction est terminée </dd></dl>
+
+</div>
+</div>
+<a id="a7d7355eb76692755f9e796fee0288eba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d7355eb76692755f9e796fee0288eba">&#9670;&nbsp;</a></span>positionnerEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void positionnerEnnemi </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Positionne les entités ennemis sur le plateau selon le niveau choisi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lev</td><td>de type int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

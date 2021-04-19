@@ -25,6 +25,14 @@
 #include "niveau.h"
 #include "zone.h"
 
+ /**
+   *\file main.c
+  * \author Lucas Allan Léo Enzo
+  * \version 1.0
+  * \brief Programme contenant le plateau et réunissant tous les autres
+  * \date 19 avril 2021
+*/
+
 int screen_w, screen_h;
 
 const int grid_cell_size = (900 / (plateau_x+1));
@@ -65,6 +73,11 @@ int save;
 //
 // *********************************
 
+/**
+  *\fn SDL_Point Coord2DToIso(SDL_Point)
+  *\brief Convertit les coordonnées cartésiennes d'un point en coordonnées isométrique
+  *\param point de type SDL_Point
+*/
 SDL_Point Coord2DToIso(SDL_Point point) {
 	int temp_x = point.x - point.y;
 	int temp_y = (point.x + point.y) * 0.5;
@@ -75,6 +88,11 @@ SDL_Point Coord2DToIso(SDL_Point point) {
 	return point;
 }
 
+/**
+  *\fn SDL_Point CoordIsoTo2D(SDL_Point)
+  *\brief Convertit les coordonnées isométrique d'un point en coordonnées cartésiennes
+  *\param point de type SDL_Point
+*/
 SDL_Point CoordIsoTo2D(SDL_Point point) {
 	int temp_x = ceil(point.x - (SCREEN_ORIGINAL_WIDTH / 2));
 	int temp_y = ceil(point.y - 60);
@@ -85,6 +103,10 @@ SDL_Point CoordIsoTo2D(SDL_Point point) {
 	return point;
 }
 
+/**
+  *\fn size_t handle_keys(void)
+  *\brief Contient toutes les manipulations avec les entrées utilisateur (clavier/mouvements de souris/clics/etc.)
+*/
 size_t handle_keys() {
 
 	SDL_Event event;
@@ -246,6 +268,11 @@ size_t handle_keys() {
 	return 0;
 }
 
+/**
+  *\fn void init_points_2D(SDL_Point)
+  *\brief Initiliase sous forme de points les coins de chaque cellule du plateau 2D (plateau "plat")
+  *\param points_2D[] de type SDL_Point
+*/
 void init_points_2D(SDL_Point points_2D[]) {
 	int h = 0;
 	int i = 0;
@@ -264,6 +291,11 @@ void init_points_2D(SDL_Point points_2D[]) {
 	}
 }
 
+/**
+  *\fn void init_points(SDL_Point)
+  *\brief Initiliase sous forme de points les coins de chaque cellule du plateau isométrique
+  *\param points[] de type SDL_Point
+*/
 void init_points(SDL_Point points[]) {
 
 	int h = 0;
@@ -316,6 +348,11 @@ void init_points(SDL_Point points[]) {
 
 }
 
+/**
+  *\fn void init_point_centre(SDL_Point, SDL_Point)
+  *\brief Initiliase sous forme de points le centre de chaque cellule du plateau isométrique
+  *\param pc[] de type SDL_Point, pts[] de type SDL_Point
+*/
 void init_point_centre(SDL_Point pc[], SDL_Point pts[]) {
 	int prev, check;
 	int actuel = (plateau_x + 2);
@@ -339,6 +376,11 @@ void init_point_centre(SDL_Point pc[], SDL_Point pts[]) {
 	}
 }
 
+/**
+  *\fn void init_point_centre_2D(SDL_Point, SDL_Point)
+  *\brief Initiliase sous forme de points le centre de chaque cellule du plateau 2D (plateau "plat")
+  *\param points_centre[] de type SDL_Point, points[] de type SDL_Point
+*/
 void init_point_centre_2D(SDL_Point points_centre[], SDL_Point points[]) {
 	int prev, check;
 	int actuel = (plateau_x + 2);
@@ -362,9 +404,14 @@ void init_point_centre_2D(SDL_Point points_centre[], SDL_Point points[]) {
 	}
 }
 
+/**
+  *\fn void fileListPoints(SDL_Point, SDL_Point)
+  *\brief Crée un fichier texte qui liste tous les points isométriques et points_centre (points au centre de chaque cellule)
+  *\param pts[] de type SDL_Point, pc[] de type SDL_Point
+*/
 void fileListPoints(SDL_Point pts[], SDL_Point pc[]) {
 	FILE * fichier;
-	fichier = fopen("../points.txt", "w");
+	fichier = fopen("tests/points.txt", "w");
 
 	for (int i = 0; i < (plateau_x + 1)*plateau_y; i++)
 	{
@@ -378,6 +425,12 @@ void fileListPoints(SDL_Point pts[], SDL_Point pc[]) {
 	fclose(fichier);
 }
 
+
+/**
+  *\fn void lien_pc_cases(SDL_Point, cell_T)
+  *\brief Complète la variable pc (points_centre) de chaque cellule de la matrice du plateau isométrique grâce au tableau de points_centre
+  *\param pc[] de type SDL_Point, plat[plateau_y][plateau_x] de type cell_T
+*/
 void lien_pc_cases(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 	int h = 0;
 	int i = 0;
@@ -394,6 +447,12 @@ void lien_pc_cases(SDL_Point pc[], cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+/**
+  *\fn int trouver_case_pc(SDL_Point, cell_T, int, int)
+  *\brief Affecte aux paramètres x et y les coordonnées de la cellule isométrique dans laquelle se trouve le pc (point_centre)
+  *\param pc de type SDL_Point, plat[plateau_y][plateau_x] de type cell_T, x de type int *, y de type int * 
+  *\return Renvoie 1 si trouvée avec succès, 0 sinon
+*/
 int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int* y) {
 	int h = 0;
 	int i = 0;
@@ -407,7 +466,7 @@ int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int
 				*x = h;
 				*y = j;
 				// printf("TROUVÉE : plateau[%i][%i].pc = pc[%i]\n", j, h, i);
-				return 0;
+				return 1;
 			}
 			h++;
 		}
@@ -417,6 +476,10 @@ int trouver_case_pc(SDL_Point pc, cell_T plat[plateau_y][plateau_x], int* x, int
 	return 0;
 }
 
+/**
+  *\fn void init_tiles(void)
+  *\brief Initialise les origines et tailles de toutes les textures disponibles
+*/
 void init_tiles() {
 	int h = 0, i = 0, j = 0;
 	while (j < tiles_col) {
@@ -432,6 +495,11 @@ void init_tiles() {
 	}
 }
 
+/**
+  *\fn void init_texture_cases(int, SDL_Point)
+  *\brief Initialise et affiche la texture de chacune des cellules
+  *\param num_carte de type int, pc[] de type SDL_Point
+*/
 void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	FILE * fichier_texture;
 
@@ -508,6 +576,10 @@ void init_texture_cases(int num_carte, SDL_Point pc[]) {
 	SDL_DestroyTexture(textures_plateau);
 }
 
+/**
+  *\fn void free_texture_cases()
+  *\brief Libère la mémoire alloué pour les textures de chaque cellule
+*/
 void free_texture_cases() {
 	int h = 0;
 	int i = 0;
@@ -522,6 +594,11 @@ void free_texture_cases() {
 	}
 }
 
+/**
+  *\fn void init_cases_solide(int, cell_T)
+  *\brief Initialise la variable solide de chaque cellule du plateau à 0 (non solide)
+  *\param num_carte de type int, plat[plateau_y][plateau_x] de type cell_T
+*/
 void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	// Met toutes les cases non solides
 	for (int a = 0; a < plateau_x; a++) {
@@ -602,6 +679,11 @@ void init_cases_solide(int num_carte, cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+/**
+  *\fn void init_cases_profondeur(cell_T)
+  *\brief Initialise la profondeur de chaque cellule du plateau selon sa position par rapport à nous/la caméra
+  *\param plat[plateau_y][plateau_x] de type cell_T
+*/
 void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
 	for (int i = 0; i < plateau_x; i++) {
         for (int j = 0; j < plateau_y; j++) {
@@ -636,7 +718,10 @@ void init_cases_profondeur(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
-/* Initialuser les ID des entités sur le plateau */
+/**
+  *\fn void init_id_entite_plateau()
+  *\brief Initialise à 0 tous les id des entités (qu'il y en ait une ou pas) dans chaque cellule du plateau
+*/
 void init_id_entite_plateau() {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -645,7 +730,11 @@ void init_id_entite_plateau() {
 	}
 }
 
-/* Afficher les entités du plateau */
+/**
+  *\fn void affichage_entites(cell_T)
+  *\brief Affiche l'entite contenu dans chaque cellule du plateau si elle existe
+  *\param plat[plateau_y][plateau_x] de type cell_T
+*/
 void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	for (int i = 0; i < plateau_y; i++) {
 		for (int j = 0; j < plateau_x; j++) {
@@ -656,6 +745,10 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 	}
 }
 
+/**
+  *\fn void init_polices(void)
+  *\brief Initialise toutes les polices utilisées dans le programme
+*/
 void init_polices() {
 	font = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 14);
 	font_small = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 11);
@@ -666,6 +759,10 @@ void init_polices() {
 	font_tour = TTF_OpenFont("../data/police/Roboto-Black.ttf", 36);
 }
 
+/**
+  *\fn void close_polices(void)
+  *\brief Libère toutes les polices utilisées dans le programme
+*/
 void close_polices() {
 	TTF_CloseFont(font);
 	TTF_CloseFont(font_small);
@@ -675,7 +772,12 @@ void close_polices() {
 	TTF_CloseFont(font_degats);
 	TTF_CloseFont(font_tour);
 }
-/* Positionner les positions des entités sur le plateau (en fonction du niveau qu'on a choisi) */
+
+/**
+  *\fn void positionnerEnnemi(int)
+  *\brief Positionne les entités ennemis sur le plateau selon le niveau choisi
+  *\param lev de type int
+*/
 void positionnerEnnemi(int lev){
 
     switch(lev){
@@ -724,6 +826,10 @@ void positionnerEnnemi(int lev){
     }	
 }
 
+/**
+  *\fn void sauvegarderPartie(void)
+  *\brief Sauvegarde dans un fichier texte la progression du joueur
+*/
 void sauvegarderPartie(){
 
 	FILE * fichier;
@@ -770,6 +876,10 @@ void sauvegarderPartie(){
 	fclose(fichier);	
 }
 
+/**
+  *\fn void chargerSauvegarde()
+  *\brief Charge la sauvegarde en lisant le fichier texte sauvegarde.txt
+*/
 void chargerSauvegarde(){
 
 	FILE * fichier = NULL;
@@ -883,6 +993,11 @@ void chargerSauvegarde(){
 	fclose(fichier);
 }
 
+/**
+  *\fn void affichagePlateau(void)
+  *\brief Réunit toutes les fonctions et variables nécessaires à la réalisation du plateau, et l'affiche
+  *\return Renvoie 0 lorsque la fonction est terminée
+*/
 int affichagePlateau() {
 	// Plateau
 	// cell_T plateau[plateau_y][plateau_x];
@@ -1074,6 +1189,11 @@ int affichagePlateau() {
 	return 0;
 }
 
+/**
+  *\fn int main(int, char**)
+  *\brief Démarre le rendu de la SDL, charge une sauvegarde, affiche le menu du jeu puis le plateau et arrête le rendu lorsque le jeu est quitté
+  *\return Renvoie 0 lorsque la fonction est terminée
+*/
 int main(int argc, char** argv) {
 	rendering();
 
