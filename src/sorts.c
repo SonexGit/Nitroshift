@@ -89,7 +89,6 @@ entite * rechercherEntite(int id){
         case 302 :
             return &e6;
             break;
-            break;
         case 100 :
             return &b1;
             break;
