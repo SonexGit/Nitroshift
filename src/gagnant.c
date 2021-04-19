@@ -28,6 +28,10 @@
 
 void fingagnant()
 {
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+    SDL_RenderClear(ren);
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+
     Mix_Music *myMus;
 
     /* On initialise le son */
