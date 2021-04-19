@@ -281,7 +281,6 @@ void creationEnnemi(){
 
     e6.nom = "Ennemi6";   
     e6.id = 302;
-    e6.niveau = 1;
     e6.hpMax = 350;
     e6.nitroMax = 100;
     e6.paMax = 9;
@@ -318,7 +317,6 @@ void creationEnnemi(){
 
     b3.nom = "Boss3"; 
     b3.id = 300;
-    b3.niveau = 1;
     b3.hpMax = 50;
     b3.nitroMax = 200;
     b3.paMax = 6;

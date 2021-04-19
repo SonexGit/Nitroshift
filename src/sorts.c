@@ -89,7 +89,6 @@ entite * rechercherEntite(int id){
         case 302 :
             return &e6;
             break;
-            break;
         case 100 :
             return &b1;
             break;
@@ -100,6 +99,7 @@ entite * rechercherEntite(int id){
             return &b3;
             break;
 	}
+	return 0;
 }
 
 void afficher_degats(int degats, int cible_x, int cible_y) {
@@ -136,17 +136,14 @@ void afficher_degats(int degats, int cible_x, int cible_y) {
 	SDL_DestroyTexture(texture_degats_texte);
 }
 
-void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
+void infliger_degats(int cible_x, int cible_y, sort_T * s) {
 	int degats = numero_aleatoire(s->degatsMin, s->degatsMax);
 
 	entite * temp;
 
 	if(plateau[cible_y][cible_x].e.id != 0) {
-		printf("\nJE FAIS DES DEGATS !! : %i\n", degats);
-		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", temp->hp);
 		temp = rechercherEntite(plateau[cible_y][cible_x].e.id);
 		temp->hp -= degats;
-		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", temp->hp);
 		if(temp->hp <= 0){
 			temp->mort = 1;
 			temp->id = 0;
@@ -162,10 +159,10 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 
 	switch (s->id) {
 		case 0: // Attaque de base • Sort 0
-			infliger_degats(lanceur, cible_x, cible_y, s);
+			infliger_degats(cible_x, cible_y, s);
 			break;
 		case 1: // Tir rapide • Sort 1
-			infliger_degats(lanceur, cible_x, cible_y, s);
+			infliger_degats(cible_x, cible_y, s);
 			break;
 		case 2: // Téléportation • Sort 2
 			lanceur->positionX = cible_x;
@@ -185,8 +182,6 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 }
 
 void clic_sort(entite * lanceur, sort_T s) {
-	printf("\n PA LANCEUR : %i \n NITRO LANCEUR : %i", lanceur->pa, lanceur->nitro);
-	printf("\nRELANCE ACTUEL : %i\n", s.relanceActuel);
 	if (s.relanceActuel == 0 && lanceur->pa >= s.coutPA && lanceur->nitro >= s.coutNitro) {
 		prepaSort = s.id;
 	}
@@ -195,7 +190,7 @@ void clic_sort(entite * lanceur, sort_T s) {
 	}
 }
 
-void affichage_infos_sort(entite * lanceur, sort_T s) {
+void affichage_infos_sort(sort_T s) {
 	SDL_Color color_white = {255, 255, 255, 255};
 
 	// Affichage du nom du sort
@@ -290,7 +285,7 @@ void free_sort_text() {
 	}
 }
 
-void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[plateau_y][plateau_x]) {
+void prep_sort_plus(entite * lanceur, int distance) {
 
 	int compteur = 0;
 
@@ -299,7 +294,7 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		int og_y = lanceur->positionY + i;
 		int og_x = lanceur->positionX;
 
-		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
+		if ((og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0) || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 
@@ -321,7 +316,7 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 		int og_y = lanceur->positionY;
 		int og_x = lanceur->positionX + j;
 
-		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
+		if ((og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0) || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 			
@@ -340,7 +335,7 @@ void prep_sort_plus(entite * lanceur, sort_T s, int distance, cell_T plat[platea
 	}
 }
 
-void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau_y][plateau_x]) {
+void prep_sort_cercle(entite * lanceur, int rayon) {
     int i,j;
 	int compteur = 0;
 
@@ -424,13 +419,13 @@ void preparation_sort(entite * lanceur, sort_T s) {
 
 	switch (s.id) {
 		case 0:
-			prep_sort_plus(lanceur, s, 1, plateau);
+			prep_sort_plus(lanceur, 1);
 			break;
 		case 1:
-			prep_sort_plus(lanceur, s, 3, plateau);
+			prep_sort_plus(lanceur, 3);
 			break;
 		case 2:
-			prep_sort_cercle(lanceur, s, 3, plateau);
+			prep_sort_cercle(lanceur, 3);
 			break;
 	}
 	SDL_FreeSurface(surface_prep_sort);

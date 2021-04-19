@@ -776,7 +776,6 @@ void chargerSauvegarde(){
 	fichier = fopen("../sauvegarde.txt", "r");
 	char chaine[30] = "";
 	int temp;
-	size_t len;
 
 	if(fichier != NULL){
 
@@ -1036,7 +1035,7 @@ int affichagePlateau() {
 		affichage_sorts();
 
 		if (affichageSort != -1) {
-			affichage_infos_sort(&v1, sorts[affichageSort]);
+			affichage_infos_sort(sorts[affichageSort]);
 		}
 
 		// Recharge des relance etc a la fin d'un tour

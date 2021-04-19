@@ -520,7 +520,7 @@ void showmenu()
 
     SDL_Quit();
 
-    return EXIT_SUCCESS;
+    return 0;
 }
 
 void SDLError(const char *message)

@@ -100,6 +100,7 @@ int recherchePorteeSort(entite * e){
             return sortsBoss3[0].portee;
             break;
     }
+    return 0;
 }
 
 int rechercheDegatSort(entite * e){
@@ -133,6 +134,7 @@ int rechercheDegatSort(entite * e){
             return sortsBoss3[0].degatsMin;
             break;
     }
+    return 0;
 }
 
 int rechercheCoutNitroSort(entite * e){
@@ -166,6 +168,7 @@ int rechercheCoutNitroSort(entite * e){
             return sortsBoss3[0].coutNitro;
             break;
     }
+    return 0;
 }
 
 int rechercheCoutPaBoost(entite * e){
@@ -199,6 +202,7 @@ int rechercheCoutPaBoost(entite * e){
             return sortsBoss3[0].coutPA;
             break;
     }
+    return 0;
 }
 
 int rechercheRelanceBoost(entite * e){
@@ -231,7 +235,8 @@ int rechercheRelanceBoost(entite * e){
         case 300 :
             return sortsBoss3[0].relance;
             break;
-    }   
+    }
+    return 0;   
 }
 
 int boostEnnemi(entite * e){
@@ -369,6 +374,7 @@ int boostEnnemi(entite * e){
                 break;
         }
     }
+    return 0;
 }
 
 void attaqueEnnemi(entite * e){
@@ -551,7 +557,7 @@ void attaqueEnnemi(entite * e){
 
 void iaEnnemi(entite * e){
 
-    int boss, ligne, colonne, comparaisonLigne, comparaisonColonne;
+    int ligne, colonne, comparaisonLigne, comparaisonColonne;
 
     attaqueEnnemi(e);
     if(e->positionX == v1.positionX && e->flag == 0){ /* Même colonne */
