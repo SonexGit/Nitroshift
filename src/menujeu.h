@@ -1,8 +1,7 @@
 #include "header.h"
 
-
-SDL_Surface * surface_menu;
-SDL_Texture * texture_menu;
+SDL_Surface *surface_menu;
+SDL_Texture *texture_menu;
 
 SDL_Surface *imageBoutonquitter;
 SDL_Texture *textureBoutonquitter;
