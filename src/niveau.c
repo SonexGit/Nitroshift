@@ -50,7 +50,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors du chargement de l'image");
+        //SDLError("Erreur lors du chargement de l'image");
     }
     texturechoix = SDL_CreateTextureFromSurface(ren, imagechoix);
 
@@ -61,7 +61,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de la création de la texture bouton abandon");
+        //SDLError("Erreur lors de la création de la texture bouton abandon");
     }
     //l'image est chargé en mémoire
 
@@ -71,7 +71,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     //positionnement du bouton
@@ -84,7 +84,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     SDL_RenderPresent(ren);
@@ -94,7 +94,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors du chargement de l'image");
+        //SDLError("Erreur lors du chargement de l'image");
     }
     texturenb1 = SDL_CreateTextureFromSurface(ren, imagenb1);
 
@@ -105,7 +105,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de la création de la texture bouton abandon");
+        //SDLError("Erreur lors de la création de la texture bouton abandon");
     }
     //l'image est chargé en mémoire
 
@@ -115,7 +115,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     //positionnement du bouton
@@ -129,7 +129,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     SDL_RenderPresent(ren);
@@ -139,7 +139,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors du chargement de l'image");
+        //SDLError("Erreur lors du chargement de l'image");
     }
     texturenb3 = SDL_CreateTextureFromSurface(ren, imagenb3);
 
@@ -150,7 +150,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de la création de la texture bouton abandon");
+        //SDLError("Erreur lors de la création de la texture bouton abandon");
     }
     //l'image est chargé en mémoire
 
@@ -160,7 +160,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     //positionnement du bouton
@@ -174,7 +174,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     SDL_RenderPresent(ren);
@@ -184,7 +184,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors du chargement de l'image");
+        //SDLError("Erreur lors du chargement de l'image");
     }
     textureretour = SDL_CreateTextureFromSurface(ren, imageretour);
 
@@ -195,7 +195,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de la création de la texture bouton abandon");
+        //SDLError("Erreur lors de la création de la texture bouton abandon");
     }
     //l'image est chargé en mémoire
 
@@ -205,7 +205,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     //positionnement du bouton
@@ -217,7 +217,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     SDL_RenderPresent(ren);
@@ -228,7 +228,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors du chargement de l'image");
+        //SDLError("Erreur lors du chargement de l'image");
     }
     texturenb2 = SDL_CreateTextureFromSurface(ren, imagenb2);
 
@@ -239,7 +239,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de la création de la texture bouton abandon");
+        //SDLError("Erreur lors de la création de la texture bouton abandon");
     }
     //l'image est chargé en mémoire
 
@@ -249,7 +249,7 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     //positionnement du bouton
@@ -263,18 +263,15 @@ void niveau()
     {
         SDL_DestroyRenderer(ren);
         SDL_DestroyWindow(win);
-        SDLError("Erreur lors de l'affichage de l'image");
+        //SDLError("Erreur lors de l'affichage de l'image");
     }
 
     SDL_RenderPresent(ren);
 
-    int test;
-    SDL_bool mouse_hover = SDL_FALSE;
     int continuer = 3;
     SDL_Event event;
-    int clicx;
-    int clicy;
-    //debut des evenements pour saisi a la souris
+
+
     while (continuer)
     {
 

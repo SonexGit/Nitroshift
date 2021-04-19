@@ -279,19 +279,6 @@ void creationEnnemi(){
     e5.mort = 0;
     e5.equipe = ENNEMIS;
 
-    e6.nom = "Ennemi6";   
-    e6.id = 302;
-    e6.niveau = 1;
-    e6.hpMax = 350;
-    e6.nitroMax = 100;
-    e6.paMax = 9;
-    e6.pmMax = 4;
-    e6.attaque = 35;
-    e6.defense = 50;
-    e6.flag = 0;
-    e6.mort = 0;
-    e6.equipe = ENNEMIS;
-
     b1.nom = "Boss1";  
     b1.id = 100;
     b1.hpMax = 300;
@@ -318,7 +305,6 @@ void creationEnnemi(){
 
     b3.nom = "Boss3"; 
     b3.id = 300;
-    b3.niveau = 1;
     b3.hpMax = 50;
     b3.nitroMax = 200;
     b3.paMax = 6;
@@ -367,16 +353,16 @@ void init_textures_ennemis(int lev) {
             b2.texture = SDL_CreateTextureFromSurface(ren, b2.surface);
             break;
         case 7 :
+            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
             e5.surface = IMG_Load("../data/ennemis/mobTest.png");
             e5.texture = SDL_CreateTextureFromSurface(ren, e5.surface);
-            e6.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e6.texture = SDL_CreateTextureFromSurface(ren, e6.surface);
             break;
         case 8 :
+            e4.surface = IMG_Load("../data/ennemis/mobTest.png");
+            e4.texture = SDL_CreateTextureFromSurface(ren, e4.surface);
             e5.surface = IMG_Load("../data/ennemis/mobTest.png");
             e5.texture = SDL_CreateTextureFromSurface(ren, e5.surface);
-            e6.surface = IMG_Load("../data/ennemis/mobTest.png");
-            e6.texture = SDL_CreateTextureFromSurface(ren, e6.surface);
             break;
         case 9 :
             b3.surface = IMG_Load("../data/ennemis/mobTest.png");
@@ -456,16 +442,16 @@ void free_ennemi_c(int lev) {
             SDL_FreeSurface(b2.surface);
             break;
         case 7 :
+            SDL_DestroyTexture(e4.texture);
+            SDL_FreeSurface(e4.surface);
             SDL_DestroyTexture(e5.texture);
             SDL_FreeSurface(e5.surface);
-            SDL_DestroyTexture(e6.texture);
-            SDL_FreeSurface(e6.surface);
             break;
         case 8 :
+            SDL_DestroyTexture(e4.texture);
+            SDL_FreeSurface(e4.surface);
             SDL_DestroyTexture(e5.texture);
             SDL_FreeSurface(e5.surface);
-            SDL_DestroyTexture(e6.texture);
-            SDL_FreeSurface(e6.surface);
             break;
         case 9 :
             SDL_DestroyTexture(b3.texture);
