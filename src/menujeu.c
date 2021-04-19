@@ -475,11 +475,6 @@ void showmenu()
                     printf("Pour chaque niveau, vous allez avoir 3 combat avec des monstres et un 4eme combat sera le boss du niveau.\n");
                     printf("L'equipe de Nitroshift\n");
                 }
-                if (event.button.x >= 20 && event.button.x <= 221 && event.button.y >= 500 && event.button.y <= 539)
-                {
-                    isCombat = 0;
-                    continuer = 0;
-                }
                 if (event.button.x >= 0 && event.button.x <= 380 && event.button.y >= 250 && event.button.y <= 322)
                 {
                     Mix_FreeMusic(myMus);
@@ -525,7 +520,7 @@ void showmenu()
 
     SDL_Quit();
 
-    return EXIT_SUCCESS;
+    return 0;
 }
 
 void SDLError(const char *message)

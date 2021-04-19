@@ -51,15 +51,17 @@ int temps_debut, temps_actuel, flag_temps;
 
 // Déclarations des fonctions
 void affichage_sorts();
+void affichage_infos_sort(sort_T s);
 void init_sorts();
 entite * rechercherEntite(int id);
 int numero_aleatoire(int minimum, int maximum);
 void afficher_degats(int degats, int cible_x, int cible_y);
-void infliger_degats(entite * lanceur, int cible_x, int cible_y, sort_T * s);
+void infliger_degats(int cible_x, int cible_y, sort_T * s);
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s);
 void init_sort_surftext();
 void free_sort_text();
-void prep_sort_cercle(entite * lanceur, sort_T s, int rayon, cell_T plat[plateau_y][plateau_x]);
+void prep_sort_plus(entite * lanceur, int distance);
+void prep_sort_cercle(entite * lanceur, int rayon);
 void clic_sort(entite * lanceur, sort_T s);
 void preparation_sort(entite * lanceur, sort_T s);
 

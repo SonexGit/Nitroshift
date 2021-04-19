@@ -658,6 +658,7 @@ void affichage_entites(cell_T plat[plateau_y][plateau_x]) {
 
 void init_polices() {
 	font = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 14);
+	font_small = TTF_OpenFont("../data/police/Roboto-Regular.ttf", 11);
 	font_titre = TTF_OpenFont("../data/police/Roboto-Bold.ttf", 16);
 	font_barres = TTF_OpenFont("../data/police/Roboto-BlackItalic.ttf", 32);
 	font_barres2 = TTF_OpenFont("../data/police/Roboto-Black.ttf", 32);
@@ -667,6 +668,7 @@ void init_polices() {
 
 void close_polices() {
 	TTF_CloseFont(font);
+	TTF_CloseFont(font_small);
 	TTF_CloseFont(font_titre);
 	TTF_CloseFont(font_barres);
 	TTF_CloseFont(font_barres2);
@@ -774,7 +776,6 @@ void chargerSauvegarde(){
 	fichier = fopen("../sauvegarde.txt", "r");
 	char chaine[30] = "";
 	int temp;
-	size_t len;
 
 	if(fichier != NULL){
 
@@ -911,9 +912,6 @@ int affichagePlateau() {
 		printf("\n");
 	}
 
-
-
-
 	creationEnnemi();
 
 	initCombat(levelCombat);
@@ -923,7 +921,6 @@ int affichagePlateau() {
 	// ==============================================
 
 	SDL_SetRenderDrawColor(ren, 0, 255, 255, 255);
-
 
 	// Dessine la grille (carré 4:3 dans 16:9)
 	init_points(points);
@@ -1038,7 +1035,7 @@ int affichagePlateau() {
 		affichage_sorts();
 
 		if (affichageSort != -1) {
-			affichage_infos_sort(&v1, sorts[affichageSort]);
+			affichage_infos_sort(sorts[affichageSort]);
 		}
 
 		// Recharge des relance etc a la fin d'un tour

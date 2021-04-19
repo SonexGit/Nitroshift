@@ -76,10 +76,10 @@ void creationAcces(){
     a1.z2.niveau2 = 1; /* Cela signifie : Niveau 2 de la zone 2 par exemple */
     a1.z2.niveau3 = 1;
 
-    a1.zone3 = 0;
-    a1.z3.niveau1 = 0;
-    a1.z3.niveau2 = 0;
-    a1.z3.niveau3 = 0;
+    a1.zone3 = 1;
+    a1.z3.niveau1 = 1;
+    a1.z3.niveau2 = 1;
+    a1.z3.niveau3 = 1;
 }
 
 // Textures du personnage
@@ -281,7 +281,6 @@ void creationEnnemi(){
 
     e6.nom = "Ennemi6";   
     e6.id = 302;
-    e6.niveau = 1;
     e6.hpMax = 350;
     e6.nitroMax = 100;
     e6.paMax = 9;
@@ -318,7 +317,6 @@ void creationEnnemi(){
 
     b3.nom = "Boss3"; 
     b3.id = 300;
-    b3.niveau = 1;
     b3.hpMax = 50;
     b3.nitroMax = 200;
     b3.paMax = 6;

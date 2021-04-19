@@ -13,12 +13,20 @@
 #include "initialisation.h"
 #include "combat.h"
 
+void sort_relance_reset(){
+    for (int i = 0; i < MAX_SORTS; i++) {
+        sorts[i].relanceActuel = 0;
+    }
+}   
+
 void initCombat(int level){
 
     v1.mort = 0;
     v1.passerTour = 0;
     v1.hp = v1.hpMax;
     statsMaximum(&v1);
+    sort_relance_reset();
+
 
     if(level == 1){
 
@@ -275,13 +283,13 @@ void initCombat(int level){
     }
     else if(level == 5){
 
-        e1.hpMax += 100;
-        e1.attaque += 10;
-        e1.defense += 10;
+        e3.hpMax += 100;
+        e3.attaque += 10;
+        e3.defense += 10;
 
-        e2.hpMax += 100;
-        e2.attaque += 10;
-        e2.defense += 10;
+        e4.hpMax += 100;
+        e4.attaque += 10;
+        e4.defense += 10;
 
         sortsEnnemi3[0].id = 0;
         sortsEnnemi3[0].nom = "Crachat de viandes";
@@ -461,13 +469,13 @@ void initCombat(int level){
     }
     else if(level == 8){
 
-        e1.hpMax += 150;
-        e1.attaque += 15;
-        e1.defense += 15;
+        e5.hpMax += 150;
+        e5.attaque += 15;
+        e5.defense += 15;
 
-        e2.hpMax += 150;
-        e2.attaque += 15;
-        e2.defense += 15;
+        e6.hpMax += 150;
+        e6.attaque += 15;
+        e6.defense += 15;
 
         sortsEnnemi5[0].id = 0;
         sortsEnnemi5[0].nom = "Marteau de feu";

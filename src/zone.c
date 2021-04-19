@@ -300,7 +300,6 @@ void choix_zone_carte()
             case SDL_MOUSEBUTTONDOWN:
                 if (event.button.x >= 70 && event.button.x <= 326 && event.button.y >= 480 && event.button.y <= 736)
                 {
-                    creationAcces();
                     if (a1.zone1 == 1)
                     {
                         numeroZone = 1;
@@ -310,7 +309,6 @@ void choix_zone_carte()
                 }
                 if (event.button.x >= 720 && event.button.x <= 976 && event.button.y >= 480 && event.button.y <= 736)
                 {
-                    creationAcces();
                     if (a1.zone2 == 1)
                     {
                         numeroZone = 2;
@@ -320,7 +318,6 @@ void choix_zone_carte()
                 }
                 if (event.button.x >= 1340 && event.button.x <= 1596 && event.button.y >= 480 && event.button.y <= 736)
                 {
-                    creationAcces();
                     if (a1.zone3 == 1)
                     {
                         numeroZone = 3;

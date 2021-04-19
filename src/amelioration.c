@@ -404,17 +404,17 @@ SDL_bool mouse_hover = SDL_FALSE;
              case SDL_MOUSEBUTTONDOWN:
              	if(event.button.x >=20 && event.button.x<=236 && event.button.y>=500 && event.button.y<=591){
                 //if(v1.nitroDollars >=500){
-                v1.hpMax = v1.hpMax +10;
+                v1.hpMax = v1.hpMax +20;
             	//}
             }
               if(event.button.x >=600 && event.button.x<=816 && event.button.y>=500 && event.button.y<=591){
               //  if(v1.nitroDollars >=500){
-                v1.attaque = v1.attaque +20;
+                v1.attaque = v1.attaque +5;
             	//}
             }
               if(event.button.x >=1220 && event.button.x<=1436 && event.button.y>=500 && event.button.y<=591){
               //  if(v1.nitroDollars >=500){
-                v1.defense = v1.defense +20;
+                v1.defense = v1.defense +5;
               //}
             	}
 

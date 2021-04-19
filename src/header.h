@@ -8,7 +8,7 @@
 #define plateau_y 15
 
 // Tiles.png (l'atlas des textures des cases du plateau)
-#define tiles_row 21 // Combien de textures par ligne ?
+#define tiles_row 37 // Combien de textures par ligne ?
 #define tiles_col 1 // Combien de textures par colonne ?
 
 // Taille d'une cellule
@@ -75,6 +75,7 @@ int affichageSort;
 
 // Déclaration des polices
 TTF_Font * font;
+TTF_Font * font_small;
 TTF_Font * font_titre;
 TTF_Font * font_barres;
 TTF_Font * font_barres2;
