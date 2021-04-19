@@ -69,6 +69,19 @@ void statsMaximum(entite * e){
     e->nitro = e->nitroMax;
 }
 
+void statsFinDeTour(entite * e){
+
+    e->pm = e->pmMax;
+    e->pa = e->paMax;
+    if(e->nitro + 20 <= e->nitroMax){
+        e->nitro += 20;
+    }
+    else
+        e->nitro = e->nitroMax;
+
+
+}
+
 int recherchePorteeSort(entite * e){
 
     switch(e->id){
@@ -1105,7 +1118,7 @@ void deroulementCombat(int level){
                         }
                         statsMaximum(&e1);
                         statsMaximum(&e2);
-                        statsMaximum(&v1);
+                        statsFinDeTour(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
@@ -1121,7 +1134,7 @@ void deroulementCombat(int level){
                         e2.relanceBoost = 1;
                     }
                     statsMaximum(&e2);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1136,7 +1149,7 @@ void deroulementCombat(int level){
                         e1.relanceBoost = 1;
                     }
                     statsMaximum(&e1);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1180,7 +1193,7 @@ void deroulementCombat(int level){
                         }
                         statsMaximum(&e1);
                         statsMaximum(&e2);
-                        statsMaximum(&v1);
+                        statsFinDeTour(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
@@ -1196,7 +1209,7 @@ void deroulementCombat(int level){
                         e2.relanceBoost = 1;
                     }
                     statsMaximum(&e2);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1211,7 +1224,7 @@ void deroulementCombat(int level){
                         e1.relanceBoost = 1;
                     }
                     statsMaximum(&e1);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1246,7 +1259,7 @@ void deroulementCombat(int level){
                         b1.relanceBoost = 1;
                     }
                     statsMaximum(&b1);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1291,7 +1304,7 @@ void deroulementCombat(int level){
                         }
                         statsMaximum(&e3);
                         statsMaximum(&e4);
-                        statsMaximum(&v1);
+                        statsFinDeTour(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
@@ -1307,7 +1320,7 @@ void deroulementCombat(int level){
                         e4.relanceBoost = 1;
                     }
                     statsMaximum(&e4);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1322,7 +1335,7 @@ void deroulementCombat(int level){
                         e3.relanceBoost = 1;
                     }
                     statsMaximum(&e3);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1366,7 +1379,7 @@ void deroulementCombat(int level){
                         }
                         statsMaximum(&e3);
                         statsMaximum(&e4);
-                        statsMaximum(&v1);
+                        statsFinDeTour(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
@@ -1382,7 +1395,7 @@ void deroulementCombat(int level){
                         e4.relanceBoost = 1;
                     }
                     statsMaximum(&e4);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1397,7 +1410,7 @@ void deroulementCombat(int level){
                         e3.relanceBoost = 1;
                     }
                     statsMaximum(&e3);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1431,7 +1444,7 @@ void deroulementCombat(int level){
                     else{
                         b2.relanceBoost = 1;
                     }
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     statsMaximum(&b2);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
@@ -1477,7 +1490,7 @@ void deroulementCombat(int level){
                         }
                         statsMaximum(&e5);
                         statsMaximum(&e4);
-                        statsMaximum(&v1);
+                        statsFinDeTour(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
@@ -1493,7 +1506,7 @@ void deroulementCombat(int level){
                         e4.relanceBoost = 1;
                     }
                     statsMaximum(&e4);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1508,7 +1521,7 @@ void deroulementCombat(int level){
                         e5.relanceBoost = 1;
                     }
                     statsMaximum(&e5);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1553,7 +1566,7 @@ void deroulementCombat(int level){
                         }
                         statsMaximum(&e5);
                         statsMaximum(&e4);
-                        statsMaximum(&v1);
+                        statsFinDeTour(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
@@ -1569,7 +1582,7 @@ void deroulementCombat(int level){
                         e4.relanceBoost = 1;
                     }
                     statsMaximum(&e4);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1584,7 +1597,7 @@ void deroulementCombat(int level){
                         e5.relanceBoost = 1;
                     }
                     statsMaximum(&e4);
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
@@ -1618,7 +1631,7 @@ void deroulementCombat(int level){
                     else{
                         b3.relanceBoost = 1;
                     }
-                    statsMaximum(&v1);
+                    statsFinDeTour(&v1);
                     statsMaximum(&b3);
                     v1.passerTour = 0;
                     finTempsAllie = 0;

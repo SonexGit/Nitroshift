@@ -16,6 +16,7 @@ int qui_tour;
 /* Fonctions */
 void boutonPasserTour();
 void statsMaximum(entite * e);
+void statsFinDeTour(entite * e);
 int estUnBoss(entite * e);
 int recherchePorteeSort(entite * e);
 int rechercheDegatSort(entite * e);
