@@ -130,7 +130,7 @@ size_t handle_keys() {
 					int temp_pc_x = -1, temp_pc_y = -1;
 					trouver_case_pc(points_centre[save], plateau, &temp_pc_x, &temp_pc_y);
 
-					for(int i = 0; i < 3; i++) {
+					for(int i = 0 + debutSorts; i < 3 + debutSorts; i++) {
 						if (event.button.x >= liste_sorts[i].x && event.button.x <= liste_sorts[i].x+liste_sorts[i].w && event.button.y >= liste_sorts[i].y && event.button.y <= liste_sorts[i].y+liste_sorts[i].h) {
 							clic_sort(&v1, sorts[i]);
 							// lancement_sort(&v1, 7, 12, sorts[0]);
@@ -211,7 +211,7 @@ size_t handle_keys() {
 					sur_ennemi_x = -1;
 					sur_ennemi_y = -1;
 				}
-				for(int i = 0; i < 3; i++) {
+				for(int i = 0 + debutSorts; i < 3 + debutSorts; i++) {
 					if (event.motion.x >= liste_sorts[i].x && event.motion.x <= liste_sorts[i].x+liste_sorts[i].w && event.motion.y >= liste_sorts[i].y && event.motion.y <= liste_sorts[i].y+liste_sorts[i].h) {
 						affichageSort = i;
 					}
@@ -1032,7 +1032,7 @@ int affichagePlateau() {
 		affichage_entites(plateau);
 		update_interface_combat();
 		boutonPasserTour();
-		affichage_sorts();
+		affichage_sorts(&v1);
 
 		if (affichageSort != -1) {
 			affichage_infos_sort(sorts[affichageSort]);

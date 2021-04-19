@@ -5,6 +5,7 @@
 
 #define MAX_SORTS 100
 
+int debutSorts;
 typedef struct sort_S {
 	int id;
 	char * nom;
@@ -50,7 +51,7 @@ int degats_inflige, degats_cible_x, degats_cible_y;
 int temps_debut, temps_actuel, flag_temps;
 
 // Déclarations des fonctions
-void affichage_sorts();
+void affichage_sorts(entite * joueur);
 void affichage_infos_sort(sort_T s);
 void init_sorts();
 entite * rechercherEntite(int id);

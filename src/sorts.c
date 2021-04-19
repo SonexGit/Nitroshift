@@ -16,25 +16,44 @@
 
 // sort : id, nom, description, degatsMin, degatsMax, relanceMax, relanceActuel, portee, coutPA, coutNitro, surface, texture, id_lanceur
 sort_T sorts[MAX_SORTS] = {
-	{0, "Attaque de base", "Test", 25, 40, 1, 0, 1, 2, 0, NULL, NULL, 1},
+	// Sorts Assassin
+	{0, "Attaque de base", "Attaquez faiblement un ennemi", 25, 40, 1, 0, 1, 2, 0, NULL, NULL, 1},
 	{1, "Tir rapide", "Tirez une salve avec votre arme", 100, 125, 2, 0, 4, 1, 24, NULL, NULL, 1},
 	{2, "Téléportation", "Téléportez vous sur la case ciblée", 0, 0, 5, 0, 5, 0, 50, NULL, NULL, 1},
-	{3, "Boost PM", "Test", 0, 0, 4, 0, 0, 0, 0, NULL, NULL}
+	// Sorts Soldat
+	{3, "Attaque de base", "Attaquez faiblement un ennemi", 25, 40, 1, 0, 2, 3, 0, NULL, NULL, 1},
+	{4, "Grenade", "Lancez une grenade", 200, 300, 4, 0, 4, 5, 60, NULL, NULL, 1},
+	{5, "Glissade", "Avancez rapidement vers un emplacement", 0, 0, 3, 0, 2, 3, 0, NULL, NULL, 1},
+	// Sorts Tank
+	{6, "Attaque de base", "Attaquez faiblement un ennemi", 35, 50, 1, 0, 1, 3, 0, NULL, NULL, 1},
+	{7, "Explosion de mine horizontale", "Placez une mine qui explose directement, touchant trois cases perpendiculaire à vous", 150, 200, 5, 0, 2, 3, 60, NULL, NULL, 1},
+	{8, "Tacle", "Frappez un ennemi proche de plein fouet", 70, 90, 3, 0, 1, 6, 0, NULL, NULL, 1},
+	// Sorts Sniper
+	{9, "Attaque de base", "Attaquez faiblement un ennemi", 25, 40, 1, 0, 3, 4, 0, NULL, NULL, 1},
+	{10, "Tir de sniper", "Touchez une cible lointaine avec une grande puissance", 280, 300, 5, 0, 7, 5, 75, NULL, NULL, 1},
+	{11, "Régénération", "Récupérez quelques points de vie", 0, 0, 3, 0, 0, 3, 33, NULL, NULL, 1}
 };
 
-void affichage_sorts() {
+void affichage_sorts(entite * joueur) {
 	char * repertoire = malloc(sizeof(char) * 16);
-	char * id_sort = malloc(sizeof(char) * 2);
-	for (int i = 0; i < 3; i++) {
+	char * id_sort = malloc(sizeof(char) * 3);
+
+	debutSorts = 0;
+	if (!strcmp(joueur->classe, "Soldat")) debutSorts = 3;
+	else if (!strcmp(joueur->classe, "Tank")) debutSorts = 6;
+	else if (!strcmp(joueur->classe, "Sniper")) debutSorts = 9;
+	else debutSorts = 0;
+	
+	for (int i = debutSorts; i < debutSorts + 3; i++) {
 		strcpy(repertoire, "../data/sorts/");
-		snprintf(id_sort, 2, "%d", sorts[i].id);
+		snprintf(id_sort, 3, "%d", sorts[i].id);
 		strcat(repertoire, id_sort);
 		strcat(repertoire, ".png");
 		if (sorts[i].id_lanceur == 1) {
-			sorts[i].surface = IMG_Load(repertoire);
+			sorts[i ].surface = IMG_Load(repertoire);
 			sorts[i].texture = SDL_CreateTextureFromSurface(ren, sorts[i].surface);
 
-			liste_sorts[i].x = 1000 + (i * 50);
+			liste_sorts[i].x = 1000 + ((i - debutSorts) * 50);
 			liste_sorts[i].y = 750;
 			liste_sorts[i].h = 40;
 			liste_sorts[i].w = 40;
@@ -99,7 +118,6 @@ entite * rechercherEntite(int id){
             return &b3;
             break;
 	}
-	return 0;
 }
 
 void afficher_degats(int degats, int cible_x, int cible_y) {
@@ -142,8 +160,11 @@ void infliger_degats(int cible_x, int cible_y, sort_T * s) {
 	entite * temp;
 
 	if(plateau[cible_y][cible_x].e.id != 0) {
+		printf("\nJE FAIS DES DEGATS !! : %i\n", degats);
+		printf("\nVOICI LA VIE DE L'ENNEMI AVANT : %i\n", temp->hp);
 		temp = rechercherEntite(plateau[cible_y][cible_x].e.id);
 		temp->hp -= degats;
+		printf("\nVOICI LA VIE DE L'ENNEMI APRES : %i\n", temp->hp);
 		if(temp->hp <= 0){
 			temp->mort = 1;
 			temp->id = 0;
@@ -158,15 +179,52 @@ void infliger_degats(int cible_x, int cible_y, sort_T * s) {
 void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 
 	switch (s->id) {
-		case 0: // Attaque de base • Sort 0
+		case 0: // Attaque de base (Assassin) • Sort 0
 			infliger_degats(cible_x, cible_y, s);
 			break;
-		case 1: // Tir rapide • Sort 1
+		case 1: // Tir rapide (Assassin) • Sort 1
 			infliger_degats(cible_x, cible_y, s);
 			break;
-		case 2: // Téléportation • Sort 2
+		case 2: // Téléportation (Assassin) • Sort 2
 			lanceur->positionX = cible_x;
 			lanceur->positionY = cible_y;
+			break;
+		case 3: // Attaque de base (Soldat) • Sort 3
+			infliger_degats(cible_x, cible_y, s);
+			break;
+		case 4: // Grenade (Soldat) • Sort 4
+			infliger_degats(cible_x, cible_y, s);
+			break;
+		case 5: // Glissade (Soldat) • Sort 5
+			lanceur->positionX = cible_x;
+			lanceur->positionY = cible_y;
+			break;
+		case 6: // Attaque de base (Tank) • Sort 6
+			infliger_degats(cible_x, cible_y, s);
+			break;
+		case 7: // Explosion de mine horizontale (Tank) • Sort 7
+			infliger_degats(cible_x, cible_y, s);
+			if (cible_x > lanceur->positionX || cible_x < lanceur->positionX) {
+				infliger_degats(cible_x, cible_y-1, s);
+				infliger_degats(cible_x, cible_y+1, s);
+			}
+			else if (cible_y > lanceur->positionY || cible_y < lanceur->positionY) {
+				infliger_degats(cible_x-1, cible_y, s);
+				infliger_degats(cible_x+1, cible_y, s);
+			}
+			break;
+		case 8: // Tacle (Tank) • Sort 8
+			infliger_degats(cible_x, cible_y, s);
+			break;
+		case 9: // Attaque de base (Sniper) • Sort 9
+			infliger_degats(cible_x, cible_y, s);
+			break;
+		case 10: // Tir de sniper (Sniper) • Sort 10
+			infliger_degats(cible_x, cible_y, s);
+			break;
+		case 11: // Régénération (Sniper) • Sort 11
+			if (lanceur->hp + 20 < lanceur->hpMax) lanceur->hp += 20;
+			else lanceur->hp = lanceur->hpMax;
 			break;
 	}
 
@@ -182,8 +240,11 @@ void lancement_sort(entite * lanceur, int cible_x, int cible_y, sort_T * s) {
 }
 
 void clic_sort(entite * lanceur, sort_T s) {
+	printf("\n PA LANCEUR : %i \n NITRO LANCEUR : %i", lanceur->pa, lanceur->nitro);
+	printf("\nRELANCE ACTUEL : %i\n", s.relanceActuel);
 	if (s.relanceActuel == 0 && lanceur->pa >= s.coutPA && lanceur->nitro >= s.coutNitro) {
 		prepaSort = s.id;
+		printf("prepaSort : %i", prepaSort);
 	}
 	else {
 		printf("Le sort est en charge...\n");
@@ -294,7 +355,7 @@ void prep_sort_plus(entite * lanceur, int distance) {
 		int og_y = lanceur->positionY + i;
 		int og_x = lanceur->positionX;
 
-		if ((og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0) || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
+		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 
@@ -316,7 +377,7 @@ void prep_sort_plus(entite * lanceur, int distance) {
 		int og_y = lanceur->positionY;
 		int og_x = lanceur->positionX + j;
 
-		if ((og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0) || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
+		if (og_y < plateau_y && og_x < plateau_x && plateau[og_y][og_x].solide == 0 || (plateau[og_y][og_x].e.nom != NULL && plateau[og_y][og_x].solide == 1)) {
 			plateau[og_y][og_x].sort_surface = IMG_Load("../data/tiles/cast_able.png");
 			plateau[og_y][og_x].sort_texture = SDL_CreateTextureFromSurface(ren, plateau[og_y][og_x].sort_surface);
 			
@@ -426,6 +487,33 @@ void preparation_sort(entite * lanceur, sort_T s) {
 			break;
 		case 2:
 			prep_sort_cercle(lanceur, 3);
+			break;
+		case 3:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 4:
+			prep_sort_cercle(lanceur, s.portee);
+			break;
+		case 5:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 6:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 7:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 8:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 9:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 10:
+			prep_sort_plus(lanceur, s.portee);
+			break;
+		case 11:
+			prep_sort_cercle(lanceur, 0);
 			break;
 	}
 	SDL_FreeSurface(surface_prep_sort);
