@@ -22,6 +22,25 @@
 #include "zone.h"
 #include "apropos.h"
 
+/**
+  *\file niveau.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction du choix du niveau
+ * \date 19 avril 2021
+  */
+
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images\n
+ ///check d'evènement avec les clics de la souris pour le choix du niveau\n
+
+
+/**
+  *\ fn void niveau(void)
+  *\brief fonction qui creer une fenetre avec un choix de niveau
+  *\param aucun parametre
+*/
+
 void niveau()
 {
 

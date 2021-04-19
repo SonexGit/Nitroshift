@@ -22,10 +22,22 @@
 #include "saveok.h"
 
 /**
- * \fn void showmenu
- * \brief fonction qui permet de créer le menu
- * \return la fenetre avec le menu et ces boutons
- */
+   *\file mesmodif.c
+  * \author lucas allan leo enzo
+  * \version 1.0
+  * \brief programme contenant le menu principal
+  * \date 19 avril 2021
+   */
+
+  ///Initialisation des images avec une texture\n
+  ///positionnement des images\n
+  ///check d'evènement avec les clics de la souris pour le choix du bouton souhaité\n
+
+  /**
+   * \fn void showmenu
+   * \brief fonction qui permet de créer le menu principal avec tous les boutons fonctionnels
+   * \return la fenetre avec le menu et ces boutons
+   */
 
 void showmenu()
 {

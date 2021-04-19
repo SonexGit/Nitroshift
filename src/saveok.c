@@ -22,10 +22,23 @@
 #include "shop.h"
 
 /**
- * \fn void showsauver
- * \brief fonction qui permet de créer le sauver
- * \return la fenetre avec le sauver et ces boutons
- */
+  *\file saveok.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction qui verifie si la save a été faite
+ * \date 19 avril 2021
+  */
+
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images\n
+ ///check d'evènement avec les clics de la souris\n
+ ///cas de if pour faire plusieurs actions\n
+
+/**
+  *\ fn void saveok(void)
+  *\brief fonction qui verifie si la save a été faite
+  *\param aucun parametre
+*/
 
 void saveok()
 {

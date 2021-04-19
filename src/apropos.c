@@ -21,10 +21,24 @@
 #include "shop.h"
 
 /**
- * \fn void showmenu
- * \brief fonction qui permet de créer le menu
- * \return la fenetre avec le menu et ces boutons
- */
+  *\file perdu.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction qui génère le choix de la classe
+ * \date 19 avril 2021
+  */
+
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images et de la musique\n
+ ///annonce de fin combat avec comme choix un retour au menu principal\n
+
+
+ /**
+  * \fn void showtest(void)
+  * \brief fonction qui permet de créer la fenetre où l'on choisit sa classe avec un choix a 4 solutions
+  * \param aucun parametre
+  * \return la fenetre avec le choix de la classe
+  */
 
 void showtest()
 {

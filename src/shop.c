@@ -18,11 +18,28 @@
 #include "menujeu.h"
 #include "amelioration.h"
 
-/**
- * \fn void showmenu
- * \brief fonction qui permet de créer le menu
- * \return la fenetre avec le menu et ces boutons
- */
+
+ /**
+   *\file shop.c
+  * \author lucas allan leo enzo
+  * \version 1.0
+  * \brief programme contenant la fonction qui génère le menu du shop
+  * \date 19 avril 2021
+   */
+
+  ///Initialisation des images avec une texture\n
+  ///positionnement des images\n
+  ///check d'evènement avec les clics de la souris\n
+  ///cas de if pour faire plusieurs actions(exemple: choisir les mini-jeux ou amélioration)\n
+
+  /**
+   * \fn void showshop
+   * \brief fonction qui permet de créer le menu du shop avec soit les mini-jeux ou bien améliorer son équipement
+   * \param aucun parametre
+   * \return la fenetre avec le menu et ces boutons
+   */
+
+
 
 void showshop()
 {

@@ -17,10 +17,23 @@
 
 
 /**
- * \fn void showmenu
- * \brief fonction qui permet de créer le menu
- * \return la fenetre avec le menu et ces boutons
- */
+  *\file mesmodif.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant le menu du choix de jeu
+ * \date 19 avril 2021
+  */
+
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images\n
+ ///check d'evènement avec les clics de la souris pour le choix du niveau\n
+
+
+/**
+  *\fn void showjeu(void)
+  *\brief fonction qui creer une fenetre avec un choix de jeu où l'on peut jouer pour gagner des nitroDollars
+  *\param aucun parametre
+*/
 
 void showjeu()
 {
