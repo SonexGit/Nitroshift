@@ -708,13 +708,13 @@ void positionnerEnnemi(int lev){
 			plateau[v1.positionY][v1.positionX].e = v1;
             break;
         case 7 :
+			plateau[e4.positionY][e4.positionX].e = e4;
 			plateau[e5.positionY][e5.positionX].e = e5;
-			plateau[e6.positionY][e6.positionX].e = e6;
 			plateau[v1.positionY][v1.positionX].e = v1;
             break;
         case 8 :
+			plateau[e4.positionY][e4.positionX].e = e4;
 			plateau[e5.positionY][e5.positionX].e = e5;
-			plateau[e6.positionY][e6.positionX].e = e6;
 			plateau[v1.positionY][v1.positionX].e = v1;
             break;
         case 9 :

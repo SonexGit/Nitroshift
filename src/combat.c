@@ -1458,47 +1458,47 @@ void deroulementCombat(int level){
             }
             break;
         case 7 :
-            if(e5.mort == 0 && e6.mort == 0){
+            if(e5.mort == 0 && e4.mort == 0){
                 actionEnnemi(&e5);
                 if(tourTermine == 1){
-                    actionEnnemi(&e6);
-                    if(e6.pm <= 0){
+                    actionEnnemi(&e4);
+                    if(e4.pm <= 0){
                         if(e5.tempsRelance > 0){
                             e5.tempsRelance--;
                         }
                         else{
                             e5.relanceBoost = 1;
                         }
-                        if(e6.tempsRelance > 0){
-                            e6.tempsRelance--;
+                        if(e4.tempsRelance > 0){
+                            e4.tempsRelance--;
                         }
                         else{
-                            e6.relanceBoost = 1;
+                            e4.relanceBoost = 1;
                         }
                         statsMaximum(&e5);
-                        statsMaximum(&e6);
+                        statsMaximum(&e4);
                         statsMaximum(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
                 }
             }
-            else if(e5.mort == 1 && e6.mort == 0){
-                actionEnnemi(&e6);
-                if(e6.pm <= 0){
-                    if(e6.tempsRelance > 0){
-                        e6.tempsRelance--;
+            else if(e5.mort == 1 && e4.mort == 0){
+                actionEnnemi(&e4);
+                if(e4.pm <= 0){
+                    if(e4.tempsRelance > 0){
+                        e4.tempsRelance--;
                     }
                     else{
-                        e6.relanceBoost = 1;
+                        e4.relanceBoost = 1;
                     }
-                    statsMaximum(&e6);
+                    statsMaximum(&e4);
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
             }
-            else if(e5.mort == 0 && e6.mort == 1){
+            else if(e5.mort == 0 && e4.mort == 1){
                 actionEnnemi(&e5);
                 if(e5.pm <= 0){
                     if(e5.tempsRelance > 0){
@@ -1514,6 +1514,7 @@ void deroulementCombat(int level){
                 }
             }
             else{
+                printf("Mort de %s : %i\n", e5.nom, e5.mort);
                 printf("\nBravo vous avez gagne le niveau %i !\n", level);
                 srand(time(NULL));
                 money = rand() % 70 + 30;
@@ -1533,47 +1534,47 @@ void deroulementCombat(int level){
             }
             break;
         case 8 :
-            if(e5.mort == 0 && e6.mort == 0){
+            if(e5.mort == 0 && e4.mort == 0){
                 actionEnnemi(&e5);
                 if(tourTermine == 1){
-                    actionEnnemi(&e6);
-                    if(e6.pm <= 0){
+                    actionEnnemi(&e4);
+                    if(e4.pm <= 0){
                         if(e5.tempsRelance > 0){
                             e5.tempsRelance--;
                         }
                         else{
                             e5.relanceBoost = 1;
                         }
-                        if(e6.tempsRelance > 0){
-                            e6.tempsRelance--;
+                        if(e4.tempsRelance > 0){
+                            e4.tempsRelance--;
                         }
                         else{
-                            e6.relanceBoost = 1;
+                            e4.relanceBoost = 1;
                         }
                         statsMaximum(&e5);
-                        statsMaximum(&e6);
+                        statsMaximum(&e4);
                         statsMaximum(&v1);
                         v1.passerTour = 0;
                         finTempsAllie = 0;
                     }
                 }
             }
-            else if(e5.mort == 1 && e6.mort == 0){
-                actionEnnemi(&e6);
-                if(e6.pm <= 0){
-                    if(e6.tempsRelance > 0){
-                        e6.tempsRelance--;
+            else if(e5.mort == 1 && e4.mort == 0){
+                actionEnnemi(&e4);
+                if(e4.pm <= 0){
+                    if(e4.tempsRelance > 0){
+                        e4.tempsRelance--;
                     }
                     else{
-                        e6.relanceBoost = 1;
+                        e4.relanceBoost = 1;
                     }
-                    statsMaximum(&e6);
+                    statsMaximum(&e4);
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
                 }
             }
-            else if(e5.mort == 0 && e6.mort == 1){
+            else if(e5.mort == 0 && e4.mort == 1){
                 actionEnnemi(&e3);
                 if(e5.pm <= 0){
                     if(e5.tempsRelance > 0){
@@ -1582,7 +1583,7 @@ void deroulementCombat(int level){
                     else{
                         e5.relanceBoost = 1;
                     }
-                    statsMaximum(&e5);
+                    statsMaximum(&e4);
                     statsMaximum(&v1);
                     v1.passerTour = 0;
                     finTempsAllie = 0;
