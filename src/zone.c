@@ -20,6 +20,29 @@
 #include "amelioration.h"
 #include "shop.h"
 
+
+/**
+  *\file zone.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction du choix de la zone
+ * \date 19 avril 2021
+  */
+
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images\n
+ ///check d'evènement avec les clics de la souris\n
+ ///cas de if pour faire plusieurs actions\n
+
+/**
+  *\ fn void choix_zone_carte(void)
+  *\brief fonction qui creer une fenetre avec un choix de zone à faire
+  *\param aucun parametre
+*/
+
+
+
+
 void choix_zone_carte()
 {
 

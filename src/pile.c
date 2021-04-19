@@ -16,7 +16,27 @@
 #include "initialisation.h"
 #include "combat.h"
 
+/**
+  *\file pile.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction d'un mini-jeu
+ * \date 19 avril 2021
+  */
 
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images\n
+ ///ordinateur choisit en random un chiffre entre 1 et 3 et celui ci sera transformé en un charactère\n
+ ///différents check pour la fonctionnalité du jeu\n
+ ///check d'evènement avec les clics de la souris\n
+ ///lancer une partie de pile ou face\n
+
+ /**
+  * \fn void pile(void)
+  * \brief fonction qui permet de créer le mini-jeu pile ou face
+  * \param aucun parametre
+  * \return la fenetre avec le mini-jeu pile ou face
+  */
 
 
 void pile()

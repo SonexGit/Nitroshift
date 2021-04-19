@@ -21,7 +21,25 @@
 #include "pile.h"
 #include "amelioration.h"
 
+/**
+  *\file shifumi.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction d'un mini-jeu
+ * \date 19 avril 2021
+  */
 
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images\n
+ ///check d'evènement avec les clics de la souris\n
+ ///lancer une partie de pierre-feuille-ciseaux\n
+
+ /**
+  * \fn void pierre(void)
+  * \brief fonction qui permet de créer le mini-jeu pierre-feuille-ciseaux
+  * \param aucun parametre
+  * \return la fenetre avec le mini-jeu pierre-feuille-ciseaux
+  */
 
 void pierre()
 {

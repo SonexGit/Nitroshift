@@ -21,10 +21,24 @@
 #include "shop.h"
 
 /**
- * \fn void showwinning
- * \brief fonction qui permet de créer le winning
- * \return la fenetre avec le winning et ces boutons
- */
+  *\file gagnant.c
+ * \author lucas allan leo enzo
+ * \version 1.0
+ * \brief programme contenant la fonction si l'on gagne un combat
+ * \date 19 avril 2021
+  */
+
+ ///Initialisation des images avec une texture\n
+ ///positionnement des images et de la musique\n
+ ///annonce de fin combat avec comme choix un retour au menu principal\n
+
+
+ /**
+  * \fn void fingagnant(void)
+  * \brief fonction qui permet de créer la fenetre de fin de combat lors d'une victoire
+  * \param aucun parametre
+  * \return la fenetre avec la musique, une image et un bouton retour
+  */
 
 void fingagnant()
 {

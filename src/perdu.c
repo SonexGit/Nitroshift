@@ -20,11 +20,25 @@
 #include "amelioration.h"
 #include "shop.h"
 
-/**
- * \fn void showperdu
- * \brief fonction qui permet de créer le perdu
- * \return la fenetre avec le perdu et ces boutons
- */
+ /**
+   *\file perdu.c
+  * \author lucas allan leo enzo
+  * \version 1.0
+  * \brief programme contenant la fonction si l'on perd un combat
+  * \date 19 avril 2021
+   */
+
+  ///Initialisation des images avec une texture\n
+  ///positionnement des images et de la musique\n
+  ///annonce de fin combat avec comme choix un retour au menu principal\n
+
+
+  /**
+   * \fn void findujeu(void)
+   * \brief fonction qui permet de créer la fenetre de fin de combat lors d'une défaite
+   * \param aucun parametre
+   * \return la fenetre avec la musique, une image et un bouton retour
+   */
 
 void findujeu()
 {
