@@ -532,7 +532,7 @@ void showtest()
 
     SDL_RenderPresent(ren);
     /*    *****************Bouton healer pour les règles   */
-    imagehealer = IMG_Load("../data/menu/healer.png");
+    imagehealer = IMG_Load("../data/menu/assassin.png");
     if (imagehealer == NULL)
     {
         SDL_DestroyRenderer(ren);
@@ -663,7 +663,7 @@ void showtest()
     SDL_RenderPresent(ren);
 
     /*    Bouton a DPS      */
-    imageDPS = IMG_Load("../data/menu/dps.png");
+    imageDPS = IMG_Load("../data/menu/soldat.png");
     if (imageDPS == NULL)
     {
         SDL_DestroyRenderer(ren);

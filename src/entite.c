@@ -30,7 +30,7 @@
 void creationPersonnage(){
 
     v1.classe = malloc(sizeof(char)*10);
-    
+
     v1.id = 1;
     v1.equipe = ALLIES;
     v1.niveau = 1;
@@ -214,7 +214,7 @@ void deplacements_personnage(int direction) {
 				sprite = STAND_DOWN;
 				if (!plateau[v1.positionY+1][v1.positionX].solide) {
 					if (v1.positionY == 14);
-					else { 
+					else {
 						plateau[v1.positionY][v1.positionX].solide = 0;
 						v1.positionY++;
 						plateau[v1.positionY][v1.positionX].solide = 1;
@@ -230,7 +230,7 @@ void deplacements_personnage(int direction) {
 						plateau[v1.positionY][v1.positionX].solide = 0;
 						v1.positionX--;
 						plateau[v1.positionY][v1.positionX].solide = 1;
-					} 
+					}
 					v1.pm--;
 				}
 				break;
@@ -262,7 +262,7 @@ void deplacements_personnage(int direction) {
 void creationEnnemi(){
 
     e1.nom = "Vesta";
-    e1.id = 101;    
+    e1.id = 101;
     e1.hpMax = 150;
     e1.nitroMax = 100;
     e1.paMax = 6;
@@ -274,7 +274,7 @@ void creationEnnemi(){
     e1.equipe = ENNEMIS;
 
     e2.nom = "Chronos";
-    e2.id = 102;  
+    e2.id = 102;
     e2.hpMax = 150;
     e2.nitroMax = 100;
     e2.paMax = 6;
@@ -285,7 +285,7 @@ void creationEnnemi(){
     e2.mort = 0;
     e2.equipe = ENNEMIS;
 
-    e3.nom = "Lucifer";   
+    e3.nom = "Lucifer";
     e3.id = 201;
     e3.hpMax = 250;
     e3.nitroMax = 100;
@@ -297,7 +297,7 @@ void creationEnnemi(){
     e3.mort = 0;
     e3.equipe = ENNEMIS;
 
-    e4.nom = "Artemis";   
+    e4.nom = "Artemis";
     e4.id = 202;
     e4.hpMax = 250;
     e4.nitroMax = 100;
@@ -309,7 +309,7 @@ void creationEnnemi(){
     e4.mort = 0;
     e4.equipe = ENNEMIS;
 
-    e5.nom = "Apollo";    
+    e5.nom = "Apollo";
     e5.id = 301;
     e5.hpMax = 350;
     e5.nitroMax = 100;
@@ -321,7 +321,7 @@ void creationEnnemi(){
     e5.mort = 0;
     e5.equipe = ENNEMIS;
 
-    b1.nom = "Joker";  
+    b1.nom = "Joker";
     b1.id = 100;
     b1.hpMax = 300;
     b1.nitroMax = 100;
@@ -333,7 +333,7 @@ void creationEnnemi(){
     b1.mort = 0;
     b1.equipe = ENNEMIS;
 
-    b2.nom = "Scorpio"; 
+    b2.nom = "Scorpio";
     b2.id = 200;
     b2.hpMax = 400;
     b3.nitroMax = 150;
@@ -345,7 +345,7 @@ void creationEnnemi(){
     b2.mort = 0;
     b2.equipe = ENNEMIS;
 
-    b3.nom = "Rudolf"; 
+    b3.nom = "Rudolf";
     b3.id = 300;
     b3.hpMax = 50;
     b3.nitroMax = 200;
@@ -441,7 +441,7 @@ void init_textures_ennemis(int lev) {
 */
 // Dessiner l'ennemi sur le plateau
 void dessiner_ennemi(entite e, int case_x, int case_y, cell_T plat[plateau_y][plateau_x], int sprite) {
-	
+
     if(e.mort == 0){
         int pos_x, pos_y, img_w, img_h;
         img_w = e.surface->w;
